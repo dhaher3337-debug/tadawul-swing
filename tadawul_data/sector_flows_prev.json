@@ -1,0 +1,172 @@
+{
+  "بنوك": {
+    "net_flow_5d": -203.02,
+    "avg_change_5d": -1.18,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "1060",
+    "leader_change": -0.16,
+    "laggard": "1180",
+    "laggard_change": -5.23,
+    "stock_count": 10
+  },
+  "خدمات مالية": {
+    "net_flow_5d": -101.07,
+    "avg_change_5d": 1.08,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "4083",
+    "leader_change": 4.63,
+    "laggard": "1211",
+    "laggard_change": -4.77,
+    "stock_count": 12
+  },
+  "بتروكيماويات": {
+    "net_flow_5d": 299.44,
+    "avg_change_5d": -0.4,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "1303",
+    "leader_change": 10.26,
+    "laggard": "2110",
+    "laggard_change": -6.91,
+    "stock_count": 34
+  },
+  "فنادق": {
+    "net_flow_5d": 22.61,
+    "avg_change_5d": 0.5,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "1830",
+    "leader_change": 1.6,
+    "laggard": "1833",
+    "laggard_change": -0.23,
+    "stock_count": 3
+  },
+  "صناعية": {
+    "net_flow_5d": 203.6,
+    "avg_change_5d": 0.21,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "2130",
+    "leader_change": 2.96,
+    "laggard": "4146",
+    "laggard_change": -3.8,
+    "stock_count": 11
+  },
+  "طاقة": {
+    "net_flow_5d": 114.08,
+    "avg_change_5d": 0.11,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "2030",
+    "leader_change": 1.95,
+    "laggard": "2382",
+    "laggard_change": -1.61,
+    "stock_count": 4
+  },
+  "مرافق": {
+    "net_flow_5d": 397.81,
+    "avg_change_5d": -0.35,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "2083",
+    "leader_change": 5.57,
+    "laggard": "2080",
+    "laggard_change": -5.8,
+    "stock_count": 6
+  },
+  "زراعة وأغذية": {
+    "net_flow_5d": 753.6,
+    "avg_change_5d": 0.75,
+    "momentum_trend": "مستقر",
+    "leader": "6017",
+    "leader_change": 7.41,
+    "laggard": "2100",
+    "laggard_change": -2.41,
+    "stock_count": 22
+  },
+  "نقل": {
+    "net_flow_5d": 540.96,
+    "avg_change_5d": 1.9,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "4262",
+    "leader_change": 10.85,
+    "laggard": "2190",
+    "laggard_change": -3.3,
+    "stock_count": 10
+  },
+  "أسمنت": {
+    "net_flow_5d": -73.81,
+    "avg_change_5d": -0.92,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "3005",
+    "leader_change": 1.42,
+    "laggard": "3010",
+    "laggard_change": -7.43,
+    "stock_count": 10
+  },
+  "رعاية صحية": {
+    "net_flow_5d": 76.95,
+    "avg_change_5d": -1.31,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "4009",
+    "leader_change": 4.28,
+    "laggard": "4004",
+    "laggard_change": -9.22,
+    "stock_count": 12
+  },
+  "تجزئة": {
+    "net_flow_5d": 803.49,
+    "avg_change_5d": 1.84,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "4193",
+    "leader_change": 26.93,
+    "laggard": "4200",
+    "laggard_change": -3.55,
+    "stock_count": 17
+  },
+  "إعلام": {
+    "net_flow_5d": -2.24,
+    "avg_change_5d": -2.19,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "4070",
+    "leader_change": -0.2,
+    "laggard": "4210",
+    "laggard_change": -4.58,
+    "stock_count": 4
+  },
+  "عقار": {
+    "net_flow_5d": 173.52,
+    "avg_change_5d": 0.06,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "4322",
+    "leader_change": 6.67,
+    "laggard": "4220",
+    "laggard_change": -5.81,
+    "stock_count": 18
+  },
+  "اتصالات": {
+    "net_flow_5d": -296.74,
+    "avg_change_5d": -1.18,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "7010",
+    "leader_change": -0.42,
+    "laggard": "7020",
+    "laggard_change": -1.62,
+    "stock_count": 4
+  },
+  "تقنية": {
+    "net_flow_5d": 603.11,
+    "avg_change_5d": 1.97,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "7211",
+    "leader_change": 3.38,
+    "laggard": "7203",
+    "laggard_change": 0.85,
+    "stock_count": 4
+  },
+  "تأمين": {
+    "net_flow_5d": 296.08,
+    "avg_change_5d": 1.16,
+    "momentum_trend": "تباطؤ قوي",
+    "leader": "8300",
+    "leader_change": 11.99,
+    "laggard": "8120",
+    "laggard_change": -2.43,
+    "stock_count": 14
+  }
+}

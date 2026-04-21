@@ -1,0 +1,123 @@
+{
+  "signal_accuracy": {
+    "rsi": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "stoch_rsi": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "macd": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "bollinger": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "obv": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "vwap": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "volume_surge": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "sma_cross": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "breakout": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "candle_pattern": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "oil_correlation": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "adx": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "supertrend": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "ichimoku": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "mfi": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "cmf": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "fibonacci": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "relative_strength": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    },
+    "weekly_trend": {
+      "triggered": 0,
+      "hit": 0,
+      "miss": 0,
+      "rate": 0.0
+    }
+  },
+  "blacklist": [],
+  "blacklist_date": {},
+  "stock_record": {},
+  "daily_log": [],
+  "ml_predictions_record": []
+}
