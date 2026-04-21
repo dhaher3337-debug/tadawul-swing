@@ -4,9 +4,10 @@ on:
   # التشغيل الرئيسي: cron-job.org يستدعي هذا عبر API (بدون تأخير)
   workflow_dispatch:
 
-  # احتياطي: تشغيل تلقائي من GitHub (قد يتأخر 5-30 دقيقة)
-  schedule:
-    - cron: '30 2 * * 0-4'  # 5:30 صباحاً سعودي كـ fallback
+  # ملاحظة: schedule مُعطّل عمداً — cron-job.org يتولى التوقيت الدقيق
+  # لإعادة التفعيل كـ fallback، أزل التعليق:
+  # schedule:
+  #   - cron: '30 2 * * 0-4'
 
 permissions:
   contents: write
