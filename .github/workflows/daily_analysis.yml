@@ -1,0 +1,84 @@
+name: Daily Analysis V9
+
+on:
+  # التشغيل الرئيسي: cron-job.org يستدعي هذا عبر API (بدون تأخير)
+  workflow_dispatch:
+
+  # احتياطي: تشغيل تلقائي من GitHub (قد يتأخر 5-30 دقيقة)
+  schedule:
+    - cron: '30 2 * * 0-4'  # 5:30 صباحاً سعودي كـ fallback
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-analysis
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 📁 Prepare directories
+        run: |
+          for d in tadawul_data ml_models public weights_history; do
+            if [ -d "$d" ] && [ ! -L "$d" ]; then
+              echo "✓ $d: exists as normal directory"
+            else
+              rm -rf "$d"
+              mkdir -p "$d"
+              echo "✓ $d: created"
+            fi
+          done
+          ls -la
+
+      - name: 🚀 Run V9 analysis
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
+        run: python run_all.py
+
+      - name: 💾 Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tadawul_data/ weights_history/ public/ ml_models/ 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "📊 Daily V9 analysis $(date +'%Y-%m-%d %H:%M')"
+          git push || echo "لا تغييرات للرفع"
+
+      - name: 📤 Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: analyze
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 🌐 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
