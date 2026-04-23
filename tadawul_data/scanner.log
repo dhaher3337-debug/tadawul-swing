@@ -1,0 +1,2 @@
+2026-04-23 05:09:06,230 [WARNING] xgboost/sklearn غير مثبتين — تخطي التدريب
+2026-04-23 05:10:47,142 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
