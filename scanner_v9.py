@@ -39,6 +39,27 @@ from ml_engine import (
     suggest_weights_from_importance,
 )
 
+# V9.1 modules — graceful fallback if not available
+try:
+    from mtf_engine import check_mtf_alignment
+    MTF_AVAILABLE = True
+except ImportError:
+    MTF_AVAILABLE = False
+    def check_mtf_alignment(ticker):
+        return {"aligned_count": 0, "mtf_multiplier": 1.0, "details": "MTF غير متاح"}
+
+try:
+    from news_engine import get_sentiment_for_all, get_ticker_multiplier
+    NEWS_AVAILABLE = True
+except ImportError:
+    NEWS_AVAILABLE = False
+
+try:
+    from earnings_calendar import get_earnings_calendar, get_earnings_multiplier
+    EARNINGS_AVAILABLE = True
+except ImportError:
+    EARNINGS_AVAILABLE = False
+
 BASE = Path("tadawul_data")
 try:
     if not BASE.exists():
@@ -682,6 +703,28 @@ def scan_tasi(weights, blacklist):
     stocks_data = fetch_ohlcv_batch(tickers, period_days=200)
     print(f"  ✓ جُلبت {len(stocks_data)} سهم في {time.time()-start:.1f}s")
 
+    # V9.1: جلب news sentiment + earnings (مرة واحدة لكل السوق)
+    sentiment_data = {"sentiments": {}}
+    earnings_data = {"earnings": {}}
+    known_codes = set(TASI_TICKERS)
+
+    if NEWS_AVAILABLE:
+        print("  📰 جلب News sentiment...")
+        try:
+            sentiment_data = get_sentiment_for_all(known_codes)
+            sent_count = len(sentiment_data.get("sentiments", {}))
+            print(f"  ✓ Sentiment لـ {sent_count} سهم")
+        except Exception as e:
+            print(f"  ⚠️ فشل news sentiment: {e}")
+
+    if EARNINGS_AVAILABLE:
+        print("  📅 جلب تقويم الأرباح...")
+        try:
+            earnings_data = get_earnings_calendar(list(known_codes))
+            print(f"  ✓ تقويم الأرباح ({earnings_data.get('method')})")
+        except Exception as e:
+            print(f"  ⚠️ فشل earnings calendar: {e}")
+
     candidates = []
     gainers = []
     sector_summary = {}
@@ -731,8 +774,60 @@ def scan_tasi(weights, blacklist):
             # ML prediction
             ml_prob = predict_probability(features)
 
-            # Score
+            # Score (قبل multipliers V9.1)
             score, reasons, signals = score_stock(last, prev, weights, oil_chg, code, ml_prob)
+            base_score = score  # نحتفظ بالـ score الأصلي للشفافية
+
+            # ═══ V9.1: Apply multipliers ═══
+            mtf_info = {"mtf_multiplier": 1.0, "aligned_count": 0,
+                        "available_count": 0, "details": "", "daily_score": None,
+                        "h4_score": None, "h1_score": None}
+            news_info = {"multiplier": 1.0, "label": "no_news",
+                         "score": 0, "headlines": [], "reason": ""}
+            earnings_info = {"multiplier": 1.0, "message": None}
+
+            # MTF (لا نُجري MTF لكل الأسهم — فقط التي تحمل score عالي كفاية لتقنيع CPU cost)
+            # فقط الأسهم بـ base_score > MIN_SCORE - 0.5 تستحق MTF check
+            if MTF_AVAILABLE and base_score >= (MIN_SCORE - 0.5):
+                try:
+                    mtf_info = check_mtf_alignment(ticker)
+                    score *= mtf_info["mtf_multiplier"]
+                    if mtf_info["mtf_multiplier"] > 1.0:
+                        reasons.append(f"MTF {mtf_info['aligned_count']}/{mtf_info['available_count']} صاعد")
+                    elif mtf_info["mtf_multiplier"] < 1.0:
+                        reasons.append(f"⚠️ MTF ضعيف")
+                except Exception as e:
+                    log.debug(f"MTF {ticker}: {e}")
+
+            # News sentiment
+            if NEWS_AVAILABLE:
+                mult, label = get_ticker_multiplier(code, sentiment_data)
+                sent_detail = sentiment_data.get("sentiments", {}).get(code, {})
+                news_info = {
+                    "multiplier": mult,
+                    "label": label,
+                    "score": sent_detail.get("score", 0),
+                    "headlines": sent_detail.get("headlines", []),
+                    "reason": sent_detail.get("reason", ""),
+                }
+                if mult != 1.0:
+                    score *= mult
+                    if mult < 1.0:
+                        reasons.append(f"📰 خبر سلبي ({label})")
+                    else:
+                        reasons.append(f"📰 خبر إيجابي ({label})")
+
+            # Earnings calendar
+            if EARNINGS_AVAILABLE:
+                mult, msg = get_earnings_multiplier(code, earnings_data)
+                earnings_info = {"multiplier": mult, "message": msg}
+                if mult != 1.0:
+                    score *= mult
+                    if msg:
+                        reasons.append(msg)
+
+            score = round(score, 2)
+            # ═══ End V9.1 multipliers ═══
 
             if score >= MIN_SCORE:
                 atr_v = _safe(last.get("atr"))
@@ -749,25 +844,37 @@ def scan_tasi(weights, blacklist):
                 t1 = round(last_close + 2 * atr_v, 2) if atr_v > 0 else round(last_close * 1.04, 2)
                 t2 = round(last_close + 3.5 * atr_v, 2) if atr_v > 0 else round(last_close * 1.07, 2)
 
-                # Risk/Reward
+                # Risk/Reward — يستخدم T2 (الهدف النهائي) لنسبة أكثر واقعية
+                # T1 يعطي 1:1 دائماً بسبب تصميم ATR، T2 يعطي نسبة حقيقية متنوعة
                 risk = last_close - stop
-                reward = t1 - last_close
-                rr = round(reward / risk, 2) if risk > 0 else 0
+                reward_t1 = t1 - last_close
+                reward_t2 = t2 - last_close
+                # نسبة 1:X حيث X = متوسط المكافأة المرجحة (T1 وزن 60%, T2 وزن 40%)
+                avg_reward = 0.6 * reward_t1 + 0.4 * reward_t2
+                rr = round(avg_reward / risk, 2) if risk > 0 else 0
 
-                # Expected Value (إذا النموذج موجود)
+                # Expected Value — يستخدم الأهداف والوقف الفعليين للسهم
+                target_pct = (t1 - last_close) / last_close * 100
+                stop_pct = (stop - last_close) / last_close * 100
+
                 if ml_prob is not None:
-                    ev_pct = ml_prob * ((t1 - last_close) / last_close * 100) + \
-                             (1 - ml_prob) * ((stop - last_close) / last_close * 100)
+                    # ML متاح — استخدم احتماله الفعلي
+                    ev_pct = ml_prob * target_pct + (1 - ml_prob) * stop_pct
                 else:
-                    # تقدير بسيط بناءً على score
-                    est_prob = min(0.5 + score * 0.05, 0.75)
-                    ev_pct = est_prob * 2.5 - (1 - est_prob) * 2.0
+                    # تقدير الاحتمال من score و signal confluence
+                    # كلما زادت الإشارات الفعّالة وارتفع ADX، زاد احتمال النجاح
+                    adx_v = _safe(last.get("adx"), 20)
+                    confluence_boost = min(len(signals) * 0.02, 0.15)  # حتى +15%
+                    adx_boost = min((adx_v - 20) / 100, 0.15) if adx_v > 20 else 0
+                    est_prob = min(0.45 + score * 0.02 + confluence_boost + adx_boost, 0.72)
+                    ev_pct = est_prob * target_pct + (1 - est_prob) * stop_pct
 
                 candidates.append({
                     "ticker": code,
                     "close": round(last_close, 2),
                     "change": round(chg, 2),
                     "score": score,
+                    "base_score": round(base_score, 2),  # V9.1: score قبل multipliers
                     "ml_probability": round(ml_prob, 3) if ml_prob is not None else None,
                     "expected_value_pct": round(ev_pct, 2),
                     "risk_reward": rr,
@@ -791,6 +898,20 @@ def scan_tasi(weights, blacklist):
                     "target2": t2,
                     "atr": round(atr_v, 2),
                     "feature_snapshot": features,  # لاستخدامه لاحقاً في ML training
+                    # V9.1 additions
+                    "mtf_aligned": mtf_info.get("aligned_count", 0),
+                    "mtf_available": mtf_info.get("available_count", 0),
+                    "mtf_multiplier": mtf_info.get("mtf_multiplier", 1.0),
+                    "mtf_daily_score": mtf_info.get("daily_score"),
+                    "mtf_h4_score": mtf_info.get("h4_score"),
+                    "mtf_h1_score": mtf_info.get("h1_score"),
+                    "news_sentiment": news_info.get("label", "no_news"),
+                    "news_score": news_info.get("score", 0),
+                    "news_multiplier": news_info.get("multiplier", 1.0),
+                    "news_headlines": news_info.get("headlines", [])[:2],
+                    "news_reason": news_info.get("reason", ""),
+                    "earnings_multiplier": earnings_info.get("multiplier", 1.0),
+                    "earnings_message": earnings_info.get("message"),
                 })
         except Exception as e:
             errors += 1
