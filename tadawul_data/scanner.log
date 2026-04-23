@@ -1,2 +1,12 @@
 2026-04-23 05:09:06,230 [WARNING] xgboost/sklearn غير مثبتين — تخطي التدريب
 2026-04-23 05:10:47,142 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-23 05:35:30,249 [WARNING] xgboost/sklearn غير مثبتين — تخطي التدريب
+2026-04-23 05:35:40,829 [INFO] Fetching fresh news...
+2026-04-23 05:35:40,829 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-04-23 05:35:41,732 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-04-23 05:35:42,556 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-04-23 05:35:43,535 [INFO] أخبار ذات صلة: 0
+2026-04-23 05:35:43,536 [WARNING] No news fetched — returning empty sentiment
+2026-04-23 05:35:43,536 [INFO] Attempting yfinance earnings fetch...
+2026-04-23 05:35:44,736 [INFO] Falling back to pattern-based estimation
+2026-04-23 05:37:36,878 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
