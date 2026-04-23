@@ -1,13 +1,9 @@
-name: Daily Analysis V9
+name: Smart Stock Scanner V8
 
 on:
-  # التشغيل الرئيسي: cron-job.org يستدعي هذا عبر API (بدون تأخير)
   workflow_dispatch:
-
-  # ملاحظة: schedule مُعطّل عمداً — cron-job.org يتولى التوقيت الدقيق
-  # لإعادة التفعيل كـ fallback، أزل التعليق:
-  # schedule:
-  #   - cron: '30 2 * * 0-4'
+  # الجدولة عبر cron-job.org الخارجي (أدق في التوقيت)
+  # GitHub schedule معطّل لتجنب التضارب
 
 permissions:
   contents: write
@@ -15,71 +11,64 @@ permissions:
   id-token: write
 
 concurrency:
-  group: daily-analysis
+  group: pages
   cancel-in-progress: false
 
 jobs:
   analyze:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
-
-    steps:
-      - name: ⬇️ Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 🐍 Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-
-      - name: 📦 Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: 📁 Prepare directories
-        run: |
-          for d in tadawul_data ml_models public weights_history; do
-            if [ -d "$d" ] && [ ! -L "$d" ]; then
-              echo "✓ $d: exists as normal directory"
-            else
-              rm -rf "$d"
-              mkdir -p "$d"
-              echo "✓ $d: created"
-            fi
-          done
-          ls -la
-
-      - name: 🚀 Run V9 analysis
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
-        run: python run_all.py
-
-      - name: 💾 Commit results
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add tadawul_data/ weights_history/ public/ ml_models/ 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "📊 Daily V9 analysis $(date +'%Y-%m-%d %H:%M')"
-          git push || echo "لا تغييرات للرفع"
-
-      - name: 📤 Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
-
-  deploy:
-    needs: analyze
-    runs-on: ubuntu-latest
+    timeout-minutes: 30
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: 🌐 Deploy to GitHub Pages
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Restore data cache
+        uses: actions/cache@v4
+        with:
+          path: tadawul_data/
+          key: tadawul-v8-${{ github.run_id }}
+          restore-keys: tadawul-v8-
+
+      - name: Install dependencies
+        run: pip install yfinance pandas numpy anthropic
+
+      - name: Run scanner
+        run: python run_all.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PYTHONUNBUFFERED: '1'
+
+      - name: Save data cache
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: tadawul_data/
+          key: tadawul-v8-${{ github.run_id }}
+
+      - name: Commit weights history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add weights_history/ tadawul_data/ -f 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "📊 تحديث الأوزان $(date +%Y-%m-%d)"
+          git push || true
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public/
+
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
