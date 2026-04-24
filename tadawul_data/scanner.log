@@ -10,3 +10,12 @@
 2026-04-23 05:35:43,536 [INFO] Attempting yfinance earnings fetch...
 2026-04-23 05:35:44,736 [INFO] Falling back to pattern-based estimation
 2026-04-23 05:37:36,878 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-24 02:00:58,955 [WARNING] xgboost/sklearn غير مثبتين — تخطي التدريب
+2026-04-24 02:01:18,253 [INFO] Fetching fresh news...
+2026-04-24 02:01:18,253 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-04-24 02:01:19,220 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-04-24 02:01:20,199 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-04-24 02:01:21,265 [INFO] أخبار ذات صلة: 0
+2026-04-24 02:01:21,266 [WARNING] No news fetched — returning empty sentiment
+2026-04-24 02:01:21,266 [INFO] Using cached earnings (196 tickers)
+2026-04-24 02:03:42,920 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
