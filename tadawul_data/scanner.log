@@ -19,3 +19,13 @@
 2026-04-24 02:01:21,266 [WARNING] No news fetched — returning empty sentiment
 2026-04-24 02:01:21,266 [INFO] Using cached earnings (196 tickers)
 2026-04-24 02:03:42,920 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-27 02:00:45,369 [INFO] ML dataset: +48 صف. الإجمالي: 48
+2026-04-27 02:00:45,370 [WARNING] xgboost/sklearn غير مثبتين — تخطي التدريب
+2026-04-27 02:00:58,855 [INFO] Fetching fresh news...
+2026-04-27 02:00:58,855 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-04-27 02:00:59,358 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-04-27 02:00:59,790 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-04-27 02:01:00,248 [INFO] أخبار ذات صلة: 0
+2026-04-27 02:01:00,249 [WARNING] No news fetched — returning empty sentiment
+2026-04-27 02:01:00,249 [INFO] Using cached earnings (196 tickers)
+2026-04-27 02:03:18,401 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
