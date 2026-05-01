@@ -66,3 +66,6 @@
 2026-05-01 02:01:10,064 [INFO] Attempting yfinance earnings fetch...
 2026-05-01 02:01:11,276 [INFO] Falling back to pattern-based estimation
 2026-05-01 02:03:28,061 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-01 11:59:22,808 [INFO] Using cached sentiment (0 tickers)
+2026-05-01 11:59:22,809 [INFO] Using cached earnings (196 tickers)
+2026-05-01 12:01:47,941 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
