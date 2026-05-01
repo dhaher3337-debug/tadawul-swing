@@ -279,6 +279,55 @@ def init_tracker():
     }
 
 
+# ════════════════════════════════════════════════
+# 🔴 V9.2: No-Repeat-On-Loser Filter
+# ════════════════════════════════════════════════
+def get_recent_losers(tracker, days=7, min_trades=2):
+    """
+    احصل على الأسهم التي خسرت بشكل متكرر في آخر `days` يوم.
+    
+    شروط التصنيف "loser":
+      1. آخر تحديث للسهم خلال `days` أيام
+      2. تكرر في توصيات النظام: total >= min_trades (افتراضي 2)
+      3. win rate ضعيف: hits/total < 30%
+    
+    ⚠️ ملاحظة حاسمة:
+      شرط total >= 2 ضروري لتجنب false positives.
+      سهم بصفقة واحدة (0/1) ليس "loser" حقيقي - قد يكون حظ.
+      نحتاج عينة 2+ صفقة قبل الحكم.
+    
+    منطق الفلتر:
+      - يُخصم 50% من score الإشارة الجديدة
+    
+    السبب من تحليل أسبوع 26-30 أبريل:
+      - 1303 (لومي) خسر يوم 26 و 27، ثم النظام أعاد توصيته يوم 30!
+      - بدون feedback، النظام لا يتعلم من الأخطاء.
+    
+    ⚠️ التحذير: في الأسابيع الأولى، tracker قد لا يحوي 2+ صفقة لأي سهم.
+      في هذه الحالة، الفلتر يرجع set() فارغة (سلوك آمن).
+    """
+    if not tracker.get("stock_record"):
+        return set()
+    today = datetime.now()
+    losers = set()
+    for ticker, rec in tracker["stock_record"].items():
+        last_update = rec.get("last_update", "")
+        if not last_update:
+            continue
+        try:
+            last_dt = datetime.strptime(last_update, "%Y-%m-%d")
+            if (today - last_dt).days > days:
+                continue
+            total = rec.get("total", 0)
+            hits = rec.get("hits", 0)
+            # 🔴 الشرط المحسّن: نحتاج 2+ صفقات لتجنب false positives
+            if total >= min_trades and (hits / total) < 0.3:
+                losers.add(ticker)
+        except Exception:
+            pass
+    return losers
+
+
 def _safe(v, default=0.0):
     if v is None:
         return default
@@ -294,10 +343,11 @@ def _safe(v, default=0.0):
 # ════════════════════════════════════════════════
 # حساب النقاط لكل سهم
 # ════════════════════════════════════════════════
-def score_stock(last, prev, weights, oil_chg_pct, code, ml_prob=None):
+def score_stock(last, prev, weights, oil_chg_pct, code, ml_prob=None, recent_losers=None):
     score = 0.0
     reasons = []
     active = []
+    recent_losers = recent_losers or set()
 
     rsi_v = _safe(last.get("rsi"), 50)
     stoch_k = _safe(last.get("stoch_rsi_k"), 50)
@@ -506,6 +556,12 @@ def score_stock(last, prev, weights, oil_chg_pct, code, ml_prob=None):
         elif ml_prob < 0.35:
             score *= 0.7
 
+    # 🔴 V9.2: No-Repeat-On-Loser Filter
+    # إذا السهم خسر مؤخراً (آخر 7 أيام)، خصم 50% من الـ score
+    if code in recent_losers:
+        score *= 0.5
+        reasons.append("⚠️ خسر آخر مرة (-50%)")
+
     return round(score, 2), reasons, active
 
 
@@ -555,7 +611,11 @@ def evaluate_yesterday(weights, tracker):
                 continue
 
             # فلترة البيانات بعد تاريخ التوقع
+            # 🔴 V9.2 FIX: yfinance يرجع tz-aware index بعد 2024
+            # المقارنة مع pd.Timestamp(date) tz-naive تفشل بصمت → كل الـ predictions "معلق"
             df.index = pd.to_datetime(df.index)
+            if df.index.tz is not None:
+                df.index = df.index.tz_localize(None)
             try:
                 pred_ts = pd.Timestamp(pred_date)
                 future = df[df.index > pred_ts]
@@ -672,7 +732,8 @@ def evaluate_yesterday(weights, tracker):
 # ════════════════════════════════════════════════
 # المسح الرئيسي
 # ════════════════════════════════════════════════
-def scan_tasi(weights, blacklist):
+def scan_tasi(weights, blacklist, recent_losers=None):
+    recent_losers = recent_losers or set()
     print("  📡 جلب بيانات الماكرو...")
     macro = fetch_macro(use_cache=False)
     if macro.get("fetch_errors"):
@@ -775,7 +836,7 @@ def scan_tasi(weights, blacklist):
             ml_prob = predict_probability(features)
 
             # Score (قبل multipliers V9.1)
-            score, reasons, signals = score_stock(last, prev, weights, oil_chg, code, ml_prob)
+            score, reasons, signals = score_stock(last, prev, weights, oil_chg, code, ml_prob, recent_losers=recent_losers)
             base_score = score  # نحتفظ بالـ score الأصلي للشفافية
 
             # ═══ V9.1: Apply multipliers ═══
@@ -835,6 +896,14 @@ def scan_tasi(weights, blacklist):
 
                 # Stop احترافي: أعلى من (Supertrend) أو (-2 ATR)
                 stop_atr = last_close - 2 * atr_v if atr_v > 0 else last_close * 0.97
+                
+                # 🔴 V9.2: Stop Cap عند -5% (حماية من ATR متضخم)
+                # السبب: من تحليل أسبوع 26-30 أبريل، 1303 ضرب stop عند -6.7%
+                # الـ swing 3-day لا يحتمل خسارة 6%+، نحدد الحد عند -5%
+                # (-5% بدلاً من -4% للحفاظ على مرونة الـ stops الطبيعية ~-4.6%)
+                hard_floor = last_close * 0.95  # أقصى -5%
+                stop_atr = max(stop_atr, hard_floor)
+                
                 if st_v > 0 and st_v < last_close:
                     stop = round(max(stop_atr, st_v), 2)
                 else:
@@ -984,7 +1053,13 @@ def run():
 
     # 3. المسح
     bl = tracker.get("blacklist", [])
-    candidates, gainers, macro, sector_summary, stocks_data = scan_tasi(weights, bl)
+    
+    # 🔴 V9.2: حساب الأسهم الخاسرة مؤخراً قبل المسح
+    recent_losers = get_recent_losers(tracker, days=7)
+    if recent_losers:
+        print(f"\n  ⚠️ تجنب {len(recent_losers)} سهم خاسر مؤخراً: {sorted(recent_losers)[:10]}")
+    
+    candidates, gainers, macro, sector_summary, stocks_data = scan_tasi(weights, bl, recent_losers)
 
     # 4. تحليل intermarket + sector flows
     print("\n  🔗 تحليل الارتباطات وتدفق السيولة...")
