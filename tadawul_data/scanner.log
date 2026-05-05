@@ -78,3 +78,11 @@
 2026-05-04 02:01:47,871 [WARNING] No news fetched — returning empty sentiment
 2026-05-04 02:01:47,871 [INFO] Using cached earnings (196 tickers)
 2026-05-04 02:03:59,865 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-05 02:01:21,284 [INFO] Fetching fresh news...
+2026-05-05 02:01:21,284 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-05-05 02:01:21,754 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-05-05 02:01:22,200 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-05-05 02:01:22,795 [INFO] أخبار ذات صلة: 0
+2026-05-05 02:01:22,796 [WARNING] No news fetched — returning empty sentiment
+2026-05-05 02:01:22,796 [INFO] Using cached earnings (196 tickers)
+2026-05-05 02:03:43,268 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
