@@ -99,9 +99,9 @@ def main():
     print(f"{'═'*60}")
 
     # ════════════════════════════════════════════════
-    # [1/6] المسح + التقييم + ML
+    # [1/7] المسح + التقييم + ML
     # ════════════════════════════════════════════════
-    print("\n[1/6] 🔍 المسح الفني + تقييم الأمس + تدريب ML")
+    print("\n[1/7] 🔍 المسح الفني + تقييم الأمس + تدريب ML")
     print("─" * 60)
     
     candidates = []
@@ -109,9 +109,14 @@ def main():
     
     try:
         result = scanner_v9.run()
-        if result and isinstance(result, tuple) and len(result) >= 1:
-            candidates = result[0] if result[0] else []
-        # نحتاج stocks_data للـ paper trading - نقرأها من tasi_candidates.json بعدها
+        if result and isinstance(result, tuple):
+            # V9.2.1: scanner_v9.run() يرجع 6 قيم الآن:
+            # (candidates, gainers, macro, sector_summary, intermarket, stocks_data)
+            if len(result) >= 1:
+                candidates = result[0] if result[0] else []
+            if len(result) >= 6:
+                stocks_data = result[5] if result[5] else {}
+                print(f"  ✓ استلمت stocks_data: {len(stocks_data)} سهم لـ paper_trading")
     except Exception as e:
         print(f"  ❌ فشل المسح: {e}")
         traceback.print_exc()
@@ -126,9 +131,9 @@ def main():
         print(f"  ⚠️ فشل تحميل candidates للـ paper trading: {e}")
 
     # ════════════════════════════════════════════════
-    # [2/6] Claude Opus
+    # [2/7] Claude Opus
     # ════════════════════════════════════════════════
-    print("\n[2/6] 🧠 تحليل Claude Opus 4.7")
+    print("\n[2/7] 🧠 تحليل Claude Opus 4.7")
     print("─" * 60)
     try:
         ai_analyst_v9.run()
@@ -136,10 +141,10 @@ def main():
         print(f"  ⚠️ فشل AI (نكمل بدون): {e}")
 
     # ════════════════════════════════════════════════
-    # [3/6] 🔴 V9.2 Knowledge Capture
+    # [3/7] 🔴 V9.2 Knowledge Capture
     # حفظ "عقل كلود" للاستقلالية المستقبلية
     # ════════════════════════════════════════════════
-    print("\n[3/6] 📚 Knowledge Capture (V9.2)")
+    print("\n[3/7] 📚 Knowledge Capture (V9.2)")
     print("─" * 60)
     
     if KNOWLEDGE_CAPTURE_AVAILABLE:
@@ -187,22 +192,52 @@ def main():
     # ════════════════════════════════════════════════
     # [4/6] 🔴 V9.2 Paper Trading
     # ════════════════════════════════════════════════
-    print("\n[4/6] 📊 Paper Trading (V9.2)")
+    # ════════════════════════════════════════════════
+    # [4/7] 🆕 V9.2.2: Missed Opportunities Analysis
+    # تحليل أعلى الرابحين والفرص الضائعة
+    # ════════════════════════════════════════════════
+    print("\n[4/7] 🎯 تحليل الفرص الضائعة (V9.2.2)")
+    print("─" * 60)
+    
+    try:
+        import missed_opportunities
+        if stocks_data and candidates:
+            mo_result = missed_opportunities.analyze_missed_today(
+                stocks_data=stocks_data,
+                candidates=candidates,
+            )
+            if mo_result:
+                # سجّل ملخص في knowledge stats
+                catch_rate = mo_result.get('catch_rate_pct', 0)
+                missed_count = len(mo_result.get('missed', []))
+                print(f"  📈 catch rate اليوم: {catch_rate}%")
+                if missed_count > 0:
+                    print(f"  ⚠️ {missed_count} فرصة ضائعة محفوظة للتعلم")
+        else:
+            print("  ⚠️ لا توجد بيانات لتحليل الفرص الضائعة")
+    except ImportError:
+        print("  ⚠️ missed_opportunities module غير متاح")
+    except Exception as e:
+        print(f"  ⚠️ فشل تحليل الفرص الضائعة: {e}")
+        traceback.print_exc()
+    
+    # ════════════════════════════════════════════════
+    # [5/7] 🔴 V9.2 Paper Trading
+    # ════════════════════════════════════════════════
+    print("\n[5/7] 📊 Paper Trading (V9.2)")
     print("─" * 60)
     
     if PAPER_TRADING_AVAILABLE and candidates:
         try:
-            # إعادة جلب stocks_data خفيفة فقط للأسهم النشطة
-            from data_sources import fetch_ohlcv_batch
+            # 🔴 V9.2.1: نستخدم stocks_data من scanner مباشرة
+            # المشكلة السابقة: كنا نجلب period_days=10 وهذا أقل من 50 (الحد الأدنى)
+            # فالـ batch fetch كان يرجع dict فارغ، فلا تتحدث الصفقات
             
-            # جلب الأسهم التي لها صفقات نشطة
-            db = paper_trading_engine.load_trades()
-            active_tickers = list({f"{t['ticker']}.SR" for t in db["active"]})
-            
-            stocks_data = {}
-            if active_tickers:
-                print(f"  📡 جلب بيانات {len(active_tickers)} سهم نشط للتحديث...")
-                stocks_data = fetch_ohlcv_batch(active_tickers, period_days=10)
+            # تأكد من حداثة البيانات قبل التحديث
+            if stocks_data:
+                print(f"  ✓ استخدام stocks_data من scanner ({len(stocks_data)} سهم)")
+            else:
+                print(f"  ⚠️ stocks_data فارغة - الصفقات لن تتحدث!")
             
             # نمرّر فقط top candidates لاختيار جديد (top 10)
             top_picks = candidates[:10]
@@ -218,7 +253,8 @@ def main():
                 except Exception as e:
                     print(f"  ⚠️ فشل ربط outcomes: {e}")
             
-            print(f"  📈 ملخص: نشطة={len(db['active']) - len(paper_result['closures_today']) + len(paper_result['new_trades'])}")
+            db = paper_trading_engine.load_trades()
+            print(f"  📈 ملخص: نشطة={len(db['active'])} | مغلقة={len(db['closed'])}")
         except Exception as e:
             print(f"  ⚠️ فشل paper trading: {e}")
             traceback.print_exc()
@@ -229,9 +265,9 @@ def main():
             print("  ⚠️ لا توجد candidates للـ paper trading")
 
     # ════════════════════════════════════════════════
-    # [5/6] التقرير HTML
+    # [6/7] التقرير HTML
     # ════════════════════════════════════════════════
-    print("\n[5/6] 📄 بناء التقرير HTML")
+    print("\n[6/7] 📄 بناء التقرير HTML")
     print("─" * 60)
     try:
         build_reports_v9.run()
@@ -240,9 +276,9 @@ def main():
         traceback.print_exc()
 
     # ════════════════════════════════════════════════
-    # [6/6] Excel Dashboard + الأرشفة + Knowledge Stats
+    # [7/7] Excel Dashboard + الأرشفة + Knowledge Stats
     # ════════════════════════════════════════════════
-    print("\n[6/6] 💾 Excel Dashboard + أرشفة الأوزان + إحصاءات المعرفة")
+    print("\n[7/7] 💾 Excel Dashboard + أرشفة الأوزان + إحصاءات المعرفة")
     print("─" * 60)
     
     # Excel dashboard للـ paper trading

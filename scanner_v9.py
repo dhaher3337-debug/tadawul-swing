@@ -764,6 +764,44 @@ def scan_tasi(weights, blacklist, recent_losers=None):
     stocks_data = fetch_ohlcv_batch(tickers, period_days=200)
     print(f"  ✓ جُلبت {len(stocks_data)} سهم في {time.time()-start:.1f}s")
 
+    # 🔴 V9.2.1: فحص حداثة البيانات
+    # السبب: في 4 مايو 2026، yfinance لم يحدّث بيانات الإثنين
+    # → 9 بنوك ظهرت في "أعلى الرابحين" بـ 0.00%
+    # → النظام أنتج توصيات وهمية على بيانات الأحد القديمة
+    try:
+        from data_freshness import check_data_freshness, should_abort_run
+        freshness = check_data_freshness(stocks_data)
+        print(f"\n  📊 فحص حداثة البيانات:")
+        print(f"     التاريخ المتوقع: {freshness['expected_date']}")
+        print(f"     نسبة الأسهم بالتاريخ المتوقع: {freshness['fresh_pct']}%")
+        print(f"     نسبة الأسهم بتغير 0.00%: {freshness.get('zero_change_pct', 0)}%")
+        if freshness['warnings']:
+            for w in freshness['warnings']:
+                print(f"     {w}")
+
+        if not freshness['is_fresh']:
+            print()
+            print("  " + "=" * 60)
+            print("  🚨 تحذير حرج: البيانات قديمة!")
+            print("  " + "=" * 60)
+            print("  السبب الأرجح: yfinance لم يحدّث بيانات اليوم السابق")
+            print("  الحل: انتظر بضع ساعات وأعد التشغيل، أو أخّر cron-job.org")
+            print()
+            # احفظ تحذير في ملف للتقرير
+            warning_file = BASE / "freshness_warning.json"
+            save_json(warning_file, freshness)
+        else:
+            # احذف ملف التحذير القديم إن وُجد
+            warning_file = BASE / "freshness_warning.json"
+            if warning_file.exists():
+                warning_file.unlink()
+    except ImportError:
+        print("  ⚠️ data_freshness module غير متاح")
+        freshness = {"is_fresh": True, "warnings": []}
+    except Exception as e:
+        print(f"  ⚠️ فشل فحص الحداثة: {e}")
+        freshness = {"is_fresh": True, "warnings": []}
+
     # V9.1: جلب news sentiment + earnings (مرة واحدة لكل السوق)
     sentiment_data = {"sentiments": {}}
     earnings_data = {"earnings": {}}
@@ -1112,7 +1150,8 @@ def run():
     save_json(F_HISTORY, history)
 
     print(f"\n  ✅ اكتمل — {len(candidates)} مرشح | {len(gainers)} مرتفع")
-    return candidates, gainers, macro, sector_summary, intermarket
+    # 🔴 V9.2.1: نرجع stocks_data أيضاً ليستخدمه paper_trading بدون إعادة جلب
+    return candidates, gainers, macro, sector_summary, intermarket, stocks_data
 
 
 if __name__ == "__main__":
