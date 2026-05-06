@@ -1,22 +1,16 @@
-name: Daily Analysis V9.2
+name: Daily Analysis V9.2.1
 
 # ═══════════════════════════════════════════════════════════════════
-# 🌐 التشغيل الفعلي يتم من cron-job.org (موقع خارجي)
+# 🌐 V9.2.1 - تحسينات بناءً على مشكلة 4 مايو 2026:
+#    1. حذف cache restore (كان يستعيد بيانات قديمة)
+#    2. data freshness check قبل توليد التقرير
 #
-# ✅ الإعداد الحالي في cron-job.org يعمل بدون أي تغيير:
-#    URL: https://api.github.com/repos/{owner}/{repo}/actions/workflows/daily_analysis.yml/dispatches
-#    Method: POST
-#    Body: {"ref": "main"}
-#
-# نحتفظ بـ workflow_dispatch (متوافق مع cron-job.org الحالي)
-# ونضيف repository_dispatch (خيار بديل لو احتجت لاحقاً)
+# التشغيل من cron-job.org يستمر بنفس الإعداد القديم
 # ═══════════════════════════════════════════════════════════════════
 
 on:
-  # الطريقة الحالية المستخدمة من cron-job.org ✅
   workflow_dispatch:
   
-  # طريقة بديلة (اختيارية) - لو أردت تغيير cron-job.org لاحقاً
   repository_dispatch:
     types: [daily-run, weekly-run]
 
@@ -44,20 +38,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
-
-      - name: Restore data cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            tadawul_data/
-            paper_trades/
-          key: tadawul-v92-${{ github.run_id }}
-          restore-keys: tadawul-v92-
+          cache: 'pip'  # cache فقط لـ pip packages (آمن)
 
       # ═══════════════════════════════════════════════════════════════════
-      # 🔴 الإصلاح الحرج: استخدام requirements.txt
+      # 🔴 ملاحظة V9.2.1: حذفنا cache لـ tadawul_data/
+      # السبب: cache كان يستعيد بيانات قديمة وتسبب في تقارير وهمية
+      # 
+      # البيانات تُحفظ عبر git commit بدلاً من cache
       # ═══════════════════════════════════════════════════════════════════
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -72,21 +61,13 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PYTHONUNBUFFERED: '1'
 
-      - name: Save data cache
-        uses: actions/cache/save@v4
-        if: always()
-        with:
-          path: |
-            tadawul_data/
-            paper_trades/
-          key: tadawul-v92-${{ github.run_id }}
-
       - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main || true
           git add weights_history/ tadawul_data/ paper_trades/ -f 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "📊 V9.2 daily run $(date -u +%Y-%m-%d)"
+          git diff --staged --quiet || git commit -m "📊 V9.2.1 daily run $(date -u +%Y-%m-%d_%H:%M)"
           git push || true
 
       - name: Setup Pages
