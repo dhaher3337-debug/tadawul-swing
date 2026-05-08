@@ -102,3 +102,12 @@
 2026-05-07 02:01:30,418 [WARNING] No news fetched — returning empty sentiment
 2026-05-07 02:01:30,418 [INFO] Using cached earnings (196 tickers)
 2026-05-07 02:02:26,705 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-05-08 02:01:38,196 [INFO] Fetching fresh news...
+2026-05-08 02:01:38,196 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-05-08 02:01:38,891 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-05-08 02:01:39,540 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-05-08 02:01:40,169 [INFO] أخبار ذات صلة: 0
+2026-05-08 02:01:40,170 [WARNING] No news fetched — returning empty sentiment
+2026-05-08 02:01:40,170 [INFO] Attempting yfinance earnings fetch...
+2026-05-08 02:01:42,174 [INFO] Falling back to pattern-based estimation
+2026-05-08 02:02:46,805 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"

@@ -1,0 +1,51 @@
+{
+  "computed_at": "2026-05-08T02:02:46.832727",
+  "total_trades": 2,
+  "active_trades": 10,
+  "wins": 0,
+  "losses": 2,
+  "win_rate_pct": 0.0,
+  "avg_win_pct": 0,
+  "avg_loss_pct": -4.99,
+  "profit_factor": 0.0,
+  "total_pnl_pct": -9.99,
+  "best_trade": {
+    "ticker": "2050",
+    "pnl": -4.31,
+    "date": "2026-05-08"
+  },
+  "worst_trade": {
+    "ticker": "4040",
+    "pnl": -5.68,
+    "date": "2026-05-08"
+  },
+  "by_signal_type": {
+    "default": {
+      "total": 1,
+      "wins": 0,
+      "win_rate": 0.0,
+      "avg_pnl": -5.68
+    },
+    "support_bounce": {
+      "total": 1,
+      "wins": 0,
+      "win_rate": 0.0,
+      "avg_pnl": -4.31
+    }
+  },
+  "by_sector": {
+    "نقل": {
+      "total": 1,
+      "wins": 0,
+      "win_rate": 0.0,
+      "avg_pnl": -5.68
+    },
+    "بتروكيماويات": {
+      "total": 1,
+      "wins": 0,
+      "win_rate": 0.0,
+      "avg_pnl": -4.31
+    }
+  },
+  "tired_stocks": []
+}
