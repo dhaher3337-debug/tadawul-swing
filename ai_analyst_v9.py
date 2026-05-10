@@ -363,15 +363,38 @@ def run():
 
     api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     if not api_key:
-        print("  ⚠️ ANTHROPIC_API_KEY غير موجود — تخطي AI")
-        save_json(F_AI_RESULT, {
-            "date": datetime.now().strftime("%Y-%m-%d"),
-            "market_outlook": "محايد",
-            "market_comment": "AI غير متاح",
-            "picks": data.get("candidates", [])[:10],
-            "no_ai": True,
-        })
-        return
+        # 🔴 V9.2 No-API Mode: استخدم rules_filter بدلاً من picks عمياء
+        # السبب: candidates[:10] يحوي أسهماً تنتهك القواعد (EV<0, weekly=هابط).
+        # rules_filter يُطبّق نفس المنطق الذي كنا نطلبه من Claude، لكن:
+        #   - مجاناً (لا API)
+        #   - حتمياً (نفس البيانات = نفس المخرجات)
+        #   - شفافاً (نعرف لماذا قُبل/رُفض كل سهم)
+        print("  ⚠️ ANTHROPIC_API_KEY غير موجود — استخدام Rules Filter (deterministic)")
+        try:
+            import rules_filter
+            rules_filter.run()
+            return
+        except ImportError:
+            print("  ⚠️ rules_filter غير متاح — fallback لـ picks خام")
+            save_json(F_AI_RESULT, {
+                "date": datetime.now().strftime("%Y-%m-%d"),
+                "market_outlook": "محايد",
+                "market_comment": "AI و rules_filter غير متاحين - picks خام",
+                "picks": data.get("candidates", [])[:10],
+                "no_ai": True,
+            })
+            return
+        except Exception as e:
+            print(f"  ⚠️ فشل rules_filter: {e} — fallback لـ picks خام")
+            save_json(F_AI_RESULT, {
+                "date": datetime.now().strftime("%Y-%m-%d"),
+                "market_outlook": "محايد",
+                "market_comment": f"rules_filter error: {e}",
+                "picks": data.get("candidates", [])[:10],
+                "no_ai": True,
+                "error": str(e),
+            })
+            return
 
     system, user = build_prompt(data)
     print("  🧠 إرسال طلب لـ Claude Opus 4.7...")
