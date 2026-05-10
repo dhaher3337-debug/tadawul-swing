@@ -1,0 +1,21 @@
+{
+  "cmf": 0.0909,
+  "mfi": 0.082,
+  "di_minus": 0.075,
+  "dist_from_sma50_pct": 0.0724,
+  "obv_vs_ma_pct": 0.069,
+  "adx": 0.0599,
+  "vol_ratio": 0.0594,
+  "rs_vs_tasi": 0.0547,
+  "bb_width": 0.0505,
+  "bb_pct": 0.0501,
+  "dist_from_sma20_pct": 0.0482,
+  "stoch_rsi_k": 0.0441,
+  "di_plus": 0.0439,
+  "rsi": 0.0429,
+  "vwap_diff_pct": 0.0429,
+  "fib_pos": 0.0426,
+  "macd_hist": 0.0364,
+  "weekly_trend": 0.035,
+  "supertrend_dir": 0.0
+}

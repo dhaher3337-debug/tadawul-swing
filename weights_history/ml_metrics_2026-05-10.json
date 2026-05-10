@@ -1,0 +1,12 @@
+{
+  "date": "2026-05-10",
+  "samples_total": 146,
+  "samples_train": 116,
+  "samples_test": 30,
+  "positive_ratio": 0.37,
+  "accuracy": 0.6,
+  "roc_auc": 0.48,
+  "precision": 0.417,
+  "recall": 0.5,
+  "f1": 0.455
+}
