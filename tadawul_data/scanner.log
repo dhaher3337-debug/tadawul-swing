@@ -122,3 +122,9 @@
 2026-05-10 08:28:04,514 [INFO] Using cached earnings (196 tickers)
 2026-05-10 08:28:39,928 [INFO] Universe snapshot: 195 صف → snapshot_2026-05-10.jsonl
 2026-05-10 08:28:40,741 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-05-10 08:43:42,343 [INFO] ML dataset: +48 صف. الإجمالي: 194
+2026-05-10 08:43:43,134 [INFO] ML model trained: AUC=1.0, Acc=1.0, F1=1.0
+2026-05-10 08:44:02,794 [INFO] Using cached sentiment (0 tickers)
+2026-05-10 08:44:02,794 [INFO] Using cached earnings (196 tickers)
+2026-05-10 08:44:49,462 [INFO] Universe snapshot: 195 صف → snapshot_2026-05-10.jsonl
+2026-05-10 08:44:50,274 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
