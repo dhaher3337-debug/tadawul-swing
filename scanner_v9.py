@@ -39,6 +39,14 @@ from ml_engine import (
     suggest_weights_from_importance,
 )
 
+# 🔴 V9.2 Foundation Layer: Universe-wide snapshot saving
+# Pilot phase — التسجيل فقط، بدون تأثير على القرار. آمن للنشر التدريجي.
+try:
+    from universe_snapshots import save_universe_snapshot, _build_snapshot_row
+    UNIVERSE_SNAPSHOTS_AVAILABLE = True
+except ImportError:
+    UNIVERSE_SNAPSHOTS_AVAILABLE = False
+
 # V9.1 modules — graceful fallback if not available
 try:
     from mtf_engine import check_mtf_alignment
@@ -828,6 +836,11 @@ def scan_tasi(weights, blacklist, recent_losers=None):
     gainers = []
     sector_summary = {}
     errors = 0
+    
+    # 🔴 V9.2 Pilot: جمع snapshot لكل الأسهم (وليس فقط المرشحين)
+    # هذا data lake نظيف - لا يؤثر على القرار، فقط يسجّل
+    all_universe_rows = []
+    today_str_snapshot = datetime.now().strftime("%Y-%m-%d")
 
     # حساب المؤشرات لكل سهم
     for ticker, df in stocks_data.items():
@@ -927,6 +940,33 @@ def scan_tasi(weights, blacklist, recent_losers=None):
 
             score = round(score, 2)
             # ═══ End V9.1 multipliers ═══
+
+            # 🔴 V9.2 Pilot: احفظ snapshot لكل سهم (حتى لو لم يصل MIN_SCORE)
+            # هذا critical: السهم الذي خسر النظام اليوم قد يرتفع غداً،
+            # ولن نتعلم منه لو لم نسجّله. التسجيل بدون قرار.
+            if UNIVERSE_SNAPSHOTS_AVAILABLE:
+                try:
+                    universe_row = _build_snapshot_row(
+                        code=code,
+                        sector=sec,
+                        last_close=last_close,
+                        chg_pct=chg,
+                        features=features,
+                        signals_active=signals,
+                        score_raw=score,
+                        base_score=base_score,
+                        ml_prob=ml_prob,
+                        was_picked=False,    # سيُحدّث بعد ترتيب candidates
+                        pick_rank=None,      # سيُحدّث بعد ترتيب candidates
+                        mtf_info=mtf_info,
+                        news_info=news_info,
+                        earnings_info=earnings_info,
+                        today_str=today_str_snapshot,
+                    )
+                    all_universe_rows.append(universe_row)
+                except Exception as snap_err:
+                    # الـ snapshot لا يجب أن يكسر السكانر أبداً
+                    log.debug(f"snapshot fail {code}: {snap_err}")
 
             if score >= MIN_SCORE:
                 atr_v = _safe(last.get("atr"))
@@ -1033,6 +1073,32 @@ def scan_tasi(weights, blacklist, recent_losers=None):
     # الترتيب
     candidates.sort(key=lambda x: -x["score"])
     gainers.sort(key=lambda x: -x["change"])
+
+    # 🔴 V9.2 Pilot: تحديث was_picked + pick_rank ثم حفظ universe snapshot
+    # نفعل هذا بعد الترتيب لأن rank يعتمد على الترتيب النهائي
+    if UNIVERSE_SNAPSHOTS_AVAILABLE and all_universe_rows:
+        try:
+            # خريطة سريعة: ticker → rank في top picks
+            top_picks_rank = {}
+            for rank_idx, c in enumerate(candidates[:TOP_N]):
+                top_picks_rank[c["ticker"]] = rank_idx
+            
+            # تحديث الصفوف
+            for row in all_universe_rows:
+                if row["ticker"] in top_picks_rank:
+                    row["was_picked"] = True
+                    row["pick_rank"] = top_picks_rank[row["ticker"]]
+            
+            # الحفظ - لا نريده أن يكسر شيئاً
+            snap_result = save_universe_snapshot(all_universe_rows, today_str_snapshot)
+            if snap_result["status"] == "ok":
+                print(f"  📸 Universe snapshot: {snap_result['rows_saved']} سهم محفوظ")
+            else:
+                print(f"  ⚠️ Universe snapshot فشل: {snap_result.get('warnings')}")
+        except Exception as e:
+            # لا نوقف السكانر بسبب خطأ في الـ snapshot
+            log.error(f"Universe snapshot save fail: {e}")
+            print(f"  ⚠️ Universe snapshot exception: {e}")
 
     print(f"  ✓ {len(candidates)} مرشح | {errors} خطأ")
 
