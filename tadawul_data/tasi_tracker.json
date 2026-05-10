@@ -1,9 +1,9 @@
 {
   "signal_accuracy": {
     "rsi": {
-      "triggered": 4,
+      "triggered": 6,
       "hit": 0,
-      "miss": 4,
+      "miss": 6,
       "rate": 0.0
     },
     "stoch_rsi": {
@@ -13,46 +13,46 @@
       "rate": 0.0
     },
     "macd": {
-      "triggered": 18,
-      "hit": 11,
-      "miss": 7,
-      "rate": 0.611
+      "triggered": 23,
+      "hit": 14,
+      "miss": 9,
+      "rate": 0.609
     },
     "bollinger": {
-      "triggered": 6,
+      "triggered": 9,
       "hit": 0,
-      "miss": 6,
+      "miss": 9,
       "rate": 0.0
     },
     "obv": {
-      "triggered": 176,
-      "hit": 63,
-      "miss": 113,
-      "rate": 0.358
+      "triggered": 220,
+      "hit": 79,
+      "miss": 141,
+      "rate": 0.359
     },
     "vwap": {
-      "triggered": 23,
-      "hit": 6,
-      "miss": 17,
-      "rate": 0.261
+      "triggered": 29,
+      "hit": 8,
+      "miss": 21,
+      "rate": 0.276
     },
     "volume_surge": {
-      "triggered": 61,
-      "hit": 24,
-      "miss": 37,
-      "rate": 0.393
+      "triggered": 81,
+      "hit": 30,
+      "miss": 51,
+      "rate": 0.37
     },
     "sma_cross": {
-      "triggered": 10,
-      "hit": 6,
-      "miss": 4,
-      "rate": 0.6
+      "triggered": 12,
+      "hit": 7,
+      "miss": 5,
+      "rate": 0.583
     },
     "breakout": {
-      "triggered": 66,
-      "hit": 28,
-      "miss": 38,
-      "rate": 0.424
+      "triggered": 88,
+      "hit": 36,
+      "miss": 52,
+      "rate": 0.409
     },
     "candle_pattern": {
       "triggered": 7,
@@ -67,10 +67,10 @@
       "rate": 0.417
     },
     "adx": {
-      "triggered": 85,
-      "hit": 33,
-      "miss": 52,
-      "rate": 0.388
+      "triggered": 101,
+      "hit": 41,
+      "miss": 60,
+      "rate": 0.406
     },
     "supertrend": {
       "triggered": 0,
@@ -79,40 +79,40 @@
       "rate": 0.0
     },
     "ichimoku": {
-      "triggered": 140,
-      "hit": 53,
-      "miss": 87,
-      "rate": 0.379
+      "triggered": 171,
+      "hit": 65,
+      "miss": 106,
+      "rate": 0.38
     },
     "mfi": {
-      "triggered": 3,
+      "triggered": 4,
       "hit": 1,
-      "miss": 2,
-      "rate": 0.333
+      "miss": 3,
+      "rate": 0.25
     },
     "cmf": {
-      "triggered": 65,
-      "hit": 20,
-      "miss": 45,
-      "rate": 0.308
+      "triggered": 71,
+      "hit": 22,
+      "miss": 49,
+      "rate": 0.31
     },
     "fibonacci": {
-      "triggered": 43,
-      "hit": 13,
-      "miss": 30,
-      "rate": 0.302
+      "triggered": 55,
+      "hit": 16,
+      "miss": 39,
+      "rate": 0.291
     },
     "relative_strength": {
-      "triggered": 169,
-      "hit": 66,
-      "miss": 103,
-      "rate": 0.391
+      "triggered": 210,
+      "hit": 83,
+      "miss": 127,
+      "rate": 0.395
     },
     "weekly_trend": {
-      "triggered": 158,
-      "hit": 58,
-      "miss": 100,
-      "rate": 0.367
+      "triggered": 194,
+      "hit": 72,
+      "miss": 122,
+      "rate": 0.371
     }
   },
   "blacklist": [],
@@ -124,18 +124,18 @@
       "last_update": "2026-05-04"
     },
     "1304": {
-      "hits": 4,
-      "total": 4,
+      "hits": 5,
+      "total": 5,
       "last_update": "2026-05-10"
     },
     "8010": {
       "hits": 0,
-      "total": 3,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "2380": {
-      "hits": 3,
-      "total": 4,
+      "hits": 4,
+      "total": 5,
       "last_update": "2026-05-10"
     },
     "4030": {
@@ -170,17 +170,17 @@
     },
     "2382": {
       "hits": 1,
-      "total": 4,
+      "total": 5,
       "last_update": "2026-05-10"
     },
     "2300": {
-      "hits": 2,
-      "total": 3,
+      "hits": 3,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "2083": {
       "hits": 1,
-      "total": 4,
+      "total": 5,
       "last_update": "2026-05-10"
     },
     "2370": {
@@ -225,17 +225,17 @@
     },
     "7202": {
       "hits": 0,
-      "total": 4,
+      "total": 5,
       "last_update": "2026-05-10"
     },
     "4017": {
-      "hits": 2,
-      "total": 4,
+      "hits": 3,
+      "total": 5,
       "last_update": "2026-05-10"
     },
     "6017": {
-      "hits": 3,
-      "total": 3,
+      "hits": 4,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "4190": {
@@ -245,22 +245,22 @@
     },
     "8180": {
       "hits": 1,
-      "total": 3,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "7040": {
       "hits": 2,
-      "total": 4,
+      "total": 5,
       "last_update": "2026-05-10"
     },
     "7200": {
-      "hits": 2,
-      "total": 4,
+      "hits": 3,
+      "total": 5,
       "last_update": "2026-05-10"
     },
     "2130": {
-      "hits": 2,
-      "total": 3,
+      "hits": 3,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "1080": {
@@ -269,8 +269,8 @@
       "last_update": "2026-04-27"
     },
     "2223": {
-      "hits": 3,
-      "total": 4,
+      "hits": 4,
+      "total": 5,
       "last_update": "2026-05-10"
     },
     "2222": {
@@ -314,8 +314,8 @@
       "last_update": "2026-05-04"
     },
     "7203": {
-      "hits": 3,
-      "total": 4,
+      "hits": 4,
+      "total": 5,
       "last_update": "2026-05-10"
     },
     "4323": {
@@ -340,7 +340,7 @@
     },
     "4162": {
       "hits": 0,
-      "total": 3,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "2100": {
@@ -359,43 +359,43 @@
       "last_update": "2026-04-27"
     },
     "4146": {
-      "hits": 1,
-      "total": 3,
+      "hits": 2,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "2040": {
       "hits": 1,
-      "total": 3,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "2190": {
       "hits": 1,
-      "total": 3,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "2240": {
       "hits": 1,
-      "total": 3,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "2150": {
       "hits": 1,
-      "total": 3,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "4220": {
       "hits": 1,
-      "total": 3,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "8313": {
       "hits": 0,
-      "total": 3,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "4143": {
-      "hits": 3,
-      "total": 3,
+      "hits": 4,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "3020": {
@@ -405,7 +405,7 @@
     },
     "3005": {
       "hits": 0,
-      "total": 3,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "6014": {
@@ -444,8 +444,8 @@
       "last_update": "2026-05-04"
     },
     "2320": {
-      "hits": 3,
-      "total": 3,
+      "hits": 4,
+      "total": 4,
       "last_update": "2026-05-10"
     },
     "4292": {
@@ -459,113 +459,113 @@
       "last_update": "2026-05-04"
     },
     "2082": {
-      "hits": 2,
-      "total": 2,
+      "hits": 3,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "8250": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "3040": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "3080": {
-      "hits": 2,
-      "total": 2,
+      "hits": 3,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "2285": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "2287": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "1302": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "2282": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "4031": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "4264": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "1323": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "2270": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "1202": {
-      "hits": 2,
-      "total": 2,
+      "hits": 3,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "4005": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "1833": {
-      "hits": 2,
-      "total": 2,
+      "hits": 3,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "4084": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "2050": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "2250": {
-      "hits": 0,
-      "total": 2,
+      "hits": 1,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "6070": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "4040": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "4020": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     },
     "6002": {
       "hits": 0,
-      "total": 2,
+      "total": 3,
       "last_update": "2026-05-10"
     }
   },

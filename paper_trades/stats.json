@@ -1,18 +1,18 @@
 {
-  "computed_at": "2026-05-10T08:44:50.299096",
-  "total_trades": 2,
+  "computed_at": "2026-05-10T09:57:32.066938",
+  "total_trades": 4,
   "active_trades": 10,
-  "wins": 0,
-  "losses": 2,
-  "win_rate_pct": 0.0,
-  "avg_win_pct": 0,
-  "avg_loss_pct": -4.99,
-  "profit_factor": 0.0,
-  "total_pnl_pct": -9.99,
+  "wins": 1,
+  "losses": 3,
+  "win_rate_pct": 25.0,
+  "avg_win_pct": 0.28,
+  "avg_loss_pct": -4.1,
+  "profit_factor": 0.02,
+  "total_pnl_pct": -12.03,
   "best_trade": {
-    "ticker": "2050",
-    "pnl": -4.31,
-    "date": "2026-05-08"
+    "ticker": "8280",
+    "pnl": 0.28,
+    "date": "2026-05-10"
   },
   "worst_trade": {
     "ticker": "4040",
@@ -27,10 +27,10 @@
       "avg_pnl": -5.68
     },
     "support_bounce": {
-      "total": 1,
-      "wins": 0,
-      "win_rate": 0.0,
-      "avg_pnl": -4.31
+      "total": 3,
+      "wins": 1,
+      "win_rate": 33.3,
+      "avg_pnl": -2.12
     }
   },
   "by_sector": {
@@ -45,6 +45,18 @@
       "wins": 0,
       "win_rate": 0.0,
       "avg_pnl": -4.31
+    },
+    "صناعية": {
+      "total": 1,
+      "wins": 0,
+      "win_rate": 0.0,
+      "avg_pnl": -2.32
+    },
+    "تأمين": {
+      "total": 1,
+      "wins": 1,
+      "win_rate": 100.0,
+      "avg_pnl": 0.28
     }
   },
   "tired_stocks": []
