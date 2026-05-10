@@ -556,8 +556,24 @@ def score_stock(last, prev, weights, oil_chg_pct, code, ml_prob=None, recent_los
         score += bonus
         reasons.append(f"إجماع {len(active)} ({bonus:+.1f})")
 
-    # ML probability boost
-    if ml_prob is not None:
+    # ════════════════════════════════════════════════
+    # ML probability boost — 🔴 معطّل من 2026-05-10
+    # ════════════════════════════════════════════════
+    # السبب: ML metrics في تقرير 10 مايو:
+    #   - ROC-AUC = 0.48 (أسوأ من العشوائي 0.5)
+    #   - Precision = 0.417, Recall = 0.5
+    #   - 146 عينة فقط، كلها من candidates منحازة (survivorship bias)
+    # النموذج بهذه الجودة يضيف NOISE للـ score، لا signal.
+    #
+    # شرط إعادة التفعيل:
+    #   1. universe_snapshots جمع 30+ يوم (~3,900 صف نظيف)
+    #   2. إعادة تدريب XGBoost على البيانات الجديدة
+    #   3. التحقق من AUC > 0.60 على out-of-sample (آخر 20%)
+    #   4. التحقق من Precision > 0.55
+    # عند إعادة التفعيل، احذف ENABLE_ML_BOOST = False وارفعه إلى True.
+    ENABLE_ML_BOOST = False  # ⚠️ لا تغيّر هذا قبل تحقق الشروط أعلاه
+    
+    if ENABLE_ML_BOOST and ml_prob is not None:
         if ml_prob > 0.65:
             score *= 1.3
             reasons.append(f"🤖 ML {ml_prob:.0%}")
@@ -1004,12 +1020,22 @@ def scan_tasi(weights, blacklist, recent_losers=None):
                 target_pct = (t1 - last_close) / last_close * 100
                 stop_pct = (stop - last_close) / last_close * 100
 
-                if ml_prob is not None:
-                    # ML متاح — استخدم احتماله الفعلي
+                # ════════════════════════════════════════════════
+                # 🔴 EV calculation — معطّل ML من 2026-05-10
+                # ════════════════════════════════════════════════
+                # السبب: نفس سبب ENABLE_ML_BOOST.
+                # ml_prob من نموذج AUC=0.48 ينتج EV غير موثوق
+                # (مثال: 7203 ML=24% → EV=-2.12% → AI اختاره رغم ذلك).
+                # نستخدم formula التقنية fallback دائماً حتى نُعيد بناء ML.
+                # عند إعادة التفعيل: استبدل USE_ML_FOR_EV = False بـ True
+                USE_ML_FOR_EV = False  # ⚠️ مرتبط بـ ENABLE_ML_BOOST
+
+                if USE_ML_FOR_EV and ml_prob is not None:
+                    # ML متاح وموثوق — استخدم احتماله الفعلي
                     ev_pct = ml_prob * target_pct + (1 - ml_prob) * stop_pct
                 else:
-                    # تقدير الاحتمال من score و signal confluence
-                    # كلما زادت الإشارات الفعّالة وارتفع ADX، زاد احتمال النجاح
+                    # تقدير الاحتمال من score و signal confluence + ADX
+                    # هذه formula مستقلة عن ML، مبنية على منطق تقني سليم
                     adx_v = _safe(last.get("adx"), 20)
                     confluence_boost = min(len(signals) * 0.02, 0.15)  # حتى +15%
                     adx_boost = min((adx_v - 20) / 100, 0.15) if adx_v > 20 else 0
