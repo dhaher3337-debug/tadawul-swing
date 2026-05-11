@@ -1,18 +1,18 @@
 {
-  "computed_at": "2026-05-10T09:57:32.066938",
-  "total_trades": 4,
+  "computed_at": "2026-05-11T02:02:11.039456",
+  "total_trades": 9,
   "active_trades": 10,
-  "wins": 1,
-  "losses": 3,
-  "win_rate_pct": 25.0,
-  "avg_win_pct": 0.28,
-  "avg_loss_pct": -4.1,
-  "profit_factor": 0.02,
-  "total_pnl_pct": -12.03,
+  "wins": 5,
+  "losses": 4,
+  "win_rate_pct": 55.6,
+  "avg_win_pct": 2.08,
+  "avg_loss_pct": -3.08,
+  "profit_factor": 0.84,
+  "total_pnl_pct": -1.94,
   "best_trade": {
-    "ticker": "8280",
-    "pnl": 0.28,
-    "date": "2026-05-10"
+    "ticker": "8010",
+    "pnl": 4.1,
+    "date": "2026-05-11"
   },
   "worst_trade": {
     "ticker": "4040",
@@ -31,6 +31,12 @@
       "wins": 1,
       "win_rate": 33.3,
       "avg_pnl": -2.12
+    },
+    "breakout": {
+      "total": 5,
+      "wins": 4,
+      "win_rate": 80.0,
+      "avg_pnl": 2.02
     }
   },
   "by_sector": {
@@ -53,10 +59,28 @@
       "avg_pnl": -2.32
     },
     "تأمين": {
+      "total": 3,
+      "wins": 3,
+      "win_rate": 100.0,
+      "avg_pnl": 2.13
+    },
+    "زراعة وأغذية": {
       "total": 1,
       "wins": 1,
       "win_rate": 100.0,
-      "avg_pnl": 0.28
+      "avg_pnl": 1.6
+    },
+    "مرافق": {
+      "total": 1,
+      "wins": 1,
+      "win_rate": 100.0,
+      "avg_pnl": 2.39
+    },
+    "رعاية صحية": {
+      "total": 1,
+      "wins": 0,
+      "win_rate": 0.0,
+      "avg_pnl": -0.01
     }
   },
   "tired_stocks": []
