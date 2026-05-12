@@ -92,17 +92,17 @@
       "catch_rate_pct": 40.0,
       "missed_tickers": [
         "2270",
-        "6010",
         "2050",
         "1810",
         "8313",
-        "5110"
+        "5110",
+        "2380"
       ],
       "caught_tickers": [
         "2280",
+        "6010",
         "2370",
-        "2082",
-        "2380"
+        "2082"
       ]
     }
   },
@@ -112,7 +112,7 @@
     "total_caught": 22,
     "total_missed": 28,
     "lifetime_catch_rate_pct": 44.0,
-    "last_updated": "2026-05-12T02:02:25.614127"
+    "last_updated": "2026-05-12T05:15:09.050713"
   },
   "recurring_misses": [
     {
@@ -128,12 +128,12 @@
       "count": 3
     },
     {
-      "ticker": "4210",
+      "ticker": "2270",
       "count": 3
     },
     {
-      "ticker": "2270",
-      "count": 2
+      "ticker": "4210",
+      "count": 3
     },
     {
       "ticker": "4090",
@@ -144,21 +144,21 @@
       "count": 2
     },
     {
-      "ticker": "7200",
-      "count": 1
+      "ticker": "2050",
+      "count": 2
     },
     {
-      "ticker": "4264",
-      "count": 1
+      "ticker": "1810",
+      "count": 2
     },
     {
-      "ticker": "4017",
-      "count": 1
+      "ticker": "8313",
+      "count": 2
     }
   ],
   "miss_cases": {
-    "unforeseeable": 25,
-    "out_of_universe": 12,
+    "unforeseeable": 29,
+    "out_of_universe": 14,
     "predictable_miss": 2
   }
 }
