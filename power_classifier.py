@@ -410,6 +410,11 @@ def analyze_power(df: pd.DataFrame, ticker: str = "?") -> dict:
     
     Returns:
         dict بحقول power_*
+    
+    📌 منطق الكشف (V2 - مُحسّن):
+    - نبحث عن "كسر حديث" خلال آخر 5 شموع (وليس فقط اليوم)
+    - السبب: الكسر قد يكون حدث قبل أيام والسهم لا يزال فوق المستوى
+    - نُسجّل الإشارة فقط إذا السعر الحالي ≥ السعر يوم الكسر (لم يفشل بعد)
     """
     if df is None or len(df) < 220:
         return _empty_result()
@@ -422,21 +427,14 @@ def analyze_power(df: pd.DataFrame, ticker: str = "?") -> dict:
     if swing_high is None or swing_low is None:
         return _empty_result()
     
-    if len(df_ind) < 2:
+    if len(df_ind) < 6:  # نحتاج 5 شموع للبحث عن الكسر
         return _empty_result()
     
     last = df_ind.iloc[-1]
-    prev = df_ind.iloc[-2]
-    
     last_close = _sv(last, 'close')
-    prev_close = _sv(prev, 'close')
     
     if last_close == 0:
         return _empty_result()
-    
-    # كشف الكسر
-    is_break_up = prev_close <= swing_high and last_close > swing_high
-    is_break_dn = prev_close >= swing_low and last_close < swing_low
     
     # حساب الأهداف
     range_val = swing_high - swing_low
@@ -451,9 +449,46 @@ def analyze_power(df: pd.DataFrame, ticker: str = "?") -> dict:
             'T3_dn': round(swing_high - range_val * 3.618, 2),
         }
     
-    if is_break_up:
+    # 🔍 البحث عن كسر حديث خلال آخر 20 شمعة
+    # نبحث من الأحدث للأقدم - أول كسر نجده هو الذي نُسجّله
+    # السبب: في الترندات الصاعدة، الكسر قد يكون قبل أسبوعين والسهم لا يزال فوق
+    BREAKOUT_LOOKBACK = 20
+    break_up_idx = None
+    break_dn_idx = None
+    
+    for i in range(1, BREAKOUT_LOOKBACK + 1):
+        if -i - 1 < -len(df_ind):
+            break
+        
+        candle = df_ind.iloc[-i]
+        prev_candle = df_ind.iloc[-i - 1]
+        
+        candle_close = _sv(candle, 'close')
+        prev_candle_close = _sv(prev_candle, 'close')
+        
+        # كسر صاعد: قفز فوق swing_high
+        if break_up_idx is None and prev_candle_close <= swing_high and candle_close > swing_high:
+            # شرط إضافي: السعر الحالي لم ينهار تحت swing_high
+            if last_close > swing_high * 0.98:  # نسمح بـ 2% تحت كـ pullback
+                break_up_idx = -i
+        
+        # كسر هابط: انكسر تحت swing_low
+        if break_dn_idx is None and prev_candle_close >= swing_low and candle_close < swing_low:
+            if last_close < swing_low * 1.02:  # نسمح بـ 2% فوق كـ pullback
+                break_dn_idx = -i
+    
+    # 🎯 إذا وُجد كسر صاعد (أحدث = أولوية)
+    if break_up_idx is not None:
+        # 📌 مهم: Score يُحسب على آخر شمعة (الوضع الحالي)
+        # وليس على شمعة الكسر، لأننا نريد قياس قوة الزخم الحالي
+        # كسر قديم + زخم قوي اليوم = إشارة قوية للاستمرار
         score, bd = _score_bullish(last)
         classification, emoji = _classify(score, "UP")
+        
+        # عدد الأيام منذ الكسر
+        days_since = abs(break_up_idx)
+        bd['days_since_breakout'] = days_since
+        
         return {
             'power_score': int(score),
             'power_classification': classification,
@@ -462,11 +497,17 @@ def analyze_power(df: pd.DataFrame, ticker: str = "?") -> dict:
             'power_emoji': emoji,
             'power_breakout_level': round(swing_high, 2),
             'power_targets': targets,
+            'power_days_since': days_since,
         }
     
-    elif is_break_dn:
+    # 🎯 إذا وُجد كسر هابط
+    elif break_dn_idx is not None:
         score, bd = _score_bearish(last)
         classification, emoji = _classify(score, "DOWN")
+        
+        days_since = abs(break_dn_idx)
+        bd['days_since_breakout'] = days_since
+        
         return {
             'power_score': int(score),
             'power_classification': classification,
@@ -475,6 +516,7 @@ def analyze_power(df: pd.DataFrame, ticker: str = "?") -> dict:
             'power_emoji': emoji,
             'power_breakout_level': round(swing_low, 2),
             'power_targets': targets,
+            'power_days_since': days_since,
         }
     
     return _empty_result()
