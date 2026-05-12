@@ -1,0 +1,492 @@
+// © Gemini V301 - ULTRA Power Classifier 🚀
+// =====================================================
+// المؤشر يصنف قوة كسر السوينج باستخدام 7 فلاتر كميّة
+// الإشارة الوحيدة على الشارت تخبرك بقوة الكسر بصرياً (حجم/لون/رمز)
+// إصدار: V301 Ultra | تاريخ: مايو 2026 | المؤلف: Dhaher
+// =====================================================
+//@version=5
+indicator("Gemini V301 - ULTRA 🚀", overlay=true, max_lines_count=500, max_labels_count=500)
+
+// ═══════════════════════════════════════════════════════════
+// 📋 الإعدادات - SETTINGS
+// ═══════════════════════════════════════════════════════════
+
+grp_pivot = "🎯 إعدادات السوينج"
+left  = input.int(5, "حساسية القمة/القاع (يسار)", group=grp_pivot, minval=2)
+right = input.int(5, "حساسية القمة/القاع (يمين)", group=grp_pivot, minval=2)
+
+grp_score = "⚙️ نظام التقييم"
+min_score = input.int(65, "الحد الأدنى للإشارة (Score)", group=grp_score, minval=0, maxval=100, tooltip="إشارات أقل من هذا الرقم لن تُعرض")
+
+grp_filters = "🔬 الفلاتر الكميّة"
+vol_mult = input.float(2.0, "مضاعف الحجم المطلوب", group=grp_filters, minval=1.0, step=0.1, tooltip="كم ضعف من متوسط 20 يوم")
+rsi_low  = input.int(55, "RSI الحد الأدنى", group=grp_filters, minval=40, maxval=60)
+rsi_high = input.int(72, "RSI الحد الأقصى", group=grp_filters, minval=65, maxval=80, tooltip="فوق 72 = تشبع شرائي")
+atr_mult = input.float(1.3, "مضاعف ATR للتمدد", group=grp_filters, minval=1.0, step=0.1)
+
+grp_visual = "🎨 العرض"
+show_fib_grid = input.bool(true, "إظهار شبكة فيبو الداخلية", group=grp_visual)
+show_pullback = input.bool(true, "إظهار إشارة Pullback", group=grp_visual, tooltip="نقطة خضراء/حمراء عند رجوع السعر للقمة/القاع المكسور")
+show_score_in_label = input.bool(true, "إظهار رقم Score في الإشارة", group=grp_visual)
+
+grp_signals = "🎯 شكل وحجم الإشارات"
+
+// التحكم بحذف الإشارات القديمة
+keep_only_last = input.bool(true, "احتفظ بآخر إشارة فقط (نظافة الشارت)", group=grp_signals, tooltip="عند التفعيل: تُحذف الإشارة السابقة تلقائياً عند ظهور إشارة جديدة من نفس النوع")
+
+// حجم الإشارات لكل مستوى قوة
+size_rocket = input.string("normal", "حجم إشارة ROCKET/CRASH (80+)", options=["tiny", "small", "normal", "large", "huge"], group=grp_signals)
+size_strong = input.string("small", "حجم إشارة STRONG/DUMP (65-79)", options=["tiny", "small", "normal", "large", "huge"], group=grp_signals)
+
+// شكل الإشارة
+signal_style = input.string("سهم", "شكل الإشارة", options=["نص", "سهم", "مثلث", "دائرة", "علامة", "علامة فقط"], group=grp_signals, tooltip="نص = ROCKET/STRONG | سهم = شكل افتراضي | علامة فقط = 🚀 بدون نص")
+
+// محتوى النص
+signal_content = input.string("الرمز + النص + Score", "محتوى الإشارة", options=["الرمز + النص + Score", "الرمز + النص", "الرمز فقط", "النص فقط", "Score فقط"], group=grp_signals)
+
+// ═══════════════════════════════════════════════════════════
+// 📊 المتغيرات الأساسية
+// ═══════════════════════════════════════════════════════════
+
+// خطوط الدعم والمقاومة
+var line r_line = na
+var line s_line = na
+
+// خطوط الفيبو الداخلية
+var line l_236 = na, var line l_382 = na, var line l_500 = na
+var line l_618 = na, var line l_786 = na
+
+// خطوط الأهداف (للصعود)
+var line t1_up = na, var line t2_up = na, var line t3_up = na
+var label lbl_t1_up = na, var label lbl_t2_up = na, var label lbl_t3_up = na
+
+// خطوط الأهداف (للهبوط)
+var line t1_dn = na, var line t2_dn = na, var line t3_dn = na
+var label lbl_t1_dn = na, var label lbl_t2_dn = na, var label lbl_t3_dn = na
+
+// تسميات القمة والقاع
+var label lbl_high = na, var label lbl_low = na
+
+// الذاكرة السعرية
+var float swing_high = na
+var float swing_low  = na
+
+// آخر إشارة (لتجنب التكرار)
+var float last_break_level_up = na
+var float last_break_level_dn = na
+
+// تتبع آخر إشارة لحذفها عند ظهور إشارة جديدة
+var label last_signal_up_lbl = na
+var line  last_signal_up_line = na
+var label last_signal_dn_lbl = na
+var line  last_signal_dn_line = na
+
+// ═══════════════════════════════════════════════════════════
+// 🔧 المؤشرات المساعدة (للفلاتر)
+// ═══════════════════════════════════════════════════════════
+
+vol_avg   = ta.sma(volume, 20)
+ema50     = ta.ema(close, 50)
+ema200    = ta.ema(close, 200)
+rsi_val   = ta.rsi(close, 14)
+atr_val   = ta.atr(14)
+atr_avg   = ta.sma(atr_val, 20)
+
+// Bollinger Bands للضغط
+bb_basis  = ta.sma(close, 20)
+bb_dev    = ta.stdev(close, 20)
+bb_upper  = bb_basis + 2 * bb_dev
+bb_lower  = bb_basis - 2 * bb_dev
+bb_width  = (bb_upper - bb_lower) / bb_basis
+bb_width_avg = ta.sma(bb_width, 20)
+
+// مدى الشمعة
+candle_range = high - low
+candle_body  = math.abs(close - open)
+
+// ═══════════════════════════════════════════════════════════
+// 🛠️ دوال مساعدة لتحويل إعدادات الإشارة
+// ═══════════════════════════════════════════════════════════
+
+// تحويل النص لقيمة حجم Pine Script
+get_size(size_str) =>
+    switch size_str
+        "tiny"   => size.tiny
+        "small"  => size.small
+        "normal" => size.normal
+        "large"  => size.large
+        "huge"   => size.huge
+        => size.normal
+
+// تحويل شكل الإشارة الصاعدة لـ label style
+get_up_style(style_str) =>
+    switch style_str
+        "نص"          => label.style_label_up
+        "سهم"         => label.style_label_up
+        "مثلث"        => label.style_triangleup
+        "دائرة"       => label.style_circle
+        "علامة"       => label.style_flag
+        "علامة فقط"   => label.style_none
+        => label.style_label_up
+
+// تحويل شكل الإشارة الهابطة لـ label style
+get_dn_style(style_str) =>
+    switch style_str
+        "نص"          => label.style_label_down
+        "سهم"         => label.style_label_down
+        "مثلث"        => label.style_triangledown
+        "دائرة"       => label.style_circle
+        "علامة"       => label.style_flag
+        "علامة فقط"   => label.style_none
+        => label.style_label_down
+
+// بناء نص الإشارة حسب الإعداد
+build_signal_text(emoji, name, score_val) =>
+    score_str = show_score_in_label ? str.tostring(score_val) : ""
+    switch signal_content
+        "الرمز + النص + Score" => emoji + "\n" + name + (show_score_in_label ? "\n" + score_str : "")
+        "الرمز + النص"          => emoji + "\n" + name
+        "الرمز فقط"             => emoji
+        "النص فقط"              => name
+        "Score فقط"             => score_str
+        => emoji + "\n" + name + "\n" + score_str
+
+// ═══════════════════════════════════════════════════════════
+// 🎯 محرك تحديد القمم والقيعان (Pivot Engine)
+// ═══════════════════════════════════════════════════════════
+
+ph = ta.pivothigh(high, left, right)
+pl = ta.pivotlow(low, left, right)
+
+// تحديث القمة
+if not na(ph)
+    swing_high := ph
+    line.delete(r_line)
+    r_line := line.new(bar_index - right, swing_high, bar_index + 10, swing_high, color=color.red, width=2)
+
+// تحديث القاع
+if not na(pl)
+    swing_low := pl
+    line.delete(s_line)
+    s_line := line.new(bar_index - right, swing_low, bar_index + 10, swing_low, color=color.aqua, width=2)
+
+// ═══════════════════════════════════════════════════════════
+// 📐 رسم شبكة الفيبوناتشي والأهداف
+// ═══════════════════════════════════════════════════════════
+
+if not na(swing_high) and not na(swing_low)
+    
+    // تمديد الخطوط الرئيسية
+    if not na(r_line)
+        line.set_x2(r_line, bar_index + 10)
+    if not na(s_line)
+        line.set_x2(s_line, bar_index + 10)
+    
+    range_val = swing_high - swing_low
+    
+    if range_val > 0
+        // أهداف الصعود
+        p_1618_up = swing_low + (range_val * 1.618)
+        p_2618_up = swing_low + (range_val * 2.618)
+        p_3618_up = swing_low + (range_val * 3.618)
+        
+        // أهداف الهبوط (نمتد للأسفل من القاع)
+        p_1618_dn = swing_high - (range_val * 1.618)
+        p_2618_dn = swing_high - (range_val * 2.618)
+        p_3618_dn = swing_high - (range_val * 3.618)
+        
+        // --- تنظيف الكائنات القديمة ---
+        line.delete(l_236), line.delete(l_382), line.delete(l_500)
+        line.delete(l_618), line.delete(l_786)
+        line.delete(t1_up), line.delete(t2_up), line.delete(t3_up)
+        line.delete(t1_dn), line.delete(t2_dn), line.delete(t3_dn)
+        label.delete(lbl_t1_up), label.delete(lbl_t2_up), label.delete(lbl_t3_up)
+        label.delete(lbl_t1_dn), label.delete(lbl_t2_dn), label.delete(lbl_t3_dn)
+        label.delete(lbl_high), label.delete(lbl_low)
+
+        // --- شبكة الفيبو الداخلية (اختيارية) ---
+        if show_fib_grid
+            f_236 = swing_low + (range_val * 0.236)
+            f_382 = swing_low + (range_val * 0.382)
+            f_500 = swing_low + (range_val * 0.500)
+            f_618 = swing_low + (range_val * 0.618)
+            f_786 = swing_low + (range_val * 0.786)
+            
+            l_236 := line.new(bar_index - 10, f_236, bar_index + 5, f_236, color=color.new(color.gray, 60), style=line.style_dotted)
+            l_382 := line.new(bar_index - 10, f_382, bar_index + 5, f_382, color=color.new(color.gray, 60), style=line.style_dotted)
+            l_500 := line.new(bar_index - 10, f_500, bar_index + 5, f_500, color=color.new(color.gray, 40), style=line.style_solid)
+            l_618 := line.new(bar_index - 10, f_618, bar_index + 5, f_618, color=#FFD700, width=2)
+            l_786 := line.new(bar_index - 10, f_786, bar_index + 5, f_786, color=color.new(color.gray, 60), style=line.style_dotted)
+
+        // --- قيم القمة والقاع ---
+        lbl_high := label.new(bar_index + 10, swing_high, str.tostring(swing_high, format.mintick), color=color.red, style=label.style_label_left, textcolor=color.white, size=size.small)
+        lbl_low := label.new(bar_index + 10, swing_low, str.tostring(swing_low, format.mintick), color=color.aqua, style=label.style_label_left, textcolor=color.black, size=size.small)
+
+        // --- أهداف الصعود ---
+        t1_up := line.new(bar_index, p_1618_up, bar_index + 10, p_1618_up, color=color.blue, style=line.style_dashed, width=2)
+        lbl_t1_up := label.new(bar_index + 10, p_1618_up, "T1↑ " + str.tostring(p_1618_up, format.mintick), color=color.blue, style=label.style_label_left, textcolor=color.white, size=size.small)
+        
+        if close > p_1618_up
+            t2_up := line.new(bar_index, p_2618_up, bar_index + 10, p_2618_up, color=color.green, style=line.style_dashed, width=2)
+            lbl_t2_up := label.new(bar_index + 10, p_2618_up, "T2↑ " + str.tostring(p_2618_up, format.mintick), color=color.green, style=label.style_label_left, textcolor=color.white, size=size.small)
+
+        if close > p_2618_up
+            t3_up := line.new(bar_index, p_3618_up, bar_index + 10, p_3618_up, color=color.orange, style=line.style_dashed, width=2)
+            lbl_t3_up := label.new(bar_index + 10, p_3618_up, "T3↑ " + str.tostring(p_3618_up, format.mintick), color=color.orange, style=label.style_label_left, textcolor=color.white, size=size.small)
+
+        // --- أهداف الهبوط ---
+        t1_dn := line.new(bar_index, p_1618_dn, bar_index + 10, p_1618_dn, color=color.new(color.purple, 0), style=line.style_dashed, width=2)
+        lbl_t1_dn := label.new(bar_index + 10, p_1618_dn, "T1↓ " + str.tostring(p_1618_dn, format.mintick), color=color.purple, style=label.style_label_left, textcolor=color.white, size=size.small)
+        
+        if close < p_1618_dn
+            t2_dn := line.new(bar_index, p_2618_dn, bar_index + 10, p_2618_dn, color=color.new(color.red, 30), style=line.style_dashed, width=2)
+            lbl_t2_dn := label.new(bar_index + 10, p_2618_dn, "T2↓ " + str.tostring(p_2618_dn, format.mintick), color=color.red, style=label.style_label_left, textcolor=color.white, size=size.small)
+
+        if close < p_2618_dn
+            t3_dn := line.new(bar_index, p_3618_dn, bar_index + 10, p_3618_dn, color=color.new(color.maroon, 0), style=line.style_dashed, width=2)
+            lbl_t3_dn := label.new(bar_index + 10, p_3618_dn, "T3↓ " + str.tostring(p_3618_dn, format.mintick), color=color.maroon, style=label.style_label_left, textcolor=color.white, size=size.small)
+
+// ═══════════════════════════════════════════════════════════
+// 🧮 نظام التقييم الكمّي (Scoring Engine)
+// ═══════════════════════════════════════════════════════════
+
+// دالة حساب نقاط الكسر الصاعد
+calculate_bullish_score() =>
+    score = 0
+    
+    // 1. Volume Spike (25 نقطة)
+    if volume > vol_avg * vol_mult
+        score += 25
+    else if volume > vol_avg * 1.5
+        score += 15
+    else if volume > vol_avg
+        score += 8
+    
+    // 2. Trend Alignment - EMA50 > EMA200 (20 نقطة)
+    if ema50 > ema200 and close > ema50
+        score += 20
+    else if close > ema50
+        score += 12
+    else if close > ema200
+        score += 6
+    
+    // 3. Candle Strength - الجسم نسبة من المدى (15 نقطة)
+    body_ratio = candle_range > 0 ? candle_body / candle_range : 0
+    if body_ratio > 0.7 and close > open
+        score += 15
+    else if body_ratio > 0.5 and close > open
+        score += 10
+    else if close > open
+        score += 5
+    
+    // 4. RSI Sweet Spot (15 نقطة)
+    if rsi_val >= rsi_low and rsi_val <= rsi_high
+        score += 15
+    else if rsi_val > rsi_high and rsi_val < 80
+        score += 8
+    else if rsi_val >= 50 and rsi_val < rsi_low
+        score += 10
+    
+    // 5. ATR Expansion (10 نقاط)
+    if atr_val > atr_avg * atr_mult
+        score += 10
+    else if atr_val > atr_avg
+        score += 5
+    
+    // 6. Close Position - الإغلاق في أعلى 25% من المدى (10 نقاط)
+    close_position = candle_range > 0 ? (close - low) / candle_range : 0
+    if close_position > 0.75
+        score += 10
+    else if close_position > 0.6
+        score += 6
+    
+    // 7. Range Compression - Bollinger Squeeze (5 نقاط)
+    if bb_width < bb_width_avg * 0.8
+        score += 5
+    
+    score
+
+// دالة حساب نقاط الكسر الهابط
+calculate_bearish_score() =>
+    score = 0
+    
+    // 1. Volume Spike
+    if volume > vol_avg * vol_mult
+        score += 25
+    else if volume > vol_avg * 1.5
+        score += 15
+    else if volume > vol_avg
+        score += 8
+    
+    // 2. Trend Alignment - EMA50 < EMA200
+    if ema50 < ema200 and close < ema50
+        score += 20
+    else if close < ema50
+        score += 12
+    else if close < ema200
+        score += 6
+    
+    // 3. Candle Strength - شمعة هابطة قوية
+    body_ratio_dn = candle_range > 0 ? candle_body / candle_range : 0
+    if body_ratio_dn > 0.7 and close < open
+        score += 15
+    else if body_ratio_dn > 0.5 and close < open
+        score += 10
+    else if close < open
+        score += 5
+    
+    // 4. RSI - للهبوط نريد RSI منخفض (45-28)
+    if rsi_val <= 45 and rsi_val >= 28
+        score += 15
+    else if rsi_val < 28 and rsi_val > 20
+        score += 8
+    else if rsi_val <= 50 and rsi_val > 45
+        score += 10
+    
+    // 5. ATR Expansion
+    if atr_val > atr_avg * atr_mult
+        score += 10
+    else if atr_val > atr_avg
+        score += 5
+    
+    // 6. Close Position - الإغلاق في أسفل 25% من المدى
+    close_position_dn = candle_range > 0 ? (high - close) / candle_range : 0
+    if close_position_dn > 0.75
+        score += 10
+    else if close_position_dn > 0.6
+        score += 6
+    
+    // 7. Range Compression
+    if bb_width < bb_width_avg * 0.8
+        score += 5
+    
+    score
+
+// ═══════════════════════════════════════════════════════════
+// 🚀 كشف الإشارات (Breakout Detection)
+// ═══════════════════════════════════════════════════════════
+
+is_break_up = ta.crossover(close, swing_high) and not na(swing_high)
+is_break_dn = ta.crossunder(close, swing_low) and not na(swing_low)
+
+// منع تكرار الإشارة على نفس المستوى
+is_new_up_signal = is_break_up and (na(last_break_level_up) or swing_high != last_break_level_up)
+is_new_dn_signal = is_break_dn and (na(last_break_level_dn) or swing_low != last_break_level_dn)
+
+// ═══════════════════════════════════════════════════════════
+// 🎨 رسم الإشارات المتدرجة (Signal Rendering)
+// ═══════════════════════════════════════════════════════════
+
+// ── إشارة الصعود ──
+if is_new_up_signal
+    score_up = calculate_bullish_score()
+    
+    if score_up >= min_score
+        last_break_level_up := swing_high
+        
+        // تحديد نوع الإشارة بناءً على Score
+        signal_text_up = ""
+        signal_color_up = color.gray
+        signal_size_up = size.small
+        
+        if score_up >= 80
+            // ROCKET 🚀🚀🚀 - ذهبي
+            signal_text_up := build_signal_text("🚀🚀🚀", "ROCKET", score_up)
+            signal_color_up := #FFD700
+            signal_size_up := get_size(size_rocket)
+        else if score_up >= 65
+            // STRONG 🚀🚀 - أخضر فاتح
+            signal_text_up := build_signal_text("🚀🚀", "STRONG", score_up)
+            signal_color_up := #00E676
+            signal_size_up := get_size(size_strong)
+        else
+            // GO 🚀 - أخضر داكن (لن يظهر إذا min_score >= 65)
+            signal_text_up := build_signal_text("🚀", "GO", score_up)
+            signal_color_up := #2E7D32
+            signal_size_up := get_size(size_strong)
+        
+        // حذف الإشارة الصاعدة القديمة (إذا الخيار مفعّل)
+        if keep_only_last
+            label.delete(last_signal_up_lbl)
+            line.delete(last_signal_up_line)
+        
+        // رسم الإشارة الجديدة وحفظها
+        last_signal_up_lbl := label.new(bar_index, low, signal_text_up, style=get_up_style(signal_style), color=signal_color_up, textcolor=color.white, size=signal_size_up, yloc=yloc.belowbar)
+        
+        // خط رمادي رفيع لتوثيق مستوى الدخول
+        last_signal_up_line := line.new(bar_index - 5, swing_high, bar_index + 10, swing_high, color=color.new(color.gray, 50), style=line.style_dotted, width=1)
+        
+        // تنبيه
+        alert("🚀 كسر صاعد قوي | Score: " + str.tostring(score_up), alert.freq_once_per_bar_close)
+
+// ── إشارة الهبوط ──
+if is_new_dn_signal
+    score_dn = calculate_bearish_score()
+    
+    if score_dn >= min_score
+        last_break_level_dn := swing_low
+        
+        signal_text_dn = ""
+        signal_color_dn = color.gray
+        signal_size_dn = size.small
+        
+        if score_dn >= 80
+            // CRASH 💀💀💀 - أحمر داكن
+            signal_text_dn := build_signal_text("💀💀💀", "CRASH", score_dn)
+            signal_color_dn := #D32F2F
+            signal_size_dn := get_size(size_rocket)
+        else if score_dn >= 65
+            // DUMP 🔻🔻 - أحمر
+            signal_text_dn := build_signal_text("🔻🔻", "DUMP", score_dn)
+            signal_color_dn := #F44336
+            signal_size_dn := get_size(size_strong)
+        else
+            // SELL 🔻 - برتقالي محمر
+            signal_text_dn := build_signal_text("🔻", "SELL", score_dn)
+            signal_color_dn := #FF5722
+            signal_size_dn := get_size(size_strong)
+        
+        // حذف الإشارة الهابطة القديمة (إذا الخيار مفعّل)
+        if keep_only_last
+            label.delete(last_signal_dn_lbl)
+            line.delete(last_signal_dn_line)
+        
+        // رسم الإشارة الجديدة وحفظها
+        last_signal_dn_lbl := label.new(bar_index, high, signal_text_dn, style=get_dn_style(signal_style), color=signal_color_dn, textcolor=color.white, size=signal_size_dn, yloc=yloc.abovebar)
+        
+        last_signal_dn_line := line.new(bar_index - 5, swing_low, bar_index + 10, swing_low, color=color.new(color.gray, 50), style=line.style_dotted, width=1)
+        
+        alert("🔻 كسر هابط قوي | Score: " + str.tostring(score_dn), alert.freq_once_per_bar_close)
+
+// ═══════════════════════════════════════════════════════════
+// 🎯 كاشف الـ Pullback (إشارة الدخول الثانية)
+// ═══════════════════════════════════════════════════════════
+// المنطق: بعد الكسر الصاعد، إذا رجع السعر للقمة المكسورة (last_break_level_up)
+// ولامسها أو اخترقها لأسفل قليلاً، ثم أغلق فوقها مرة أخرى = Pullback مؤكد
+// نفس الفكرة للهبوط بالعكس
+
+if show_pullback and not na(last_break_level_up)
+    // تحقق أن السعر رجع للمستوى المكسور (خلال 10 شموع من الإشارة)
+    touched_up = low <= last_break_level_up and low[1] > last_break_level_up
+    bounced_up = touched_up and close > last_break_level_up and close > open
+    
+    if bounced_up
+        label.new(bar_index, low - atr_val * 0.3, "•", style=label.style_label_up, color=color.new(#00E676, 30), textcolor=color.white, size=size.tiny)
+
+if show_pullback and not na(last_break_level_dn)
+    touched_dn = high >= last_break_level_dn and high[1] < last_break_level_dn
+    rejected_dn = touched_dn and close < last_break_level_dn and close < open
+    
+    if rejected_dn
+        label.new(bar_index, high + atr_val * 0.3, "•", style=label.style_label_down, color=color.new(#F44336, 30), textcolor=color.white, size=size.tiny)
+
+// ═══════════════════════════════════════════════════════════
+// 📡 تنبيهات إضافية (للسكرينر)
+// ═══════════════════════════════════════════════════════════
+
+// شروط للسكرينر - تكشف عن Score ≥ 80 (ROCKET فقط)
+rocket_up_alert = is_new_up_signal and calculate_bullish_score() >= 80
+crash_dn_alert  = is_new_dn_signal and calculate_bearish_score() >= 80
+
+alertcondition(rocket_up_alert, title="🚀 ROCKET Breakout", message="ROCKET Bullish Breakout Detected!")
+alertcondition(crash_dn_alert, title="💀 CRASH Breakdown", message="CRASH Bearish Breakdown Detected!")

@@ -78,13 +78,15 @@ RULES = {
 # عوامل الـ Composite Score (لترتيب الناجحين)
 # ════════════════════════════════════════════════
 SCORE_WEIGHTS = {
-    "score": 0.30,           # score الفني الأصلي (أهم عامل)
-    "ev_pct": 0.30,          # EV - يعكس target/stop المتوقع
-    "risk_reward": 0.15,     # RR
-    "adx": 0.10,             # قوة الاتجاه
-    "mtf_alignment": 0.10,   # MTF coherence
-    "volume_signal": 0.05,   # حجم - bonus صغير لأنه قد يكون noise
+    "score": 0.25,           # كان 0.30 - خفّض لإفساح مجال power
+    "ev_pct": 0.25,          # كان 0.30 - خفّض لإفساح مجال power
+    "risk_reward": 0.13,     # كان 0.15
+    "adx": 0.08,             # كان 0.10
+    "mtf_alignment": 0.09,   # كان 0.10
+    "volume_signal": 0.05,   # نفسه
+    "power_score": 0.15,     # 🆕 V9.2.2: Power Classifier (V301)
 }
+# المجموع: 1.00 ✓
 
 
 def _safe(v, default=0.0):
@@ -246,7 +248,16 @@ def compute_composite_score(candidate: dict) -> tuple:
     volume_ratio = _safe(candidate.get("volume_ratio"))
     components["volume_signal"] = min(max((volume_ratio - 0.5) / (1.5 - 0.5), 0.0), 1.0)
     
-    # المجموع المرجَّح
+    # 7. 🆕 V9.2.2: Power Score من V301 Pine Script
+    # مُطبَّع: power=100 → 1.0، power=50 → 0.0 (دون 50 = NONE/WEAK لا يحفّز)
+    # السبب: 50 هو الحد الأدنى للتسجيل في power_classifier.py
+    power_score = _safe(candidate.get("power_score"))
+    if power_score >= 50:
+        components["power_score"] = (power_score - 50) / 50.0
+    else:
+        components["power_score"] = 0.0
+    
+    # المجموع المرجَّح (7 مكوّنات الآن)
     composite = sum(components[k] * SCORE_WEIGHTS[k] for k in SCORE_WEIGHTS)
     
     return round(composite, 4), components
@@ -323,6 +334,18 @@ def filter_candidates(candidates: list, top_n: int = 7) -> dict:
         signals = full_data.get("signals", [])
         signal_names = [signals_arabic_map.get(s, s) for s in signals[:5]]
         reason = f"إجماع {len(signals)} إشارات: " + " + ".join(signal_names)
+        
+        # 🚀 V9.2.2: إبراز Power Classification في reason
+        power_cls = full_data.get("power_classification", "NONE")
+        power_score = full_data.get("power_score", 0)
+        power_emoji = full_data.get("power_emoji", "")
+        
+        if power_cls == "ROCKET":
+            reason = f"{power_emoji} ROCKET ({power_score}/100) - " + reason
+        elif power_cls == "STRONG":
+            reason = f"{power_emoji} STRONG ({power_score}/100) - " + reason
+        elif power_cls in ("CRASH", "DUMP"):
+            reason = f"{power_emoji} {power_cls} ({power_score}/100) ⚠️ هابط - " + reason
         
         if eval_result["warnings"]:
             reason += " | " + " ".join(eval_result["warnings"])

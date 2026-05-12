@@ -47,9 +47,26 @@ def _format_candidates(candidates, limit=40):
     for i, c in enumerate(candidates[:limit], 1):
         ml = c.get("ml_probability")
         ml_str = f"ML:{ml*100:.0f}%" if ml is not None else "ML:-"
+        
+        # 🚀 V9.2.2: Power Classifier info
+        power_cls = c.get("power_classification", "NONE")
+        power_score = c.get("power_score", 0)
+        if power_cls == "ROCKET":
+            pwr_str = f"🚀🚀🚀ROCKET({power_score})"
+        elif power_cls == "STRONG":
+            pwr_str = f"🚀🚀STRONG({power_score})"
+        elif power_cls == "WEAK":
+            pwr_str = f"🚀WEAK({power_score})"
+        elif power_cls == "CRASH":
+            pwr_str = f"💀💀💀CRASH({power_score})"
+        elif power_cls == "DUMP":
+            pwr_str = f"🔻🔻DUMP({power_score})"
+        else:
+            pwr_str = "PWR:-"
+        
         out.append(
             f"{i}. {c['ticker']}|{c['sector']}|{c['close']}|{c['change']:+.1f}% "
-            f"S:{c['score']} {ml_str} EV:{c.get('expected_value_pct',0):+.1f}% RR:{c.get('risk_reward','-')} "
+            f"S:{c['score']} {ml_str} {pwr_str} EV:{c.get('expected_value_pct',0):+.1f}% RR:{c.get('risk_reward','-')} "
             f"RSI:{c['rsi']} ADX:{c.get('adx','-')} MFI:{c.get('mfi','-')} CMF:{c.get('cmf','-')} "
             f"Fib:{c.get('fib_pos','-')} RS:{c.get('rs_vs_tasi','-')} "
             f"Vol:{c['volume_ratio']}× VWAP:{c.get('vwap_diff',0):+.1f}% "
@@ -58,6 +75,45 @@ def _format_candidates(candidates, limit=40):
             f"   Signals:{','.join(c['signals'])} | {' • '.join(c['reasons'][:4])}"
         )
     return "\n".join(out)
+
+
+def _format_power_summary(candidates):
+    """🚀 V9.2.2: ملخص إشارات Power Classifier للمرشحين."""
+    rockets = []
+    strongs = []
+    crashes = []
+    dumps = []
+    
+    for c in candidates:
+        cls = c.get("power_classification", "NONE")
+        ticker = c.get("ticker", "?")
+        score = c.get("power_score", 0)
+        sector = c.get("sector", "?")
+        entry = f"{ticker}({sector}):{score}"
+        
+        if cls == "ROCKET":
+            rockets.append(entry)
+        elif cls == "STRONG":
+            strongs.append(entry)
+        elif cls == "CRASH":
+            crashes.append(entry)
+        elif cls == "DUMP":
+            dumps.append(entry)
+    
+    if not (rockets or strongs or crashes or dumps):
+        return "  لا توجد إشارات Power قوية اليوم"
+    
+    lines = []
+    if rockets:
+        lines.append(f"  🚀🚀🚀 ROCKETS ({len(rockets)}): {', '.join(rockets[:10])}")
+    if strongs:
+        lines.append(f"  🚀🚀 STRONG ({len(strongs)}): {', '.join(strongs[:10])}")
+    if crashes:
+        lines.append(f"  💀💀💀 CRASHES ({len(crashes)}): {', '.join(crashes[:10])}")
+    if dumps:
+        lines.append(f"  🔻🔻 DUMPS ({len(dumps)}): {', '.join(dumps[:10])}")
+    
+    return "\n".join(lines)
 
 
 def _format_gainers(gainers, limit=10):
@@ -258,6 +314,37 @@ def build_prompt(data):
 - إجماع 4+ إشارات تقنية → ميزة
 - News sentiment إيجابي مؤكد → ميزة معتدلة
 - Catch-up opportunity واضحة (ارتباط > 0.7) → ميزة
+- 🚀 Power Classification = ROCKET (80+) → ميزة كبيرة جداً
+- 🚀 Power Classification = STRONG (65-79) → ميزة كبيرة
+
+═══════════════════════════════════════════
+🚀 محرك Power Classifier (V301 - جديد في V9.2.2):
+═══════════════════════════════════════════
+محرك إضافي يحسب قوة الكسر بـ 7 فلاتر = 100 نقطة:
+  - Volume Spike (25): حجم > 2× متوسط 20 يوم
+  - Trend Alignment (20): EMA50 > EMA200 + price > EMA50
+  - Candle Strength (15): جسم > 70% من المدى
+  - RSI Sweet Spot (15): 55-72 (قوة بدون تشبع)
+  - ATR Expansion (10): تذبذب نشط
+  - Close Position (10): إغلاق في أعلى 25% من المدى
+  - Bollinger Squeeze (5): ضغط قبل الانفجار
+
+التصنيفات (في حقل power_classification):
+  - 🚀🚀🚀 ROCKET (80+): كسر صاروخي - يتوقع تحقيق T1+T2+T3
+  - 🚀🚀 STRONG (65-79): كسر قوي - يتوقع T1+T2
+  - 🚀 WEAK (50-64): كسر ضعيف - حذر
+  - 💀💀💀 CRASH (80+): هبوط صاروخي (للأسهم في مرشحين خطأ)
+  - 🔻🔻 DUMP (65-79): هبوط قوي
+  - NONE: لا يوجد كسر
+
+📌 كيف تستخدم Power Score:
+  1. إذا candidate له ROCKET (80+) + EV>0 + باقي القيود → 🥇 أولوية قصوى
+  2. STRONG (65-79) + باقي القيود مستوفاة → اختيار جيد لـ picks
+  3. ROCKET/STRONG بدون EV إيجابي → تجاهل (الأرقام لا تكذب)
+  4. CRASH/DUMP يظهر في candidate → إشارة تحذير، راجع البيانات
+  5. NONE/WEAK + باقي الإشارات قوية → اختر بشكل عادي
+
+⚠️ Power Score مكمّل، ليس بديل: صفقة قوية تحتاج توافق الإشارات الفنية والقطاع.
 
 ═══════════════════════════════════════════
 🔍 تحقق ذاتي قبل إنهاء الاختيار:
@@ -289,7 +376,8 @@ def build_prompt(data):
       "target2": 0,
       "holding_days": 3,
       "risk_level": "منخفض/متوسط/مرتفع",
-      "rules_check": "EV=X.X✓ | RR=X.X✓ | weekly=صاعد✓ | score=X.X✓"
+      "rules_check": "EV=X.X✓ | RR=X.X✓ | weekly=صاعد✓ | score=X.X✓",
+      "power_assessment": "Power=80(ROCKET)✓ - 7 فلاتر مستوفاة، يدعم action قوي | أو: Power=NONE - الاختيار مبني على إشارات أخرى"
     }
   ],
   "rejected_candidates": "أسهم ظهرت في candidates لكن رفضتها ولماذا (مثلاً: 7203 رُفض - EV=-2.12%)",
@@ -337,6 +425,10 @@ def build_prompt(data):
 ═══════════════════════════════════════════
 🧠 ذاكرة آخر 5 أيام:
 {memory_text if memory_text else '  لا توجد ملاحظات سابقة'}
+
+═══════════════════════════════════════════
+🚀 إشارات Power Classifier (V301 - 7 فلاتر إضافية):
+{_format_power_summary(candidates)}
 
 ═══════════════════════════════════════════
 🎯 المرشحون ({len(candidates)} سهم — مرتبين بالنقاط):

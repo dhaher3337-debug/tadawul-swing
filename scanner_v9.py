@@ -68,6 +68,16 @@ try:
 except ImportError:
     EARNINGS_AVAILABLE = False
 
+# 🔴 V9.2.2: Power Classifier (V301 Pine Script port)
+# يضيف power_score لكل candidate بناءً على 7 فلاتر إضافية
+try:
+    from power_classifier import enrich_candidate_with_power
+    POWER_AVAILABLE = True
+except ImportError:
+    POWER_AVAILABLE = False
+    def enrich_candidate_with_power(candidate, df):
+        return candidate  # no-op fallback
+
 BASE = Path("tadawul_data")
 try:
     if not BASE.exists():
@@ -1042,7 +1052,7 @@ def scan_tasi(weights, blacklist, recent_losers=None):
                     est_prob = min(0.45 + score * 0.02 + confluence_boost + adx_boost, 0.72)
                     ev_pct = est_prob * target_pct + (1 - est_prob) * stop_pct
 
-                candidates.append({
+                candidate_dict = {
                     "ticker": code,
                     "close": round(last_close, 2),
                     "change": round(chg, 2),
@@ -1085,7 +1095,19 @@ def scan_tasi(weights, blacklist, recent_losers=None):
                     "news_reason": news_info.get("reason", ""),
                     "earnings_multiplier": earnings_info.get("multiplier", 1.0),
                     "earnings_message": earnings_info.get("message"),
-                })
+                }
+                
+                # 🚀 V9.2.2: Power Classifier enrichment
+                # يضيف power_score, power_classification, power_targets, etc.
+                # df هنا يحوي OHLCV + المؤشرات المحسوبة (بعد compute_all)
+                # إذا كان ROCKET/STRONG، يُضاف 'power_breakout' لـ signals
+                if POWER_AVAILABLE:
+                    try:
+                        candidate_dict = enrich_candidate_with_power(candidate_dict, df)
+                    except Exception as pwr_err:
+                        log.debug(f"Power enrichment failed for {code}: {pwr_err}")
+                
+                candidates.append(candidate_dict)
         except Exception as e:
             errors += 1
             log.debug(f"  {ticker}: {e}")
