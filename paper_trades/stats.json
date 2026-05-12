@@ -1,18 +1,18 @@
 {
-  "computed_at": "2026-05-11T02:02:11.039456",
-  "total_trades": 9,
+  "computed_at": "2026-05-12T02:02:25.630721",
+  "total_trades": 12,
   "active_trades": 10,
-  "wins": 5,
-  "losses": 4,
-  "win_rate_pct": 55.6,
-  "avg_win_pct": 2.08,
-  "avg_loss_pct": -3.08,
-  "profit_factor": 0.84,
-  "total_pnl_pct": -1.94,
+  "wins": 6,
+  "losses": 6,
+  "win_rate_pct": 50.0,
+  "avg_win_pct": 3.22,
+  "avg_loss_pct": -3.38,
+  "profit_factor": 0.95,
+  "total_pnl_pct": -0.99,
   "best_trade": {
-    "ticker": "8010",
-    "pnl": 4.1,
-    "date": "2026-05-11"
+    "ticker": "2082",
+    "pnl": 8.94,
+    "date": "2026-05-12"
   },
   "worst_trade": {
     "ticker": "4040",
@@ -21,10 +21,10 @@
   },
   "by_signal_type": {
     "default": {
-      "total": 1,
+      "total": 2,
       "wins": 0,
       "win_rate": 0.0,
-      "avg_pnl": -5.68
+      "avg_pnl": -5.67
     },
     "support_bounce": {
       "total": 3,
@@ -33,10 +33,10 @@
       "avg_pnl": -2.12
     },
     "breakout": {
-      "total": 5,
-      "wins": 4,
-      "win_rate": 80.0,
-      "avg_pnl": 2.02
+      "total": 7,
+      "wins": 5,
+      "win_rate": 71.4,
+      "avg_pnl": 2.39
     }
   },
   "by_sector": {
@@ -47,10 +47,10 @@
       "avg_pnl": -5.68
     },
     "بتروكيماويات": {
-      "total": 1,
+      "total": 2,
       "wins": 0,
       "win_rate": 0.0,
-      "avg_pnl": -4.31
+      "avg_pnl": -3.31
     },
     "صناعية": {
       "total": 1,
@@ -65,16 +65,16 @@
       "avg_pnl": 2.13
     },
     "زراعة وأغذية": {
-      "total": 1,
+      "total": 2,
       "wins": 1,
-      "win_rate": 100.0,
-      "avg_pnl": 1.6
+      "win_rate": 50.0,
+      "avg_pnl": -2.04
     },
     "مرافق": {
-      "total": 1,
-      "wins": 1,
+      "total": 2,
+      "wins": 2,
       "win_rate": 100.0,
-      "avg_pnl": 2.39
+      "avg_pnl": 5.67
     },
     "رعاية صحية": {
       "total": 1,
