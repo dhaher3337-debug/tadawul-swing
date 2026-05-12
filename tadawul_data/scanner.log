@@ -154,3 +154,8 @@
 2026-05-12 05:14:21,716 [INFO] Using cached earnings (196 tickers)
 2026-05-12 05:15:08,241 [INFO] Universe snapshot: 195 صف → snapshot_2026-05-12.jsonl
 2026-05-12 05:15:09,027 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-05-12 05:30:16,277 [INFO] ML model trained: AUC=0.937, Acc=0.959, F1=0.941
+2026-05-12 05:30:31,725 [INFO] Using cached sentiment (0 tickers)
+2026-05-12 05:30:31,725 [INFO] Using cached earnings (196 tickers)
+2026-05-12 05:31:51,251 [INFO] Universe snapshot: 195 صف → snapshot_2026-05-12.jsonl
+2026-05-12 05:31:52,044 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
