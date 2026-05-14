@@ -1,14 +1,14 @@
 {
-  "computed_at": "2026-05-13T02:02:55.759386",
-  "total_trades": 19,
-  "active_trades": 10,
-  "wins": 6,
-  "losses": 13,
-  "win_rate_pct": 31.6,
-  "avg_win_pct": 3.22,
-  "avg_loss_pct": -3.77,
-  "profit_factor": 0.39,
-  "total_pnl_pct": -29.72,
+  "computed_at": "2026-05-14T02:02:56.564259",
+  "total_trades": 24,
+  "active_trades": 8,
+  "wins": 9,
+  "losses": 15,
+  "win_rate_pct": 37.5,
+  "avg_win_pct": 3.58,
+  "avg_loss_pct": -3.57,
+  "profit_factor": 0.6,
+  "total_pnl_pct": -21.31,
   "best_trade": {
     "ticker": "2082",
     "pnl": 8.94,
@@ -33,10 +33,10 @@
       "avg_pnl": -2.12
     },
     "breakout": {
-      "total": 12,
-      "wins": 5,
-      "win_rate": 41.7,
-      "avg_pnl": -0.71
+      "total": 17,
+      "wins": 8,
+      "win_rate": 47.1,
+      "avg_pnl": -0.01
     },
     "mean_reversion": {
       "total": 1,
@@ -59,10 +59,10 @@
       "avg_pnl": -4.09
     },
     "صناعية": {
-      "total": 1,
-      "wins": 0,
-      "win_rate": 0.0,
-      "avg_pnl": -2.32
+      "total": 2,
+      "wins": 1,
+      "win_rate": 50.0,
+      "avg_pnl": 1.89
     },
     "تأمين": {
       "total": 4,
@@ -93,6 +93,24 @@
       "wins": 0,
       "win_rate": 0.0,
       "avg_pnl": -0.89
+    },
+    "أسمنت": {
+      "total": 2,
+      "wins": 1,
+      "win_rate": 50.0,
+      "avg_pnl": 0.11
+    },
+    "فنادق": {
+      "total": 1,
+      "wins": 1,
+      "win_rate": 100.0,
+      "avg_pnl": 4.16
+    },
+    "تقنية": {
+      "total": 1,
+      "wins": 0,
+      "win_rate": 0.0,
+      "avg_pnl": -2.07
     }
   },
   "tired_stocks": []
