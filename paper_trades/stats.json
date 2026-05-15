@@ -1,14 +1,14 @@
 {
-  "computed_at": "2026-05-14T02:02:56.564259",
-  "total_trades": 24,
-  "active_trades": 8,
+  "computed_at": "2026-05-15T02:02:45.402372",
+  "total_trades": 25,
+  "active_trades": 9,
   "wins": 9,
-  "losses": 15,
-  "win_rate_pct": 37.5,
+  "losses": 16,
+  "win_rate_pct": 36.0,
   "avg_win_pct": 3.58,
-  "avg_loss_pct": -3.57,
-  "profit_factor": 0.6,
-  "total_pnl_pct": -21.31,
+  "avg_loss_pct": -3.65,
+  "profit_factor": 0.55,
+  "total_pnl_pct": -26.09,
   "best_trade": {
     "ticker": "2082",
     "pnl": 8.94,
@@ -33,10 +33,10 @@
       "avg_pnl": -2.12
     },
     "breakout": {
-      "total": 17,
+      "total": 18,
       "wins": 8,
-      "win_rate": 47.1,
-      "avg_pnl": -0.01
+      "win_rate": 44.4,
+      "avg_pnl": -0.27
     },
     "mean_reversion": {
       "total": 1,
@@ -71,10 +71,10 @@
       "avg_pnl": 0.48
     },
     "زراعة وأغذية": {
-      "total": 4,
+      "total": 5,
       "wins": 1,
-      "win_rate": 25.0,
-      "avg_pnl": -3.41
+      "win_rate": 20.0,
+      "avg_pnl": -3.68
     },
     "مرافق": {
       "total": 2,
@@ -113,5 +113,12 @@
       "avg_pnl": -2.07
     }
   },
-  "tired_stocks": []
+  "tired_stocks": [
+    {
+      "ticker": "2280",
+      "total": 3,
+      "wins": 0,
+      "win_rate": 0.0
+    }
+  ]
 }

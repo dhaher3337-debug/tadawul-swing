@@ -1,342 +1,172 @@
 {
-  "date": "2026-05-14",
+  "date": "2026-05-15",
   "candidates": [
     {
-      "ticker": "2223",
-      "close": 127.9,
-      "change": 3.98,
-      "score": 5.12,
-      "base_score": 9.85,
-      "ml_probability": 0.38,
-      "expected_value_pct": 2.72,
-      "risk_reward": 1.49,
-      "reasons": [
-        "MACD تقاطع صاعد",
-        "OBV صاعد",
-        "اختراق +4.0%",
-        "ADX قوي (35)",
-        "فوق سحابة إيشيموكو",
-        "قوة نسبية +21.0%",
-        "أسبوعي صاعد",
-        "إجماع 7 (+2.4)",
-        "MTF 3/3 صاعد",
-        "⚠️ إعلان أرباح غداً (2026-05-15)"
-      ],
-      "signals": [
-        "macd",
-        "obv",
-        "breakout",
-        "adx",
-        "ichimoku",
-        "relative_strength",
-        "weekly_trend"
-      ],
-      "sector": "بتروكيماويات",
-      "rsi": 71.3,
-      "adx": 35.2,
-      "mfi": 69.0,
-      "cmf": 0.0,
-      "stoch_rsi": 37.5,
-      "fib_pos": 0.91,
-      "rs_vs_tasi": 1.21,
-      "volume_ratio": 1.8,
-      "vwap_diff": 6.8,
-      "weekly_trend": "صاعد",
-      "supertrend_dir": -1,
-      "stop": 121.51,
-      "target1": 135.22,
-      "target2": 140.71,
-      "atr": 3.66,
-      "feature_snapshot": {
-        "rsi": 71.31047694192972,
-        "stoch_rsi_k": 37.50685459113201,
-        "macd_hist": 0.13194863376648058,
-        "bb_pct": 0.8903674788571747,
-        "bb_width": 0.23375509474806755,
-        "adx": 35.24891808449966,
-        "di_plus": 41.23130413070344,
-        "di_minus": 16.744878255654946,
-        "mfi": 69.04416844520817,
-        "cmf": 0,
-        "fib_pos": 0.9126640653422834,
-        "supertrend_dir": -1.0,
-        "weekly_trend": 1.0,
-        "rs_vs_tasi": 1.2095650738801251,
-        "vol_ratio": 1.8020239247541778,
-        "vwap_diff_pct": 6.769707902704977,
-        "dist_from_sma20_pct": 9.125038700682312,
-        "dist_from_sma50_pct": 18.882745295235313,
-        "obv_vs_ma_pct": 142.22131052323806
-      },
-      "mtf_aligned": 3,
-      "mtf_available": 3,
-      "mtf_multiplier": 1.3,
-      "mtf_daily_score": 0.8,
-      "mtf_h4_score": 0.802,
-      "mtf_h1_score": 0.7,
-      "news_sentiment": "no_news",
-      "news_score": 0,
-      "news_multiplier": 1.0,
-      "news_headlines": [],
-      "news_reason": "",
-      "earnings_multiplier": 0.4,
-      "earnings_message": "⚠️ إعلان أرباح غداً (2026-05-15)",
-      "power_score": 0,
-      "power_classification": "NONE",
-      "power_direction": "NONE",
-      "power_breakdown": {},
-      "power_emoji": "",
-      "power_breakout_level": 0.0,
-      "power_targets": {}
-    },
-    {
-      "ticker": "2380",
-      "close": 16.0,
-      "change": 4.58,
-      "score": 4.77,
-      "base_score": 9.17,
-      "ml_probability": 0.569,
-      "expected_value_pct": 4.63,
-      "risk_reward": 2.17,
+      "ticker": "8030",
+      "close": 14.57,
+      "change": 2.32,
+      "score": 3.63,
+      "base_score": 9.32,
+      "ml_probability": 0.058,
+      "expected_value_pct": 1.83,
+      "risk_reward": 1.46,
       "reasons": [
         "OBV صاعد",
-        "اختراق +4.6%",
-        "ADX قوي (48)",
+        "حجم 2.9×",
+        "اختراق +2.3%",
         "فوق سحابة إيشيموكو",
-        "قوة نسبية +54.4%",
+        "فيبو 61.8%",
         "أسبوعي صاعد",
         "إجماع 6 (+1.8)",
         "MTF 3/3 صاعد",
-        "⚠️ إعلان أرباح غداً (2026-05-15)"
-      ],
-      "signals": [
-        "obv",
-        "breakout",
-        "adx",
-        "ichimoku",
-        "relative_strength",
-        "weekly_trend"
-      ],
-      "sector": "بتروكيماويات",
-      "rsi": 75.9,
-      "adx": 48.0,
-      "mfi": 87.6,
-      "cmf": 0.0,
-      "stoch_rsi": 44.4,
-      "fib_pos": 0.98,
-      "rs_vs_tasi": 1.544,
-      "volume_ratio": 1.6,
-      "vwap_diff": 14.5,
-      "weekly_trend": "صاعد",
-      "supertrend_dir": -1,
-      "stop": 15.2,
-      "target1": 17.34,
-      "target2": 18.34,
-      "atr": 0.67,
-      "feature_snapshot": {
-        "rsi": 75.86246819654755,
-        "stoch_rsi_k": 44.41174970568886,
-        "macd_hist": 0.08225111365293292,
-        "bb_pct": 0.8744497247414758,
-        "bb_width": 0.5328757618538381,
-        "adx": 47.97125134364903,
-        "di_plus": 48.529526525963476,
-        "di_minus": 13.98154065084297,
-        "mfi": 87.56319101132573,
-        "cmf": 0,
-        "fib_pos": 0.9791665252436381,
-        "supertrend_dir": -1.0,
-        "weekly_trend": 1.0,
-        "rs_vs_tasi": 1.5436788847567213,
-        "vol_ratio": 1.5958358736419351,
-        "vwap_diff_pct": 14.480690300395583,
-        "dist_from_sma20_pct": 19.953518234757386,
-        "dist_from_sma50_pct": 46.1988300781179,
-        "obv_vs_ma_pct": 28.920564257529126
-      },
-      "mtf_aligned": 3,
-      "mtf_available": 3,
-      "mtf_multiplier": 1.3,
-      "mtf_daily_score": 0.9,
-      "mtf_h4_score": 0.9,
-      "mtf_h1_score": 0.8,
-      "news_sentiment": "no_news",
-      "news_score": 0,
-      "news_multiplier": 1.0,
-      "news_headlines": [],
-      "news_reason": "",
-      "earnings_multiplier": 0.4,
-      "earnings_message": "⚠️ إعلان أرباح غداً (2026-05-15)",
-      "power_score": 0,
-      "power_classification": "NONE",
-      "power_direction": "NONE",
-      "power_breakdown": {},
-      "power_emoji": "",
-      "power_breakout_level": 0.0,
-      "power_targets": {}
-    },
-    {
-      "ticker": "2250",
-      "close": 14.61,
-      "change": 2.1,
-      "score": 3.78,
-      "base_score": 8.6,
-      "ml_probability": 0.408,
-      "expected_value_pct": 2.03,
-      "risk_reward": 1.53,
-      "reasons": [
-        "MACD تقاطع صاعد",
-        "OBV صاعد",
-        "اختراق +2.1%",
-        "فوق سحابة إيشيموكو",
-        "قوة نسبية +8.8%",
-        "أسبوعي صاعد",
-        "إجماع 6 (+1.8)",
-        "MTF 2/3 صاعد",
-        "⚠️ إعلان أرباح غداً (2026-05-15)"
-      ],
-      "signals": [
-        "macd",
-        "obv",
-        "breakout",
-        "ichimoku",
-        "relative_strength",
-        "weekly_trend"
-      ],
-      "sector": "بتروكيماويات",
-      "rsi": 58.7,
-      "adx": 15.7,
-      "mfi": 71.2,
-      "cmf": 0.0,
-      "stoch_rsi": 53.0,
-      "fib_pos": 0.71,
-      "rs_vs_tasi": 1.088,
-      "volume_ratio": 0.9,
-      "vwap_diff": 1.4,
-      "weekly_trend": "صاعد",
-      "supertrend_dir": -1,
-      "stop": 13.88,
-      "target1": 15.47,
-      "target2": 16.12,
-      "atr": 0.43,
-      "feature_snapshot": {
-        "rsi": 58.659417746006284,
-        "stoch_rsi_k": 52.956506590654705,
-        "macd_hist": 0.002501062843368873,
-        "bb_pct": 0.719389216147752,
-        "bb_width": 0.16302608004415794,
-        "adx": 15.716064356524008,
-        "di_plus": 29.745636125734606,
-        "di_minus": 24.54523783637133,
-        "mfi": 71.20394882380765,
-        "cmf": 0,
-        "fib_pos": 0.7103173161490335,
-        "supertrend_dir": -1.0,
-        "weekly_trend": 1.0,
-        "rs_vs_tasi": 1.0881254706573753,
-        "vol_ratio": 0.8770300927319494,
-        "vwap_diff_pct": 1.442434167627423,
-        "dist_from_sma20_pct": 3.576616391252849,
-        "dist_from_sma50_pct": 8.015789357368622,
-        "obv_vs_ma_pct": 10.646148104273593
-      },
-      "mtf_aligned": 2,
-      "mtf_available": 3,
-      "mtf_multiplier": 1.1,
-      "mtf_daily_score": 1.0,
-      "mtf_h4_score": 0.044,
-      "mtf_h1_score": 0.513,
-      "news_sentiment": "no_news",
-      "news_score": 0,
-      "news_multiplier": 1.0,
-      "news_headlines": [],
-      "news_reason": "",
-      "earnings_multiplier": 0.4,
-      "earnings_message": "⚠️ إعلان أرباح غداً (2026-05-15)",
-      "power_score": 0,
-      "power_classification": "NONE",
-      "power_direction": "NONE",
-      "power_breakdown": {},
-      "power_emoji": "",
-      "power_breakout_level": 0.0,
-      "power_targets": {}
-    },
-    {
-      "ticker": "2110",
-      "close": 158.6,
-      "change": 3.32,
-      "score": 3.46,
-      "base_score": 6.66,
-      "ml_probability": 0.238,
-      "expected_value_pct": 1.19,
-      "risk_reward": 1.3,
-      "reasons": [
-        "OBV صاعد",
-        "حجم 2.0×",
-        "اختراق +3.3%",
-        "قوة نسبية +5.4%",
-        "أسبوعي صاعد",
-        "إجماع 5 (+1.2)",
-        "MTF 3/3 صاعد",
-        "⚠️ إعلان أرباح غداً (2026-05-15)"
+        "⚠️ إعلان أرباح اليوم (2026-05-15)"
       ],
       "signals": [
         "obv",
         "volume_surge",
         "breakout",
-        "relative_strength",
+        "ichimoku",
+        "fibonacci",
         "weekly_trend"
       ],
-      "sector": "بتروكيماويات",
-      "rsi": 56.6,
-      "adx": 14.4,
-      "mfi": 72.2,
+      "sector": "تأمين",
+      "rsi": 56.0,
+      "adx": 16.8,
+      "mfi": 68.5,
       "cmf": 0.0,
-      "stoch_rsi": 83.7,
-      "fib_pos": 0.86,
-      "rs_vs_tasi": 1.054,
-      "volume_ratio": 2.0,
-      "vwap_diff": 3.5,
+      "stoch_rsi": 60.4,
+      "fib_pos": 0.57,
+      "rs_vs_tasi": 1.03,
+      "volume_ratio": 2.9,
+      "vwap_diff": 0.4,
       "weekly_trend": "صاعد",
       "supertrend_dir": -1,
-      "stop": 150.69,
-      "target1": 166.51,
-      "target2": 172.44,
-      "atr": 3.95,
+      "stop": 13.84,
+      "target1": 15.39,
+      "target2": 16.01,
+      "atr": 0.41,
       "feature_snapshot": {
-        "rsi": 56.60139487381385,
-        "stoch_rsi_k": 83.65692662473514,
-        "macd_hist": 0.7080462032235066,
-        "bb_pct": 0.9975569362632501,
-        "bb_width": 0.06752017372628896,
-        "adx": 14.446217089060761,
-        "di_plus": 24.42912011512826,
-        "di_minus": 16.898050626366707,
-        "mfi": 72.151385409662,
+        "rsi": 55.98763331525582,
+        "stoch_rsi_k": 60.40027736952834,
+        "macd_hist": 0.0490432756697547,
+        "bb_pct": 0.826442224613184,
+        "bb_width": 0.07583984027795854,
+        "adx": 16.750247892990636,
+        "di_plus": 34.58215257437326,
+        "di_minus": 15.749886248386037,
+        "mfi": 68.49765722746838,
         "cmf": 0,
-        "fib_pos": 0.8550724958176553,
+        "fib_pos": 0.5714285714285714,
         "supertrend_dir": -1.0,
         "weekly_trend": 1.0,
-        "rs_vs_tasi": 1.0536242076326323,
-        "vol_ratio": 2.025744539234615,
-        "vwap_diff_pct": 3.4631932330593114,
-        "dist_from_sma20_pct": 3.3595130775214734,
-        "dist_from_sma50_pct": 1.1466722707746917,
-        "obv_vs_ma_pct": 7.874340277037099
+        "rs_vs_tasi": 1.0296137426937066,
+        "vol_ratio": 2.9151118574082715,
+        "vwap_diff_pct": 0.37978887722337656,
+        "dist_from_sma20_pct": 2.475732617464533,
+        "dist_from_sma50_pct": 2.5262099142435797,
+        "obv_vs_ma_pct": 312.3190200366486
       },
       "mtf_aligned": 3,
       "mtf_available": 3,
       "mtf_multiplier": 1.3,
-      "mtf_daily_score": 0.874,
-      "mtf_h4_score": 0.704,
-      "mtf_h1_score": 0.584,
+      "mtf_daily_score": 0.616,
+      "mtf_h4_score": 0.687,
+      "mtf_h1_score": 0.462,
       "news_sentiment": "no_news",
       "news_score": 0,
       "news_multiplier": 1.0,
       "news_headlines": [],
       "news_reason": "",
-      "earnings_multiplier": 0.4,
-      "earnings_message": "⚠️ إعلان أرباح غداً (2026-05-15)",
+      "earnings_multiplier": 0.3,
+      "earnings_message": "⚠️ إعلان أرباح اليوم (2026-05-15)",
+      "power_score": 0,
+      "power_classification": "NONE",
+      "power_direction": "NONE",
+      "power_breakdown": {},
+      "power_emoji": "",
+      "power_breakout_level": 0.0,
+      "power_targets": {}
+    },
+    {
+      "ticker": "2170",
+      "close": 28.88,
+      "change": 0.84,
+      "score": 3.0,
+      "base_score": 7.68,
+      "ml_probability": 0.072,
+      "expected_value_pct": 3.49,
+      "risk_reward": 1.77,
+      "reasons": [
+        "OBV صاعد",
+        "نفط +1.3%",
+        "ADX قوي (28)",
+        "فوق سحابة إيشيموكو",
+        "فيبو 38.2%",
+        "قوة نسبية +10.6%",
+        "أسبوعي صاعد",
+        "إجماع 7 (+2.4)",
+        "MTF 3/3 صاعد",
+        "⚠️ إعلان أرباح اليوم (2026-05-15)"
+      ],
+      "signals": [
+        "obv",
+        "oil_correlation",
+        "adx",
+        "ichimoku",
+        "fibonacci",
+        "relative_strength",
+        "weekly_trend"
+      ],
+      "sector": "بتروكيماويات",
+      "rsi": 53.9,
+      "adx": 28.4,
+      "mfi": 72.1,
+      "cmf": 0.0,
+      "stoch_rsi": 22.0,
+      "fib_pos": 0.43,
+      "rs_vs_tasi": 1.106,
+      "volume_ratio": 1.0,
+      "vwap_diff": 2.0,
+      "weekly_trend": "صاعد",
+      "supertrend_dir": -1,
+      "stop": 27.44,
+      "target1": 30.84,
+      "target2": 32.3,
+      "atr": 0.98,
+      "feature_snapshot": {
+        "rsi": 53.850564582487976,
+        "stoch_rsi_k": 22.04103371794236,
+        "macd_hist": -0.14242534164390697,
+        "bb_pct": 0.5561839243201492,
+        "bb_width": 0.17928125990037877,
+        "adx": 28.39622883713882,
+        "di_plus": 30.824958663705296,
+        "di_minus": 23.334300744681048,
+        "mfi": 72.13467188505084,
+        "cmf": 0,
+        "fib_pos": 0.43181813255814055,
+        "supertrend_dir": -1.0,
+        "weekly_trend": 1.0,
+        "rs_vs_tasi": 1.105958457069296,
+        "vol_ratio": 1.0334786374926153,
+        "vwap_diff_pct": 1.9769888374855473,
+        "dist_from_sma20_pct": 1.007272473826387,
+        "dist_from_sma50_pct": 5.41376816991018,
+        "obv_vs_ma_pct": 542.5330414759444
+      },
+      "mtf_aligned": 3,
+      "mtf_available": 3,
+      "mtf_multiplier": 1.3,
+      "mtf_daily_score": 0.224,
+      "mtf_h4_score": 0.52,
+      "mtf_h1_score": 0.465,
+      "news_sentiment": "no_news",
+      "news_score": 0,
+      "news_multiplier": 1.0,
+      "news_headlines": [],
+      "news_reason": "",
+      "earnings_multiplier": 0.3,
+      "earnings_message": "⚠️ إعلان أرباح اليوم (2026-05-15)",
       "power_score": 0,
       "power_classification": "NONE",
       "power_direction": "NONE",
@@ -348,679 +178,743 @@
   ],
   "gainers": [
     {
-      "ticker": "2190",
-      "close": 36.0,
-      "change": 8.7,
-      "sector": "نقل"
-    },
-    {
-      "ticker": "2380",
-      "close": 16.0,
-      "change": 4.58,
-      "sector": "بتروكيماويات"
-    },
-    {
-      "ticker": "8180",
-      "close": 11.0,
-      "change": 4.27,
-      "sector": "تأمين"
-    },
-    {
-      "ticker": "5110",
-      "close": 17.49,
-      "change": 4.05,
-      "sector": "مرافق"
-    },
-    {
-      "ticker": "2223",
-      "close": 127.9,
-      "change": 3.98,
-      "sector": "بتروكيماويات"
-    },
-    {
-      "ticker": "2110",
-      "close": 158.6,
-      "change": 3.32,
-      "sector": "بتروكيماويات"
-    },
-    {
-      "ticker": "4020",
-      "close": 15.91,
-      "change": 3.18,
-      "sector": "تجزئة"
-    },
-    {
-      "ticker": "4327",
-      "close": 56.7,
-      "change": 3.09,
-      "sector": "عقار"
-    },
-    {
-      "ticker": "2250",
-      "close": 14.61,
-      "change": 2.1,
-      "sector": "بتروكيماويات"
-    },
-    {
-      "ticker": "4011",
-      "close": 11.45,
-      "change": 2.05,
-      "sector": "تجزئة"
-    },
-    {
-      "ticker": "2170",
-      "close": 28.64,
-      "change": 1.7,
-      "sector": "بتروكيماويات"
-    },
-    {
-      "ticker": "4084",
-      "close": 23.35,
-      "change": 1.65,
+      "ticker": "4083",
+      "close": 44.0,
+      "change": 2.8,
       "sector": "خدمات مالية"
     },
     {
-      "ticker": "2083",
-      "close": 39.74,
-      "change": 1.48,
-      "sector": "مرافق"
+      "ticker": "4162",
+      "close": 60.25,
+      "change": 2.55,
+      "sector": "تجزئة"
     },
     {
-      "ticker": "1833",
-      "close": 94.4,
-      "change": 1.4,
-      "sector": "فنادق"
+      "ticker": "4020",
+      "close": 16.3,
+      "change": 2.45,
+      "sector": "تجزئة"
+    },
+    {
+      "ticker": "8030",
+      "close": 14.57,
+      "change": 2.32,
+      "sector": "تأمين"
+    },
+    {
+      "ticker": "4264",
+      "close": 51.65,
+      "change": 2.18,
+      "sector": "نقل"
+    },
+    {
+      "ticker": "7200",
+      "close": 192.0,
+      "change": 2.13,
+      "sector": "تقنية"
     },
     {
       "ticker": "4100",
-      "close": 78.05,
-      "change": 1.36,
+      "close": 79.7,
+      "change": 2.11,
       "sector": "عقار"
+    },
+    {
+      "ticker": "2050",
+      "close": 26.5,
+      "change": 2.0,
+      "sector": "بتروكيماويات"
+    },
+    {
+      "ticker": "2287",
+      "close": 26.58,
+      "change": 2.0,
+      "sector": "زراعة وأغذية"
+    },
+    {
+      "ticker": "4016",
+      "close": 59.45,
+      "change": 1.89,
+      "sector": "رعاية صحية"
+    },
+    {
+      "ticker": "4291",
+      "close": 119.8,
+      "change": 1.87,
+      "sector": "عقار"
+    },
+    {
+      "ticker": "4292",
+      "close": 52.5,
+      "change": 1.84,
+      "sector": "عقار"
+    },
+    {
+      "ticker": "8010",
+      "close": 136.8,
+      "change": 1.79,
+      "sector": "تأمين"
+    },
+    {
+      "ticker": "8120",
+      "close": 11.4,
+      "change": 1.69,
+      "sector": "تأمين"
+    },
+    {
+      "ticker": "2120",
+      "close": 16.89,
+      "change": 1.62,
+      "sector": "صناعية"
     }
   ],
   "macro": {
-    "oil": "$100.97",
-    "oil_chg": -1.18,
-    "gold": "$4699.10",
-    "gold_chg": 0.46,
-    "sp500": "7,444",
-    "sp500_chg": 0.58,
-    "vix": "17.9",
-    "vix_level": 17.9,
-    "us10y": "4.48%",
-    "us10y_chg": 0.4,
-    "dxy": "98.47",
-    "dxy_chg": 0.18,
-    "tasi_index": "11,020",
-    "tasi_chg": -0.17,
+    "oil": "$102.29",
+    "oil_chg": 1.26,
+    "gold": "$4620.40",
+    "gold_chg": -1.65,
+    "sp500": "7,501",
+    "sp500_chg": 0.77,
+    "vix": "17.3",
+    "vix_level": 17.3,
+    "us10y": "4.46%",
+    "us10y_chg": -0.45,
+    "dxy": "99.06",
+    "dxy_chg": 0.59,
+    "tasi_index": "10,995",
+    "tasi_chg": -0.22,
     "fetch_errors": []
   },
   "sector_summary": {
     "بنوك": {
       "count": 10,
-      "total_change": 0.7126425721910519,
-      "gainers": 5,
-      "avg_change": 0.07,
-      "pct_gainers": 50.0
+      "total_change": 0.48688616006369634,
+      "gainers": 6,
+      "avg_change": 0.05,
+      "pct_gainers": 60.0
     },
     "خدمات مالية": {
       "count": 12,
-      "total_change": -13.24570028719809,
-      "gainers": 3,
-      "avg_change": -1.1,
-      "pct_gainers": 25.0
+      "total_change": -8.251455712636925,
+      "gainers": 5,
+      "avg_change": -0.69,
+      "pct_gainers": 41.7
     },
     "بتروكيماويات": {
       "count": 34,
-      "total_change": -0.34876191361498954,
-      "gainers": 14,
-      "avg_change": -0.01,
-      "pct_gainers": 41.2
+      "total_change": -26.94625601957797,
+      "gainers": 4,
+      "avg_change": -0.79,
+      "pct_gainers": 11.8
     },
     "فنادق": {
       "count": 3,
-      "total_change": 0.1630213505272009,
-      "gainers": 2,
-      "avg_change": 0.05,
-      "pct_gainers": 66.7
+      "total_change": -2.1600820473217484,
+      "gainers": 0,
+      "avg_change": -0.72,
+      "pct_gainers": 0.0
     },
     "صناعية": {
       "count": 11,
-      "total_change": -8.075493019975472,
-      "gainers": 1,
-      "avg_change": -0.73,
-      "pct_gainers": 9.1
+      "total_change": -2.0252872471053367,
+      "gainers": 6,
+      "avg_change": -0.18,
+      "pct_gainers": 54.5
     },
     "طاقة": {
       "count": 4,
-      "total_change": -0.2667351356842148,
+      "total_change": 1.3448662371675109,
       "gainers": 2,
-      "avg_change": -0.07,
+      "avg_change": 0.34,
       "pct_gainers": 50.0
     },
     "مرافق": {
       "count": 6,
-      "total_change": 1.2991707185051395,
-      "gainers": 2,
-      "avg_change": 0.22,
-      "pct_gainers": 33.3
+      "total_change": -6.875441593073854,
+      "gainers": 0,
+      "avg_change": -1.15,
+      "pct_gainers": 0.0
     },
     "زراعة وأغذية": {
       "count": 22,
-      "total_change": -31.300590640504275,
-      "gainers": 4,
-      "avg_change": -1.42,
-      "pct_gainers": 18.2
+      "total_change": -12.016782696135344,
+      "gainers": 5,
+      "avg_change": -0.55,
+      "pct_gainers": 22.7
     },
     "نقل": {
       "count": 10,
-      "total_change": 1.5771930108608407,
-      "gainers": 3,
-      "avg_change": 0.16,
-      "pct_gainers": 30.0
+      "total_change": -1.135871931430098,
+      "gainers": 2,
+      "avg_change": -0.11,
+      "pct_gainers": 20.0
     },
     "أسمنت": {
       "count": 10,
-      "total_change": -2.959431829112757,
-      "gainers": 4,
-      "avg_change": -0.3,
-      "pct_gainers": 40.0
+      "total_change": -4.305012360470491,
+      "gainers": 3,
+      "avg_change": -0.43,
+      "pct_gainers": 30.0
     },
     "رعاية صحية": {
       "count": 12,
-      "total_change": -12.616086307426723,
-      "gainers": 3,
-      "avg_change": -1.05,
-      "pct_gainers": 25.0
+      "total_change": 3.1250762863243295,
+      "gainers": 6,
+      "avg_change": 0.26,
+      "pct_gainers": 50.0
     },
     "تجزئة": {
       "count": 17,
-      "total_change": -5.224081374797882,
-      "gainers": 4,
-      "avg_change": -0.31,
-      "pct_gainers": 23.5
+      "total_change": -5.454814536938276,
+      "gainers": 6,
+      "avg_change": -0.32,
+      "pct_gainers": 35.3
     },
     "إعلام": {
       "count": 4,
-      "total_change": -3.6103676226654735,
-      "gainers": 2,
-      "avg_change": -0.9,
-      "pct_gainers": 50.0
+      "total_change": -0.7815356457976061,
+      "gainers": 1,
+      "avg_change": -0.2,
+      "pct_gainers": 25.0
     },
     "عقار": {
       "count": 18,
-      "total_change": -13.38790466766923,
-      "gainers": 4,
-      "avg_change": -0.74,
-      "pct_gainers": 22.2
+      "total_change": -11.974193634459288,
+      "gainers": 8,
+      "avg_change": -0.67,
+      "pct_gainers": 44.4
     },
     "اتصالات": {
       "count": 4,
-      "total_change": 1.587319168874542,
+      "total_change": -0.30958323572291147,
       "gainers": 3,
-      "avg_change": 0.4,
+      "avg_change": -0.08,
       "pct_gainers": 75.0
     },
     "تقنية": {
       "count": 4,
-      "total_change": -2.4063209164051065,
+      "total_change": 0.2395878062184289,
       "gainers": 2,
-      "avg_change": -0.6,
+      "avg_change": 0.06,
       "pct_gainers": 50.0
     },
     "تأمين": {
       "count": 14,
-      "total_change": 1.1030321071369003,
-      "gainers": 6,
-      "avg_change": 0.08,
-      "pct_gainers": 42.9
+      "total_change": 1.2764827737863145,
+      "gainers": 7,
+      "avg_change": 0.09,
+      "pct_gainers": 50.0
     }
   },
   "intermarket": {
     "highly_correlated_pairs": [
       [
+        "2340.SR",
         "4006.SR",
-        "4143.SR",
         0.865
       ],
       [
         "2220.SR",
         "6013.SR",
-        0.863
+        0.86
+      ],
+      [
+        "4006.SR",
+        "4143.SR",
+        0.857
       ],
       [
         "2285.SR",
         "8250.SR",
-        0.853
-      ],
-      [
-        "2340.SR",
-        "4006.SR",
         0.85
-      ],
-      [
-        "2360.SR",
-        "4210.SR",
-        0.844
       ],
       [
         "4210.SR",
         "6050.SR",
-        0.842
+        0.839
+      ],
+      [
+        "2140.SR",
+        "2220.SR",
+        0.835
+      ],
+      [
+        "2060.SR",
+        "2330.SR",
+        0.834
+      ],
+      [
+        "2360.SR",
+        "4210.SR",
+        0.834
+      ],
+      [
+        "4006.SR",
+        "4141.SR",
+        0.829
       ],
       [
         "1120.SR",
         "2180.SR",
-        0.841
-      ],
-      [
-        "4014.SR",
-        "4210.SR",
-        0.84
-      ],
-      [
-        "2340.SR",
-        "6004.SR",
-        0.837
-      ],
-      [
-        "4072.SR",
-        "4264.SR",
-        0.834
+        0.828
       ]
     ],
     "divergent_pairs": [
       {
-        "leader": "4084.SR",
-        "laggard": "6060.SR",
+        "leader": "8030.SR",
+        "laggard": "4150.SR",
         "corr": 0.76,
-        "leader_chg": 1.65,
-        "laggard_chg": -1.2,
-        "spread": 2.85
+        "leader_chg": 2.32,
+        "laggard_chg": -1.47,
+        "spread": 3.79
       },
       {
-        "leader": "4011.SR",
-        "laggard": "2140.SR",
+        "leader": "4264.SR",
+        "laggard": "1302.SR",
+        "corr": 0.72,
+        "leader_chg": 2.18,
+        "laggard_chg": -1.04,
+        "spread": 3.22
+      },
+      {
+        "leader": "8030.SR",
+        "laggard": "4160.SR",
         "corr": 0.71,
-        "leader_chg": 2.05,
-        "laggard_chg": -0.73,
-        "spread": 2.78
+        "leader_chg": 2.32,
+        "laggard_chg": -0.9,
+        "spread": 3.22
       },
       {
-        "leader": "4084.SR",
-        "laggard": "2120.SR",
-        "corr": 0.73,
-        "leader_chg": 1.65,
-        "laggard_chg": -0.95,
-        "spread": 2.61
+        "leader": "8030.SR",
+        "laggard": "2360.SR",
+        "corr": 0.74,
+        "leader_chg": 2.32,
+        "laggard_chg": -0.86,
+        "spread": 3.18
       },
       {
-        "leader": "4084.SR",
+        "leader": "8030.SR",
+        "laggard": "2340.SR",
+        "corr": 0.77,
+        "leader_chg": 2.32,
+        "laggard_chg": -0.78,
+        "spread": 3.1
+      },
+      {
+        "leader": "8030.SR",
+        "laggard": "4006.SR",
+        "corr": 0.71,
+        "leader_chg": 2.32,
+        "laggard_chg": -0.54,
+        "spread": 2.86
+      },
+      {
+        "leader": "2120.SR",
+        "laggard": "6060.SR",
+        "corr": 0.74,
+        "leader_chg": 1.62,
+        "laggard_chg": -1.13,
+        "spread": 2.75
+      },
+      {
+        "leader": "2120.SR",
+        "laggard": "4014.SR",
+        "corr": 0.71,
+        "leader_chg": 1.62,
+        "laggard_chg": -1.05,
+        "spread": 2.67
+      },
+      {
+        "leader": "4264.SR",
+        "laggard": "4031.SR",
+        "corr": 0.74,
+        "leader_chg": 2.18,
+        "laggard_chg": -0.45,
+        "spread": 2.62
+      },
+      {
+        "leader": "8030.SR",
+        "laggard": "4263.SR",
+        "corr": 0.71,
+        "leader_chg": 2.32,
+        "laggard_chg": -0.24,
+        "spread": 2.56
+      },
+      {
+        "leader": "4264.SR",
+        "laggard": "4072.SR",
+        "corr": 0.83,
+        "leader_chg": 2.18,
+        "laggard_chg": -0.24,
+        "spread": 2.42
+      },
+      {
+        "leader": "8030.SR",
         "laggard": "2140.SR",
-        "corr": 0.7,
-        "leader_chg": 1.65,
-        "laggard_chg": -0.73,
+        "corr": 0.79,
+        "leader_chg": 2.32,
+        "laggard_chg": -0.09,
+        "spread": 2.41
+      },
+      {
+        "leader": "8030.SR",
+        "laggard": "6050.SR",
+        "corr": 0.76,
+        "leader_chg": 2.32,
+        "laggard_chg": -0.1,
+        "spread": 2.41
+      },
+      {
+        "leader": "4264.SR",
+        "laggard": "8250.SR",
+        "corr": 0.78,
+        "leader_chg": 2.18,
+        "laggard_chg": -0.21,
         "spread": 2.39
       },
       {
-        "leader": "4084.SR",
-        "laggard": "4194.SR",
-        "corr": 0.78,
-        "leader_chg": 1.65,
-        "laggard_chg": -0.24,
-        "spread": 1.89
-      },
-      {
-        "leader": "4084.SR",
-        "laggard": "8012.SR",
-        "corr": 0.73,
-        "leader_chg": 1.65,
-        "laggard_chg": -0.09,
-        "spread": 1.74
-      },
-      {
-        "leader": "4084.SR",
-        "laggard": "1830.SR",
-        "corr": 0.7,
-        "leader_chg": 1.65,
-        "laggard_chg": 0.06,
-        "spread": 1.59
+        "leader": "4264.SR",
+        "laggard": "6050.SR",
+        "corr": 0.76,
+        "leader_chg": 2.18,
+        "laggard_chg": -0.1,
+        "spread": 2.27
       }
     ],
     "sector_flows": {
       "بنوك": {
-        "net_flow_5d": -2600.15,
-        "avg_change_5d": -0.85,
+        "net_flow_5d": -1986.76,
+        "avg_change_5d": -1.73,
         "momentum_trend": "تباطؤ قوي",
         "leader": "1080",
-        "leader_change": 0.9,
-        "laggard": "1010",
-        "laggard_change": -2.35,
+        "leader_change": -0.05,
+        "laggard": "1180",
+        "laggard_change": -3.69,
         "stock_count": 10
       },
       "خدمات مالية": {
-        "net_flow_5d": 263.93,
-        "avg_change_5d": -1.64,
+        "net_flow_5d": -131.44,
+        "avg_change_5d": -2.98,
         "momentum_trend": "تباطؤ قوي",
         "leader": "4084",
-        "leader_change": 3.78,
-        "laggard": "4083",
-        "laggard_change": -6.19,
+        "leader_change": 0.84,
+        "laggard": "1182",
+        "laggard_change": -8.14,
         "stock_count": 12
       },
       "بتروكيماويات": {
-        "net_flow_5d": 1668.98,
-        "avg_change_5d": -0.02,
-        "momentum_trend": "تسارع قوي",
-        "leader": "2370",
-        "leader_change": 14.71,
-        "laggard": "2240",
-        "laggard_change": -9.6,
+        "net_flow_5d": 496.79,
+        "avg_change_5d": -0.08,
+        "momentum_trend": "تباطؤ قوي",
+        "leader": "2380",
+        "leader_change": 12.92,
+        "laggard": "2040",
+        "laggard_change": -6.54,
         "stock_count": 34
       },
       "فنادق": {
-        "net_flow_5d": -8.58,
-        "avg_change_5d": 3.81,
+        "net_flow_5d": -41.89,
+        "avg_change_5d": 2.09,
         "momentum_trend": "تباطؤ قوي",
-        "leader": "1833",
-        "leader_change": 7.64,
+        "leader": "1810",
+        "leader_change": 3.31,
         "laggard": "1830",
-        "laggard_change": 0.68,
+        "laggard_change": -0.31,
         "stock_count": 3
       },
       "صناعية": {
-        "net_flow_5d": -108.59,
-        "avg_change_5d": -0.83,
+        "net_flow_5d": 8.89,
+        "avg_change_5d": -1.24,
         "momentum_trend": "تباطؤ قوي",
-        "leader": "2130",
-        "leader_change": 7.77,
+        "leader": "2120",
+        "leader_change": 4.39,
         "laggard": "4145",
-        "laggard_change": -6.98,
+        "laggard_change": -10.25,
         "stock_count": 11
       },
       "طاقة": {
-        "net_flow_5d": 2044.45,
-        "avg_change_5d": -0.57,
-        "momentum_trend": "تسارع قوي",
+        "net_flow_5d": 1337.37,
+        "avg_change_5d": 0.04,
+        "momentum_trend": "تباطؤ",
         "leader": "2222",
-        "leader_change": 2.65,
+        "leader_change": 1.02,
         "laggard": "2381",
-        "laggard_change": -3.9,
+        "laggard_change": -0.8,
         "stock_count": 4
       },
       "مرافق": {
-        "net_flow_5d": 1013.74,
-        "avg_change_5d": -0.65,
-        "momentum_trend": "تباطؤ",
-        "leader": "5110",
-        "leader_change": 3.8,
-        "laggard": "2081",
-        "laggard_change": -5.41,
+        "net_flow_5d": 327.43,
+        "avg_change_5d": -0.18,
+        "momentum_trend": "تباطؤ قوي",
+        "leader": "2083",
+        "leader_change": 3.99,
+        "laggard": "2082",
+        "laggard_change": -4.27,
         "stock_count": 6
       },
       "زراعة وأغذية": {
-        "net_flow_5d": 120.24,
-        "avg_change_5d": -0.97,
-        "momentum_trend": "تسارع قوي",
-        "leader": "6010",
-        "leader_change": 8.14,
+        "net_flow_5d": 211.2,
+        "avg_change_5d": -1.68,
+        "momentum_trend": "تباطؤ قوي",
+        "leader": "2280",
+        "leader_change": 5.35,
         "laggard": "6012",
-        "laggard_change": -12.4,
+        "laggard_change": -13.66,
         "stock_count": 22
       },
       "نقل": {
-        "net_flow_5d": 0.09,
-        "avg_change_5d": -2.65,
-        "momentum_trend": "مستقر",
+        "net_flow_5d": -45.82,
+        "avg_change_5d": -0.85,
+        "momentum_trend": "تباطؤ قوي",
         "leader": "2190",
-        "leader_change": 2.33,
+        "leader_change": 8.75,
         "laggard": "4260",
-        "laggard_change": -6.63,
+        "laggard_change": -6.84,
         "stock_count": 10
       },
       "أسمنت": {
-        "net_flow_5d": 28.97,
-        "avg_change_5d": -0.06,
+        "net_flow_5d": -56.42,
+        "avg_change_5d": -1.44,
         "momentum_trend": "تباطؤ قوي",
         "leader": "3060",
-        "leader_change": 7.52,
+        "leader_change": 2.84,
         "laggard": "3050",
-        "laggard_change": -3.41,
+        "laggard_change": -5.16,
         "stock_count": 10
       },
       "رعاية صحية": {
-        "net_flow_5d": -299.38,
-        "avg_change_5d": -3.41,
+        "net_flow_5d": -488.8,
+        "avg_change_5d": -2.51,
         "momentum_trend": "تباطؤ قوي",
         "leader": "4007",
-        "leader_change": 2.41,
-        "laggard": "4005",
-        "laggard_change": -15.27,
+        "leader_change": 3.81,
+        "laggard": "4018",
+        "laggard_change": -6.18,
         "stock_count": 12
       },
       "تجزئة": {
-        "net_flow_5d": 60.92,
-        "avg_change_5d": -1.44,
-        "momentum_trend": "تباطؤ قوي",
+        "net_flow_5d": 75.47,
+        "avg_change_5d": -2.05,
+        "momentum_trend": "تباطؤ",
         "leader": "4020",
-        "leader_change": 8.75,
+        "leader_change": 11.8,
         "laggard": "4240",
-        "laggard_change": -9.91,
+        "laggard_change": -8.41,
         "stock_count": 17
       },
       "إعلام": {
-        "net_flow_5d": -165.94,
-        "avg_change_5d": -4.2,
+        "net_flow_5d": -127.24,
+        "avg_change_5d": -4.17,
         "momentum_trend": "تباطؤ قوي",
         "leader": "4070",
-        "leader_change": -0.77,
+        "leader_change": -1.04,
         "laggard": "4071",
-        "laggard_change": -8.02,
+        "laggard_change": -9.36,
         "stock_count": 4
       },
       "عقار": {
-        "net_flow_5d": -427.37,
-        "avg_change_5d": -0.59,
+        "net_flow_5d": -262.72,
+        "avg_change_5d": -1.9,
         "momentum_trend": "تباطؤ قوي",
         "leader": "4327",
-        "leader_change": 5.59,
-        "laggard": "4090",
-        "laggard_change": -3.76,
+        "leader_change": 5.0,
+        "laggard": "4220",
+        "laggard_change": -8.89,
         "stock_count": 18
       },
       "اتصالات": {
-        "net_flow_5d": 94.84,
-        "avg_change_5d": 0.13,
+        "net_flow_5d": 233.77,
+        "avg_change_5d": -0.67,
         "momentum_trend": "تباطؤ قوي",
-        "leader": "7040",
-        "leader_change": 0.52,
+        "leader": "7010",
+        "leader_change": 0.42,
         "laggard": "7020",
-        "laggard_change": -0.31,
+        "laggard_change": -1.84,
         "stock_count": 4
       },
       "تقنية": {
-        "net_flow_5d": 284.68,
-        "avg_change_5d": 0.4,
+        "net_flow_5d": 261.6,
+        "avg_change_5d": -1.21,
         "momentum_trend": "تسارع قوي",
-        "leader": "7203",
-        "leader_change": 3.42,
+        "leader": "7200",
+        "leader_change": 2.56,
         "laggard": "7211",
-        "laggard_change": -3.21,
+        "laggard_change": -3.23,
         "stock_count": 4
       },
       "تأمين": {
-        "net_flow_5d": -179.78,
-        "avg_change_5d": -1.18,
+        "net_flow_5d": -113.37,
+        "avg_change_5d": -1.15,
         "momentum_trend": "تباطؤ قوي",
         "leader": "8313",
-        "leader_change": 3.17,
+        "leader_change": 3.79,
         "laggard": "8010",
-        "laggard_change": -5.22,
+        "laggard_change": -4.34,
         "stock_count": 14
       }
     },
     "leader_laggard": {
       "بنوك": {
-        "leader": "1080",
-        "leader_change": 0.43,
-        "laggard": "1180",
-        "laggard_change": -3.29,
+        "leader": "1060",
+        "leader_change": 0.59,
+        "laggard": "1020",
+        "laggard_change": -2.33,
         "catch_up_opportunity": false,
-        "spread": 3.72
+        "spread": 2.92
       },
       "خدمات مالية": {
         "leader": "4084",
-        "leader_change": 3.78,
+        "leader_change": 0.4,
         "laggard": "1213",
-        "laggard_change": -6.35,
-        "catch_up_opportunity": true,
-        "spread": 10.13
+        "laggard_change": -7.01,
+        "catch_up_opportunity": false,
+        "spread": 7.41
       },
       "بتروكيماويات": {
-        "leader": "2370",
-        "leader_change": 13.26,
+        "leader": "2380",
+        "leader_change": 8.33,
         "laggard": "2040",
-        "laggard_change": -5.82,
+        "laggard_change": -6.29,
         "catch_up_opportunity": true,
-        "spread": 19.07
+        "spread": 14.62
       },
       "فنادق": {
         "leader": "1833",
-        "leader_change": 4.37,
-        "laggard": "1830",
-        "laggard_change": 0.37,
+        "leader_change": 0.59,
+        "laggard": "1810",
+        "laggard_change": -2.3,
         "catch_up_opportunity": false,
-        "spread": 4.0
+        "spread": 2.89
       },
       "صناعية": {
-        "leader": "2130",
-        "leader_change": 5.56,
+        "leader": "2120",
+        "leader_change": 1.56,
         "laggard": "4145",
-        "laggard_change": -7.83,
-        "catch_up_opportunity": true,
-        "spread": 13.4
+        "laggard_change": -11.21,
+        "catch_up_opportunity": false,
+        "spread": 12.77
       },
       "طاقة": {
         "leader": "2222",
-        "leader_change": 1.82,
+        "leader_change": 0.22,
         "laggard": "2381",
-        "laggard_change": -2.1,
+        "laggard_change": -0.91,
         "catch_up_opportunity": false,
-        "spread": 3.92
+        "spread": 1.12
       },
       "مرافق": {
-        "leader": "5110",
-        "leader_change": 5.55,
-        "laggard": "2081",
-        "laggard_change": -2.46,
-        "catch_up_opportunity": true,
-        "spread": 8.01
+        "leader": "2083",
+        "leader_change": 1.38,
+        "laggard": "2082",
+        "laggard_change": -11.36,
+        "catch_up_opportunity": false,
+        "spread": 12.74
       },
       "زراعة وأغذية": {
-        "leader": "6010",
-        "leader_change": 6.32,
+        "leader": "2287",
+        "leader_change": 2.39,
         "laggard": "6012",
-        "laggard_change": -10.37,
-        "catch_up_opportunity": true,
-        "spread": 16.68
+        "laggard_change": -12.05,
+        "catch_up_opportunity": false,
+        "spread": 14.44
       },
       "نقل": {
         "leader": "2190",
-        "leader_change": 9.42,
+        "leader_change": 8.16,
         "laggard": "4260",
-        "laggard_change": -4.52,
+        "laggard_change": -7.68,
         "catch_up_opportunity": true,
-        "spread": 13.94
+        "spread": 15.84
       },
       "أسمنت": {
-        "leader": "3060",
-        "leader_change": 2.45,
+        "leader": "3005",
+        "leader_change": 1.6,
         "laggard": "3050",
-        "laggard_change": -4.32,
+        "laggard_change": -3.85,
         "catch_up_opportunity": false,
-        "spread": 6.77
+        "spread": 5.46
       },
       "رعاية صحية": {
-        "leader": "4007",
-        "leader_change": 3.49,
-        "laggard": "4005",
-        "laggard_change": -5.91,
-        "catch_up_opportunity": true,
-        "spread": 9.4
+        "leader": "4004",
+        "leader_change": 1.07,
+        "laggard": "4018",
+        "laggard_change": -6.18,
+        "catch_up_opportunity": false,
+        "spread": 7.25
       },
       "تجزئة": {
         "leader": "4020",
-        "leader_change": 9.12,
+        "leader_change": 12.34,
         "laggard": "4240",
-        "laggard_change": -6.32,
+        "laggard_change": -5.7,
         "catch_up_opportunity": true,
-        "spread": 15.45
+        "spread": 18.04
       },
       "إعلام": {
         "leader": "4070",
-        "leader_change": -0.97,
+        "leader_change": -0.07,
         "laggard": "4071",
-        "laggard_change": -7.94,
+        "laggard_change": -8.93,
         "catch_up_opportunity": false,
-        "spread": 6.96
+        "spread": 8.86
       },
       "عقار": {
         "leader": "4327",
-        "leader_change": 5.1,
-        "laggard": "4090",
-        "laggard_change": -5.97,
+        "leader_change": 3.85,
+        "laggard": "4220",
+        "laggard_change": -7.37,
         "catch_up_opportunity": true,
-        "spread": 11.07
+        "spread": 11.22
       },
       "اتصالات": {
         "leader": "7010",
-        "leader_change": 0.28,
-        "laggard": "7020",
-        "laggard_change": -2.07,
+        "leader_change": -0.32,
+        "laggard": "7040",
+        "laggard_change": -2.1,
         "catch_up_opportunity": false,
-        "spread": 2.35
+        "spread": 1.77
       },
       "تقنية": {
         "leader": "7200",
-        "leader_change": 0.43,
+        "leader_change": 2.13,
         "laggard": "7211",
-        "laggard_change": -2.89,
+        "laggard_change": -3.8,
         "catch_up_opportunity": false,
-        "spread": 3.31
+        "spread": 5.93
       },
       "تأمين": {
-        "leader": "8313",
-        "leader_change": 5.12,
-        "laggard": "8010",
-        "laggard_change": -6.01,
-        "catch_up_opportunity": true,
-        "spread": 11.13
+        "leader": "8120",
+        "leader_change": 2.06,
+        "laggard": "8200",
+        "laggard_change": -4.89,
+        "catch_up_opportunity": false,
+        "spread": 6.95
       }
     },
     "sector_rotation": []
   },
-  "eval_summary": "0/0 (0%) | معلق:20",
+  "eval_summary": "0/0 (0%) | معلق:4",
   "eval_results": [],
   "weights": {
-    "rsi": 0.999753506866955,
-    "stoch_rsi": 1.0235300848289788,
-    "macd": 0.9581182299262241,
-    "bollinger": 1.7361312946520937,
-    "obv": 1.0999625050116302,
-    "vwap": 1.0428557218672072,
-    "volume_surge": 1.2004440130341267,
-    "sma_cross": 1.701793001690431,
-    "breakout": 2.111180165044093,
+    "rsi": 1.003228317532834,
+    "stoch_rsi": 1.0371887040833838,
+    "macd": 0.9388293471436151,
+    "bollinger": 1.752815446725183,
+    "obv": 1.1159238847406003,
+    "vwap": 1.0521490102805098,
+    "volume_surge": 1.1940092550782693,
+    "sma_cross": 1.6991988256773851,
+    "breakout": 2.100624264218873,
     "candle_pattern": 0.2,
-    "oil_correlation": 1.1595023768213952,
-    "adx": 2.481681008449031,
-    "supertrend": 0.3271850430264692,
+    "oil_correlation": 1.1537048649372883,
+    "adx": 2.4784908223847495,
+    "supertrend": 0.3178843824679358,
     "ichimoku": 0.2,
-    "mfi": 0.9103151784366936,
-    "cmf": 1.1729182325113148,
-    "fibonacci": 0.8489586357649994,
-    "relative_strength": 1.0723949261496208,
-    "weekly_trend": 0.5928976390071379
+    "mfi": 0.904334521781157,
+    "cmf": 1.1532375489441307,
+    "fibonacci": 0.8561996898103221,
+    "relative_strength": 1.076923066063211,
+    "weekly_trend": 0.5986532055684715
   },
   "signal_accuracy": {
     "rsi": {
@@ -1139,7 +1033,7 @@
     }
   },
   "ml_metrics": {
-    "date": "2026-05-14",
+    "date": "2026-05-15",
     "samples_total": 242,
     "samples_train": 193,
     "samples_test": 49,
