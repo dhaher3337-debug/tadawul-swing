@@ -1,33 +1,28 @@
 # -*- coding: utf-8 -*-
 """
-Rules-Based Filter — V9.2 No-API Mode
-========================================
+Rules-Based Filter — V9.2.3 (Tightened)
+=========================================
 الهدف:
-    استبدال Claude/Opus بـ filter حتمي مبني على قواعد صارمة، عندما يكون
-    API معطّلاً (سواء عن قصد لتوفير التكلفة، أو عن خطأ).
+    استبدال Claude/Opus بـ filter حتمي مبني على قواعد صارمة.
 
-المبدأ:
-    Claude/Opus يحلل سياقاً، يربط متغيرات، ويختار. هذا قيّم لكن:
-    - مكلف ($1-3/يوم لـ Opus 4.7)
-    - غير حتمي (نفس البيانات قد تنتج picks مختلفة)
-    - يعتمد على prompt جودته
-    - في وضع ML المنحاز الحالي، يدمج noise
-
-    قواعد بسيطة لكن صارمة (بـ EV>0, RR>1.3, weekly صاعد) تنفذ بدون أي
-    من هذه المخاطر، مجاناً، بشفافية كاملة.
-
-متى نعود لـ Claude؟
-    بعد بناء universe_snapshots → evaluate_universe → ML نظيف.
-    عندها Claude يحصل على بيانات صادقة، فيستحق التكلفة.
-
-تصميم الـ filter:
-    1. تطبيق قواعد إقصاء صارمة على كل candidate
-    2. ترتيب الـ candidates الناجحين بـ "score مركب" (composite)
-    3. اختيار top-N (افتراضياً 7)
-    4. تسجيل أسباب القبول/الرفض لكل سهم (شفافية كاملة)
-
-📊 الـ output متوافق مع ai_result.json schema الحالي بحيث run_all.py
-   يعمل بدون تعديل.
+تغييرات V9.2.3 (بناءً على تحليل أسبوع 7-15 مايو 2026):
+    ============================================================
+    📊 البيانات قالت:
+    - Score ≥ 20: WR=83%, avg=+2.78%  ← هذا فقط ما نريد
+    - Score < 20: WR=21%, avg=-2.10%  ← فلتر منخفض جداً سابقاً
+    - default signal type: WR=0%, n=3
+    - mean_reversion: WR=0%, n=1
+    - بتروكيماويات (في أيام تدفق -1.5B): WR=0%, n=5
+    ============================================================
+    
+    ✅ P0: رفع min_score من 4.0 إلى 18.0 (الفرق الحاسم)
+    ✅ P0: فلتر sector flow < -500M SAR (يستبعد قطاعات ناقصة سيولة)
+    ✅ P0: استبعاد signal_type = default و mean_reversion (WR=0%)
+    ✅ P0: فلتر RSI ≥ 72 (overbought - دخول متأخر)
+    ✅ P1: رفع min_active_signals من 3 إلى 5 (إجماع أقوى)
+    ✅ P1: رفع min_adx من 15 إلى 20 (إلا في breakout+volume)
+    ✅ P1: تخفيض الـ picks من 7 إلى 5 (انتقائية أعلى)
+    ✅ تسجيل sector_flow + ATR في الـ picks للـ paper_trading_engine
 """
 import json
 import logging
@@ -41,52 +36,123 @@ BASE = Path("tadawul_data")
 F_CANDIDATES = BASE / "tasi_candidates.json"
 F_AI_RESULT = BASE / "ai_result.json"
 F_FILTER_LOG = BASE / "rules_filter_log.jsonl"
+F_SECTOR_FLOWS = BASE / "sector_flows_prev.json"
 
 
 # ════════════════════════════════════════════════
-# قواعد الإقصاء (Hard Rules — لا استثناءات)
+# 🎯 V9.2.3: قواعد الإقصاء المُشدّدة
 # ════════════════════════════════════════════════
 RULES = {
-    # EV >= 0: لا نقبل أبداً سهماً متوقع له خسارة
-    "min_ev_pct": 0.0,
+    # EV >= 0.5%: لا نقبل سهم بـ EV منخفض جداً
+    "min_ev_pct": 0.5,                # كان 0.0 (P1)
     
     # RR >= 1.3: حد أدنى لنسبة المكافأة/المخاطرة
-    # 1.3 (وليس 1.5) لأن أسهم Tadawul الصغيرة لها ATR منخفض
     "min_risk_reward": 1.3,
     
-    # Score >= 4.0: عتبة جودة فنية
-    "min_score": 4.0,
+    # 🚀 P0: Score >= 18.0 (كان 4.0!)
+    # السبب: على 25 صفقة، score < 18 أعطى WR=21% فقط مقابل WR=83% لـ score ≥ 20
+    "min_score": 18.0,
     
-    # ADX >= 15: تجنّب الأسواق العرضية تماماً
-    "min_adx": 15.0,
+    # ADX >= 20: تجنّب الأسواق العرضية تماماً (P1 - كان 15)
+    "min_adx": 20.0,
     
-    # weekly_trend ≠ "هابط": حماية من التداول ضد الاتجاه الكبير
-    # استثناء: نقبل "هابط" إذا signals >= 5 (إجماع قوي جداً)
+    # weekly_trend ≠ "هابط"
     "block_weekly_haboot": True,
-    "weekly_haboot_min_signals": 5,
+    "weekly_haboot_min_signals": 6,    # كان 5 - رفعنا
     
-    # MTF: لا نقبل أسهماً MTF ضعيف (أقل من 1 من المتاح)
-    # mtf_aligned_count >= 1 من أصل mtf_available
+    # MTF: على الأقل 1 من المتاح (نُفضّل 2+)
     "min_mtf_aligned": 1,
+    "preferred_mtf_aligned": 2,        # 🆕 إذا أقل من 2، نخصم من composite
     
-    # عدد الإشارات النشطة: على الأقل 3 لتفادي one-trick ponies
-    "min_active_signals": 3,
+    # P1: عدد الإشارات النشطة (كان 3 → 5)
+    "min_active_signals": 5,
+    
+    # 🆕 P0: فلتر القطاعات السلبية
+    # إذا تدفق القطاع < -500M SAR → استبعاد إلا إذا score ≥ 25 (إجماع قوي يتغلب)
+    "block_negative_sectors": True,
+    "negative_sector_flow_threshold": -500_000_000,
+    "override_negative_sector_min_score": 25.0,
+    
+    # 🆕 P0: استبعاد signal types ضعيفة
+    # تحليل الأسبوع: default WR=0%, mean_reversion WR=0%
+    "blocked_signal_types": ["default", "mean_reversion"],
+    
+    # 🆕 P0: فلتر RSI overbought
+    # على 25 صفقة: متوسط RSI الرابح=65, الخاسر=64 (لا فرق كبير)
+    # لكن دخول RSI ≥ 72 = late breakout غالباً يهبط
+    "max_rsi_for_entry": 72.0,
+    
+    # 🆕 P1: فلتر MFI overbought 
+    "max_mfi_for_entry": 85.0,
+    
+    # 🆕 P1: حد أدنى للسيولة (تجنب الأسهم الميتة)
+    "min_volume_ratio": 0.8,
 }
 
 
 # ════════════════════════════════════════════════
-# عوامل الـ Composite Score (لترتيب الناجحين)
+# عوامل الـ Composite Score
 # ════════════════════════════════════════════════
 SCORE_WEIGHTS = {
-    "score": 0.25,           # كان 0.30 - خفّض لإفساح مجال power
-    "ev_pct": 0.25,          # كان 0.30 - خفّض لإفساح مجال power
-    "risk_reward": 0.13,     # كان 0.15
-    "adx": 0.08,             # كان 0.10
-    "mtf_alignment": 0.09,   # كان 0.10
-    "volume_signal": 0.05,   # نفسه
-    "power_score": 0.15,     # 🆕 V9.2.2: Power Classifier (V301)
+    "score": 0.25,
+    "ev_pct": 0.20,           # خفّضنا من 0.25
+    "risk_reward": 0.10,      # خفّضنا من 0.13
+    "adx": 0.08,
+    "mtf_alignment": 0.10,
+    "volume_signal": 0.05,
+    "power_score": 0.15,
+    "sector_flow": 0.07,      # 🆕 V9.2.3: تدفق سيولة القطاع
 }
 # المجموع: 1.00 ✓
+
+
+# ════════════════════════════════════════════════
+# تحميل sector flows (يُستخدم في الفلترة)
+# ════════════════════════════════════════════════
+def _load_sector_flows():
+    """يحمّل تدفقات القطاعات من sector_flows_prev.json.
+    
+    البنية الفعلية: {"sector_name": {"net_flow_5d": value_in_millions, ...}}
+    نُرجع dict مُسطّحة: {"sector_name": flow_in_sar}
+    """
+    if not F_SECTOR_FLOWS.exists():
+        return {}
+    try:
+        with open(F_SECTOR_FLOWS, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        flat = {}
+        for sector, info in data.items():
+            if isinstance(info, dict):
+                # net_flow_5d بالمليون → نحوّل لـ SAR
+                flow_m = info.get("net_flow_5d") or info.get("net_flow") or 0
+                flat[sector] = float(flow_m) * 1_000_000
+            else:
+                # إذا كانت رقماً مباشراً (legacy)
+                try:
+                    flat[sector] = float(info)
+                except (ValueError, TypeError):
+                    flat[sector] = 0.0
+        return flat
+    except Exception as e:
+        log.warning(f"فشل تحميل sector_flows: {e}")
+        return {}
+
+
+def _get_sector_flow_for_candidate(candidate, sector_flows):
+    """يحصل على تدفق القطاع لهذا candidate (بالريال السعودي)."""
+    if candidate.get("sector_flow") is not None:
+        try:
+            return float(candidate["sector_flow"])
+        except (ValueError, TypeError):
+            pass
+    
+    sector = candidate.get("sector") or candidate.get("sector_name")
+    if sector and sector in sector_flows:
+        try:
+            return float(sector_flows[sector])
+        except (ValueError, TypeError):
+            return 0.0
+    return 0.0
 
 
 def _safe(v, default=0.0):
@@ -98,20 +164,16 @@ def _safe(v, default=0.0):
         return default
 
 
-def evaluate_candidate(candidate: dict) -> dict:
+# ════════════════════════════════════════════════
+# تقييم candidate
+# ════════════════════════════════════════════════
+def evaluate_candidate(candidate: dict, sector_flows: dict = None) -> dict:
     """
     يقيّم candidate واحد ضد القواعد، يُرجع تقريراً مفصّلاً.
-    
-    Returns:
-        {
-            "ticker": str,
-            "passed": bool,
-            "rejections": list of str (أسباب الرفض إن وُجدت),
-            "warnings": list of str (تحذيرات لكن مقبول),
-            "composite_score": float,
-            "components": dict (تفصيل composite_score),
-        }
     """
+    if sector_flows is None:
+        sector_flows = {}
+    
     ticker = candidate.get("ticker", "?")
     rejections = []
     warnings = []
@@ -121,11 +183,27 @@ def evaluate_candidate(candidate: dict) -> dict:
     ev_pct = _safe(candidate.get("expected_value_pct"))
     rr = _safe(candidate.get("risk_reward"))
     adx = _safe(candidate.get("adx"))
+    rsi = _safe(candidate.get("rsi"))
+    mfi = _safe(candidate.get("mfi"))
     weekly = candidate.get("weekly_trend", "")
     signals = candidate.get("signals", []) or []
     mtf_aligned = _safe(candidate.get("mtf_aligned"))
     mtf_available = _safe(candidate.get("mtf_available"))
     volume_ratio = _safe(candidate.get("volume_ratio"))
+    sector_flow = _get_sector_flow_for_candidate(candidate, sector_flows)
+    
+    # حقن sector_flow في candidate حتى scoring يستخدمه
+    candidate["sector_flow"] = sector_flow
+    
+    # ─── 🆕 P0: signal_type filter ───
+    # نستنتج signal_type من signals
+    signal_type = _infer_signal_type(signals)
+    candidate["signal_type"] = signal_type  # حقن للـ paper_trading_engine
+    
+    if signal_type in RULES["blocked_signal_types"]:
+        rejections.append(
+            f"signal_type={signal_type} ممنوع (تاريخياً WR=0%)"
+        )
     
     # ─── القواعد الصارمة ───
     
@@ -137,14 +215,11 @@ def evaluate_candidate(candidate: dict) -> dict:
     if rr < RULES["min_risk_reward"]:
         rejections.append(f"RR=1:{rr} (< 1:{RULES['min_risk_reward']})")
     
-    # القاعدة 3: Score
+    # 🚀 القاعدة 3: Score (المهم!)
     if score < RULES["min_score"]:
-        rejections.append(f"score={score} (< {RULES['min_score']})")
+        rejections.append(f"score={score:.1f} (< {RULES['min_score']} - عتبة V9.2.3)")
     
     # القاعدة 4: ADX
-    # 🔴 استثناء V9.2: ADX قياس متأخر (يحتاج 14 يوماً ليرتفع)
-    # السهم في early breakout ستكون ADX منخفضة لكن volume + breakout قويّان
-    # الاستثناء: إذا volume_surge >= 2.0× AND breakout signal active، تجاهل ADX
     has_volume_breakout = (
         "volume_surge" in signals and
         "breakout" in signals and
@@ -154,16 +229,14 @@ def evaluate_candidate(candidate: dict) -> dict:
         rejections.append(f"ADX={adx:.1f} (< {RULES['min_adx']})")
     elif adx < RULES["min_adx"] and has_volume_breakout:
         warnings.append(
-            f"ADX={adx:.1f} منخفض (متأخر) لكن volume {volume_ratio:.1f}× + breakout - "
-            f"early breakout مقبول"
+            f"ADX={adx:.1f} منخفض لكن volume {volume_ratio:.1f}× + breakout - early breakout مقبول"
         )
     
     # القاعدة 5: weekly trend
     if RULES["block_weekly_haboot"] and weekly == "هابط":
         if len(signals) < RULES["weekly_haboot_min_signals"]:
             rejections.append(
-                f"weekly=هابط بدون إجماع كافٍ "
-                f"({len(signals)} إشارات < {RULES['weekly_haboot_min_signals']})"
+                f"weekly=هابط بدون إجماع كافٍ ({len(signals)} < {RULES['weekly_haboot_min_signals']})"
             )
         else:
             warnings.append(
@@ -173,6 +246,8 @@ def evaluate_candidate(candidate: dict) -> dict:
     # القاعدة 6: MTF
     if mtf_available > 0 and mtf_aligned < RULES["min_mtf_aligned"]:
         rejections.append(f"MTF aligned={mtf_aligned}/{mtf_available} ضعيف")
+    elif mtf_available > 0 and mtf_aligned < RULES["preferred_mtf_aligned"]:
+        warnings.append(f"MTF={mtf_aligned}/{mtf_available} مقبول لكن غير مثالي")
     
     # القاعدة 7: Active signals
     if len(signals) < RULES["min_active_signals"]:
@@ -180,23 +255,50 @@ def evaluate_candidate(candidate: dict) -> dict:
             f"إشارات={len(signals)} (< {RULES['min_active_signals']})"
         )
     
-    # ─── تحذيرات إضافية (لا ترفض، لكن نسجلها) ───
-    
-    # تحذير: breakout بدون volume = false breakout محتمل
-    if "breakout" in signals and volume_ratio < 1.0:
-        warnings.append(
-            f"⚠️ breakout بدون حجم (vol_ratio={volume_ratio:.1f}× < 1) - "
-            f"خطر false breakout"
+    # 🆕 القاعدة 8: RSI overbought (P0)
+    if rsi > 0 and rsi >= RULES["max_rsi_for_entry"]:
+        rejections.append(
+            f"RSI={rsi:.0f} ≥ {RULES['max_rsi_for_entry']} (overbought - دخول متأخر)"
         )
     
-    # تحذير: RSI > 70 = منطقة overbought
-    rsi = _safe(candidate.get("rsi"))
-    if rsi > 70:
-        warnings.append(f"⚠️ RSI={rsi:.0f} في منطقة overbought")
+    # 🆕 القاعدة 9: MFI overbought (P1)
+    if mfi > 0 and mfi >= RULES["max_mfi_for_entry"]:
+        rejections.append(
+            f"MFI={mfi:.0f} ≥ {RULES['max_mfi_for_entry']} (overbought)"
+        )
     
-    # تحذير: الحجم المنخفض جداً
-    if volume_ratio > 0 and volume_ratio < 0.5:
-        warnings.append(f"⚠️ حجم منخفض جداً ({volume_ratio:.1f}× من المتوسط)")
+    # 🆕 القاعدة 10: Volume ratio
+    if volume_ratio > 0 and volume_ratio < RULES["min_volume_ratio"]:
+        rejections.append(
+            f"vol_ratio={volume_ratio:.2f}× < {RULES['min_volume_ratio']} (سيولة ضعيفة)"
+        )
+    
+    # 🆕 القاعدة 11: P0 - Sector flow
+    if RULES["block_negative_sectors"]:
+        threshold = RULES["negative_sector_flow_threshold"]
+        override = RULES["override_negative_sector_min_score"]
+        if sector_flow < threshold:
+            if score < override:
+                rejections.append(
+                    f"تدفق القطاع={sector_flow/1e6:.0f}M ريال "
+                    f"(< {threshold/1e6:.0f}M، score={score:.1f} < {override})"
+                )
+            else:
+                warnings.append(
+                    f"⚠️ تدفق القطاع سلبي ({sector_flow/1e6:.0f}M) لكن score={score:.1f} يتجاوز"
+                )
+    
+    # ─── تحذيرات إضافية ───
+    
+    # تحذير: breakout بدون volume
+    if "breakout" in signals and volume_ratio < 1.0:
+        warnings.append(
+            f"⚠️ breakout بدون حجم (vol={volume_ratio:.1f}×) - خطر false breakout"
+        )
+    
+    # تحذير: RSI 65-72 = warning zone
+    if 65 <= rsi < 72:
+        warnings.append(f"⚠️ RSI={rsi:.0f} يقترب من overbought")
     
     # ─── حساب composite score ───
     passed = len(rejections) == 0
@@ -212,84 +314,86 @@ def evaluate_candidate(candidate: dict) -> dict:
     }
 
 
+def _infer_signal_type(signals: list) -> str:
+    """يستنتج signal_type من قائمة signals (متطابق مع paper_trading_engine)."""
+    if not signals:
+        return "default"
+    sig_set = set(signals)
+    if "breakout" in sig_set and "volume_surge" in sig_set:
+        return "breakout"
+    if "rsi" in sig_set or "stoch_rsi" in sig_set or "mfi" in sig_set:
+        return "mean_reversion"
+    if "fibonacci" in sig_set or "vwap" in sig_set:
+        return "support_bounce"
+    return "default"
+
+
 def compute_composite_score(candidate: dict) -> tuple:
     """
     يحسب composite score لترتيب الـ candidates الناجحين.
-    
-    كل عامل مُطبَّع إلى [0, 1] قبل الجمع المرجَّح.
-    
-    Returns:
-        (composite_score, components_dict)
+    8 مكوّنات الآن (+sector_flow).
     """
     components = {}
     
-    # 1. Score الفني (مُطبَّع: score=10 → 1.0، score=4 → 0.4)
+    # 1. Score (مُطبَّع: score=30 → 1.0، score=18 → 0.0)
+    # V9.2.3: تطبيع جديد لأن أدنى مقبول الآن 18
     score = _safe(candidate.get("score"))
-    components["score"] = min(score / 10.0, 1.0)
+    components["score"] = min(max((score - 18) / (30 - 18), 0.0), 1.0)
     
-    # 2. EV (مُطبَّع: EV=5% → 1.0، EV=0% → 0.0)
+    # 2. EV
     ev_pct = _safe(candidate.get("expected_value_pct"))
     components["ev_pct"] = min(max(ev_pct / 5.0, 0.0), 1.0)
     
-    # 3. RR (مُطبَّع: RR=2.5 → 1.0، RR=1.3 → 0.0)
+    # 3. RR
     rr = _safe(candidate.get("risk_reward"))
     components["risk_reward"] = min(max((rr - 1.3) / (2.5 - 1.3), 0.0), 1.0)
     
-    # 4. ADX (مُطبَّع: ADX=40 → 1.0، ADX=15 → 0.0)
+    # 4. ADX
     adx = _safe(candidate.get("adx"))
-    components["adx"] = min(max((adx - 15) / (40 - 15), 0.0), 1.0)
+    components["adx"] = min(max((adx - 20) / (40 - 20), 0.0), 1.0)
     
-    # 5. MTF alignment (نسبة)
+    # 5. MTF alignment
     mtf_aligned = _safe(candidate.get("mtf_aligned"))
     mtf_available = _safe(candidate.get("mtf_available"), 1)
     components["mtf_alignment"] = mtf_aligned / max(mtf_available, 1)
     
-    # 6. Volume signal (1.0 إذا vol > 1.5×، 0 إذا < 0.5×)
+    # 6. Volume signal
     volume_ratio = _safe(candidate.get("volume_ratio"))
-    components["volume_signal"] = min(max((volume_ratio - 0.5) / (1.5 - 0.5), 0.0), 1.0)
+    components["volume_signal"] = min(max((volume_ratio - 0.5) / (2.0 - 0.5), 0.0), 1.0)
     
-    # 7. 🆕 V9.2.2: Power Score من V301 Pine Script
-    # مُطبَّع: power=100 → 1.0، power=50 → 0.0 (دون 50 = NONE/WEAK لا يحفّز)
-    # السبب: 50 هو الحد الأدنى للتسجيل في power_classifier.py
+    # 7. Power Score
     power_score = _safe(candidate.get("power_score"))
     if power_score >= 50:
         components["power_score"] = (power_score - 50) / 50.0
     else:
         components["power_score"] = 0.0
     
-    # المجموع المرجَّح (7 مكوّنات الآن)
+    # 8. 🆕 Sector flow (مُطبَّع: +500M → 1.0، -500M → 0.0)
+    sector_flow = _safe(candidate.get("sector_flow"))
+    # نُطبّع على نطاق ±1B SAR
+    normalized = (sector_flow + 1_000_000_000) / 2_000_000_000
+    components["sector_flow"] = min(max(normalized, 0.0), 1.0)
+    
     composite = sum(components[k] * SCORE_WEIGHTS[k] for k in SCORE_WEIGHTS)
     
     return round(composite, 4), components
 
 
-def filter_candidates(candidates: list, top_n: int = 7) -> dict:
+def filter_candidates(candidates: list, top_n: int = 5) -> dict:
     """
-    🎯 الدالة الرئيسية - تأخذ candidates، تُطبّق قواعد، ترجع نتيجة منظمة.
-    
-    Args:
-        candidates: list من scanner_v9
-        top_n: عدد الـ picks النهائية (افتراضياً 7)
-    
-    Returns:
-        dict متوافق مع ai_result.json schema:
-        {
-            "date": str,
-            "model": "rules_filter_v1",
-            "no_ai": False,  # إنه AI لكن deterministic
-            "market_outlook": "محايد" (لأننا لا نحلل ماكرو هنا),
-            "picks": list (الناجحون مرتبون),
-            "rejected": list (للشفافية),
-            "stats": dict,
-        }
+    🎯 الدالة الرئيسية - V9.2.3: top_n خُفّض من 7 إلى 5 (انتقائية أعلى).
     """
     today_str = datetime.now().strftime("%Y-%m-%d")
     
     if not candidates:
         return _empty_result(today_str)
     
+    # تحميل sector flows
+    sector_flows = _load_sector_flows()
+    log.info(f"loaded {len(sector_flows)} sector flows for filtering")
+    
     # تقييم كل candidate
-    evaluations = [evaluate_candidate(c) for c in candidates]
+    evaluations = [evaluate_candidate(c, sector_flows) for c in candidates]
     
     # فصل passed و rejected
     passed_evals = [e for e in evaluations if e["passed"]]
@@ -301,26 +405,23 @@ def filter_candidates(candidates: list, top_n: int = 7) -> dict:
     # اختيار top-N
     picks_evals = passed_evals[:top_n]
     
-    # بناء picks بـ schema متوافق مع ai_result.json
+    # بناء picks
     candidates_by_ticker = {c["ticker"]: c for c in candidates}
     picks = []
     for eval_result in picks_evals:
         t = eval_result["ticker"]
         full_data = candidates_by_ticker.get(t, {})
         
-        # action: شراء قوي إذا composite > 0.7، شراء عادي إذا 0.5-0.7
         composite = eval_result["composite_score"]
-        if composite >= 0.65:
+        if composite >= 0.70:
             action = "شراء قوي"
-        elif composite >= 0.45:
+        elif composite >= 0.50:
             action = "شراء"
         else:
             action = "مراقبة"
         
-        # confidence: مقياس 0-100
         confidence = int(composite * 100)
         
-        # reason: استخلاص الأسباب من signals + tag للقواعد
         signals_arabic_map = {
             "rsi": "RSI", "stoch_rsi": "StochRSI", "macd": "MACD",
             "bollinger": "بولنجر", "obv": "OBV", "vwap": "VWAP",
@@ -335,7 +436,6 @@ def filter_candidates(candidates: list, top_n: int = 7) -> dict:
         signal_names = [signals_arabic_map.get(s, s) for s in signals[:5]]
         reason = f"إجماع {len(signals)} إشارات: " + " + ".join(signal_names)
         
-        # 🚀 V9.2.2: إبراز Power Classification في reason
         power_cls = full_data.get("power_classification", "NONE")
         power_score = full_data.get("power_score", 0)
         power_emoji = full_data.get("power_emoji", "")
@@ -348,9 +448,8 @@ def filter_candidates(candidates: list, top_n: int = 7) -> dict:
             reason = f"{power_emoji} {power_cls} ({power_score}/100) ⚠️ هابط - " + reason
         
         if eval_result["warnings"]:
-            reason += " | " + " ".join(eval_result["warnings"])
+            reason += " | " + " ".join(eval_result["warnings"][:2])
         
-        # دمج مع full data
         merged = {
             **full_data,
             "action": action,
@@ -364,18 +463,29 @@ def filter_candidates(candidates: list, top_n: int = 7) -> dict:
             "rules_check": _format_rules_check(full_data),
             "composite_score": composite,
             "warnings": eval_result["warnings"],
+            # 🆕 V9.2.3: ضمان وجود sector_flow و atr في picks
+            "sector_flow": full_data.get("sector_flow", 0),
+            "atr": full_data.get("atr") or full_data.get("atr_14"),
+            "signal_type": full_data.get("signal_type", "default"),
         }
         picks.append(merged)
     
     # رفض ملخص
     rejected_summary = []
-    for r in rejected_evals[:20]:  # أعلى 20 رفض فقط للتقرير
+    for r in rejected_evals[:30]:
         rejected_summary.append({
             "ticker": r["ticker"],
             "reasons": r["rejections"],
         })
     
-    # إحصاءات
+    # إحصاءات الرفض حسب سبب
+    rejection_reasons_count = {}
+    for r in rejected_evals:
+        for reason in r["rejections"]:
+            # نأخذ أول كلمة كـ category
+            cat = reason.split(" ")[0].split("=")[0]
+            rejection_reasons_count[cat] = rejection_reasons_count.get(cat, 0) + 1
+    
     stats = {
         "total_candidates": len(candidates),
         "passed": len(passed_evals),
@@ -389,17 +499,20 @@ def filter_candidates(candidates: list, top_n: int = 7) -> dict:
             round(sum(p.get("expected_value_pct", 0) for p in picks) / len(picks), 2)
             if picks else 0
         ),
+        "rejection_reasons": rejection_reasons_count,
     }
     
     result = {
         "date": today_str,
-        "model": "rules_filter_v1",
+        "model": "rules_filter_v2_3",
+        "version": "V9.2.3",
         "no_ai": False,
         "filter_mode": "deterministic",
         "market_outlook": "محايد",
         "market_comment": (
-            f"وضع No-API. تم تطبيق {len(RULES)} قواعد إقصاء صارمة. "
-            f"نجح {stats['passed']}/{stats['total_candidates']} مرشح."
+            f"وضع No-API V9.2.3. تم تطبيق {len(RULES)} قواعد إقصاء صارمة. "
+            f"نجح {stats['passed']}/{stats['total_candidates']} مرشح. "
+            f"عتبة score مرفوعة إلى {RULES['min_score']} (كانت 4.0)."
         ),
         "sector_analysis": "تحليل قطاعي يتطلب AI - معطّل في وضع rules_filter",
         "global_impact": "غير متاح في وضع rules_filter",
@@ -407,11 +520,12 @@ def filter_candidates(candidates: list, top_n: int = 7) -> dict:
         "picks": picks,
         "rejected_candidates": rejected_summary,
         "stats": stats,
-        "weight_suggestions": {},  # لا نقترح تعديلات في هذا الوضع
+        "weight_suggestions": {},
         "learning_notes": (
-            f"وضع rules_filter: نجح {stats['passed']} وفشل {stats['rejected']}. "
+            f"V9.2.3 الفلتر المُشدّد: نجح {stats['passed']} وفشل {stats['rejected']}. "
             f"متوسط composite={stats['avg_composite_score']}, "
-            f"متوسط EV picks={stats['avg_picks_ev']}%."
+            f"متوسط EV picks={stats['avg_picks_ev']}%. "
+            f"أكثر أسباب الرفض: {sorted(rejection_reasons_count.items(), key=lambda x: -x[1])[:3]}"
         ),
         "missed_analysis": "تحليل الفرص الضائعة يتم في missed_opportunities.py",
         "risks_to_watch": _summarize_warnings(picks),
@@ -423,7 +537,8 @@ def filter_candidates(candidates: list, top_n: int = 7) -> dict:
 def _empty_result(today_str: str) -> dict:
     return {
         "date": today_str,
-        "model": "rules_filter_v1",
+        "model": "rules_filter_v2_3",
+        "version": "V9.2.3",
         "no_ai": False,
         "filter_mode": "deterministic",
         "market_outlook": "محايد",
@@ -439,29 +554,27 @@ def _empty_result(today_str: str) -> dict:
 
 
 def _infer_risk_level(candidate: dict) -> str:
-    """يستنتج مستوى المخاطرة من البيانات."""
     adx = _safe(candidate.get("adx"))
     rr = _safe(candidate.get("risk_reward"))
+    score = _safe(candidate.get("score"))
     
-    if adx > 30 and rr > 1.7:
+    if adx > 30 and rr > 1.7 and score > 25:
         return "منخفض"
-    elif adx > 20 and rr > 1.4:
+    elif adx > 22 and rr > 1.4 and score > 20:
         return "متوسط"
     else:
         return "مرتفع"
 
 
 def _format_rules_check(candidate: dict) -> str:
-    """ينسّق نتيجة فحص القواعد للعرض."""
     ev = _safe(candidate.get("expected_value_pct"))
     rr = _safe(candidate.get("risk_reward"))
     score = _safe(candidate.get("score"))
     weekly = candidate.get("weekly_trend", "?")
-    return f"EV={ev:+.2f}%✓ | RR=1:{rr}✓ | weekly={weekly}✓ | score={score}✓"
+    return f"EV={ev:+.2f}%✓ | RR=1:{rr}✓ | weekly={weekly}✓ | score={score:.1f}✓"
 
 
 def _summarize_warnings(picks: list) -> str:
-    """يلخّص التحذيرات في picks."""
     all_warnings = []
     for p in picks:
         for w in p.get("warnings", []):
@@ -473,9 +586,9 @@ def _summarize_warnings(picks: list) -> str:
 
 
 def log_filter_result(result: dict):
-    """يحفظ نتيجة الـ filter في سجل (للتحليل لاحقاً)."""
     log_entry = {
         "date": result["date"],
+        "version": result.get("version", "V9.2.3"),
         "stats": result.get("stats", {}),
         "picks_tickers": [p.get("ticker") for p in result.get("picks", [])],
         "picks_composite_avg": result.get("stats", {}).get("avg_composite_score", 0),
@@ -490,14 +603,8 @@ def log_filter_result(result: dict):
 
 
 # ════════════════════════════════════════════════
-# دالة التشغيل الرئيسية (تستبدل ai_analyst_v9.run في وضع No-API)
-# ════════════════════════════════════════════════
 def run():
-    """
-    تُستدعى من run_all.py عند عدم توفر API key.
-    
-    تقرأ tasi_candidates.json، تُطبّق القواعد، تكتب ai_result.json.
-    """
+    """يُستدعى من run_all.py عند عدم توفر API key."""
     data = load_json_safe(F_CANDIDATES)
     if not data:
         print("  ⚠️ لا توجد بيانات candidates")
@@ -510,9 +617,9 @@ def run():
         save_result(_empty_result(datetime.now().strftime("%Y-%m-%d")))
         return
     
-    print(f"  🔧 وضع Rules Filter (deterministic) — {len(candidates)} candidates")
+    print(f"  🔧 Rules Filter V9.2.3 (مُشدّد) — {len(candidates)} candidates")
     
-    result = filter_candidates(candidates, top_n=7)
+    result = filter_candidates(candidates, top_n=5)
     save_result(result)
     log_filter_result(result)
     
@@ -521,14 +628,20 @@ def run():
           f"picks: {stats['picks_selected']} | "
           f"متوسط EV: +{stats['avg_picks_ev']}%")
     
-    # تفاصيل picks
     if result["picks"]:
-        print(f"  📋 أعلى 3 picks:")
-        for p in result["picks"][:3]:
+        print(f"  📋 Picks المختارة:")
+        for p in result["picks"]:
             print(f"     {p['ticker']} ({p.get('sector','?')}): "
                   f"composite={p.get('composite_score', 0):.2f} | "
+                  f"score={p.get('score', 0):.1f} | "
                   f"EV={p.get('expected_value_pct', 0):+.2f}% | "
                   f"action={p.get('action')}")
+    
+    # طباعة أكثر أسباب الرفض
+    rej_reasons = stats.get("rejection_reasons", {})
+    if rej_reasons:
+        top_reasons = sorted(rej_reasons.items(), key=lambda x: -x[1])[:5]
+        print(f"  🚫 أكثر أسباب الرفض: {top_reasons}")
 
 
 def load_json_safe(path, default=None):
@@ -548,12 +661,9 @@ def save_result(result: dict):
         log.error(f"فشل حفظ ai_result: {e}")
 
 
-# ════════════════════════════════════════════════
-# CLI للاختبار
-# ════════════════════════════════════════════════
 if __name__ == "__main__":
     print(f"\n{'='*60}")
-    print("Rules-Based Filter — V9.2")
+    print("Rules-Based Filter — V9.2.3 (Tightened)")
     print(f"{'='*60}\n")
     
     print("📋 القواعد المُطبّقة:")
