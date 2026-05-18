@@ -1,12 +1,65 @@
 {
   "date": "2026-05-18",
-  "samples_total": 244,
-  "samples_train": 195,
-  "samples_test": 49,
-  "positive_ratio": 0.357,
-  "accuracy": 0.939,
-  "roc_auc": 0.91,
+  "samples_total": 246,
+  "samples_train": 196,
+  "samples_test": 50,
+  "positive_ratio": 0.358,
+  "accuracy": 0.96,
+  "roc_auc": 0.934,
   "precision": 1.0,
-  "recall": 0.824,
-  "f1": 0.903
+  "recall": 0.889,
+  "f1": 0.941,
+  "walk_forward": {
+    "n_folds_run": 2,
+    "avg_accuracy_out": 0.861,
+    "avg_accuracy_in": 1.0,
+    "avg_roc_auc_out": 0.858,
+    "avg_roc_auc_in": 1.0,
+    "avg_precision_out": 0.81,
+    "avg_recall_out": 0.775,
+    "avg_f1_out": 0.79,
+    "fold_details": [
+      {
+        "fold": 1,
+        "train_size": 123,
+        "test_size": 61,
+        "accuracy_out": 0.754,
+        "accuracy_in": 1.0,
+        "roc_auc_out": 0.771,
+        "roc_auc_in": 1.0,
+        "precision_out": 0.619,
+        "recall_out": 0.65,
+        "f1_out": 0.634,
+        "positive_ratio_train": 0.39
+      },
+      {
+        "fold": 2,
+        "train_size": 184,
+        "test_size": 62,
+        "accuracy_out": 0.968,
+        "accuracy_in": 1.0,
+        "roc_auc_out": 0.945,
+        "roc_auc_in": 1.0,
+        "precision_out": 1.0,
+        "recall_out": 0.9,
+        "f1_out": 0.947,
+        "positive_ratio_train": 0.37
+      }
+    ],
+    "overfit_gap": 0.142,
+    "is_overfit": false
+  },
+  "trustability": {
+    "trust_level": "weak",
+    "use_ml_probability": false,
+    "auc_out_of_sample": 0.858,
+    "sample_count": 246,
+    "overfit_gap": 0.142,
+    "is_overfit": false,
+    "reasons": [
+      "عينة صغيرة: 246 < 250"
+    ],
+    "date": "2026-05-18"
+  },
+  "version": "V9.2.3"
 }

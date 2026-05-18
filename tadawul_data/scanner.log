@@ -201,3 +201,11 @@
 2026-05-18 02:01:29,430 [INFO] Falling back to pattern-based estimation
 2026-05-18 02:02:29,651 [INFO] Universe snapshot: 195 صف → snapshot_2026-05-18.jsonl
 2026-05-18 02:02:30,455 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-05-18 05:36:38,339 [INFO] ML dataset: +2 صف. الإجمالي: 246
+2026-05-18 05:36:39,315 [INFO] ML trustability: weak | use_probability=False
+2026-05-18 05:36:39,390 [INFO] ML model trained V9.2.3: WF_AUC_out=0.858, InSample_AUC=0.934, trust=weak
+2026-05-18 05:36:39,390 [INFO] weight suggestions skipped: trust=weak
+2026-05-18 05:36:57,770 [INFO] Using cached sentiment (0 tickers)
+2026-05-18 05:36:57,770 [INFO] Using cached earnings (196 tickers)
+2026-05-18 05:37:59,859 [INFO] Universe snapshot: 195 صف → snapshot_2026-05-18.jsonl
+2026-05-18 05:38:00,625 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
