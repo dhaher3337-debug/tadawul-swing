@@ -453,40 +453,56 @@ def run():
                                 "date": datetime.now().strftime("%Y-%m-%d")})
         return
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
-    if not api_key:
-        # 🔴 V9.2 No-API Mode: استخدم rules_filter بدلاً من picks عمياء
-        # السبب: candidates[:10] يحوي أسهماً تنتهك القواعد (EV<0, weekly=هابط).
-        # rules_filter يُطبّق نفس المنطق الذي كنا نطلبه من Claude، لكن:
-        #   - مجاناً (لا API)
-        #   - حتمياً (نفس البيانات = نفس المخرجات)
-        #   - شفافاً (نعرف لماذا قُبل/رُفض كل سهم)
-        print("  ⚠️ ANTHROPIC_API_KEY غير موجود — استخدام Rules Filter (deterministic)")
+    # 🆕 V9.2.3: دالة fallback مركزية - rules_filter دائماً عند عدم توفر API
+    def _fallback_to_rules_filter(reason):
+        """يستدعي rules_filter بدلاً من حفظ picks خام."""
+        print(f"  🔧 Fallback إلى Rules Filter V9.2.3 — السبب: {reason}")
         try:
             import rules_filter
+            # إعادة تحميل rules_filter في كل مرة لو تم تعديله
+            import importlib
+            importlib.reload(rules_filter)
             rules_filter.run()
-            return
+            # أضف معلومة عن السبب في النتيجة
+            try:
+                result = load_json(F_AI_RESULT, {})
+                result["fallback_reason"] = reason
+                result["no_ai"] = True
+                save_json(F_AI_RESULT, result)
+            except Exception:
+                pass
+            return True
         except ImportError:
-            print("  ⚠️ rules_filter غير متاح — fallback لـ picks خام")
+            print("  ❌ rules_filter غير متاح — خطأ فادح")
             save_json(F_AI_RESULT, {
                 "date": datetime.now().strftime("%Y-%m-%d"),
                 "market_outlook": "محايد",
-                "market_comment": "AI و rules_filter غير متاحين - picks خام",
-                "picks": data.get("candidates", [])[:10],
+                "market_comment": f"كل من API و rules_filter غير متاحين. السبب: {reason}",
+                "picks": [],  # ✅ V9.2.3: لا picks خام أبداً
                 "no_ai": True,
+                "error": "no rules_filter module",
+                "fallback_reason": reason,
             })
-            return
+            return False
         except Exception as e:
-            print(f"  ⚠️ فشل rules_filter: {e} — fallback لـ picks خام")
+            print(f"  ❌ فشل rules_filter: {e}")
             save_json(F_AI_RESULT, {
                 "date": datetime.now().strftime("%Y-%m-%d"),
                 "market_outlook": "محايد",
                 "market_comment": f"rules_filter error: {e}",
-                "picks": data.get("candidates", [])[:10],
+                "picks": [],  # ✅ V9.2.3: لا picks خام أبداً
                 "no_ai": True,
                 "error": str(e),
+                "fallback_reason": reason,
             })
-            return
+            return False
+    
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    if not api_key:
+        # 🔴 V9.2 No-API Mode: استخدم rules_filter بدلاً من picks عمياء
+        print("  ⚠️ ANTHROPIC_API_KEY غير موجود")
+        _fallback_to_rules_filter("API key not set")
+        return
 
     system, user = build_prompt(data)
     print("  🧠 إرسال طلب لـ Claude Opus 4.7...")
@@ -568,19 +584,28 @@ def run():
 
     except json.JSONDecodeError as e:
         print(f"  ❌ JSON error: {e}")
-        save_json(F_AI_RESULT, {
-            "date": datetime.now().strftime("%Y-%m-%d"),
-            "error": str(e),
-            "raw": rt[:800] if 'rt' in dir() else "",
-            "picks": data.get("candidates", [])[:10],
-        })
+        # ✅ V9.2.3: rules_filter fallback بدلاً من picks خام
+        _fallback_to_rules_filter(f"Claude returned invalid JSON: {str(e)[:100]}")
+    except anthropic.AuthenticationError as e:
+        # ✅ V9.2.3: 401 - API key منتهي/خاطئ
+        print(f"  ❌ Authentication error (401): {e}")
+        _fallback_to_rules_filter("API authentication failed (401) - check ANTHROPIC_API_KEY")
+    except anthropic.RateLimitError as e:
+        # ✅ V9.2.3: 429 - تجاوز الحد
+        print(f"  ❌ Rate limit error (429): {e}")
+        _fallback_to_rules_filter(f"API rate limit exceeded: {str(e)[:100]}")
+    except anthropic.APIConnectionError as e:
+        # ✅ V9.2.3: مشكلة شبكة
+        print(f"  ❌ Network error: {e}")
+        _fallback_to_rules_filter(f"API connection failed: {str(e)[:100]}")
+    except anthropic.APIError as e:
+        # ✅ V9.2.3: أي خطأ Anthropic آخر (500, 503, إلخ)
+        print(f"  ❌ Anthropic API error: {e}")
+        _fallback_to_rules_filter(f"Anthropic API error: {str(e)[:100]}")
     except Exception as e:
-        print(f"  ❌ Claude error: {e}")
-        save_json(F_AI_RESULT, {
-            "date": datetime.now().strftime("%Y-%m-%d"),
-            "error": str(e),
-            "picks": data.get("candidates", [])[:10],
-        })
+        # ✅ V9.2.3: أي خطأ آخر غير متوقع → rules_filter (لا picks خام أبداً)
+        print(f"  ❌ Unexpected error: {e}")
+        _fallback_to_rules_filter(f"Unexpected error: {str(e)[:150]}")
 
 
 if __name__ == "__main__":
