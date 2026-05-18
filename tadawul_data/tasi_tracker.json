@@ -25,10 +25,10 @@
       "rate": 0.0
     },
     "obv": {
-      "triggered": 224,
-      "hit": 81,
-      "miss": 143,
-      "rate": 0.362
+      "triggered": 226,
+      "hit": 82,
+      "miss": 144,
+      "rate": 0.363
     },
     "vwap": {
       "triggered": 29,
@@ -37,10 +37,10 @@
       "rate": 0.276
     },
     "volume_surge": {
-      "triggered": 83,
-      "hit": 32,
+      "triggered": 84,
+      "hit": 33,
       "miss": 51,
-      "rate": 0.386
+      "rate": 0.393
     },
     "sma_cross": {
       "triggered": 12,
@@ -49,10 +49,10 @@
       "rate": 0.583
     },
     "breakout": {
-      "triggered": 90,
-      "hit": 38,
+      "triggered": 91,
+      "hit": 39,
       "miss": 52,
-      "rate": 0.422
+      "rate": 0.429
     },
     "candle_pattern": {
       "triggered": 7,
@@ -61,16 +61,16 @@
       "rate": 0.143
     },
     "oil_correlation": {
-      "triggered": 14,
+      "triggered": 15,
       "hit": 5,
-      "miss": 9,
-      "rate": 0.357
+      "miss": 10,
+      "rate": 0.333
     },
     "adx": {
-      "triggered": 103,
+      "triggered": 104,
       "hit": 41,
-      "miss": 62,
-      "rate": 0.398
+      "miss": 63,
+      "rate": 0.394
     },
     "supertrend": {
       "triggered": 0,
@@ -79,10 +79,10 @@
       "rate": 0.0
     },
     "ichimoku": {
-      "triggered": 175,
-      "hit": 67,
-      "miss": 108,
-      "rate": 0.383
+      "triggered": 177,
+      "hit": 68,
+      "miss": 109,
+      "rate": 0.384
     },
     "mfi": {
       "triggered": 4,
@@ -97,22 +97,22 @@
       "rate": 0.31
     },
     "fibonacci": {
-      "triggered": 59,
-      "hit": 18,
-      "miss": 41,
-      "rate": 0.305
+      "triggered": 61,
+      "hit": 19,
+      "miss": 42,
+      "rate": 0.311
     },
     "relative_strength": {
-      "triggered": 212,
+      "triggered": 213,
       "hit": 83,
-      "miss": 129,
-      "rate": 0.392
+      "miss": 130,
+      "rate": 0.39
     },
     "weekly_trend": {
-      "triggered": 198,
-      "hit": 74,
-      "miss": 124,
-      "rate": 0.374
+      "triggered": 200,
+      "hit": 75,
+      "miss": 125,
+      "rate": 0.375
     }
   },
   "blacklist": [],
@@ -430,7 +430,7 @@
     },
     "2170": {
       "hits": 1,
-      "total": 3,
+      "total": 4,
       "last_update": "2026-05-18"
     },
     "2381": {
@@ -569,8 +569,8 @@
       "last_update": "2026-05-10"
     },
     "8030": {
-      "hits": 2,
-      "total": 2,
+      "hits": 3,
+      "total": 3,
       "last_update": "2026-05-18"
     }
   },

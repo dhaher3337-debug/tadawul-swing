@@ -196,12 +196,12 @@
     "total_caught": 37,
     "total_missed": 53,
     "lifetime_catch_rate_pct": 41.1,
-    "last_updated": "2026-05-18T05:38:00.647707"
+    "last_updated": "2026-05-18T05:54:24.889038"
   },
   "recurring_misses": [
     {
       "ticker": "1202",
-      "count": 6
+      "count": 7
     },
     {
       "ticker": "2270",
@@ -220,6 +220,10 @@
       "count": 4
     },
     {
+      "ticker": "4100",
+      "count": 4
+    },
+    {
       "ticker": "7203",
       "count": 3
     },
@@ -234,15 +238,11 @@
     {
       "ticker": "1810",
       "count": 3
-    },
-    {
-      "ticker": "8313",
-      "count": 3
     }
   ],
   "miss_cases": {
-    "unforeseeable": 43,
-    "out_of_universe": 35,
+    "unforeseeable": 46,
+    "out_of_universe": 37,
     "predictable_miss": 2
   }
 }

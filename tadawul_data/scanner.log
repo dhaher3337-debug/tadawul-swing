@@ -209,3 +209,11 @@
 2026-05-18 05:36:57,770 [INFO] Using cached earnings (196 tickers)
 2026-05-18 05:37:59,859 [INFO] Universe snapshot: 195 صف → snapshot_2026-05-18.jsonl
 2026-05-18 05:38:00,625 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-05-18 05:52:54,722 [INFO] ML dataset: +2 صف. الإجمالي: 250
+2026-05-18 05:53:17,775 [INFO] Using cached sentiment (0 tickers)
+2026-05-18 05:53:17,775 [INFO] Using cached earnings (196 tickers)
+2026-05-18 05:54:24,088 [INFO] Universe snapshot: 195 صف → snapshot_2026-05-18.jsonl
+2026-05-18 05:54:24,868 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-05-18 05:54:24,875 [INFO] loaded 17 sector flows for filtering
+2026-05-18 05:54:24,890 [WARNING] update_active_trades: تم استدعاؤها مسبقاً اليوم 2026-05-18.
+2026-05-18 05:54:24,890 [WARNING] open_trades_from_candidates: تم استدعاؤها مسبقاً اليوم 2026-05-18. استخدم force=True للتجاوز.

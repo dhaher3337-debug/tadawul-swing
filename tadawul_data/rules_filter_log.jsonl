@@ -1,0 +1,1 @@
+{"date": "2026-05-18", "version": "V9.2.3", "stats": {"total_candidates": 35, "passed": 0, "rejected": 35, "picks_selected": 0, "avg_composite_score": 0, "avg_picks_ev": 0, "rejection_reasons": {"score": 35, "signal_type": 19, "MFI": 4, "vol_ratio": 21, "weekly": 4, "RSI": 3, "ADX": 6, "إشارات": 5, "RR": 1, "MTF": 3}}, "picks_tickers": [], "picks_composite_avg": 0}
