@@ -189,3 +189,15 @@
 2026-05-15 02:01:32,175 [INFO] Using cached earnings (196 tickers)
 2026-05-15 02:02:44,653 [INFO] Universe snapshot: 195 صف → snapshot_2026-05-15.jsonl
 2026-05-15 02:02:45,369 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-05-18 02:01:06,996 [INFO] ML dataset: +2 صف. الإجمالي: 244
+2026-05-18 02:01:07,916 [INFO] ML model trained: AUC=0.91, Acc=0.939, F1=0.903
+2026-05-18 02:01:25,791 [INFO] Fetching fresh news...
+2026-05-18 02:01:25,791 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-05-18 02:01:26,577 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-05-18 02:01:27,318 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-05-18 02:01:28,081 [INFO] أخبار ذات صلة: 0
+2026-05-18 02:01:28,082 [WARNING] No news fetched — returning empty sentiment
+2026-05-18 02:01:28,082 [INFO] Attempting yfinance earnings fetch...
+2026-05-18 02:01:29,430 [INFO] Falling back to pattern-based estimation
+2026-05-18 02:02:29,651 [INFO] Universe snapshot: 195 صف → snapshot_2026-05-18.jsonl
+2026-05-18 02:02:30,455 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"

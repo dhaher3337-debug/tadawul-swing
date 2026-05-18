@@ -1,14 +1,14 @@
 {
-  "computed_at": "2026-05-15T02:02:45.402372",
-  "total_trades": 25,
-  "active_trades": 9,
+  "computed_at": "2026-05-18T02:02:30.499712",
+  "total_trades": 27,
+  "active_trades": 10,
   "wins": 9,
-  "losses": 16,
-  "win_rate_pct": 36.0,
+  "losses": 18,
+  "win_rate_pct": 33.3,
   "avg_win_pct": 3.58,
-  "avg_loss_pct": -3.65,
-  "profit_factor": 0.55,
-  "total_pnl_pct": -26.09,
+  "avg_loss_pct": -3.74,
+  "profit_factor": 0.48,
+  "total_pnl_pct": -35.04,
   "best_trade": {
     "ticker": "2082",
     "pnl": 8.94,
@@ -21,10 +21,10 @@
   },
   "by_signal_type": {
     "default": {
-      "total": 3,
+      "total": 4,
       "wins": 0,
       "win_rate": 0.0,
-      "avg_pnl": -4.08
+      "avg_pnl": -4.47
     },
     "support_bounce": {
       "total": 3,
@@ -33,10 +33,10 @@
       "avg_pnl": -2.12
     },
     "breakout": {
-      "total": 18,
+      "total": 19,
       "wins": 8,
-      "win_rate": 44.4,
-      "avg_pnl": -0.27
+      "win_rate": 42.1,
+      "avg_pnl": -0.43
     },
     "mean_reversion": {
       "total": 1,
@@ -53,10 +53,10 @@
       "avg_pnl": -5.68
     },
     "بتروكيماويات": {
-      "total": 5,
+      "total": 6,
       "wins": 0,
       "win_rate": 0.0,
-      "avg_pnl": -4.09
+      "avg_pnl": -4.35
     },
     "صناعية": {
       "total": 2,
@@ -111,6 +111,12 @@
       "wins": 0,
       "win_rate": 0.0,
       "avg_pnl": -2.07
+    },
+    "اتصالات": {
+      "total": 1,
+      "wins": 0,
+      "win_rate": 0.0,
+      "avg_pnl": -3.29
     }
   },
   "tired_stocks": [
