@@ -217,3 +217,13 @@
 2026-05-18 05:54:24,875 [INFO] loaded 17 sector flows for filtering
 2026-05-18 05:54:24,890 [WARNING] update_active_trades: تم استدعاؤها مسبقاً اليوم 2026-05-18.
 2026-05-18 05:54:24,890 [WARNING] open_trades_from_candidates: تم استدعاؤها مسبقاً اليوم 2026-05-18. استخدم force=True للتجاوز.
+2026-05-19 02:01:42,852 [INFO] Fetching fresh news...
+2026-05-19 02:01:42,852 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-05-19 02:01:43,502 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-05-19 02:01:44,138 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-05-19 02:01:44,751 [INFO] أخبار ذات صلة: 0
+2026-05-19 02:01:44,752 [WARNING] No news fetched — returning empty sentiment
+2026-05-19 02:01:44,752 [INFO] Using cached earnings (196 tickers)
+2026-05-19 02:02:56,901 [INFO] Universe snapshot: 195 صف → snapshot_2026-05-19.jsonl
+2026-05-19 02:02:57,749 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-05-19 02:02:57,756 [INFO] loaded 17 sector flows for filtering
