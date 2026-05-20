@@ -1,169 +1,181 @@
 {
-  "date": "2026-05-19",
+  "date": "2026-05-20",
   "model": "rules_filter_v2_3",
   "version": "V9.2.3",
   "no_ai": true,
   "filter_mode": "deterministic",
   "market_outlook": "محايد",
-  "market_comment": "وضع No-API V9.2.3. تم تطبيق 16 قواعد إقصاء صارمة. نجح 0/27 مرشح. عتبة score مرفوعة إلى 18.0 (كانت 4.0).",
+  "market_comment": "وضع No-API V9.2.3. تم تطبيق 16 قواعد إقصاء صارمة. نجح 0/26 مرشح. عتبة score مرفوعة إلى 18.0 (كانت 4.0).",
   "sector_analysis": "تحليل قطاعي يتطلب AI - معطّل في وضع rules_filter",
   "global_impact": "غير متاح في وضع rules_filter",
   "catch_up_opportunities": "غير متاح في وضع rules_filter",
   "picks": [],
   "rejected_candidates": [
     {
-      "ticker": "2130",
+      "ticker": "2285",
       "reasons": [
-        "score=10.2 (< 18.0 - عتبة V9.2.3)",
-        "vol_ratio=0.50× < 0.8 (سيولة ضعيفة)"
+        "score=15.1 (< 18.0 - عتبة V9.2.3)",
+        "RSI=72 ≥ 72.0 (overbought - دخول متأخر)"
       ]
     },
     {
       "ticker": "4190",
       "reasons": [
-        "score=9.6 (< 18.0 - عتبة V9.2.3)"
+        "signal_type=default ممنوع (تاريخياً WR=0%)",
+        "score=9.5 (< 18.0 - عتبة V9.2.3)"
       ]
     },
     {
-      "ticker": "8070",
+      "ticker": "4162",
       "reasons": [
         "signal_type=default ممنوع (تاريخياً WR=0%)",
-        "score=9.0 (< 18.0 - عتبة V9.2.3)"
-      ]
-    },
-    {
-      "ticker": "7203",
-      "reasons": [
-        "signal_type=default ممنوع (تاريخياً WR=0%)",
-        "score=8.7 (< 18.0 - عتبة V9.2.3)"
-      ]
-    },
-    {
-      "ticker": "2370",
-      "reasons": [
-        "score=8.2 (< 18.0 - عتبة V9.2.3)",
+        "score=9.1 (< 18.0 - عتبة V9.2.3)",
         "vol_ratio=0.60× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
-      "ticker": "8180",
+      "ticker": "2050",
       "reasons": [
         "signal_type=default ممنوع (تاريخياً WR=0%)",
-        "score=6.2 (< 18.0 - عتبة V9.2.3)"
+        "score=6.9 (< 18.0 - عتبة V9.2.3)",
+        "إشارات=4 (< 5)",
+        "تدفق القطاع=-694M ريال (< -500M، score=6.9 < 25.0)"
       ]
     },
     {
-      "ticker": "8030",
+      "ticker": "2130",
       "reasons": [
-        "score=5.9 (< 18.0 - عتبة V9.2.3)",
-        "ADX=18.9 (< 20.0)"
-      ]
-    },
-    {
-      "ticker": "8250",
-      "reasons": [
-        "score=5.8 (< 18.0 - عتبة V9.2.3)",
-        "vol_ratio=0.30× < 0.8 (سيولة ضعيفة)"
-      ]
-    },
-    {
-      "ticker": "2190",
-      "reasons": [
-        "score=5.8 (< 18.0 - عتبة V9.2.3)",
-        "ADX=18.1 (< 20.0)",
-        "vol_ratio=0.40× < 0.8 (سيولة ضعيفة)"
+        "score=6.4 (< 18.0 - عتبة V9.2.3)",
+        "vol_ratio=0.70× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
       "ticker": "2380",
       "reasons": [
         "signal_type=default ممنوع (تاريخياً WR=0%)",
-        "score=5.7 (< 18.0 - عتبة V9.2.3)",
-        "RSI=75 ≥ 72.0 (overbought - دخول متأخر)"
-      ]
-    },
-    {
-      "ticker": "1833",
-      "reasons": [
-        "score=5.0 (< 18.0 - عتبة V9.2.3)"
-      ]
-    },
-    {
-      "ticker": "4280",
-      "reasons": [
-        "signal_type=default ممنوع (تاريخياً WR=0%)",
-        "score=4.9 (< 18.0 - عتبة V9.2.3)",
-        "vol_ratio=0.30× < 0.8 (سيولة ضعيفة)",
-        "تدفق القطاع=-528M ريال (< -500M، score=4.9 < 25.0)"
-      ]
-    },
-    {
-      "ticker": "2281",
-      "reasons": [
-        "signal_type=mean_reversion ممنوع (تاريخياً WR=0%)",
-        "score=4.9 (< 18.0 - عتبة V9.2.3)",
-        "MTF aligned=0.0/3.0 ضعيف",
-        "vol_ratio=0.30× < 0.8 (سيولة ضعيفة)",
-        "تدفق القطاع=-549M ريال (< -500M، score=4.9 < 25.0)"
-      ]
-    },
-    {
-      "ticker": "3060",
-      "reasons": [
-        "signal_type=default ممنوع (تاريخياً WR=0%)",
-        "score=4.8 (< 18.0 - عتبة V9.2.3)"
-      ]
-    },
-    {
-      "ticker": "2223",
-      "reasons": [
-        "signal_type=default ممنوع (تاريخياً WR=0%)",
-        "score=4.7 (< 18.0 - عتبة V9.2.3)"
-      ]
-    },
-    {
-      "ticker": "3080",
-      "reasons": [
-        "score=4.6 (< 18.0 - عتبة V9.2.3)"
+        "score=6.2 (< 18.0 - عتبة V9.2.3)",
+        "RSI=75 ≥ 72.0 (overbought - دخول متأخر)",
+        "vol_ratio=0.70× < 0.8 (سيولة ضعيفة)",
+        "تدفق القطاع=-694M ريال (< -500M، score=6.2 < 25.0)"
       ]
     },
     {
       "ticker": "1321",
       "reasons": [
-        "score=4.6 (< 18.0 - عتبة V9.2.3)",
-        "MTF aligned=0.0/3.0 ضعيف"
+        "signal_type=mean_reversion ممنوع (تاريخياً WR=0%)",
+        "score=6.2 (< 18.0 - عتبة V9.2.3)",
+        "vol_ratio=0.30× < 0.8 (سيولة ضعيفة)",
+        "تدفق القطاع=-694M ريال (< -500M، score=6.2 < 25.0)"
       ]
     },
     {
-      "ticker": "4170",
+      "ticker": "8250",
       "reasons": [
-        "signal_type=mean_reversion ممنوع (تاريخياً WR=0%)",
-        "score=4.6 (< 18.0 - عتبة V9.2.3)"
+        "score=6.0 (< 18.0 - عتبة V9.2.3)",
+        "vol_ratio=0.60× < 0.8 (سيولة ضعيفة)"
+      ]
+    },
+    {
+      "ticker": "2082",
+      "reasons": [
+        "score=5.9 (< 18.0 - عتبة V9.2.3)",
+        "تدفق القطاع=-610M ريال (< -500M، score=5.9 < 25.0)"
+      ]
+    },
+    {
+      "ticker": "3080",
+      "reasons": [
+        "score=5.8 (< 18.0 - عتبة V9.2.3)",
+        "vol_ratio=0.70× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
       "ticker": "7010",
       "reasons": [
         "signal_type=default ممنوع (تاريخياً WR=0%)",
+        "score=5.8 (< 18.0 - عتبة V9.2.3)"
+      ]
+    },
+    {
+      "ticker": "8070",
+      "reasons": [
+        "score=5.6 (< 18.0 - عتبة V9.2.3)"
+      ]
+    },
+    {
+      "ticker": "3040",
+      "reasons": [
+        "signal_type=default ممنوع (تاريخياً WR=0%)",
+        "score=5.5 (< 18.0 - عتبة V9.2.3)",
+        "RSI=75 ≥ 72.0 (overbought - دخول متأخر)",
+        "MFI=91 ≥ 85.0 (overbought)"
+      ]
+    },
+    {
+      "ticker": "1833",
+      "reasons": [
+        "score=5.0 (< 18.0 - عتبة V9.2.3)",
+        "vol_ratio=0.40× < 0.8 (سيولة ضعيفة)"
+      ]
+    },
+    {
+      "ticker": "3060",
+      "reasons": [
+        "signal_type=default ممنوع (تاريخياً WR=0%)",
+        "score=5.0 (< 18.0 - عتبة V9.2.3)",
+        "vol_ratio=0.60× < 0.8 (سيولة ضعيفة)"
+      ]
+    },
+    {
+      "ticker": "2223",
+      "reasons": [
+        "signal_type=default ممنوع (تاريخياً WR=0%)",
+        "score=4.7 (< 18.0 - عتبة V9.2.3)",
+        "RSI=72 ≥ 72.0 (overbought - دخول متأخر)",
+        "vol_ratio=0.50× < 0.8 (سيولة ضعيفة)",
+        "تدفق القطاع=-694M ريال (< -500M، score=4.7 < 25.0)"
+      ]
+    },
+    {
+      "ticker": "1320",
+      "reasons": [
+        "signal_type=mean_reversion ممنوع (تاريخياً WR=0%)",
         "score=4.5 (< 18.0 - عتبة V9.2.3)",
-        "إشارات=4 (< 5)"
+        "vol_ratio=0.60× < 0.8 (سيولة ضعيفة)",
+        "تدفق القطاع=-694M ريال (< -500M، score=4.5 < 25.0)"
       ]
     },
     {
       "ticker": "4020",
       "reasons": [
         "signal_type=default ممنوع (تاريخياً WR=0%)",
-        "score=4.3 (< 18.0 - عتبة V9.2.3)",
+        "score=4.5 (< 18.0 - عتبة V9.2.3)",
         "RSI=79 ≥ 72.0 (overbought - دخول متأخر)",
-        "MFI=88 ≥ 85.0 (overbought)"
+        "MFI=90 ≥ 85.0 (overbought)",
+        "vol_ratio=0.70× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
-      "ticker": "3005",
+      "ticker": "8180",
+      "reasons": [
+        "signal_type=default ممنوع (تاريخياً WR=0%)",
+        "score=4.0 (< 18.0 - عتبة V9.2.3)"
+      ]
+    },
+    {
+      "ticker": "6010",
+      "reasons": [
+        "score=4.0 (< 18.0 - عتبة V9.2.3)",
+        "weekly=هابط بدون إجماع كافٍ (4 < 6)",
+        "إشارات=4 (< 5)"
+      ]
+    },
+    {
+      "ticker": "7203",
       "reasons": [
         "signal_type=default ممنوع (تاريخياً WR=0%)",
         "score=3.8 (< 18.0 - عتبة V9.2.3)",
-        "vol_ratio=0.30× < 0.8 (سيولة ضعيفة)"
+        "vol_ratio=0.50× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
@@ -171,24 +183,9 @@
       "reasons": [
         "signal_type=default ممنوع (تاريخياً WR=0%)",
         "score=3.7 (< 18.0 - عتبة V9.2.3)",
-        "MFI=91 ≥ 85.0 (overbought)",
+        "MFI=90 ≥ 85.0 (overbought)",
         "vol_ratio=0.70× < 0.8 (سيولة ضعيفة)",
-        "تدفق القطاع=-788M ريال (< -500M، score=3.7 < 25.0)"
-      ]
-    },
-    {
-      "ticker": "7200",
-      "reasons": [
-        "score=3.7 (< 18.0 - عتبة V9.2.3)",
-        "ADX=18.9 (< 20.0)"
-      ]
-    },
-    {
-      "ticker": "2285",
-      "reasons": [
-        "signal_type=default ممنوع (تاريخياً WR=0%)",
-        "score=3.6 (< 18.0 - عتبة V9.2.3)",
-        "تدفق القطاع=-549M ريال (< -500M، score=3.6 < 25.0)"
+        "تدفق القطاع=-610M ريال (< -500M، score=3.7 < 25.0)"
       ]
     },
     {
@@ -199,43 +196,52 @@
       ]
     },
     {
-      "ticker": "8010",
+      "ticker": "2270",
       "reasons": [
-        "signal_type=default ممنوع (تاريخياً WR=0%)",
         "score=3.2 (< 18.0 - عتبة V9.2.3)",
+        "weekly=هابط بدون إجماع كافٍ (4 < 6)",
+        "إشارات=4 (< 5)",
+        "vol_ratio=0.70× < 0.8 (سيولة ضعيفة)"
+      ]
+    },
+    {
+      "ticker": "4143",
+      "reasons": [
+        "score=3.1 (< 18.0 - عتبة V9.2.3)",
+        "MTF aligned=0.0/3.0 ضعيف",
         "vol_ratio=0.60× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
-      "ticker": "2082",
+      "ticker": "8010",
       "reasons": [
-        "score=3.2 (< 18.0 - عتبة V9.2.3)",
-        "إشارات=4 (< 5)",
-        "تدفق القطاع=-788M ريال (< -500M، score=3.2 < 25.0)"
+        "score=3.0 (< 18.0 - عتبة V9.2.3)",
+        "MTF aligned=0.0/3.0 ضعيف",
+        "vol_ratio=0.40× < 0.8 (سيولة ضعيفة)"
       ]
     }
   ],
   "stats": {
-    "total_candidates": 27,
+    "total_candidates": 26,
     "passed": 0,
-    "rejected": 27,
+    "rejected": 26,
     "picks_selected": 0,
     "avg_composite_score": 0,
     "avg_picks_ev": 0,
     "rejection_reasons": {
-      "score": 27,
-      "vol_ratio": 9,
-      "signal_type": 16,
-      "ADX": 3,
-      "RSI": 2,
-      "تدفق": 5,
-      "MTF": 2,
-      "إشارات": 2,
-      "MFI": 2
+      "score": 26,
+      "RSI": 5,
+      "signal_type": 15,
+      "vol_ratio": 16,
+      "إشارات": 3,
+      "تدفق": 7,
+      "MFI": 3,
+      "weekly": 2,
+      "MTF": 2
     }
   },
   "weight_suggestions": {},
-  "learning_notes": "V9.2.3 الفلتر المُشدّد: نجح 0 وفشل 27. متوسط composite=0, متوسط EV picks=0%. أكثر أسباب الرفض: [('score', 27), ('signal_type', 16), ('vol_ratio', 9)]",
+  "learning_notes": "V9.2.3 الفلتر المُشدّد: نجح 0 وفشل 26. متوسط composite=0, متوسط EV picks=0%. أكثر أسباب الرفض: [('score', 26), ('vol_ratio', 16), ('signal_type', 15)]",
   "missed_analysis": "تحليل الفرص الضائعة يتم في missed_opportunities.py",
   "risks_to_watch": "لا توجد تحذيرات حرجة في picks",
   "fallback_reason": "API authentication failed (401) - check ANTHROPIC_API_KEY"
