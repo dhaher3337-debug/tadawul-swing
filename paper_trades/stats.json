@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-05-21T02:02:48.625433",
+  "computed_at": "2026-05-22T02:02:50.227893",
   "version": "V9.2.3",
-  "total_trades": 35,
+  "total_trades": 39,
   "active_trades": 10,
   "wins": 11,
-  "losses": 24,
+  "losses": 28,
   "breakeven": 0,
-  "win_rate_pct": 31.4,
+  "win_rate_pct": 28.2,
   "avg_win_pct": 3.76,
-  "avg_loss_pct": -3.84,
-  "profit_factor": 0.45,
-  "expectancy_pct": -1.455,
-  "total_pnl_pct": -50.94,
+  "avg_loss_pct": -3.61,
+  "profit_factor": 0.41,
+  "expectancy_pct": -1.535,
+  "total_pnl_pct": -59.86,
   "best_trade": {
     "ticker": "2082",
     "pnl": 8.94,
@@ -24,22 +24,22 @@
   },
   "by_signal_type": {
     "default": {
+      "total": 7,
+      "wins": 1,
+      "win_rate": 14.3,
+      "avg_pnl": -2.19
+    },
+    "support_bounce": {
       "total": 5,
       "wins": 1,
       "win_rate": 20.0,
-      "avg_pnl": -2.47
-    },
-    "support_bounce": {
-      "total": 4,
-      "wins": 1,
-      "win_rate": 25.0,
-      "avg_pnl": -1.79
+      "avg_pnl": -1.95
     },
     "breakout": {
-      "total": 24,
+      "total": 25,
       "wins": 9,
-      "win_rate": 37.5,
-      "avg_pnl": -0.97
+      "win_rate": 36.0,
+      "avg_pnl": -1.07
     },
     "mean_reversion": {
       "total": 2,
@@ -56,10 +56,10 @@
       "avg_pnl": -5.68
     },
     "بتروكيماويات": {
-      "total": 10,
+      "total": 13,
       "wins": 2,
-      "win_rate": 20.0,
-      "avg_pnl": -2.35
+      "win_rate": 15.4,
+      "avg_pnl": -2.24
     },
     "صناعية": {
       "total": 2,
@@ -68,10 +68,10 @@
       "avg_pnl": 1.89
     },
     "تأمين": {
-      "total": 6,
+      "total": 7,
       "wins": 3,
-      "win_rate": 50.0,
-      "avg_pnl": -1.05
+      "win_rate": 42.9,
+      "avg_pnl": -1.38
     },
     "زراعة وأغذية": {
       "total": 5,
@@ -135,9 +135,9 @@
       "avg_pnl": -5.27
     },
     "Max Holding Days Reached": {
-      "total": 21,
-      "win_rate": 47.6,
-      "avg_pnl": 0.41
+      "total": 25,
+      "win_rate": 40.0,
+      "avg_pnl": -0.01
     },
     "Target2 Hit": {
       "total": 1,
@@ -147,9 +147,9 @@
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 7,
-      "win_rate": 14.3,
-      "avg_pnl": -1.91
+      "total": 10,
+      "win_rate": 10.0,
+      "avg_pnl": -1.9
     },
     "10-15": {
       "total": 18,
@@ -157,9 +157,9 @@
       "avg_pnl": -2.6
     },
     "15-20": {
-      "total": 4,
-      "win_rate": 25.0,
-      "avg_pnl": -1.87
+      "total": 5,
+      "win_rate": 20.0,
+      "avg_pnl": -2.17
     },
     "20-30": {
       "total": 4,
@@ -175,9 +175,9 @@
   "tired_stocks": [
     {
       "ticker": "2370",
-      "total": 3,
+      "total": 4,
       "wins": 1,
-      "win_rate": 33.3,
+      "win_rate": 25.0,
       "avg_pnl": -2.58
     },
     {
