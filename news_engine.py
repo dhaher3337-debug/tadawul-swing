@@ -66,30 +66,57 @@ def _fetch_url(url, timeout=15):
 
 
 def _parse_rss(xml_text):
-    """يستخرج (title, description, link, pubDate) من RSS XML."""
+    """يستخرج (title, description, link, pubDate) من RSS أو Atom.
+    V9.2.4: يدعم الآن RSS 2.0 (<item>) و Atom (<entry>) والـ namespaces،
+    لأن Argaam أرجع 0 عناصر — غالباً تغيّر صيغة الـ feed.
+    """
     items = []
     if not xml_text:
         return items
+
+    def _local(tag):
+        """يزيل الـ namespace من اسم الوسم: '{ns}item' -> 'item'."""
+        return tag.rsplit("}", 1)[-1].lower()
+
     try:
         root = ET.fromstring(xml_text)
-        # RSS 2.0 standard
-        for item in root.iter("item"):
-            title = item.findtext("title", "").strip()
-            desc = item.findtext("description", "").strip()
-            link = item.findtext("link", "").strip()
-            date = item.findtext("pubDate", "").strip()
-            # remove HTML tags from description
-            desc = re.sub(r"<[^>]+>", "", desc)
-            desc = re.sub(r"\s+", " ", desc).strip()
-            if title:
-                items.append({
-                    "title": title,
-                    "description": desc[:300],
-                    "link": link,
-                    "date": date,
-                })
     except Exception as e:
-        log.debug(f"parse RSS: {e}")
+        log.warning(f"parse RSS: XML غير صالح ({e}) — أول 120 حرف: {xml_text[:120]!r}")
+        return items
+
+    # نمرّ على كل العناصر ونلتقط <item> (RSS) و <entry> (Atom)
+    for node in root.iter():
+        tag = _local(node.tag)
+        if tag not in ("item", "entry"):
+            continue
+        title = desc = link = date = ""
+        for child in node:
+            ctag = _local(child.tag)
+            text = (child.text or "").strip()
+            if ctag == "title":
+                title = text
+            elif ctag in ("description", "summary", "content"):
+                desc = text or desc
+            elif ctag == "link":
+                # RSS: نص داخل الوسم. Atom: في الـ attribute href
+                link = text or child.attrib.get("href", "") or link
+            elif ctag in ("pubdate", "published", "updated"):
+                date = text or date
+        desc = re.sub(r"<[^>]+>", "", desc)
+        desc = re.sub(r"\s+", " ", desc).strip()
+        if title:
+            items.append({
+                "title": title,
+                "description": desc[:300],
+                "link": link,
+                "date": date,
+            })
+
+    if not items:
+        log.warning(
+            f"parse RSS: لم يُعثر على item/entry — حجم XML={len(xml_text)} "
+            f"جذر={_local(root.tag)}"
+        )
     return items
 
 
