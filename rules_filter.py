@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Rules-Based Filter — V9.2.3 (Tightened)
+Rules-Based Filter — V9.2.4 (Tightened)
 =========================================
 الهدف:
     استبدال Claude/Opus بـ filter حتمي مبني على قواعد صارمة.
 
-تغييرات V9.2.3 (بناءً على تحليل أسبوع 7-15 مايو 2026):
+تغييرات V9.2.4 (بناءً على تحليل أسبوع 7-15 مايو 2026):
     ============================================================
     📊 البيانات قالت:
     - Score ≥ 20: WR=83%, avg=+2.78%  ← هذا فقط ما نريد
@@ -40,52 +40,78 @@ F_SECTOR_FLOWS = BASE / "sector_flows_prev.json"
 
 
 # ════════════════════════════════════════════════
-# 🎯 V9.2.3: قواعد الإقصاء المُشدّدة
+# 🎯 V9.2.4: قواعد الإقصاء المُشدّدة
 # ════════════════════════════════════════════════
 RULES = {
-    # EV >= 0.5%: لا نقبل سهم بـ EV منخفض جداً
-    "min_ev_pct": 0.5,                # كان 0.0 (P1)
-    
+    # EV >= 0.0%: لا نشترط EV موجب صارم (EV حسابي تقريبي وليس مقياس edge)
+    "min_ev_pct": 0.0,
+
     # RR >= 1.3: حد أدنى لنسبة المكافأة/المخاطرة
     "min_risk_reward": 1.3,
-    
-    # 🚀 P0: Score >= 18.0 (كان 4.0!)
-    # السبب: على 25 صفقة، score < 18 أعطى WR=21% فقط مقابل WR=83% لـ score ≥ 20
-    "min_score": 18.0,
-    
-    # ADX >= 20: تجنّب الأسواق العرضية تماماً (P1 - كان 15)
+
+    # ════════════════════════════════════════════════════════════
+    # 🔴 V9.2.4 التغيير الأهم: إلغاء عتبة score المطلقة (كانت 18.0)
+    # ════════════════════════════════════════════════════════════
+    # السبب الجذري للعطل: مقياس score متغيّر (الأوزان تتكيّف يومياً عبر
+    # حلقة التعلّم)، فأقصى score في مرشحي اليوم = 13.56 بينما العتبة 18.0.
+    # → رفض 100% من المرشحين كل يوم لأسابيع. العتبة "فوق سقف المقياس".
+    # إحصائية "score≥20 → WR=83%" كانت على n=6 فقط ومن مقياس قديم (overfit).
+    # التحقق الخالي من survivorship (1560 صف): score_raw لا يتنبأ بالعائد
+    # المستقبلي في النطاق المتاح [6-16]. لذا:
+    #   - لا عتبة score مطلقة
+    #   - بوابة نسبية: أعلى score_percentile من مرشحي اليوم نفسه (scale-robust)
+    "use_relative_score_gate": True,
+    "score_percentile": 0.60,          # نقبل فقط أعلى 40% من مرشحي اليوم
+    "absolute_score_floor": 0.0,        # أمان فقط؛ لا عتبة صارمة بعد الآن
+
+    # ════════════════════════════════════════════════════════════
+    # 🔴 V9.2.4 الإصلاح الاستراتيجي الأهم: منع مطاردة القفزات (anti-chasing)
+    # ════════════════════════════════════════════════════════════
+    # التحقق الخالي من survivorship أثبت أن دخول الأسهم التي قفزت كثيراً
+    # في نفس اليوم يعطي أسوأ عائد مستقبلي:
+    #   change[3,5)%  → avgFwd3 = -1.26%
+    #   change[5,8)%  → avgFwd3 = -2.25%
+    #   change[8+]%   → avgFwd3 = -3.87%
+    # وهذا يفسّر paper trades: 13/39 صفقة MFE<0.5% (اشترينا القمة بالضبط).
+    "block_chasing": True,
+    "max_same_day_change": 6.0,        # رفض صارم إذا قفز السهم ≥ 6% اليوم
+    "warn_same_day_change": 4.0,       # تحذير 4-6%
+
+    # ADX >= 20: تجنّب الأسواق العرضية (مدعوم: adx≥30 أفضل من adx<20 بـ ~1pp)
     "min_adx": 20.0,
-    
+
+    # 🆕 V9.2.4: قوة نسبية vs TASI (مدعوم: rs≥1.0 أفضل باستمرار)
+    "min_rs_vs_tasi": 1.0,
+
     # weekly_trend ≠ "هابط"
     "block_weekly_haboot": True,
-    "weekly_haboot_min_signals": 6,    # كان 5 - رفعنا
-    
+    "weekly_haboot_min_signals": 6,
+
     # MTF: على الأقل 1 من المتاح (نُفضّل 2+)
     "min_mtf_aligned": 1,
-    "preferred_mtf_aligned": 2,        # 🆕 إذا أقل من 2، نخصم من composite
-    
-    # P1: عدد الإشارات النشطة (كان 3 → 5)
+    "preferred_mtf_aligned": 2,
+
+    # عدد الإشارات النشطة
     "min_active_signals": 5,
-    
-    # 🆕 P0: فلتر القطاعات السلبية
-    # إذا تدفق القطاع < -500M SAR → استبعاد إلا إذا score ≥ 25 (إجماع قوي يتغلب)
+
+    # فلتر القطاعات السلبية (نُبقيه لكن بعتبة override نسبية لاحقاً)
     "block_negative_sectors": True,
     "negative_sector_flow_threshold": -500_000_000,
-    "override_negative_sector_min_score": 25.0,
-    
-    # 🆕 P0: استبعاد signal types ضعيفة
-    # تحليل الأسبوع: default WR=0%, mean_reversion WR=0%
-    "blocked_signal_types": ["default", "mean_reversion"],
-    
-    # 🆕 P0: فلتر RSI overbought
-    # على 25 صفقة: متوسط RSI الرابح=65, الخاسر=64 (لا فرق كبير)
-    # لكن دخول RSI ≥ 72 = late breakout غالباً يهبط
-    "max_rsi_for_entry": 72.0,
-    
-    # 🆕 P1: فلتر MFI overbought 
-    "max_mfi_for_entry": 85.0,
-    
-    # 🆕 P1: حد أدنى للسيولة (تجنب الأسهم الميتة)
+
+    # ════════════════════════════════════════════════════════════
+    # 🔴 V9.2.4: signal_type لم يعد بوابة رفض
+    # ════════════════════════════════════════════════════════════
+    # السبب: _infer_signal_type القديم كان يصنّف أي مرشح فيه إشارة RSI/MFI
+    # كـ "mean_reversion" ويرفضه (29/47 يوم 22 مايو) حتى لو كان momentum قوي.
+    # نحتفظ بـ signal_type كـ metadata فقط (للـ paper_trading_engine).
+    "blocked_signal_types": [],
+
+    # 🟡 V9.2.4: RSI/MFI أصبحا تحذيراً لا رفضاً
+    # التحقق: rsi[70+] → avgFwd3 -0.52% (ليس أسوأ من المتوسط). لا مبرر لرفض صارم.
+    "warn_rsi": 75.0,
+    "warn_mfi": 88.0,
+
+    # حد أدنى للسيولة
     "min_volume_ratio": 0.8,
 }
 
@@ -101,7 +127,7 @@ SCORE_WEIGHTS = {
     "mtf_alignment": 0.10,
     "volume_signal": 0.05,
     "power_score": 0.15,
-    "sector_flow": 0.07,      # 🆕 V9.2.3: تدفق سيولة القطاع
+    "sector_flow": 0.07,      # 🆕 V9.2.4: تدفق سيولة القطاع
 }
 # المجموع: 1.00 ✓
 
@@ -167,9 +193,11 @@ def _safe(v, default=0.0):
 # ════════════════════════════════════════════════
 # تقييم candidate
 # ════════════════════════════════════════════════
-def evaluate_candidate(candidate: dict, sector_flows: dict = None) -> dict:
+def evaluate_candidate(candidate: dict, sector_flows: dict = None,
+                       score_floor: float = 0.0) -> dict:
     """
     يقيّم candidate واحد ضد القواعد، يُرجع تقريراً مفصّلاً.
+    score_floor: عتبة score نسبية محسوبة من توزيع مرشحي اليوم (V9.2.4).
     """
     if sector_flows is None:
         sector_flows = {}
@@ -185,6 +213,8 @@ def evaluate_candidate(candidate: dict, sector_flows: dict = None) -> dict:
     adx = _safe(candidate.get("adx"))
     rsi = _safe(candidate.get("rsi"))
     mfi = _safe(candidate.get("mfi"))
+    change_pct = _safe(candidate.get("change"))          # 🆕 V9.2.4 anti-chasing
+    rs_vs_tasi = _safe(candidate.get("rs_vs_tasi"), 1.0)  # 🆕 V9.2.4
     weekly = candidate.get("weekly_trend", "")
     signals = candidate.get("signals", []) or []
     mtf_aligned = _safe(candidate.get("mtf_aligned"))
@@ -195,15 +225,11 @@ def evaluate_candidate(candidate: dict, sector_flows: dict = None) -> dict:
     # حقن sector_flow في candidate حتى scoring يستخدمه
     candidate["sector_flow"] = sector_flow
     
-    # ─── 🆕 P0: signal_type filter ───
-    # نستنتج signal_type من signals
+    # signal_type = metadata فقط (V9.2.4: لم يعد بوابة رفض)
     signal_type = _infer_signal_type(signals)
-    candidate["signal_type"] = signal_type  # حقن للـ paper_trading_engine
-    
+    candidate["signal_type"] = signal_type
     if signal_type in RULES["blocked_signal_types"]:
-        rejections.append(
-            f"signal_type={signal_type} ممنوع (تاريخياً WR=0%)"
-        )
+        rejections.append(f"signal_type={signal_type} ممنوع")
     
     # ─── القواعد الصارمة ───
     
@@ -215,9 +241,31 @@ def evaluate_candidate(candidate: dict, sector_flows: dict = None) -> dict:
     if rr < RULES["min_risk_reward"]:
         rejections.append(f"RR=1:{rr} (< 1:{RULES['min_risk_reward']})")
     
-    # 🚀 القاعدة 3: Score (المهم!)
-    if score < RULES["min_score"]:
-        rejections.append(f"score={score:.1f} (< {RULES['min_score']} - عتبة V9.2.3)")
+    # 🔴 القاعدة 3 (V9.2.4): بوابة score نسبية بدل المطلقة
+    # نرفض فقط إذا كان score أقل من عتبة اليوم (أدنى 60% من المرشحين)
+    if RULES["use_relative_score_gate"]:
+        if score < score_floor:
+            rejections.append(
+                f"score={score:.1f} ضمن أدنى مرشحي اليوم (< عتبة {score_floor:.1f})"
+            )
+    elif score < RULES.get("absolute_score_floor", 0):
+        rejections.append(f"score={score:.1f} (< {RULES['absolute_score_floor']})")
+
+    # 🔴 القاعدة 3ب (V9.2.4): anti-chasing — أهم إصلاح استراتيجي
+    if RULES["block_chasing"]:
+        if change_pct >= RULES["max_same_day_change"]:
+            rejections.append(
+                f"مطاردة قفزة: +{change_pct:.1f}% اليوم (≥ {RULES['max_same_day_change']}%؛ "
+                f"تاريخياً عائد 3 أيام أسوأ)"
+            )
+        elif change_pct >= RULES["warn_same_day_change"]:
+            warnings.append(f"⚠️ قفز +{change_pct:.1f}% اليوم - دخول متأخر محتمل")
+
+    # 🆕 القاعدة 3ج (V9.2.4): قوة نسبية vs TASI
+    if rs_vs_tasi < RULES["min_rs_vs_tasi"]:
+        rejections.append(
+            f"RS={rs_vs_tasi:.2f} < {RULES['min_rs_vs_tasi']} (أضعف من المؤشر)"
+        )
     
     # القاعدة 4: ADX
     has_volume_breakout = (
@@ -255,17 +303,13 @@ def evaluate_candidate(candidate: dict, sector_flows: dict = None) -> dict:
             f"إشارات={len(signals)} (< {RULES['min_active_signals']})"
         )
     
-    # 🆕 القاعدة 8: RSI overbought (P0)
-    if rsi > 0 and rsi >= RULES["max_rsi_for_entry"]:
-        rejections.append(
-            f"RSI={rsi:.0f} ≥ {RULES['max_rsi_for_entry']} (overbought - دخول متأخر)"
-        )
+    # 🟡 القاعدة 8 (V9.2.4): RSI تحذير لا رفض (التحقق لم يدعم الرفض)
+    if rsi > 0 and rsi >= RULES["warn_rsi"]:
+        warnings.append(f"⚠️ RSI={rsi:.0f} مرتفع (overbought)")
     
-    # 🆕 القاعدة 9: MFI overbought (P1)
-    if mfi > 0 and mfi >= RULES["max_mfi_for_entry"]:
-        rejections.append(
-            f"MFI={mfi:.0f} ≥ {RULES['max_mfi_for_entry']} (overbought)"
-        )
+    # 🟡 القاعدة 9 (V9.2.4): MFI تحذير لا رفض
+    if mfi > 0 and mfi >= RULES["warn_mfi"]:
+        warnings.append(f"⚠️ MFI={mfi:.0f} مرتفع")
     
     # 🆕 القاعدة 10: Volume ratio
     if volume_ratio > 0 and volume_ratio < RULES["min_volume_ratio"]:
@@ -273,20 +317,13 @@ def evaluate_candidate(candidate: dict, sector_flows: dict = None) -> dict:
             f"vol_ratio={volume_ratio:.2f}× < {RULES['min_volume_ratio']} (سيولة ضعيفة)"
         )
     
-    # 🆕 القاعدة 11: P0 - Sector flow
+    # 🆕 القاعدة 11: P0 - Sector flow (V9.2.4: تحذير لا رفض - العيّنة صغيرة)
     if RULES["block_negative_sectors"]:
         threshold = RULES["negative_sector_flow_threshold"]
-        override = RULES["override_negative_sector_min_score"]
         if sector_flow < threshold:
-            if score < override:
-                rejections.append(
-                    f"تدفق القطاع={sector_flow/1e6:.0f}M ريال "
-                    f"(< {threshold/1e6:.0f}M، score={score:.1f} < {override})"
-                )
-            else:
-                warnings.append(
-                    f"⚠️ تدفق القطاع سلبي ({sector_flow/1e6:.0f}M) لكن score={score:.1f} يتجاوز"
-                )
+            warnings.append(
+                f"⚠️ تدفق القطاع سلبي ({sector_flow/1e6:.0f}M ريال)"
+            )
     
     # ─── تحذيرات إضافية ───
     
@@ -315,16 +352,24 @@ def evaluate_candidate(candidate: dict, sector_flows: dict = None) -> dict:
 
 
 def _infer_signal_type(signals: list) -> str:
-    """يستنتج signal_type من قائمة signals (متطابق مع paper_trading_engine)."""
+    """يستنتج signal_type من قائمة signals.
+    V9.2.4: الأولوية للزخم/الاتجاه. لا نصنّف كـ mean_reversion إلا إذا كانت
+    الإشارات أوسيليتر بحتة (بلا اختراق/زخم/اتجاه).
+    """
     if not signals:
         return "default"
     sig_set = set(signals)
+    trend_momo = {"breakout", "volume_surge", "macd", "obv", "adx",
+                  "supertrend", "ichimoku", "sma_cross", "relative_strength",
+                  "weekly_trend"}
     if "breakout" in sig_set and "volume_surge" in sig_set:
         return "breakout"
-    if "rsi" in sig_set or "stoch_rsi" in sig_set or "mfi" in sig_set:
-        return "mean_reversion"
+    if sig_set & trend_momo:
+        return "momentum"
     if "fibonacci" in sig_set or "vwap" in sig_set:
         return "support_bounce"
+    if sig_set & {"rsi", "stoch_rsi", "mfi", "bollinger", "cmf"}:
+        return "mean_reversion"
     return "default"
 
 
@@ -335,10 +380,10 @@ def compute_composite_score(candidate: dict) -> tuple:
     """
     components = {}
     
-    # 1. Score (مُطبَّع: score=30 → 1.0، score=18 → 0.0)
-    # V9.2.3: تطبيع جديد لأن أدنى مقبول الآن 18
+    # 1. Score (V9.2.4: مُطبَّع على المقياس الحقيقي الحالي ~ [0..15])
+    # المقياس القديم (score-18)/(30-18) كان يُنتج 0 لكل score مُتاح < 18.
     score = _safe(candidate.get("score"))
-    components["score"] = min(max((score - 18) / (30 - 18), 0.0), 1.0)
+    components["score"] = min(max(score / 15.0, 0.0), 1.0)
     
     # 2. EV
     ev_pct = _safe(candidate.get("expected_value_pct"))
@@ -381,7 +426,7 @@ def compute_composite_score(candidate: dict) -> tuple:
 
 def filter_candidates(candidates: list, top_n: int = 5) -> dict:
     """
-    🎯 الدالة الرئيسية - V9.2.3: top_n خُفّض من 7 إلى 5 (انتقائية أعلى).
+    🎯 الدالة الرئيسية - V9.2.4: top_n خُفّض من 7 إلى 5 (انتقائية أعلى).
     """
     today_str = datetime.now().strftime("%Y-%m-%d")
     
@@ -391,9 +436,19 @@ def filter_candidates(candidates: list, top_n: int = 5) -> dict:
     # تحميل sector flows
     sector_flows = _load_sector_flows()
     log.info(f"loaded {len(sector_flows)} sector flows for filtering")
-    
+
+    # 🔴 V9.2.4: عتبة score نسبية من توزيع مرشحي اليوم (scale-robust)
+    score_floor = 0.0
+    if RULES.get("use_relative_score_gate"):
+        all_scores = sorted(_safe(c.get("score")) for c in candidates)
+        if all_scores:
+            idx = int(len(all_scores) * RULES["score_percentile"])
+            idx = min(idx, len(all_scores) - 1)
+            score_floor = all_scores[idx]
+        log.info(f"relative score floor (p{int(RULES['score_percentile']*100)}) = {score_floor:.2f}")
+
     # تقييم كل candidate
-    evaluations = [evaluate_candidate(c, sector_flows) for c in candidates]
+    evaluations = [evaluate_candidate(c, sector_flows, score_floor) for c in candidates]
     
     # فصل passed و rejected
     passed_evals = [e for e in evaluations if e["passed"]]
@@ -463,7 +518,7 @@ def filter_candidates(candidates: list, top_n: int = 5) -> dict:
             "rules_check": _format_rules_check(full_data),
             "composite_score": composite,
             "warnings": eval_result["warnings"],
-            # 🆕 V9.2.3: ضمان وجود sector_flow و atr في picks
+            # 🆕 V9.2.4: ضمان وجود sector_flow و atr في picks
             "sector_flow": full_data.get("sector_flow", 0),
             "atr": full_data.get("atr") or full_data.get("atr_14"),
             "signal_type": full_data.get("signal_type", "default"),
@@ -504,15 +559,15 @@ def filter_candidates(candidates: list, top_n: int = 5) -> dict:
     
     result = {
         "date": today_str,
-        "model": "rules_filter_v2_3",
-        "version": "V9.2.3",
+        "model": "rules_filter_v2_4",
+        "version": "V9.2.4",
         "no_ai": False,
         "filter_mode": "deterministic",
         "market_outlook": "محايد",
         "market_comment": (
-            f"وضع No-API V9.2.3. تم تطبيق {len(RULES)} قواعد إقصاء صارمة. "
+            f"وضع No-API V9.2.4. تم تطبيق {len(RULES)} قواعد إقصاء صارمة. "
             f"نجح {stats['passed']}/{stats['total_candidates']} مرشح. "
-            f"عتبة score مرفوعة إلى {RULES['min_score']} (كانت 4.0)."
+            f"عتبة score نسبية (أعلى {int((1-RULES['score_percentile'])*100)}% من مرشحي اليوم) + منع مطاردة القفزات."
         ),
         "sector_analysis": "تحليل قطاعي يتطلب AI - معطّل في وضع rules_filter",
         "global_impact": "غير متاح في وضع rules_filter",
@@ -522,7 +577,7 @@ def filter_candidates(candidates: list, top_n: int = 5) -> dict:
         "stats": stats,
         "weight_suggestions": {},
         "learning_notes": (
-            f"V9.2.3 الفلتر المُشدّد: نجح {stats['passed']} وفشل {stats['rejected']}. "
+            f"V9.2.4 الفلتر المُشدّد: نجح {stats['passed']} وفشل {stats['rejected']}. "
             f"متوسط composite={stats['avg_composite_score']}, "
             f"متوسط EV picks={stats['avg_picks_ev']}%. "
             f"أكثر أسباب الرفض: {sorted(rejection_reasons_count.items(), key=lambda x: -x[1])[:3]}"
@@ -537,8 +592,8 @@ def filter_candidates(candidates: list, top_n: int = 5) -> dict:
 def _empty_result(today_str: str) -> dict:
     return {
         "date": today_str,
-        "model": "rules_filter_v2_3",
-        "version": "V9.2.3",
+        "model": "rules_filter_v2_4",
+        "version": "V9.2.4",
         "no_ai": False,
         "filter_mode": "deterministic",
         "market_outlook": "محايد",
@@ -588,7 +643,7 @@ def _summarize_warnings(picks: list) -> str:
 def log_filter_result(result: dict):
     log_entry = {
         "date": result["date"],
-        "version": result.get("version", "V9.2.3"),
+        "version": result.get("version", "V9.2.4"),
         "stats": result.get("stats", {}),
         "picks_tickers": [p.get("ticker") for p in result.get("picks", [])],
         "picks_composite_avg": result.get("stats", {}).get("avg_composite_score", 0),
@@ -617,7 +672,7 @@ def run():
         save_result(_empty_result(datetime.now().strftime("%Y-%m-%d")))
         return
     
-    print(f"  🔧 Rules Filter V9.2.3 (مُشدّد) — {len(candidates)} candidates")
+    print(f"  🔧 Rules Filter V9.2.4 (مُشدّد) — {len(candidates)} candidates")
     
     result = filter_candidates(candidates, top_n=5)
     save_result(result)
@@ -663,7 +718,7 @@ def save_result(result: dict):
 
 if __name__ == "__main__":
     print(f"\n{'='*60}")
-    print("Rules-Based Filter — V9.2.3 (Tightened)")
+    print("Rules-Based Filter — V9.2.4 (Tightened)")
     print(f"{'='*60}\n")
     
     print("📋 القواعد المُطبّقة:")
