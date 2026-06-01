@@ -282,16 +282,16 @@
       "missed_tickers": [
         "4280",
         "6012",
-        "4193",
         "6013",
+        "6020",
         "2285",
-        "8230"
+        "4193"
       ],
       "caught_tickers": [
         "6017",
-        "4061",
         "2130",
-        "2180"
+        "4061",
+        "4170"
       ]
     }
   },
@@ -301,7 +301,7 @@
     "total_caught": 53,
     "total_missed": 87,
     "lifetime_catch_rate_pct": 37.9,
-    "last_updated": "2026-06-01T11:52:44.687140"
+    "last_updated": "2026-06-01T12:31:18.679352"
   },
   "recurring_misses": [
     {
@@ -310,10 +310,14 @@
     },
     {
       "ticker": "4193",
-      "count": 5
+      "count": 6
     },
     {
       "ticker": "5110",
+      "count": 5
+    },
+    {
+      "ticker": "6012",
       "count": 5
     },
     {
@@ -337,17 +341,13 @@
       "count": 4
     },
     {
-      "ticker": "6012",
-      "count": 4
-    },
-    {
       "ticker": "7203",
       "count": 3
     }
   ],
   "miss_cases": {
-    "unforeseeable": 61,
-    "out_of_universe": 56,
+    "unforeseeable": 65,
+    "out_of_universe": 58,
     "predictable_miss": 2
   }
 }

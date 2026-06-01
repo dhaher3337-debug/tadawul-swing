@@ -2,12 +2,12 @@
   "is_fresh": false,
   "expected_date": "2026-05-31",
   "actual_dates": {
-    "2026-06-01": 195,
+    "2026-06-01": 193,
     "2026-05-31": 1
   },
   "fresh_pct": 0.5,
-  "zero_change_pct": 1.5,
-  "total_stocks": 196,
+  "zero_change_pct": 3.1,
+  "total_stocks": 194,
   "warnings": [
     "⚠️ فقط 1% من الأسهم لها بيانات بتاريخ 2026-05-31 (الحد الأدنى: 70%)"
   ]
