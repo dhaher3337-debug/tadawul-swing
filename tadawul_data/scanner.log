@@ -279,3 +279,10 @@
 2026-06-01 12:31:18,663 [INFO] relative score floor (p60) = 4.60
 2026-06-01 12:31:18,681 [WARNING] update_active_trades: تم استدعاؤها مسبقاً اليوم 2026-06-01.
 2026-06-01 12:31:18,681 [WARNING] open_trades_from_candidates: تم استدعاؤها مسبقاً اليوم 2026-06-01. استخدم force=True للتجاوز.
+2026-06-02 02:01:07,587 [INFO] evaluate_universe: {'evaluated': 0, 'still_pending': 584, 'files_updated': 0}
+2026-06-02 02:01:39,048 [INFO] Using cached sentiment (0 tickers)
+2026-06-02 02:01:39,048 [INFO] Using cached earnings (196 tickers)
+2026-06-02 02:02:33,456 [INFO] Universe snapshot: 194 صف → snapshot_2026-06-02.jsonl
+2026-06-02 02:02:34,345 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-06-02 02:02:34,352 [INFO] loaded 17 sector flows for filtering
+2026-06-02 02:02:34,352 [INFO] relative score floor (p60) = 4.59

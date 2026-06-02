@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-06-01T12:31:18.692357",
+  "computed_at": "2026-06-02T02:02:34.393554",
   "version": "V9.2.3",
-  "total_trades": 42,
+  "total_trades": 45,
   "active_trades": 10,
   "wins": 14,
-  "losses": 28,
+  "losses": 31,
   "breakeven": 0,
-  "win_rate_pct": 33.3,
+  "win_rate_pct": 31.1,
   "avg_win_pct": 4.93,
-  "avg_loss_pct": -3.61,
-  "profit_factor": 0.68,
-  "expectancy_pct": -0.765,
-  "total_pnl_pct": -32.12,
+  "avg_loss_pct": -3.6,
+  "profit_factor": 0.62,
+  "expectancy_pct": -0.943,
+  "total_pnl_pct": -42.42,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -36,10 +36,10 @@
       "avg_pnl": 0.01
     },
     "breakout": {
-      "total": 27,
+      "total": 30,
       "wins": 11,
-      "win_rate": 40.7,
-      "avg_pnl": -0.32
+      "win_rate": 36.7,
+      "avg_pnl": -0.63
     },
     "mean_reversion": {
       "total": 2,
@@ -56,16 +56,16 @@
       "avg_pnl": -5.68
     },
     "بتروكيماويات": {
-      "total": 13,
+      "total": 14,
       "wins": 2,
-      "win_rate": 15.4,
-      "avg_pnl": -2.24
+      "win_rate": 14.3,
+      "avg_pnl": -2.3
     },
     "صناعية": {
-      "total": 3,
+      "total": 4,
       "wins": 2,
-      "win_rate": 66.7,
-      "avg_pnl": 4.54
+      "win_rate": 50.0,
+      "avg_pnl": 2.47
     },
     "تأمين": {
       "total": 7,
@@ -92,10 +92,10 @@
       "avg_pnl": -0.01
     },
     "تجزئة": {
-      "total": 1,
+      "total": 2,
       "wins": 0,
       "win_rate": 0.0,
-      "avg_pnl": -0.89
+      "avg_pnl": -2.15
     },
     "أسمنت": {
       "total": 2,
@@ -130,9 +130,9 @@
   },
   "by_exit_reason": {
     "Stop Hit": {
-      "total": 13,
+      "total": 16,
       "win_rate": 0.0,
-      "avg_pnl": -5.27
+      "avg_pnl": -4.92
     },
     "Max Holding Days Reached": {
       "total": 25,
@@ -152,9 +152,9 @@
       "avg_pnl": -1.9
     },
     "10-15": {
-      "total": 20,
-      "win_rate": 30.0,
-      "avg_pnl": -1.27
+      "total": 23,
+      "win_rate": 26.1,
+      "avg_pnl": -1.55
     },
     "15-20": {
       "total": 6,
