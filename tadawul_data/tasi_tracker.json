@@ -1,10 +1,10 @@
 {
   "signal_accuracy": {
     "rsi": {
-      "triggered": 8,
-      "hit": 0,
+      "triggered": 10,
+      "hit": 2,
       "miss": 8,
-      "rate": 0.0
+      "rate": 0.2
     },
     "stoch_rsi": {
       "triggered": 14,
@@ -13,34 +13,34 @@
       "rate": 0.0
     },
     "macd": {
-      "triggered": 39,
-      "hit": 14,
-      "miss": 25,
-      "rate": 0.359
+      "triggered": 50,
+      "hit": 16,
+      "miss": 34,
+      "rate": 0.32
     },
     "bollinger": {
-      "triggered": 11,
-      "hit": 0,
+      "triggered": 13,
+      "hit": 2,
       "miss": 11,
-      "rate": 0.0
+      "rate": 0.154
     },
     "obv": {
-      "triggered": 310,
-      "hit": 82,
-      "miss": 228,
+      "triggered": 332,
+      "hit": 88,
+      "miss": 244,
       "rate": 0.265
     },
     "vwap": {
-      "triggered": 43,
-      "hit": 8,
+      "triggered": 45,
+      "hit": 10,
       "miss": 35,
-      "rate": 0.186
+      "rate": 0.222
     },
     "volume_surge": {
-      "triggered": 114,
-      "hit": 33,
-      "miss": 81,
-      "rate": 0.289
+      "triggered": 133,
+      "hit": 39,
+      "miss": 94,
+      "rate": 0.293
     },
     "sma_cross": {
       "triggered": 12,
@@ -49,28 +49,28 @@
       "rate": 0.583
     },
     "breakout": {
-      "triggered": 123,
-      "hit": 39,
-      "miss": 84,
-      "rate": 0.317
+      "triggered": 148,
+      "hit": 45,
+      "miss": 103,
+      "rate": 0.304
     },
     "candle_pattern": {
-      "triggered": 9,
-      "hit": 1,
-      "miss": 8,
-      "rate": 0.111
+      "triggered": 11,
+      "hit": 2,
+      "miss": 9,
+      "rate": 0.182
     },
     "oil_correlation": {
-      "triggered": 15,
-      "hit": 5,
-      "miss": 10,
-      "rate": 0.333
+      "triggered": 27,
+      "hit": 11,
+      "miss": 16,
+      "rate": 0.407
     },
     "adx": {
-      "triggered": 152,
-      "hit": 41,
-      "miss": 111,
-      "rate": 0.27
+      "triggered": 170,
+      "hit": 46,
+      "miss": 124,
+      "rate": 0.271
     },
     "supertrend": {
       "triggered": 0,
@@ -79,16 +79,16 @@
       "rate": 0.0
     },
     "ichimoku": {
-      "triggered": 239,
-      "hit": 68,
-      "miss": 171,
-      "rate": 0.285
+      "triggered": 251,
+      "hit": 72,
+      "miss": 179,
+      "rate": 0.287
     },
     "mfi": {
-      "triggered": 4,
-      "hit": 1,
-      "miss": 3,
-      "rate": 0.25
+      "triggered": 7,
+      "hit": 3,
+      "miss": 4,
+      "rate": 0.429
     },
     "cmf": {
       "triggered": 81,
@@ -97,22 +97,22 @@
       "rate": 0.272
     },
     "fibonacci": {
-      "triggered": 91,
-      "hit": 19,
-      "miss": 72,
-      "rate": 0.209
+      "triggered": 97,
+      "hit": 20,
+      "miss": 77,
+      "rate": 0.206
     },
     "relative_strength": {
-      "triggered": 291,
-      "hit": 83,
-      "miss": 208,
-      "rate": 0.285
+      "triggered": 306,
+      "hit": 87,
+      "miss": 219,
+      "rate": 0.284
     },
     "weekly_trend": {
-      "triggered": 280,
-      "hit": 75,
-      "miss": 205,
-      "rate": 0.268
+      "triggered": 301,
+      "hit": 82,
+      "miss": 219,
+      "rate": 0.272
     }
   },
   "blacklist": [
@@ -156,8 +156,8 @@
     },
     "1303": {
       "hits": 1,
-      "total": 2,
-      "last_update": "2026-05-04"
+      "total": 3,
+      "last_update": "2026-06-03"
     },
     "4262": {
       "hits": 0,
@@ -191,13 +191,13 @@
     },
     "2370": {
       "hits": 0,
-      "total": 2,
-      "last_update": "2026-05-04"
+      "total": 3,
+      "last_update": "2026-06-03"
     },
     "4280": {
-      "hits": 0,
-      "total": 4,
-      "last_update": "2026-06-01"
+      "hits": 1,
+      "total": 5,
+      "last_update": "2026-06-03"
     },
     "2070": {
       "hits": 0,
@@ -241,8 +241,8 @@
     },
     "6017": {
       "hits": 4,
-      "total": 4,
-      "last_update": "2026-05-10"
+      "total": 5,
+      "last_update": "2026-06-03"
     },
     "4190": {
       "hits": 0,
@@ -266,8 +266,8 @@
     },
     "2130": {
       "hits": 3,
-      "total": 6,
-      "last_update": "2026-06-01"
+      "total": 7,
+      "last_update": "2026-06-03"
     },
     "1080": {
       "hits": 0,
@@ -295,9 +295,9 @@
       "last_update": "2026-04-27"
     },
     "4170": {
-      "hits": 0,
-      "total": 2,
-      "last_update": "2026-05-04"
+      "hits": 1,
+      "total": 3,
+      "last_update": "2026-06-03"
     },
     "4144": {
       "hits": 1,
@@ -341,8 +341,8 @@
     },
     "2283": {
       "hits": 0,
-      "total": 2,
-      "last_update": "2026-05-04"
+      "total": 3,
+      "last_update": "2026-06-03"
     },
     "4162": {
       "hits": 0,
@@ -411,8 +411,8 @@
     },
     "3005": {
       "hits": 0,
-      "total": 4,
-      "last_update": "2026-05-10"
+      "total": 5,
+      "last_update": "2026-06-03"
     },
     "6014": {
       "hits": 1,
@@ -450,9 +450,9 @@
       "last_update": "2026-05-04"
     },
     "2320": {
-      "hits": 4,
-      "total": 4,
-      "last_update": "2026-05-10"
+      "hits": 5,
+      "total": 5,
+      "last_update": "2026-06-03"
     },
     "4292": {
       "hits": 0,
@@ -461,13 +461,13 @@
     },
     "4193": {
       "hits": 0,
-      "total": 1,
-      "last_update": "2026-05-04"
+      "total": 2,
+      "last_update": "2026-06-03"
     },
     "2082": {
       "hits": 3,
-      "total": 5,
-      "last_update": "2026-06-01"
+      "total": 6,
+      "last_update": "2026-06-03"
     },
     "8250": {
       "hits": 0,
@@ -486,8 +486,8 @@
     },
     "2285": {
       "hits": 0,
-      "total": 5,
-      "last_update": "2026-06-01"
+      "total": 6,
+      "last_update": "2026-06-03"
     },
     "2287": {
       "hits": 0,
@@ -496,8 +496,8 @@
     },
     "1302": {
       "hits": 0,
-      "total": 3,
-      "last_update": "2026-05-10"
+      "total": 4,
+      "last_update": "2026-06-03"
     },
     "2282": {
       "hits": 0,
@@ -536,8 +536,8 @@
     },
     "1833": {
       "hits": 3,
-      "total": 5,
-      "last_update": "2026-06-01"
+      "total": 6,
+      "last_update": "2026-06-03"
     },
     "4084": {
       "hits": 0,
@@ -545,9 +545,9 @@
       "last_update": "2026-06-01"
     },
     "2050": {
-      "hits": 0,
-      "total": 5,
-      "last_update": "2026-06-01"
+      "hits": 1,
+      "total": 6,
+      "last_update": "2026-06-03"
     },
     "2250": {
       "hits": 1,
@@ -571,13 +571,13 @@
     },
     "6002": {
       "hits": 0,
-      "total": 5,
-      "last_update": "2026-06-01"
+      "total": 6,
+      "last_update": "2026-06-03"
     },
     "8030": {
       "hits": 3,
-      "total": 3,
-      "last_update": "2026-05-18"
+      "total": 4,
+      "last_update": "2026-06-03"
     },
     "4263": {
       "hits": 0,
@@ -600,9 +600,9 @@
       "last_update": "2026-06-01"
     },
     "4070": {
-      "hits": 0,
-      "total": 2,
-      "last_update": "2026-06-01"
+      "hits": 1,
+      "total": 3,
+      "last_update": "2026-06-03"
     },
     "1030": {
       "hits": 0,
@@ -643,6 +643,71 @@
       "hits": 0,
       "total": 2,
       "last_update": "2026-06-01"
+    },
+    "2340": {
+      "hits": 1,
+      "total": 1,
+      "last_update": "2026-06-03"
+    },
+    "4061": {
+      "hits": 0,
+      "total": 1,
+      "last_update": "2026-06-03"
+    },
+    "2180": {
+      "hits": 1,
+      "total": 1,
+      "last_update": "2026-06-03"
+    },
+    "2284": {
+      "hits": 0,
+      "total": 1,
+      "last_update": "2026-06-03"
+    },
+    "6004": {
+      "hits": 0,
+      "total": 1,
+      "last_update": "2026-06-03"
+    },
+    "2160": {
+      "hits": 0,
+      "total": 1,
+      "last_update": "2026-06-03"
+    },
+    "4325": {
+      "hits": 0,
+      "total": 1,
+      "last_update": "2026-06-03"
+    },
+    "2290": {
+      "hits": 1,
+      "total": 1,
+      "last_update": "2026-06-03"
+    },
+    "6020": {
+      "hits": 0,
+      "total": 1,
+      "last_update": "2026-06-03"
+    },
+    "2220": {
+      "hits": 0,
+      "total": 1,
+      "last_update": "2026-06-03"
+    },
+    "8240": {
+      "hits": 0,
+      "total": 1,
+      "last_update": "2026-06-03"
+    },
+    "2110": {
+      "hits": 1,
+      "total": 1,
+      "last_update": "2026-06-03"
+    },
+    "1301": {
+      "hits": 0,
+      "total": 1,
+      "last_update": "2026-06-03"
     }
   },
   "daily_log": [],
