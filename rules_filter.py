@@ -113,6 +113,16 @@ RULES = {
 
     # حد أدنى للسيولة
     "min_volume_ratio": 0.8,
+
+    # ════════════════════════════════════════════════════════════
+    # 🟡 V9.2.4 (اختياري): تقييد التمدّد فوق SMA20 — استراتيجية C
+    # ════════════════════════════════════════════════════════════
+    # backtest خالٍ من survivorship (9 أيام): تقييد ≤8% رفع متوسط عائد 3 أيام
+    # من +0.05% إلى +0.14% والإصابة 20%→22%. أثر صغير وعيّنة صغيرة، لكنه متّسق
+    # مع مبدأ anti-chasing (كلاهما: لا تدخل سهماً متمدّداً). الحد سخيّ (8%) فنادراً
+    # ما يقيّد. للإطفاء: enable_extension_cap = False.
+    "enable_extension_cap": True,
+    "max_dist_from_sma20": 8.0,
 }
 
 
@@ -266,6 +276,15 @@ def evaluate_candidate(candidate: dict, sector_flows: dict = None,
         rejections.append(
             f"RS={rs_vs_tasi:.2f} < {RULES['min_rs_vs_tasi']} (أضعف من المؤشر)"
         )
+
+    # 🟡 القاعدة 3د (V9.2.4 اختياري): تقييد التمدّد فوق SMA20 (استراتيجية C)
+    if RULES.get("enable_extension_cap"):
+        fsnap = candidate.get("feature_snapshot", {}) or {}
+        dist20 = fsnap.get("dist_from_sma20_pct")
+        if dist20 is not None and dist20 > RULES["max_dist_from_sma20"]:
+            rejections.append(
+                f"متمدّد +{dist20:.1f}% فوق SMA20 (> {RULES['max_dist_from_sma20']}%)"
+            )
     
     # القاعدة 4: ADX
     has_volume_breakout = (
