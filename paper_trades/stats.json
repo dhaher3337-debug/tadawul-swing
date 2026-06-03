@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-06-02T02:02:34.393554",
+  "computed_at": "2026-06-03T02:01:56.156561",
   "version": "V9.2.3",
-  "total_trades": 45,
+  "total_trades": 47,
   "active_trades": 10,
-  "wins": 14,
-  "losses": 31,
+  "wins": 15,
+  "losses": 32,
   "breakeven": 0,
-  "win_rate_pct": 31.1,
-  "avg_win_pct": 4.93,
-  "avg_loss_pct": -3.6,
-  "profit_factor": 0.62,
-  "expectancy_pct": -0.943,
-  "total_pnl_pct": -42.42,
+  "win_rate_pct": 31.9,
+  "avg_win_pct": 4.86,
+  "avg_loss_pct": -3.64,
+  "profit_factor": 0.63,
+  "expectancy_pct": -0.926,
+  "total_pnl_pct": -43.54,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -24,16 +24,16 @@
   },
   "by_signal_type": {
     "default": {
-      "total": 7,
+      "total": 8,
       "wins": 1,
-      "win_rate": 14.3,
-      "avg_pnl": -2.19
+      "win_rate": 12.5,
+      "avg_pnl": -2.54
     },
     "support_bounce": {
-      "total": 6,
-      "wins": 2,
-      "win_rate": 33.3,
-      "avg_pnl": 0.01
+      "total": 7,
+      "wins": 3,
+      "win_rate": 42.9,
+      "avg_pnl": 0.56
     },
     "breakout": {
       "total": 30,
@@ -56,10 +56,10 @@
       "avg_pnl": -5.68
     },
     "بتروكيماويات": {
-      "total": 14,
-      "wins": 2,
-      "win_rate": 14.3,
-      "avg_pnl": -2.3
+      "total": 15,
+      "wins": 3,
+      "win_rate": 20.0,
+      "avg_pnl": -1.9
     },
     "صناعية": {
       "total": 4,
@@ -68,10 +68,10 @@
       "avg_pnl": 2.47
     },
     "تأمين": {
-      "total": 7,
+      "total": 8,
       "wins": 3,
-      "win_rate": 42.9,
-      "avg_pnl": -1.38
+      "win_rate": 37.5,
+      "avg_pnl": -1.82
     },
     "زراعة وأغذية": {
       "total": 6,
@@ -130,14 +130,14 @@
   },
   "by_exit_reason": {
     "Stop Hit": {
-      "total": 16,
+      "total": 17,
       "win_rate": 0.0,
       "avg_pnl": -4.92
     },
     "Max Holding Days Reached": {
-      "total": 25,
-      "win_rate": 40.0,
-      "avg_pnl": -0.01
+      "total": 26,
+      "win_rate": 42.3,
+      "avg_pnl": 0.13
     },
     "Target2 Hit": {
       "total": 4,
@@ -152,9 +152,9 @@
       "avg_pnl": -1.9
     },
     "10-15": {
-      "total": 23,
-      "win_rate": 26.1,
-      "avg_pnl": -1.55
+      "total": 25,
+      "win_rate": 28.0,
+      "avg_pnl": -1.47
     },
     "15-20": {
       "total": 6,
