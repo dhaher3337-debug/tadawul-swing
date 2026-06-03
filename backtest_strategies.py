@@ -91,28 +91,87 @@ def summarize(picks, label):
     rets = [fwd(p) for p in picks if fwd(p) is not None]
     if not rets:
         print(f"  {label:<34} n=  0  (لا صفقات)")
-        return None
+        return {"label": label, "n": 0, "avg": None, "wr": None, "pos": None}
     avg = st.mean(rets)
     wr = 100 * sum(1 for x in rets if x >= TARGET) / len(rets)
     pos = 100 * sum(1 for x in rets if x > 0) / len(rets)
     print(f"  {label:<34} n={len(rets):>3}  avgFwd3={avg:+.2f}%  P(+2%)={wr:>3.0f}%  P(>0)={pos:>3.0f}%")
-    return avg
+    return {"label": label, "n": len(rets), "avg": round(avg, 2),
+            "wr": round(wr), "pos": round(pos)}
+
+
+def _save_outputs(meta, rows, regime):
+    """يحفظ النتائج كـ JSON + صفحة HTML تُفتح مثل لوحة التحكم."""
+    import os
+    os.makedirs("public", exist_ok=True)
+    payload = {"meta": meta, "strategies": rows,
+               "regime": [{"date": d, "trend": round(v, 2)} for d, v in regime.items()]}
+    try:
+        with open("tadawul_data/backtest_results.json", "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"     ⚠️ تعذّر حفظ JSON: {e}")
+
+    def fmt(v, suf="%"):
+        return "—" if v is None else f"{v:+.2f}{suf}" if suf == "%" and isinstance(v, float) else f"{v}{suf}"
+
+    tr = ""
+    for r in rows:
+        avg = "—" if r["avg"] is None else f"{r['avg']:+.2f}%"
+        wr = "—" if r["wr"] is None else f"{r['wr']}%"
+        pos = "—" if r["pos"] is None else f"{r['pos']}%"
+        hot = "background:#e8f5e9" if (r["avg"] or -9) > 0 else ""
+        tr += (f"<tr style='{hot}'><td style='text-align:right'>{r['label']}</td>"
+               f"<td>{r['n']}</td><td>{avg}</td><td>{wr}</td><td>{pos}</td></tr>")
+
+    reg = "".join(
+        f"<span style='display:inline-block;margin:2px;padding:3px 8px;border-radius:6px;"
+        f"background:{'#e8f5e9' if v>=0 else '#ffebee'}'>{d[5:]}: {v:+.2f}</span>"
+        for d, v in regime.items())
+
+    html = f"""<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Backtest الاستراتيجيات</title>
+<style>body{{font-family:system-ui,Arial;max-width:760px;margin:18px auto;padding:0 14px;color:#1a1a1a}}
+h2{{margin:.2em 0}}table{{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px}}
+th,td{{border:1px solid #ddd;padding:8px;text-align:center}}th{{background:#fafafa}}
+.warn{{background:#fff8e1;border:1px solid #ffe082;padding:10px;border-radius:8px;font-size:14px}}
+.muted{{color:#777;font-size:13px}}</style>
+<h2>📊 مقارنة استراتيجيات الدخول/الفلترة</h2>
+<p class="muted">آخر تحديث: {meta['generated_at']} | أيام مُقيّمة: {meta['days']} | النافذة: {meta['window']}</p>
+<div class="warn">⚠️ النافذة قصيرة ({meta['days']} أيام، غالبها نظام سوقي واحد). النتائج إرشادية لا قاطعة —
+تتحسّن دقتها تلقائياً كلما تراكمت بيانات الأيام. الأخضر = متوسط عائد موجب.</div>
+<table><thead><tr><th>الاستراتيجية</th><th>عدد الصفقات</th><th>متوسط عائد 3 أيام</th><th>إصابة +2%</th><th>نسبة الرابحة</th></tr></thead>
+<tbody>{tr}</tbody></table>
+<p class="muted">خط الأساس (كل السوق): متوسط {meta['baseline_avg']:+.2f}% — أي استراتيجية فوقه تتفوّق على السوق.</p>
+<h3>اتجاه السوق لكل يوم (trailing 3d)</h3><div>{reg}</div>
+<p class="muted">⚠️ ليست نصيحة مالية — أداة تقييم داخلية.</p></html>"""
+    try:
+        with open("public/backtest.html", "w", encoding="utf-8") as f:
+            f.write(html)
+        print("     ✓ نتائج backtest → public/backtest.html")
+    except Exception as e:
+        print(f"     ⚠️ تعذّر حفظ HTML: {e}")
 
 
 def run():
+    from datetime import datetime
     days = load_days()
     days = {d: r for d, r in days.items()
             if any(x.get("next_3d_close_pct") is not None for x in r)}
     regime, daily_mkt = market_regime(load_days())
+
+    if not days:
+        print("  ⚠️ backtest: لا توجد snapshots مُقيّمة بعد (تحتاج ≥3 أيام لاحقة).")
+        return
 
     print("=" * 70)
     print(f"Backtest الاستراتيجيات | أيام قابلة للتقييم: {len(days)}")
     print(f"النافذة: {min(days)} → {max(days)}  (⚠️ قصيرة - إرشادية لا قاطعة)")
     print("=" * 70)
 
-    # خط الأساس: كل الكون
     allrows = [r for rs in days.values() for r in rs if r.get("next_3d_close_pct") is not None]
-    summarize(allrows, "خط الأساس (كل السوق)")
+    base = summarize(allrows, "خط الأساس (كل السوق)")
     print()
 
     A, B, C, D = [], [], [], []
@@ -123,14 +182,24 @@ def run():
         C += pick_day(rows, max_ext=8.0)
         D += pick_day(rows, regime_ok=ok, require_regime=True, max_ext=8.0)
 
-    summarize(A, "A) V9.2.4 الأساس")
-    summarize(B, "B) A + فلتر النظام السوقي")
-    summarize(C, "C) A + تقييد التمدد (≤8% فوق SMA20)")
-    summarize(D, "D) B + C معاً")
+    results = [
+        summarize(A, "A) V9.2.4 الأساس"),
+        summarize(B, "B) A + فلتر النظام السوقي"),
+        summarize(C, "C) A + تقييد التمدّد ≤8% فوق SMA20"),
+        summarize(D, "D) B + C معاً"),
+    ]
     print()
     print("اتجاه السوق لكل يوم (trailing 3d، موجب=صاعد):")
     for d in days:
         print(f"  {d}: {regime[d]:+.2f}  ({'صاعد' if regime[d] >= 0 else 'هابط'})")
+
+    meta = {
+        "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "days": len(days),
+        "window": f"{min(days)} → {max(days)}",
+        "baseline_avg": base["avg"] if base["avg"] is not None else 0.0,
+    }
+    _save_outputs(meta, results, {d: regime[d] for d in days})
 
 
 if __name__ == "__main__":

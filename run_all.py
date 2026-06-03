@@ -288,6 +288,15 @@ def main():
         print(f"  ❌ فشل التقرير: {e}")
         traceback.print_exc()
 
+    # 🆕 V9.2.4: backtest الاستراتيجيات → public/backtest.html
+    # يعمل تلقائياً مع كل تشغيلة؛ يقرأ snapshots المُقيّمة في الخطوة [0].
+    print("\n  📊 backtest الاستراتيجيات (V9.2.4)")
+    try:
+        import backtest_strategies
+        backtest_strategies.run()
+    except Exception as e:
+        print(f"  ⚠️ تخطّي backtest (غير حرج): {e}")
+
     # ════════════════════════════════════════════════
     # [7/7] Excel Dashboard + الأرشفة + Knowledge Stats
     # ════════════════════════════════════════════════
