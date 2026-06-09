@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-06-08T02:01:56.570128",
+  "computed_at": "2026-06-09T02:02:27.995097",
   "version": "V9.2.3",
-  "total_trades": 57,
+  "total_trades": 59,
   "active_trades": 10,
   "wins": 21,
-  "losses": 36,
+  "losses": 38,
   "breakeven": 0,
-  "win_rate_pct": 36.8,
+  "win_rate_pct": 35.6,
   "avg_win_pct": 4.38,
-  "avg_loss_pct": -3.51,
-  "profit_factor": 0.73,
-  "expectancy_pct": -0.601,
-  "total_pnl_pct": -34.25,
+  "avg_loss_pct": -3.4,
+  "profit_factor": 0.71,
+  "expectancy_pct": -0.631,
+  "total_pnl_pct": -37.24,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -36,10 +36,10 @@
       "avg_pnl": 0.56
     },
     "breakout": {
-      "total": 37,
+      "total": 39,
       "wins": 14,
-      "win_rate": 37.8,
-      "avg_pnl": -0.62
+      "win_rate": 35.9,
+      "avg_pnl": -0.67
     },
     "mean_reversion": {
       "total": 2,
@@ -62,10 +62,10 @@
       "avg_pnl": -1.02
     },
     "صناعية": {
-      "total": 4,
+      "total": 6,
       "wins": 2,
-      "win_rate": 50.0,
-      "avg_pnl": 2.47
+      "win_rate": 33.3,
+      "avg_pnl": 1.15
     },
     "تأمين": {
       "total": 9,
@@ -130,14 +130,14 @@
   },
   "by_exit_reason": {
     "Stop Hit": {
-      "total": 18,
+      "total": 19,
       "win_rate": 0.0,
-      "avg_pnl": -4.9
+      "avg_pnl": -4.78
     },
     "Max Holding Days Reached": {
-      "total": 30,
-      "win_rate": 40.0,
-      "avg_pnl": 0.02
+      "total": 31,
+      "win_rate": 38.7,
+      "avg_pnl": 0.01
     },
     "Target2 Hit": {
       "total": 5,
@@ -152,9 +152,9 @@
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 15,
-      "win_rate": 33.3,
-      "avg_pnl": -0.75
+      "total": 17,
+      "win_rate": 29.4,
+      "avg_pnl": -0.84
     },
     "10-15": {
       "total": 30,
