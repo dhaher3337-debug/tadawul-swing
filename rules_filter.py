@@ -691,9 +691,26 @@ def run():
         save_result(_empty_result(datetime.now().strftime("%Y-%m-%d")))
         return
     
-    print(f"  🔧 Rules Filter V9.2.4 (مُشدّد) — {len(candidates)} candidates")
-    
-    result = filter_candidates(candidates, top_n=5)
+    print(f"  🔧 Rules Filter V9.3 — {len(candidates)} candidates")
+
+    # 🔴 V9.3 (P1): تكييف الانتقائية بالنظام السوقي (استراتيجية D من backtest:
+    # WR 58% مقابل 51% للأساس؛ ومايو الهابط -1.53%/صفقة مقابل يونيو +1.33%).
+    # مُعدِّل ناعم: في الهابط نرفع العتبة ونقلل الـ picks — لا نوقف التداول.
+    top_n = 5
+    try:
+        import market_regime
+        regime = market_regime.load()
+        RULES["score_percentile"] = float(regime.get("score_percentile",
+                                                     RULES["score_percentile"]))
+        top_n = int(regime.get("top_n", top_n))
+        label = {"up": "صاعد", "down": "هابط", "neutral": "محايد"}.get(
+            regime.get("regime"), "?")
+        print(f"  🌡️ regime={label} → percentile={RULES['score_percentile']}, "
+              f"top_n={top_n}")
+    except Exception as e:
+        log.warning(f"market_regime غير متاح ({e}) — الإعدادات الافتراضية")
+
+    result = filter_candidates(candidates, top_n=top_n)
     save_result(result)
     log_filter_result(result)
     

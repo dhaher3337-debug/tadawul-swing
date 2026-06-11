@@ -35,7 +35,11 @@ PAPER_DIR.mkdir(parents=True, exist_ok=True)
 F_TRADES = BASE / "paper_trades.json"
 F_STATS = PAPER_DIR / "stats.json"
 F_RUN_LOG = BASE / "paper_runs_log.json"          # سجل تشغيل يومي (لمنع double-run)
-F_ML_DATASET = BASE / "ml_dataset.csv"            # نفس مسار ML
+# 🔴 V9.3 FIX (P0): كان يكتب في ml_dataset.csv بمخطط أعمدة مختلف عن مخطط
+# الملف → 39 صفاً قيمة hit فيها نصوص ("Stop Hit"...) → تدريب ML ينهار بصمت
+# منذ 2026-05-18. الآن: مخرجات الصفقات في ملف منفصل خاص بتقييم الاستراتيجية،
+# و ml_dataset.csv يُبنى حصرياً من universe snapshots (rebuild_ml_from_universe).
+F_PAPER_OUTCOMES = BASE / "paper_outcomes.csv"    # نتائج الصفقات (تقييم استراتيجية)
 F_CLOSURE_LOG = BASE / "closures_log.jsonl"       # سجل إغلاقات (audit trail)
 
 # ════════════════════════════════════════════════
@@ -59,9 +63,19 @@ HOLDING_DAYS_BY_SIGNAL = {
 # تحليل الأسبوع أظهر أن T1=5.16% و T2=8.16% بعيدة جداً → فقط 1 من 25 صفقة ضربت T2
 # والآلاف من dollars تُترَك على الطاولة بسبب Max Holding Days
 ATR_STOP_MULTIPLIER = 1.5      # stop = entry - 1.5*ATR (أضيق من 5% الثابت)
-ATR_T1_MULTIPLIER = 1.5        # T1 = entry + 1.5*ATR (≈3-4% للأسهم العادية)
+ATR_T1_MULTIPLIER = 1.2        # 🔴 V9.3: خُفّض من 1.5 — متوسط MFE للصفقات الزمنية
+                               # كان 2.57% فقط، وT1≈4.5% لم يُضرب في معظمها
 ATR_T2_MULTIPLIER = 3.0        # T2 = entry + 3.0*ATR (≈6-8%)
 ATR_TRAILING_MULTIPLIER = 1.5  # بعد T1: trailing = max_high_seen - 1.5*ATR
+
+# ════════════════════════════════════════════════
+# 🔴 V9.3 (P1): حماية الربح غير المحقق
+# الدليل: 33 صفقة أُغلقت بانتهاء المدة بمتوسط MFE = +2.57% لكن خرجت
+# بمتوسط -0.02% — النظام كان يشاهد الربح يتبخر بلا أي رد فعل.
+# ════════════════════════════════════════════════
+BREAKEVEN_TRIGGER_PCT = 1.5    # إذا بلغ غير المحقق +1.5% → ارفع الوقف لنقطة الدخول
+PROFIT_LOCK_MFE_PCT = 2.0      # إذا بلغ MFE خلال الصفقة +2.0% ...
+PROFIT_LOCK_GIVEBACK_PCT = 0.3 # ... ثم ارتد السعر إلى ≤ entry+0.3% → خروج "Profit Lock"
 
 
 def _signal_type_from_signals(signals):
@@ -384,6 +398,12 @@ def update_active_trades(stocks_data, today_str=None, force=False):
                 effective_stop = entry
         else:
             effective_stop = trade["stop"]
+            # 🔴 V9.3 (P1-a): رفع الوقف لنقطة الدخول عند بلوغ +BREAKEVEN_TRIGGER_PCT
+            # (الوقف يصعد فقط، لا ينزل)
+            if not trade.get("stop_at_breakeven") and mfe >= BREAKEVEN_TRIGGER_PCT:
+                trade["stop_at_breakeven"] = True
+            if trade.get("stop_at_breakeven"):
+                effective_stop = max(effective_stop, entry)
         
         target1 = trade["target1"]
         target2 = trade["target2"]
@@ -407,8 +427,13 @@ def update_active_trades(stocks_data, today_str=None, force=False):
                     exit_reason = "Breakeven/Trail Hit (after T1)"
             else:
                 final_pnl_pct = (exit_price - entry) / entry * 100
-                result = "LOSS"
-                exit_reason = "Stop Hit"
+                # 🔴 V9.3: تمييز خروج حماية الربح عن الخسارة الحقيقية
+                if trade.get("stop_at_breakeven"):
+                    result = "BREAKEVEN"
+                    exit_reason = "Breakeven Stop (profit protection)"
+                else:
+                    result = "LOSS"
+                    exit_reason = "Stop Hit"
             
             _close_trade(trade, today_str, exit_price, final_pnl_pct, result, exit_reason)
             closures_today.append(trade)
@@ -444,6 +469,20 @@ def update_active_trades(stocks_data, today_str=None, force=False):
             still_active.append(trade)
             continue
         
+        # 🔴 3ب (V9.3): Profit Lock — إذا حقق السهم MFE ≥ +2.0% خلال الصفقة
+        # ثم ارتد الإغلاق إلى ≤ entry+0.3% → اخرج الآن بدل انتظار انتهاء المدة.
+        # الدليل: 33 صفقة زمنية بمتوسط MFE +2.57% خرجت بمتوسط -0.02%.
+        if (not trade.get("partial_closed")
+                and mfe >= PROFIT_LOCK_MFE_PCT
+                and current_close <= entry * (1 + PROFIT_LOCK_GIVEBACK_PCT / 100)):
+            exit_price = current_close
+            final_pnl_pct = (exit_price - entry) / entry * 100
+            result = "PROFIT_LOCK"
+            _close_trade(trade, today_str, exit_price, final_pnl_pct, result,
+                         "Profit Lock (MFE giveback)")
+            closures_today.append(trade)
+            continue
+
         # 4. انتهاء المدة؟
         if trade["days_open"] >= trade["max_holding_days"]:
             exit_price = current_close
@@ -473,7 +512,7 @@ def update_active_trades(stocks_data, today_str=None, force=False):
     
     # ✅ P0: حفظ إغلاقات اليوم إلى ml_dataset
     for closure in closures_today:
-        _append_to_ml_dataset(closure)
+        _append_to_paper_outcomes(closure)
         _log_closure(closure)
     
     return closures_today
@@ -500,57 +539,40 @@ def _close_trade(trade, close_date, exit_price, pnl_pct, result, reason):
 
 
 # ════════════════════════════════════════════════
-# ✅ P0: ML Dataset feeding
+# 🔴 V9.3 (P0): Paper outcomes — ملف منفصل بمالك واحد للمخطط
+# (كان يكتب في ml_dataset.csv بمخطط مغاير → أفسد تدريب ML منذ 2026-05-18)
 # ════════════════════════════════════════════════
-ML_DATASET_COLUMNS = [
-    "date", "ticker", "sector", "signal_type",
+PAPER_OUTCOMES_COLUMNS = [
+    "open_date", "close_date", "ticker", "sector", "signal_type",
     "score", "mtf_aligned", "rsi", "adx", "mfi", "volume_ratio",
     "atr_at_entry", "power_score", "sector_flow",
     "ml_probability", "expected_value_pct", "risk_reward",
     "mae_pct", "mfe_pct", "days_held", "exit_reason",
-    "final_pnl_pct", "hit",  # hit = 1 if win, 0 if loss
+    "final_pnl_pct", "result", "hit",  # hit = 1 if final_pnl_pct > 0
 ]
 
 
-def _append_to_ml_dataset(trade):
-    """يُضيف صفقة مُغلقة إلى ml_dataset.csv."""
+def _append_to_paper_outcomes(trade):
+    """يُضيف صفقة مُغلقة إلى paper_outcomes.csv (تقييم الاستراتيجية)."""
     try:
-        F_ML_DATASET.parent.mkdir(parents=True, exist_ok=True)
-        write_header = not F_ML_DATASET.exists()
-        
-        hit = 1 if trade.get("final_pnl_pct", 0) > 0 else 0
-        row = {
-            "date": trade.get("open_date"),
-            "ticker": trade.get("ticker"),
-            "sector": trade.get("sector"),
-            "signal_type": trade.get("signal_type"),
-            "score": trade.get("score"),
-            "mtf_aligned": trade.get("mtf_aligned"),
-            "rsi": trade.get("rsi"),
-            "adx": trade.get("adx"),
-            "mfi": trade.get("mfi"),
-            "volume_ratio": trade.get("volume_ratio"),
-            "atr_at_entry": trade.get("atr_at_entry"),
-            "power_score": trade.get("power_score"),
-            "sector_flow": trade.get("sector_flow"),
-            "ml_probability": trade.get("ml_probability"),
-            "expected_value_pct": trade.get("expected_value_pct"),
-            "risk_reward": trade.get("risk_reward"),
-            "mae_pct": trade.get("mae_pct"),
-            "mfe_pct": trade.get("mfe_pct"),
-            "days_held": trade.get("days_held"),
-            "exit_reason": trade.get("exit_reason"),
-            "final_pnl_pct": trade.get("final_pnl_pct"),
-            "hit": hit,
-        }
-        
-        with open(F_ML_DATASET, "a", encoding="utf-8", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=ML_DATASET_COLUMNS)
+        F_PAPER_OUTCOMES.parent.mkdir(parents=True, exist_ok=True)
+        write_header = not F_PAPER_OUTCOMES.exists()
+
+        row = {c: trade.get(c) for c in PAPER_OUTCOMES_COLUMNS}
+        row["hit"] = 1 if (trade.get("final_pnl_pct") or 0) > 0 else 0
+
+        with open(F_PAPER_OUTCOMES, "a", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=PAPER_OUTCOMES_COLUMNS,
+                                    extrasaction="ignore")
             if write_header:
                 writer.writeheader()
             writer.writerow(row)
     except Exception as e:
-        log.warning(f"فشل تسجيل صفقة في ml_dataset: {e}")
+        log.warning(f"فشل تسجيل صفقة في paper_outcomes: {e}")
+
+
+# اسم قديم للتوافق مع أي استدعاءات متبقية
+_append_to_ml_dataset = _append_to_paper_outcomes
 
 
 def _log_closure(trade):

@@ -92,9 +92,9 @@ def main():
     
     print(f"\n{'═'*60}")
     if is_friday:
-        print(f"  🚀 ماسح تداول V9.2 — تقرير ختام الأسبوع")
+        print(f"  🚀 ماسح تداول V9.3 — تقرير ختام الأسبوع")
     else:
-        print(f"  🚀 ماسح تداول V9.2 — التحليل اليومي")
+        print(f"  🚀 ماسح تداول V9.3 — التحليل اليومي")
     print(f"  📅 {start:%Y-%m-%d %H:%M:%S} ({start.strftime('%A')})")
     print(f"{'═'*60}")
 
@@ -103,13 +103,35 @@ def main():
     # يملأ next_3d_* و hit للـ snapshots التي اكتملت نافذتها (≥3 أيام).
     # يجب أن يسبق تدريب ML في الخطوة [1] حتى يحصل على labels طازجة.
     # ════════════════════════════════════════════════
-    print("\n[0/7] 🔁 تقييم نتائج الترشيحات السابقة (V9.2.4)")
+    print("\n[0/7] 🔁 حلقة التعلم اليومية (V9.3)")
     print("─" * 60)
     try:
         import evaluate_universe
         evaluate_universe.run()
     except Exception as e:
         print(f"  ⚠️ فشل تقييم snapshots (نكمل): {e}")
+
+    # 🔴 V9.3 (P0): إعادة بناء ml_dataset حتمياً من الكون الموسوم
+    # (يستبدل التغذية المزدوجة الفاسدة التي عطّلت تدريب ML منذ 2026-05-18)
+    try:
+        import rebuild_ml_from_universe
+        rebuild_ml_from_universe.run()
+    except Exception as e:
+        print(f"  ⚠️ فشل rebuild ml_dataset (نكمل): {e}")
+
+    # 🔴 V9.3 (P0): تعلم الأوزان من الكون الكامل (~194 صف موسوم/يوم بدل 10 picks)
+    try:
+        import universe_weight_learning
+        universe_weight_learning.run()
+    except Exception as e:
+        print(f"  ⚠️ فشل universe weight learning (نكمل): {e}")
+
+    # 🔴 V9.3 (P1): النظام السوقي — يقرؤه rules_filter لتكييف الانتقائية
+    try:
+        import market_regime
+        market_regime.run()
+    except Exception as e:
+        print(f"  ⚠️ فشل market regime (نكمل): {e}")
 
     # ════════════════════════════════════════════════
     # [1/7] المسح + التقييم + ML

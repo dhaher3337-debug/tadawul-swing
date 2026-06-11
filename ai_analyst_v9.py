@@ -504,6 +504,23 @@ def run():
         _fallback_to_rules_filter("API key not set")
         return
 
+    # 🔴 V9.3: لا تكرر استدعاء مفتاح معروف أنه فاشل (401) كل يوم.
+    # نخزّن بصمة المفتاح الفاشل؛ إذا تغيّر المفتاح في Secrets نحاول تلقائياً.
+    import hashlib
+    key_fp = hashlib.sha256(api_key.encode()).hexdigest()[:16]
+    bad_key_file = Path("tadawul_data") / "bad_api_key.json"
+    try:
+        if bad_key_file.exists():
+            bad = json.load(open(bad_key_file, encoding="utf-8"))
+            if bad.get("fingerprint") == key_fp:
+                print(f"  ⏭️ نفس المفتاح فشل بـ 401 في {bad.get('date')} — "
+                      f"تخطّي الاستدعاء (rules_filter مباشرة). "
+                      f"حدّث ANTHROPIC_API_KEY لإعادة المحاولة.")
+                _fallback_to_rules_filter("known bad API key (cached 401)")
+                return
+    except Exception:
+        pass
+
     system, user = build_prompt(data)
     print("  🧠 إرسال طلب لـ Claude Opus 4.7...")
 
@@ -589,6 +606,13 @@ def run():
     except anthropic.AuthenticationError as e:
         # ✅ V9.2.3: 401 - API key منتهي/خاطئ
         print(f"  ❌ Authentication error (401): {e}")
+        # 🔴 V9.3: احفظ بصمة المفتاح الفاشل لتخطي الاستدعاء في التشغيلات القادمة
+        try:
+            with open(bad_key_file, "w", encoding="utf-8") as f:
+                json.dump({"fingerprint": key_fp,
+                           "date": datetime.now().strftime("%Y-%m-%d")}, f)
+        except Exception:
+            pass
         _fallback_to_rules_filter("API authentication failed (401) - check ANTHROPIC_API_KEY")
     except anthropic.RateLimitError as e:
         # ✅ V9.2.3: 429 - تجاوز الحد

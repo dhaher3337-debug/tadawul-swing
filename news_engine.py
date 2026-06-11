@@ -51,18 +51,40 @@ ARGAAM_RSS_URLS = [
     "https://www.argaam.com/en/rss/saudi",  # إنجليزي
 ]
 
-USER_AGENT = "Mozilla/5.0 (compatible; TadawulV9/1.0)"
+# 🔴 V9.3: مصادر احتياطية — السجل أثبت أن Argaam يفشل بصمت منذ أسابيع
+# ("أخبار ذات صلة: 0" يومياً). Google News RSS مستقر جداً وعناوين أخبار
+# السوق السعودي تتضمن غالباً رمز السهم الرقمي فيلتقطه matcher الحالي.
+FALLBACK_RSS_URLS = [
+    "https://news.google.com/rss/search?q=%D8%AA%D8%AF%D8%A7%D9%88%D9%84%20%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9%20%D8%A3%D8%B3%D9%87%D9%85&hl=ar&gl=SA&ceid=SA:ar",
+    "https://news.google.com/rss/search?q=%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD%20%D8%B4%D8%B1%D9%83%D8%A9%20%D8%AA%D8%AF%D8%A7%D9%88%D9%84&hl=ar&gl=SA&ceid=SA:ar",
+    "https://www.maaal.com/feed",           # صحيفة مال الاقتصادية
+]
+
+# V9.3: User-Agent متصفح حقيقي — الـ UA المخصص القديم مرشح قوي لسبب حجب Argaam
+USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 
 
-def _fetch_url(url, timeout=15):
-    """جلب URL بسيط مع timeout."""
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            return r.read().decode("utf-8", errors="ignore")
-    except Exception as e:
-        log.debug(f"fetch {url}: {e}")
-        return None
+def _fetch_url(url, timeout=15, retries=2):
+    """جلب URL مع retries وتسجيل الفشل بمستوى WARNING (كان DEBUG فاختفى
+    سبب موت محرك الأخبار من السجلات لأسابيع)."""
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/rss+xml, application/xml, text/xml, */*",
+        "Accept-Language": "ar,en;q=0.8",
+    }
+    last_err = None
+    for attempt in range(retries + 1):
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read().decode("utf-8", errors="ignore")
+        except Exception as e:
+            last_err = e
+            if attempt < retries:
+                time.sleep(1.5 * (attempt + 1))
+    log.warning(f"fetch فشل بعد {retries+1} محاولات: {url} → {last_err}")
+    return None
 
 
 def _parse_rss(xml_text):
@@ -158,6 +180,19 @@ def fetch_recent_news(known_tickers, max_items=80):
         log.info(f"  → {len(items)} خبر")
         all_items.extend(items)
         time.sleep(0.5)
+
+    # 🔴 V9.3: مصادر احتياطية إذا Argaam رجع صفراً (الحالة الواقعة منذ أسابيع)
+    if not all_items:
+        log.warning("Argaam رجع 0 خبر — التحويل للمصادر الاحتياطية")
+        for url in FALLBACK_RSS_URLS:
+            log.info(f"Fetching (fallback): {url[:70]}...")
+            xml = _fetch_url(url)
+            if not xml:
+                continue
+            items = _parse_rss(xml)
+            log.info(f"  → {len(items)} خبر")
+            all_items.extend(items)
+            time.sleep(0.5)
     
     # إزالة التكرارات (بنفس العنوان)
     seen_titles = set()
@@ -233,6 +268,60 @@ def _build_sentiment_prompt(news_items):
     user = f"حلل هذه الأخبار من Argaam:\n{news_block}"
     
     return (system, user), ticker_news
+
+
+def analyze_sentiment_lexicon(news_items):
+    """
+    🔴 V9.3: تحليل sentiment معجمي عربي/إنجليزي بلا أي API.
+    الهدف: النظام يعمل اليوم بدون مفتاح Claude (المفتاح معطل عمداً حتى تتحقق
+    معايير إعادة التفعيل). معجم محافظ: كلمات قوية الدلالة فقط، والغموض = محايد.
+    """
+    POS = [
+        "أرباح", "ارتفاع", "نمو", "توزيعات", "استحواذ", "ترسية", "عقد",
+        "اتفاقية", "توسع", "زيادة رأس المال", "صفقة", "فوز", "تعيين",
+        "نتائج إيجابية", "قياسي", "أعلى", "مكاسب", "تحالف", "شراكة",
+        "profit", "growth", "dividend", "contract award", "acquisition",
+        "record high", "wins", "agreement",
+    ]
+    NEG = [
+        "خسائر", "انخفاض", "تراجع", "هبوط", "غرامة", "إيقاف", "تعليق",
+        "استقالة", "عقوبة", "مخالفة", "إفلاس", "ديون", "تخفيض", "إلغاء",
+        "تحقيق", "دعوى", "خسارة",
+        "loss", "decline", "fine", "suspension", "penalty", "lawsuit",
+        "downgrade", "default",
+    ]
+    out = {}
+    for item in news_items:
+        text = f"{item.get('title','')} {item.get('description','')}"
+        p = sum(1 for w in POS if w in text)
+        n = sum(1 for w in NEG if w in text)
+        if p == n:
+            score, label = 0.0, "neutral"
+        elif p > n:
+            score = min(0.4 + 0.15 * (p - n), 0.8)
+            label = "positive"
+        else:
+            score = max(-0.4 - 0.15 * (n - p), -0.8)
+            label = "negative"
+        for ticker in item.get("tickers", []):
+            cur = out.setdefault(ticker, {
+                "sentiment": label, "score": 0.0, "reason": "lexicon (no API)",
+                "headlines": [], "news_count": 0,
+            })
+            cur["news_count"] += 1
+            # متوسط متحرك بسيط بين أخبار السهم
+            cur["score"] = round((cur["score"] * (cur["news_count"] - 1) + score)
+                                 / cur["news_count"], 3)
+            if cur["score"] > 0.15:
+                cur["sentiment"] = "positive"
+            elif cur["score"] < -0.15:
+                cur["sentiment"] = "negative"
+            else:
+                cur["sentiment"] = "neutral"
+            if len(cur["headlines"]) < 3:
+                cur["headlines"].append(item.get("title", "")[:120])
+    log.info(f"Lexicon sentiment: {len(out)} tickers (بدون API)")
+    return out
 
 
 def analyze_sentiment_with_opus(news_items, api_key=None):
@@ -331,6 +420,9 @@ def get_sentiment_for_all(known_tickers, force_refresh=False):
         }
     else:
         sentiments = analyze_sentiment_with_opus(news)
+        # 🔴 V9.3: fallback معجمي — لا نضيّع الأخبار لمجرد غياب مفتاح API
+        if not sentiments:
+            sentiments = analyze_sentiment_lexicon(news)
         result = {
             "fetched_at": datetime.now().isoformat(),
             "sentiments": sentiments,

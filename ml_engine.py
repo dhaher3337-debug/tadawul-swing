@@ -161,6 +161,19 @@ def load_training_data(min_samples=100):
     if not F_DATASET.exists():
         return None
     df = pd.read_csv(F_DATASET)
+
+    # 🔴 V9.3 (تحصين): إجبار عمود hit على 0/1 وإسقاط أي صف تالف بصوت عالٍ.
+    # الدرس: صفوف بنصوص في hit عطّلت التدريب بصمت 24 يوماً (2026-05-18 → 06-11).
+    if "hit" in df.columns:
+        before = len(df)
+        df["hit"] = pd.to_numeric(df["hit"], errors="coerce")
+        df = df[df["hit"].isin([0, 1])]
+        dropped = before - len(df)
+        if dropped > 0:
+            log.warning(f"⚠️ ml_dataset: أُسقط {dropped} صف بقيم hit تالفة "
+                        f"(غير 0/1) — افحص مصدر الكتابة!")
+        df["hit"] = df["hit"].astype(int)
+
     if len(df) < min_samples:
         return None
     return df

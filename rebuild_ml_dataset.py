@@ -1,6 +1,23 @@
+# -*- coding: utf-8 -*-
+# ════════════════════════════════════════════════════════════════════
+# ⛔ DEPRECATED في V9.3 — لا تستخدم هذه الأداة.
+# كانت تعيد بناء ml_dataset من paper_trades.json = survivorship bias
+# (نتعلم فقط مما اخترناه). البديل الصحيح:
+#     python3 rebuild_ml_from_universe.py
+# الذي يبني الـ dataset من universe_snapshots الموسومة (~194 سهم/يوم،
+# خالٍ من التحيز) ويعمل تلقائياً في كل تشغيلة من run_all.py خطوة [0].
+# ════════════════════════════════════════════════════════════════════
+import sys
+print(__doc__ or "")
+print("⛔ هذه الأداة معطّلة في V9.3 — استخدم rebuild_ml_from_universe.py")
+sys.exit(1)
+
+"""
+الكود القديم (مرجع تاريخي):
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
+'''
 rebuild_ml_dataset.py — أداة إصلاح Bug 2 (ML overfit)
 ========================================================
 يُعيد بناء ml_dataset.csv من paper_trades.json الفعلية.
@@ -19,7 +36,7 @@ rebuild_ml_dataset.py — أداة إصلاح Bug 2 (ML overfit)
     python3 rebuild_ml_dataset.py [--keep-old] [--no-train]
 
 ✋ يجب تشغيله مرة واحدة فقط بعد رفع الملفات الجديدة!
-"""
+'''
 import json
 import csv
 import shutil
@@ -49,7 +66,7 @@ COLUMNS = [
 
 
 def rebuild(keep_old=False):
-    """يُعيد بناء ml_dataset.csv من paper_trades.json."""
+    '''يُعيد بناء ml_dataset.csv من paper_trades.json.'''
     
     # 1. التحقق من وجود paper_trades.json
     if not F_TRADES.exists():
@@ -147,7 +164,7 @@ def rebuild(keep_old=False):
 
 
 def trigger_retrain():
-    """يُشغّل تدريب ML الجديد."""
+    '''يُشغّل تدريب ML الجديد.'''
     log.info("\n🤖 تشغيل تدريب ML V9.2.3...")
     try:
         from ml_engine import train_model
@@ -201,3 +218,5 @@ if __name__ == "__main__":
     print(f"{'='*60}\n")
     
     sys.exit(0 if success else 1)
+
+"""

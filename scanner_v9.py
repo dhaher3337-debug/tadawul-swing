@@ -752,9 +752,15 @@ def evaluate_yesterday(weights, tracker):
 
     weights = clamp_weights(weights)
 
-    # حفظ ML training data
+    # 🔴 V9.3 (P0): أُلغيت تغذية ml_dataset من هنا.
+    # كانت تضيف ~9 صفوف/يوم من الـ picks فقط = survivorship bias،
+    # و(الأسوأ) بمخطط أعمدة تعارَض مع كاتب paper_trading → فساد hit column
+    # → تدريب ML منهار بصمت منذ 2026-05-18.
+    # الآن: ml_dataset.csv يُبنى حصرياً وحتمياً من universe_snapshots
+    # المُقيّمة (rebuild_ml_from_universe.py) — ~194 صف موسوم/يوم بلا تحيز.
     if ml_training_rows:
-        append_training_data(ml_training_rows)
+        log.debug(f"evaluate_yesterday: تجاهُل {len(ml_training_rows)} صف pick-only "
+                  f"(الـ dataset يُبنى من الكون الكامل الآن)")
 
     total = hits + misses
     acc = round(hits / total * 100, 1) if total > 0 else 0
@@ -1185,7 +1191,7 @@ def run():
     # 2. تدريب ML (لو البيانات كافية)
     print("\n  🤖 تدريب نموذج ML...")
     try:
-        ml_result = train_model(min_samples=100)
+        ml_result = train_model(min_samples=300)  # V9.3: dataset الكون = آلاف الصفوف
         print(f"  → {ml_result.get('status')}")
         if ml_result.get("status") == "success":
             m = ml_result["metrics"]
