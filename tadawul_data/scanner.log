@@ -370,3 +370,15 @@
 2026-06-10 02:02:02,758 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
 2026-06-10 02:02:02,766 [INFO] loaded 17 sector flows for filtering
 2026-06-10 02:02:02,766 [INFO] relative score floor (p60) = 5.65
+2026-06-11 02:01:17,749 [INFO] evaluate_universe: {'evaluated': 194, 'still_pending': 584, 'files_updated': 1}
+2026-06-11 02:01:41,650 [INFO] Fetching fresh news...
+2026-06-11 02:01:41,650 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-06-11 02:01:42,351 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-06-11 02:01:43,033 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-06-11 02:01:43,692 [INFO] أخبار ذات صلة: 0
+2026-06-11 02:01:43,692 [WARNING] No news fetched — returning empty sentiment
+2026-06-11 02:01:43,693 [INFO] Using cached earnings (196 tickers)
+2026-06-11 02:02:30,415 [INFO] Universe snapshot: 194 صف → snapshot_2026-06-11.jsonl
+2026-06-11 02:02:31,271 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-06-11 02:02:31,278 [INFO] loaded 17 sector flows for filtering
+2026-06-11 02:02:31,278 [INFO] relative score floor (p60) = 4.67
