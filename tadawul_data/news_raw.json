@@ -1,5 +1,24 @@
 {
-  "fetched_at": "2026-06-11T02:01:43.692476",
-  "count": 0,
-  "items": []
+  "fetched_at": "2026-06-11T07:06:26.806824",
+  "count": 2,
+  "items": [
+    {
+      "title": "البنك الأهلي السعودي (1180) - معلومات مباشر",
+      "description": "البنك الأهلي السعودي (1180)&nbsp;&nbsp;معلومات مباشر",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE02T3RJSFBxZFBfR0hhamVqNzBWTW1yU3VPeENTcTF3enFXTFBvSlFqcnNCWThMRU9vb2lUdTBQUzNTbHBIUzVKaU9CNGQzZHRqU180azRTVHNRcUN4Zlhfc3BzZkZCd1hWMmlZdw?oc=5",
+      "date": "Thu, 21 May 2026 07:00:00 GMT",
+      "tickers": [
+        "1180"
+      ]
+    },
+    {
+      "title": "شركة اللجين (2170) - معلومات مباشر",
+      "description": "شركة اللجين (2170)&nbsp;&nbsp;معلومات مباشر",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1ZbGtuWWY5ZzBtNWZLMGd6M0czXzg3MlhpRmZwcVNrMW1KWTlBQ1pmcXRnRzAyRVVGc3YtMXR2aEFOSDdwdDBJSGNudEVwU1BON25BTE1jbzNVZ2F4WXZiUXdnY09xYnhJbUE?oc=5",
+      "date": "Sat, 25 Apr 2026 07:25:37 GMT",
+      "tickers": [
+        "2170"
+      ]
+    }
+  ]
 }
