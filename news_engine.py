@@ -372,7 +372,13 @@ def analyze_sentiment_with_opus(news_items, api_key=None):
 
 
 def is_cache_fresh():
-    """هل الكاش ما زال صالحاً (< CACHE_HOURS)؟"""
+    """هل الكاش ما زال صالحاً (< CACHE_HOURS)؟
+
+    🔴 V9.3.1: كاش **فارغ** (news_count=0) لا يُعتبر صالحاً إلا لساعتين.
+    الدرس: تشغيلة 2026-06-11 06:32 وجدت كاش 02:01 الفارغ "صالحاً" لـ 20 ساعة
+    فلم تُجرَّب المصادر الاحتياطية الجديدة إطلاقاً. الفارغ = فشل مؤقت، يعاد
+    بعده المحاولة سريعاً؛ والساعتان تمنعان إغراق المصادر عند انقطاع طويل.
+    """
     if not F_NEWS_CACHE.exists():
         return False
     try:
@@ -380,7 +386,10 @@ def is_cache_fresh():
             data = json.load(f)
         fetched = datetime.fromisoformat(data.get("fetched_at", ""))
         age = datetime.now() - fetched
-        return age < timedelta(hours=CACHE_HOURS)
+        is_empty = (data.get("news_count", 0) == 0
+                    or not data.get("sentiments"))
+        max_age = timedelta(hours=2) if is_empty else timedelta(hours=CACHE_HOURS)
+        return age < max_age
     except Exception:
         return False
 

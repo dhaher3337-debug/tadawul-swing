@@ -233,13 +233,18 @@ def _walk_forward_evaluate(df, feature_cols, n_folds=3, min_train_size=80):
             continue
         scale_pos_weight = (1 - pos_ratio) / pos_ratio
         
-        # 🆕 لا random_state ثابت (تباين حقيقي)
+        # 🔴 V9.3.1: regularization جدي — أول تدريب على dataset الكون كشف
+        # overfit gap = 0.36 (AUC داخلي 0.99 مقابل 0.63 خارجي). المعاملات
+        # القديمة (عمق 4، 200 شجرة، بلا كبح) تحفظ البيانات حفظاً.
         model = xgb.XGBClassifier(
-            n_estimators=200,
-            max_depth=4,
+            n_estimators=100,
+            max_depth=3,
             learning_rate=0.05,
-            subsample=0.85,
-            colsample_bytree=0.85,
+            subsample=0.80,
+            colsample_bytree=0.70,
+            min_child_weight=25,      # ورقة بلا 25 عينة داعمة = ضوضاء
+            reg_lambda=5.0,           # L2
+            reg_alpha=1.0,            # L1
             scale_pos_weight=scale_pos_weight,
             eval_metric="logloss",
             use_label_encoder=False,
@@ -436,12 +441,17 @@ def train_model(min_samples=100):
     y_train, y_test = y[:split], y[split:]
 
     # 🆕 V9.2.3: random_state يتغير كل تدريب (تباين حقيقي)
+    # 🔴 V9.3.1: نفس معاملات walk-forward حرفياً — البوابة يجب أن تقيس
+    # نفس فئة النموذج التي ستُستخدم فعلياً، وإلا فالقياس بلا معنى.
     model = xgb.XGBClassifier(
-        n_estimators=200,
-        max_depth=4,
+        n_estimators=100,
+        max_depth=3,
         learning_rate=0.05,
-        subsample=0.85,
-        colsample_bytree=0.85,
+        subsample=0.80,
+        colsample_bytree=0.70,
+        min_child_weight=25,
+        reg_lambda=5.0,
+        reg_alpha=1.0,
         scale_pos_weight=scale_pos_weight,
         eval_metric="logloss",
         use_label_encoder=False,
