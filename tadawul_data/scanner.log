@@ -425,3 +425,13 @@
 2026-06-11 07:07:07,626 [INFO] relative score floor (p65) = 5.00
 2026-06-11 07:07:07,647 [WARNING] update_active_trades: تم استدعاؤها مسبقاً اليوم 2026-06-11.
 2026-06-11 07:07:07,647 [WARNING] open_trades_from_candidates: تم استدعاؤها مسبقاً اليوم 2026-06-11. استخدم force=True للتجاوز.
+2026-06-12 02:01:09,444 [INFO] evaluate_universe: {'evaluated': 0, 'still_pending': 584, 'files_updated': 0}
+2026-06-12 02:01:09,705 [INFO] rebuild_ml_from_universe: {'rows': 3307, 'written': True, 'base_hit_rate_pct': 27.3, 'date_range': '2026-05-10 → 2026-06-08', 'rebuilt_at': '2026-06-12 02:01'}
+2026-06-12 02:01:14,609 [INFO] ML trustability: unreliable | use_probability=False
+2026-06-12 02:01:14,667 [INFO] ML model trained V9.2.3: WF_AUC_out=0.599, InSample_AUC=0.629, trust=unreliable
+2026-06-12 02:01:14,667 [INFO] weight suggestions skipped: trust=unreliable
+2026-06-12 02:01:26,751 [INFO] Using cached sentiment (2 tickers)
+2026-06-12 02:01:26,751 [INFO] Using cached earnings (196 tickers)
+2026-06-12 02:02:16,718 [INFO] Universe snapshot: 194 صف → snapshot_2026-06-12.jsonl
+2026-06-12 02:02:17,354 [INFO] loaded 17 sector flows for filtering
+2026-06-12 02:02:17,355 [INFO] relative score floor (p65) = 5.97

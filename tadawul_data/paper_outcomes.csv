@@ -1,0 +1,8 @@
+open_date,close_date,ticker,sector,signal_type,score,mtf_aligned,rsi,adx,mfi,volume_ratio,atr_at_entry,power_score,sector_flow,ml_probability,expected_value_pct,risk_reward,mae_pct,mfe_pct,days_held,exit_reason,final_pnl_pct,result,hit
+2026-06-05,2026-06-12,4146,صناعية,breakout,6.55,3,66.2,16.4,69.1,5.5,0.49,0,,,2.62,1.01,-4.43,7.49,7,Trailing Stop Hit (after T1),3.52,WIN_PARTIAL_TRAIL,1
+2026-06-09,2026-06-12,4291,عقار,breakout,7.57,3,73.5,26.6,79.7,6.5,2.95,0,,,2.01,1.0,-0.59,3.28,3,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-06-09,2026-06-12,8010,تأمين,breakout,7.41,3,76.3,42.6,78.2,5.0,3.65,0,,,2.1,1.0,-0.33,4.28,3,Trailing Stop Hit (after T1),1.89,WIN_PARTIAL_TRAIL,1
+2026-06-10,2026-06-12,8230,تأمين,breakout,6.27,3,69.8,28.0,94.4,2.4,2.43,0,,,1.84,1.0,-0.54,2.21,2,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-06-10,2026-06-12,8180,تأمين,breakout,6.23,3,61.1,32.4,45.7,2.1,0.31,0,,,2.6,1.0,-0.36,4.74,2,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-06-10,2026-06-12,1321,بتروكيماويات,support_bounce,6.03,2,62.1,51.7,45.2,6.7,7.05,0,,,3.49,1.0,-2.22,5.51,2,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-06-11,2026-06-12,1833,فنادق,breakout,7.46,3,76.0,47.5,88.9,2.6,2.22,0,,,1.92,1.0,-2.21,1.86,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
