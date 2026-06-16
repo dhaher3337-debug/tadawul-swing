@@ -1,24 +1,6 @@
 {
-  "fetched_at": "2026-06-15T02:02:06.465884",
+  "fetched_at": "2026-06-16T02:01:57.608866",
   "sentiments": {
-    "1211": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "شركة التعدين العربية السعودية (1211.B) - معلومات مباشر"
-      ],
-      "news_count": 1
-    },
-    "2030": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "الاجانب يرفعون ملكيتهم في 126 شركة و\"الخبير للدخل 2030 \" يتصدر.. ويخفضون في 139 اخرى و\" صدق\" في صدارة المبيعات - صحيفة م"
-      ],
-      "news_count": 1
-    },
     "2170": {
       "sentiment": "neutral",
       "score": 0.0,
@@ -27,16 +9,7 @@
         "شركة اللجين (2170) - معلومات مباشر"
       ],
       "news_count": 1
-    },
-    "2020": {
-      "sentiment": "positive",
-      "score": 0.55,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "عمومية \"كهرباء السعودية\" تبحث توزيع أرباح بـ 2.9 مليار ريال عن 2020 في 27 أبريل الجاري - FxNewsToday.ae"
-      ],
-      "news_count": 1
     }
   },
-  "news_count": 4
+  "news_count": 1
 }
