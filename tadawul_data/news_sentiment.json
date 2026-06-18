@@ -1,15 +1,5 @@
 {
-  "fetched_at": "2026-06-17T02:02:05.418463",
-  "sentiments": {
-    "2170": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "شركة اللجين (2170) - معلومات مباشر"
-      ],
-      "news_count": 1
-    }
-  },
-  "news_count": 1
+  "fetched_at": "2026-06-18T02:02:24.809056",
+  "sentiments": {},
+  "news_count": 0
 }
