@@ -1,5 +1,24 @@
 {
-  "fetched_at": "2026-06-18T02:02:24.809056",
-  "sentiments": {},
-  "news_count": 0
+  "fetched_at": "2026-06-19T02:02:07.376584",
+  "sentiments": {
+    "1211": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة التعدين العربية السعودية (1211.B) - معلومات مباشر"
+      ],
+      "news_count": 1
+    },
+    "2170": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة اللجين (2170) - معلومات مباشر"
+      ],
+      "news_count": 1
+    }
+  },
+  "news_count": 2
 }

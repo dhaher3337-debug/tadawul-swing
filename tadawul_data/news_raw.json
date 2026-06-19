@@ -1,5 +1,24 @@
 {
-  "fetched_at": "2026-06-18T02:02:24.808791",
-  "count": 0,
-  "items": []
+  "fetched_at": "2026-06-19T02:02:07.229429",
+  "count": 2,
+  "items": [
+    {
+      "title": "شركة التعدين العربية السعودية (1211.B) - معلومات مباشر",
+      "description": "شركة التعدين العربية السعودية (1211.B)&nbsp;&nbsp;معلومات مباشر",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5laV95anRTZEhEZkJlWWRzeklrY0RXNThhZHFFM3hLbl93RWFMdUluVmpkMDZfUVpNdDNJTTl6T01zT0tWTDJtT052clFGUXo2cDdCTzVoNDl1aWYxMDY2Ri1EeW5TZ20ybkdCcw?oc=5",
+      "date": "Thu, 11 Jun 2026 14:31:57 GMT",
+      "tickers": [
+        "1211"
+      ]
+    },
+    {
+      "title": "شركة اللجين (2170) - معلومات مباشر",
+      "description": "شركة اللجين (2170)&nbsp;&nbsp;معلومات مباشر",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1ZbGtuWWY5ZzBtNWZLMGd6M0czXzg3MlhpRmZwcVNrMW1KWTlBQ1pmcXRnRzAyRVVGc3YtMXR2aEFOSDdwdDBJSGNudEVwU1BON25BTE1jbzNVZ2F4WXZiUXdnY09xYnhJbUE?oc=5",
+      "date": "Sat, 25 Apr 2026 07:25:37 GMT",
+      "tickers": [
+        "2170"
+      ]
+    }
+  ]
 }
