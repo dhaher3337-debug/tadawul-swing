@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-25T02:02:01.584063",
+  "fetched_at": "2026-06-26T02:02:18.088013",
   "sentiments": {
     "2030": {
       "sentiment": "neutral",
@@ -9,16 +9,7 @@
         "شركة المصافي العربية السعودية (2030) - معلومات مباشر"
       ],
       "news_count": 1
-    },
-    "2020": {
-      "sentiment": "positive",
-      "score": 0.55,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "عمومية \"كهرباء السعودية\" تبحث توزيع أرباح بـ 2.9 مليار ريال عن 2020 في 27 أبريل الجاري - FxNewsToday.ae"
-      ],
-      "news_count": 1
     }
   },
-  "news_count": 2
+  "news_count": 1
 }
