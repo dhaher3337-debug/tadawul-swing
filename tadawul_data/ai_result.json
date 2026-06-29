@@ -1,185 +1,87 @@
 {
-  "date": "2026-06-26",
+  "date": "2026-06-29",
   "model": "rules_filter_v2_4",
   "version": "V9.2.4",
   "no_ai": true,
   "filter_mode": "deterministic",
   "market_outlook": "محايد",
-  "market_comment": "وضع No-API V9.2.4. تم تطبيق 23 قواعد إقصاء صارمة. نجح 9/45 مرشح. عتبة score نسبية (أعلى 35% من مرشحي اليوم) + منع مطاردة القفزات.",
+  "market_comment": "وضع No-API V9.2.4. تم تطبيق 23 قواعد إقصاء صارمة. نجح 4/38 مرشح. عتبة score نسبية (أعلى 25% من مرشحي اليوم) + منع مطاردة القفزات.",
   "sector_analysis": "تحليل قطاعي يتطلب AI - معطّل في وضع rules_filter",
   "global_impact": "غير متاح في وضع rules_filter",
   "catch_up_opportunities": "غير متاح في وضع rules_filter",
   "picks": [
     {
-      "ticker": "4160",
-      "close": 35.82,
-      "change": 3.77,
-      "score": 11.93,
-      "base_score": 9.18,
+      "ticker": "8280",
+      "close": 12.44,
+      "change": 4.54,
+      "score": 10.35,
+      "base_score": 9.41,
       "ml_probability": null,
-      "expected_value_pct": 3.63,
-      "risk_reward": 1.81,
+      "expected_value_pct": 3.87,
+      "risk_reward": 1.91,
       "reasons": [
         "OBV صاعد",
-        "حجم 3.6×",
-        "اختراق +3.8%",
-        "ADX قوي (30)",
+        "اختراق +4.5%",
+        "ADX قوي (45)",
         "فوق سحابة إيشيموكو",
-        "قوة نسبية +14.8%",
-        "أسبوعي صاعد",
-        "إجماع 7 (+2.4)",
-        "MTF 3/3 صاعد"
-      ],
-      "signals": [
-        "obv",
-        "volume_surge",
-        "breakout",
-        "adx",
-        "ichimoku",
-        "relative_strength",
-        "weekly_trend"
-      ],
-      "sector": "تجزئة",
-      "rsi": 64.5,
-      "adx": 30.5,
-      "mfi": 81.9,
-      "cmf": -0.007,
-      "stoch_rsi": 61.0,
-      "fib_pos": 0.74,
-      "rs_vs_tasi": 1.148,
-      "volume_ratio": 3.6,
-      "vwap_diff": 3.9,
-      "weekly_trend": "صاعد",
-      "supertrend_dir": -1,
-      "stop": 34.03,
-      "target1": 38.32,
-      "target2": 40.19,
-      "atr": 1.25,
-      "feature_snapshot": {
-        "rsi": 64.5011446733158,
-        "stoch_rsi_k": 60.96700657625667,
-        "macd_hist": 0.2032515401545234,
-        "bb_pct": 1.0718223587684192,
-        "bb_width": 0.10352732468912058,
-        "adx": 30.4952544064277,
-        "di_plus": 35.595585141195244,
-        "di_minus": 9.55492525192952,
-        "mfi": 81.93571168255943,
-        "cmf": -0.006732835846908864,
-        "fib_pos": 0.7446808017241504,
-        "supertrend_dir": -1.0,
-        "weekly_trend": 1.0,
-        "rs_vs_tasi": 1.147712529307774,
-        "vol_ratio": 3.643043182652134,
-        "vwap_diff_pct": 3.904883290048348,
-        "dist_from_sma20_pct": 5.9199239000716934,
-        "dist_from_sma50_pct": 8.043868282207821,
-        "obv_vs_ma_pct": 18.199359795011087
-      },
-      "mtf_aligned": 3,
-      "mtf_available": 3,
-      "mtf_multiplier": 1.3,
-      "mtf_daily_score": 0.769,
-      "mtf_h4_score": 0.63,
-      "mtf_h1_score": 0.628,
-      "news_sentiment": "no_news",
-      "news_score": 0,
-      "news_multiplier": 1.0,
-      "news_headlines": [],
-      "news_reason": "",
-      "earnings_multiplier": 1.0,
-      "earnings_message": null,
-      "power_score": 0,
-      "power_classification": "NONE",
-      "power_direction": "NONE",
-      "power_breakdown": {},
-      "power_emoji": "",
-      "power_breakout_level": 0.0,
-      "power_targets": {},
-      "sector_flow": 51710000.0,
-      "signal_type": "breakout",
-      "action": "شراء",
-      "confidence": 61,
-      "reason": "إجماع 7 إشارات: OBV + حجم + اختراق + ADX + إيشيموكو",
-      "target": 38.32,
-      "holding_days": 3,
-      "risk_level": "مرتفع",
-      "rules_check": "EV=+3.63%✓ | RR=1:1.81✓ | weekly=صاعد✓ | score=11.9✓",
-      "composite_score": 0.6153,
-      "warnings": []
-    },
-    {
-      "ticker": "2180",
-      "close": 32.1,
-      "change": -4.46,
-      "score": 10.71,
-      "base_score": 9.74,
-      "ml_probability": null,
-      "expected_value_pct": 2.9,
-      "risk_reward": 1.55,
-      "reasons": [
-        "OBV صاعد",
-        "نفط +1.4%",
-        "ADX قوي (49)",
-        "فوق سحابة إيشيموكو",
-        "تراكم مؤسسي CMF=0.15",
-        "قوة نسبية +18.8%",
+        "فيبو 61.8%",
+        "قوة نسبية +20.2%",
         "أسبوعي صاعد",
         "إجماع 7 (+2.4)",
         "MTF 2/3 صاعد"
       ],
       "signals": [
         "obv",
-        "oil_correlation",
+        "breakout",
         "adx",
         "ichimoku",
-        "cmf",
+        "fibonacci",
         "relative_strength",
         "weekly_trend"
       ],
-      "sector": "بتروكيماويات",
-      "rsi": 65.6,
-      "adx": 49.1,
-      "mfi": 82.5,
-      "cmf": 0.147,
-      "stoch_rsi": 71.4,
-      "fib_pos": 0.75,
-      "rs_vs_tasi": 1.188,
-      "volume_ratio": 0.9,
-      "vwap_diff": 4.8,
+      "sector": "تأمين",
+      "rsi": 62.3,
+      "adx": 45.1,
+      "mfi": 62.7,
+      "cmf": 0.048,
+      "stoch_rsi": 26.2,
+      "fib_pos": 0.66,
+      "rs_vs_tasi": 1.202,
+      "volume_ratio": 1.4,
+      "vwap_diff": 3.2,
       "weekly_trend": "صاعد",
       "supertrend_dir": -1,
-      "stop": 30.49,
-      "target1": 34.02,
-      "target2": 35.47,
-      "atr": 0.96,
+      "stop": 11.82,
+      "target1": 13.35,
+      "target2": 14.04,
+      "atr": 0.46,
       "feature_snapshot": {
-        "rsi": 65.64450780501268,
-        "stoch_rsi_k": 71.41060610785432,
-        "macd_hist": 0.3161214271154902,
-        "bb_pct": 0.7753182036191727,
-        "bb_width": 0.23812488408578406,
-        "adx": 49.14415894037818,
-        "di_plus": 38.307475931568604,
-        "di_minus": 10.3375338921109,
-        "mfi": 82.53186063200856,
-        "cmf": 0.1471450205232606,
-        "fib_pos": 0.7527173891917065,
+        "rsi": 62.29622141754198,
+        "stoch_rsi_k": 26.214095645898396,
+        "macd_hist": 0.014145300627383228,
+        "bb_pct": 0.7284789574094565,
+        "bb_width": 0.30181367371501505,
+        "adx": 45.07306952952414,
+        "di_plus": 37.37493476752098,
+        "di_minus": 11.321285260216301,
+        "mfi": 62.709142845732025,
+        "cmf": 0.04789558872104392,
+        "fib_pos": 0.6623376663588899,
         "supertrend_dir": -1.0,
         "weekly_trend": 1.0,
-        "rs_vs_tasi": 1.1883571166090732,
-        "vol_ratio": 0.8563518763508605,
-        "vwap_diff_pct": 4.752032238393252,
-        "dist_from_sma20_pct": 6.556011532352178,
-        "dist_from_sma50_pct": 10.642340998895472,
-        "obv_vs_ma_pct": 142.0388356297845
+        "rs_vs_tasi": 1.2015842376390893,
+        "vol_ratio": 1.4188274954729831,
+        "vwap_diff_pct": 3.1839275605158757,
+        "dist_from_sma20_pct": 6.895807350232451,
+        "dist_from_sma50_pct": 13.934017535424767,
+        "obv_vs_ma_pct": 11.305278921821932
       },
       "mtf_aligned": 2,
       "mtf_available": 3,
       "mtf_multiplier": 1.1,
-      "mtf_daily_score": 0.792,
-      "mtf_h4_score": 0.258,
-      "mtf_h1_score": -0.081,
+      "mtf_daily_score": 0.684,
+      "mtf_h4_score": 0.134,
+      "mtf_h1_score": 0.781,
       "news_sentiment": "no_news",
       "news_score": 0,
       "news_multiplier": 1.0,
@@ -194,90 +96,96 @@
       "power_emoji": "",
       "power_breakout_level": 0.0,
       "power_targets": {},
-      "sector_flow": -429790000.0,
+      "sector_flow": -67310000.0,
       "signal_type": "momentum",
-      "action": "مراقبة",
-      "confidence": 49,
-      "reason": "إجماع 7 إشارات: OBV + نفط + ADX + إيشيموكو + CMF | ⚠️ RSI=66 يقترب من overbought",
-      "target": 34.02,
+      "action": "شراء",
+      "confidence": 58,
+      "reason": "إجماع 7 إشارات: OBV + اختراق + ADX + إيشيموكو + فيبو | ⚠️ قفز +4.5% اليوم - دخول متأخر محتمل",
+      "target": 13.35,
       "holding_days": 3,
       "risk_level": "مرتفع",
-      "rules_check": "EV=+2.90%✓ | RR=1:1.55✓ | weekly=صاعد✓ | score=10.7✓",
-      "composite_score": 0.4953,
+      "rules_check": "EV=+3.87%✓ | RR=1:1.91✓ | weekly=صاعد✓ | score=10.3✓",
+      "composite_score": 0.5874,
       "warnings": [
-        "⚠️ RSI=66 يقترب من overbought"
+        "⚠️ قفز +4.5% اليوم - دخول متأخر محتمل"
       ]
     },
     {
-      "ticker": "6019",
-      "close": 23.87,
-      "change": 3.74,
-      "score": 8.53,
-      "base_score": 6.56,
+      "ticker": "8180",
+      "close": 11.76,
+      "change": 2.08,
+      "score": 9.35,
+      "base_score": 13.36,
       "ml_probability": null,
-      "expected_value_pct": 2.08,
-      "risk_reward": 1.3,
+      "expected_value_pct": 3.25,
+      "risk_reward": 1.67,
       "reasons": [
         "OBV صاعد",
-        "اختراق +3.7%",
-        "ADX قوي (36)",
+        "VWAP (-0.4%)",
+        "حجم 2.3×",
+        "اختراق +2.1%",
+        "ADX قوي (46)",
         "فوق سحابة إيشيموكو",
-        "قوة نسبية +14.1%",
+        "فيبو 61.8%",
+        "قوة نسبية +7.8%",
         "أسبوعي صاعد",
-        "إجماع 6 (+1.8)",
-        "MTF 3/3 صاعد"
+        "إجماع 9 (+3.6)",
+        "⚠️ MTF ضعيف"
       ],
       "signals": [
         "obv",
+        "vwap",
+        "volume_surge",
         "breakout",
         "adx",
         "ichimoku",
+        "fibonacci",
         "relative_strength",
         "weekly_trend"
       ],
-      "sector": "زراعة وأغذية",
-      "rsi": 70.4,
-      "adx": 35.7,
-      "mfi": 77.1,
-      "cmf": 0.096,
-      "stoch_rsi": 71.2,
-      "fib_pos": 0.96,
-      "rs_vs_tasi": 1.141,
-      "volume_ratio": 1.8,
-      "vwap_diff": 5.5,
+      "sector": "تأمين",
+      "rsi": 57.4,
+      "adx": 46.0,
+      "mfi": 74.0,
+      "cmf": -0.149,
+      "stoch_rsi": 21.0,
+      "fib_pos": 0.57,
+      "rs_vs_tasi": 1.078,
+      "volume_ratio": 2.3,
+      "vwap_diff": -0.4,
       "weekly_trend": "صاعد",
       "supertrend_dir": -1,
-      "stop": 22.74,
-      "target1": 25.0,
-      "target2": 25.85,
-      "atr": 0.57,
+      "stop": 11.17,
+      "target1": 12.52,
+      "target2": 13.09,
+      "atr": 0.38,
       "feature_snapshot": {
-        "rsi": 70.44995988579171,
-        "stoch_rsi_k": 71.23565758325994,
-        "macd_hist": 0.1046917768278679,
-        "bb_pct": 1.102543612473378,
-        "bb_width": 0.10042733823682423,
-        "adx": 35.739641522837815,
-        "di_plus": 35.10823557069901,
-        "di_minus": 7.967566572689989,
-        "mfi": 77.09621426842452,
-        "cmf": 0.09633534213497132,
-        "fib_pos": 0.9614245909813561,
+        "rsi": 57.37554046035162,
+        "stoch_rsi_k": 20.958158167768545,
+        "macd_hist": -0.030292089956078183,
+        "bb_pct": 0.6316946721124055,
+        "bb_width": 0.18791426940952777,
+        "adx": 45.966666017053626,
+        "di_plus": 32.022463236570026,
+        "di_minus": 10.971469003388957,
+        "mfi": 73.98754559371987,
+        "cmf": -0.14879984411200295,
+        "fib_pos": 0.5707763650718238,
         "supertrend_dir": -1.0,
         "weekly_trend": 1.0,
-        "rs_vs_tasi": 1.1411149471189121,
-        "vol_ratio": 1.7707884401225624,
-        "vwap_diff_pct": 5.533725073528474,
-        "dist_from_sma20_pct": 6.051185117230189,
-        "dist_from_sma50_pct": 9.643284749400419,
-        "obv_vs_ma_pct": 138.76035039540483
+        "rs_vs_tasi": 1.0783366854071006,
+        "vol_ratio": 2.2755807145601072,
+        "vwap_diff_pct": -0.39553535372351817,
+        "dist_from_sma20_pct": 2.474730809513,
+        "dist_from_sma50_pct": 6.552625256749297,
+        "obv_vs_ma_pct": 27.08289755005362
       },
-      "mtf_aligned": 3,
+      "mtf_aligned": 1,
       "mtf_available": 3,
-      "mtf_multiplier": 1.3,
-      "mtf_daily_score": 0.9,
-      "mtf_h4_score": 0.8,
-      "mtf_h1_score": 1.0,
+      "mtf_multiplier": 0.7,
+      "mtf_daily_score": 0.228,
+      "mtf_h4_score": -0.608,
+      "mtf_h1_score": 0.057,
       "news_sentiment": "no_news",
       "news_score": 0,
       "news_multiplier": 1.0,
@@ -292,35 +200,35 @@
       "power_emoji": "",
       "power_breakout_level": 0.0,
       "power_targets": {},
-      "sector_flow": 248490000.0,
-      "signal_type": "momentum",
-      "action": "مراقبة",
-      "confidence": 47,
-      "reason": "إجماع 6 إشارات: OBV + اختراق + ADX + إيشيموكو + قوة نسبية | ⚠️ RSI=70 يقترب من overbought",
-      "target": 25.0,
+      "sector_flow": -67310000.0,
+      "signal_type": "breakout",
+      "action": "شراء",
+      "confidence": 51,
+      "reason": "إجماع 9 إشارات: OBV + VWAP + حجم + اختراق + ADX | MTF=1.0/3.0 مقبول لكن غير مثالي",
+      "target": 12.52,
       "holding_days": 3,
       "risk_level": "مرتفع",
-      "rules_check": "EV=+2.08%✓ | RR=1:1.3✓ | weekly=صاعد✓ | score=8.5✓",
-      "composite_score": 0.4752,
+      "rules_check": "EV=+3.25%✓ | RR=1:1.67✓ | weekly=صاعد✓ | score=9.3✓",
+      "composite_score": 0.5126,
       "warnings": [
-        "⚠️ RSI=70 يقترب من overbought"
+        "MTF=1.0/3.0 مقبول لكن غير مثالي"
       ]
     },
     {
-      "ticker": "3080",
-      "close": 27.34,
-      "change": -0.44,
-      "score": 8.97,
-      "base_score": 6.9,
+      "ticker": "8030",
+      "close": 16.51,
+      "change": 1.23,
+      "score": 10.58,
+      "base_score": 8.14,
       "ml_probability": null,
-      "expected_value_pct": 1.46,
-      "risk_reward": 1.3,
+      "expected_value_pct": 2.47,
+      "risk_reward": 1.39,
       "reasons": [
         "OBV صاعد",
-        "ADX قوي (45)",
+        "ADX قوي (46)",
         "فوق سحابة إيشيموكو",
-        "تراكم مؤسسي CMF=0.27",
-        "قوة نسبية +10.3%",
+        "تراكم مؤسسي CMF=0.14",
+        "قوة نسبية +16.6%",
         "أسبوعي صاعد",
         "إجماع 6 (+1.8)",
         "MTF 3/3 صاعد"
@@ -333,49 +241,49 @@
         "relative_strength",
         "weekly_trend"
       ],
-      "sector": "أسمنت",
-      "rsi": 75.7,
-      "adx": 44.8,
-      "mfi": 87.2,
-      "cmf": 0.27,
-      "stoch_rsi": 83.4,
-      "fib_pos": 0.93,
-      "rs_vs_tasi": 1.103,
-      "volume_ratio": 1.7,
-      "vwap_diff": 5.7,
+      "sector": "تأمين",
+      "rsi": 66.0,
+      "adx": 46.4,
+      "mfi": 83.1,
+      "cmf": 0.137,
+      "stoch_rsi": 18.0,
+      "fib_pos": 0.77,
+      "rs_vs_tasi": 1.166,
+      "volume_ratio": 1.0,
+      "vwap_diff": 4.8,
       "weekly_trend": "صاعد",
       "supertrend_dir": -1,
-      "stop": 26.43,
-      "target1": 28.25,
-      "target2": 28.93,
-      "atr": 0.45,
+      "stop": 15.68,
+      "target1": 17.4,
+      "target2": 18.06,
+      "atr": 0.44,
       "feature_snapshot": {
-        "rsi": 75.74188799821185,
-        "stoch_rsi_k": 83.42005879018024,
-        "macd_hist": 0.1438082586866813,
-        "bb_pct": 0.9975629392336544,
-        "bb_width": 0.12733686948857048,
-        "adx": 44.79529725087405,
-        "di_plus": 40.278318217455414,
-        "di_minus": 9.653296172241415,
-        "mfi": 87.194731658325,
-        "cmf": 0.27002573950402337,
-        "fib_pos": 0.928338978754495,
+        "rsi": 66.02159678999772,
+        "stoch_rsi_k": 17.978901433430448,
+        "macd_hist": 0.023406104037031195,
+        "bb_pct": 0.7523937100998497,
+        "bb_width": 0.1849976791649516,
+        "adx": 46.44788203270386,
+        "di_plus": 36.113944927634954,
+        "di_minus": 9.878313717844307,
+        "mfi": 83.05020923844462,
+        "cmf": 0.13699997518779183,
+        "fib_pos": 0.7722421668027605,
         "supertrend_dir": -1.0,
         "weekly_trend": 1.0,
-        "rs_vs_tasi": 1.1032488202834605,
-        "vol_ratio": 1.6863516884334915,
-        "vwap_diff_pct": 5.708942708073206,
-        "dist_from_sma20_pct": 6.335810705554537,
-        "dist_from_sma50_pct": 10.308655383283105,
-        "obv_vs_ma_pct": 106.75956435223135
+        "rs_vs_tasi": 1.1657475256292378,
+        "vol_ratio": 0.9632938519061589,
+        "vwap_diff_pct": 4.76331688781975,
+        "dist_from_sma20_pct": 4.66922506043038,
+        "dist_from_sma50_pct": 11.079714932841995,
+        "obv_vs_ma_pct": 19.816886941551388
       },
       "mtf_aligned": 3,
       "mtf_available": 3,
       "mtf_multiplier": 1.3,
-      "mtf_daily_score": 0.9,
-      "mtf_h4_score": 1.0,
-      "mtf_h1_score": 0.74,
+      "mtf_daily_score": 0.799,
+      "mtf_h4_score": 0.241,
+      "mtf_h1_score": 0.602,
       "news_sentiment": "no_news",
       "news_score": 0,
       "news_multiplier": 1.0,
@@ -390,57 +298,39 @@
       "power_emoji": "",
       "power_breakout_level": 0.0,
       "power_targets": {},
-      "sector_flow": 16170000.000000002,
+      "sector_flow": -67310000.0,
       "signal_type": "momentum",
-      "action": "مراقبة",
-      "confidence": 46,
-      "reason": "إجماع 6 إشارات: OBV + ADX + إيشيموكو + CMF + قوة نسبية | ⚠️ RSI=76 مرتفع (overbought)",
-      "target": 28.25,
+      "action": "شراء",
+      "confidence": 51,
+      "reason": "إجماع 6 إشارات: OBV + ADX + إيشيموكو + CMF + قوة نسبية | ⚠️ RSI=66 يقترب من overbought",
+      "target": 17.4,
       "holding_days": 3,
       "risk_level": "مرتفع",
-      "rules_check": "EV=+1.46%✓ | RR=1:1.3✓ | weekly=صاعد✓ | score=9.0✓",
-      "composite_score": 0.4635,
+      "rules_check": "EV=+2.47%✓ | RR=1:1.39✓ | weekly=صاعد✓ | score=10.6✓",
+      "composite_score": 0.5119,
       "warnings": [
-        "⚠️ RSI=76 مرتفع (overbought)"
+        "⚠️ RSI=66 يقترب من overbought"
       ]
     }
   ],
   "rejected_candidates": [
     {
-      "ticker": "1213",
+      "ticker": "6050",
       "reasons": [
         "مطاردة قفزة: +9.9% اليوم (≥ 6.0%؛ تاريخياً عائد 3 أيام أسوأ)",
-        "متمدّد +11.7% فوق SMA20 (> 8.0%)"
+        "متمدّد +45.1% فوق SMA20 (> 8.0%)"
       ]
     },
     {
-      "ticker": "6050",
+      "ticker": "4146",
       "reasons": [
-        "متمدّد +36.0% فوق SMA20 (> 8.0%)"
+        "vol_ratio=0.30× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
       "ticker": "7200",
       "reasons": [
-        "متمدّد +12.7% فوق SMA20 (> 8.0%)"
-      ]
-    },
-    {
-      "ticker": "1321",
-      "reasons": [
-        "vol_ratio=0.50× < 0.8 (سيولة ضعيفة)"
-      ]
-    },
-    {
-      "ticker": "4325",
-      "reasons": [
-        "متمدّد +9.0% فوق SMA20 (> 8.0%)"
-      ]
-    },
-    {
-      "ticker": "1020",
-      "reasons": [
-        "vol_ratio=0.70× < 0.8 (سيولة ضعيفة)"
+        "متمدّد +14.3% فوق SMA20 (> 8.0%)"
       ]
     },
     {
@@ -450,183 +340,204 @@
       ]
     },
     {
-      "ticker": "2282",
+      "ticker": "1213",
       "reasons": [
-        "score=6.3 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
-        "RS=1.00 < 1.0 (أضعف من المؤشر)",
-        "إشارات=4 (< 5)"
+        "متمدّد +16.5% فوق SMA20 (> 8.0%)"
       ]
     },
     {
       "ticker": "8120",
       "reasons": [
-        "score=6.3 ضمن أدنى مرشحي اليوم (< عتبة 6.8)"
+        "vol_ratio=0.60× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
-      "ticker": "8250",
+      "ticker": "6060",
       "reasons": [
-        "score=6.2 ضمن أدنى مرشحي اليوم (< عتبة 6.8)"
+        "score=9.0 ضمن أدنى مرشحي اليوم (< عتبة 9.1)"
       ]
     },
     {
-      "ticker": "6013",
+      "ticker": "3080",
       "reasons": [
-        "score=6.2 ضمن أدنى مرشحي اليوم (< عتبة 6.8)"
+        "score=8.9 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "vol_ratio=0.30× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
-      "ticker": "2082",
+      "ticker": "2340",
       "reasons": [
-        "score=6.1 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
+        "score=8.1 ضمن أدنى مرشحي اليوم (< عتبة 9.1)"
+      ]
+    },
+    {
+      "ticker": "6019",
+      "reasons": [
+        "score=7.0 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
         "vol_ratio=0.50× < 0.8 (سيولة ضعيفة)"
-      ]
-    },
-    {
-      "ticker": "8030",
-      "reasons": [
-        "score=6.0 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
-        "vol_ratio=0.50× < 0.8 (سيولة ضعيفة)"
-      ]
-    },
-    {
-      "ticker": "4327",
-      "reasons": [
-        "score=5.8 ضمن أدنى مرشحي اليوم (< عتبة 6.8)"
       ]
     },
     {
       "ticker": "4061",
       "reasons": [
-        "score=5.7 ضمن أدنى مرشحي اليوم (< عتبة 6.8)"
+        "score=6.8 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "متمدّد +8.1% فوق SMA20 (> 8.0%)"
       ]
     },
     {
-      "ticker": "6001",
+      "ticker": "2180",
       "reasons": [
-        "score=5.6 ضمن أدنى مرشحي اليوم (< عتبة 6.8)"
+        "score=6.5 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "vol_ratio=0.40× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
-      "ticker": "4264",
+      "ticker": "4160",
       "reasons": [
-        "score=5.6 ضمن أدنى مرشحي اليوم (< عتبة 6.8)"
-      ]
-    },
-    {
-      "ticker": "2100",
-      "reasons": [
-        "score=5.5 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
-        "إشارات=4 (< 5)"
-      ]
-    },
-    {
-      "ticker": "4300",
-      "reasons": [
-        "score=5.3 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
-        "weekly=هابط بدون إجماع كافٍ (5 < 6)"
-      ]
-    },
-    {
-      "ticker": "4146",
-      "reasons": [
-        "score=5.1 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
-        "vol_ratio=0.60× < 0.8 (سيولة ضعيفة)"
+        "score=6.3 ضمن أدنى مرشحي اليوم (< عتبة 9.1)"
       ]
     },
     {
       "ticker": "2030",
       "reasons": [
-        "score=5.1 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
-        "weekly=هابط بدون إجماع كافٍ (5 < 6)"
+        "score=6.2 ضمن أدنى مرشحي اليوم (< عتبة 9.1)"
       ]
     },
     {
-      "ticker": "3010",
+      "ticker": "4325",
       "reasons": [
-        "score=4.8 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
-        "إشارات=4 (< 5)"
+        "score=5.7 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "متمدّد +9.0% فوق SMA20 (> 8.0%)",
+        "vol_ratio=0.40× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
-      "ticker": "8280",
+      "ticker": "6001",
       "reasons": [
-        "score=4.3 ضمن أدنى مرشحي اليوم (< عتبة 6.8)"
+        "score=5.5 ضمن أدنى مرشحي اليوم (< عتبة 9.1)"
       ]
     },
     {
-      "ticker": "4070",
+      "ticker": "4310",
       "reasons": [
-        "score=4.3 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
-        "vol_ratio=0.60× < 0.8 (سيولة ضعيفة)"
+        "RR=1:1.29 (< 1:1.3)",
+        "score=5.0 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "vol_ratio=0.30× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
-      "ticker": "2110",
+      "ticker": "8250",
       "reasons": [
-        "score=4.3 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
-        "MTF aligned=0.0/3.0 ضعيف",
-        "vol_ratio=0.20× < 0.8 (سيولة ضعيفة)"
-      ]
-    },
-    {
-      "ticker": "4007",
-      "reasons": [
-        "score=4.2 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
-        "MTF aligned=0.0/3.0 ضعيف",
-        "vol_ratio=0.10× < 0.8 (سيولة ضعيفة)"
-      ]
-    },
-    {
-      "ticker": "5110",
-      "reasons": [
-        "score=4.2 ضمن أدنى مرشحي اليوم (< عتبة 6.8)"
-      ]
-    },
-    {
-      "ticker": "4141",
-      "reasons": [
-        "score=4.0 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
-        "weekly=هابط بدون إجماع كافٍ (5 < 6)"
+        "score=4.9 ضمن أدنى مرشحي اليوم (< عتبة 9.1)"
       ]
     },
     {
       "ticker": "4191",
       "reasons": [
-        "score=3.9 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
+        "score=4.8 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
         "vol_ratio=0.40× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
-      "ticker": "6017",
+      "ticker": "6013",
       "reasons": [
-        "score=3.8 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
+        "score=4.8 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "vol_ratio=0.60× < 0.8 (سيولة ضعيفة)"
+      ]
+    },
+    {
+      "ticker": "1321",
+      "reasons": [
+        "score=4.2 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "vol_ratio=0.10× < 0.8 (سيولة ضعيفة)"
+      ]
+    },
+    {
+      "ticker": "4007",
+      "reasons": [
+        "score=3.9 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
         "MTF aligned=0.0/3.0 ضعيف",
+        "vol_ratio=0.20× < 0.8 (سيولة ضعيفة)"
+      ]
+    },
+    {
+      "ticker": "2100",
+      "reasons": [
+        "score=3.9 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "متمدّد +11.0% فوق SMA20 (> 8.0%)"
+      ]
+    },
+    {
+      "ticker": "2283",
+      "reasons": [
+        "score=3.8 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "ADX=15.1 (< 20.0)"
+      ]
+    },
+    {
+      "ticker": "4170",
+      "reasons": [
+        "score=3.7 ضمن أدنى مرشحي اليوم (< عتبة 9.1)"
+      ]
+    },
+    {
+      "ticker": "4190",
+      "reasons": [
+        "score=3.5 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "vol_ratio=0.50× < 0.8 (سيولة ضعيفة)"
+      ]
+    },
+    {
+      "ticker": "1833",
+      "reasons": [
+        "score=3.4 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "MTF aligned=0.0/3.0 ضعيف"
+      ]
+    },
+    {
+      "ticker": "2110",
+      "reasons": [
+        "score=3.4 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "MTF aligned=0.0/3.0 ضعيف",
+        "vol_ratio=0.20× < 0.8 (سيولة ضعيفة)"
+      ]
+    },
+    {
+      "ticker": "5110",
+      "reasons": [
+        "score=3.2 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
+        "vol_ratio=0.30× < 0.8 (سيولة ضعيفة)"
+      ]
+    },
+    {
+      "ticker": "1323",
+      "reasons": [
+        "score=3.2 ضمن أدنى مرشحي اليوم (< عتبة 9.1)",
         "vol_ratio=0.40× < 0.8 (سيولة ضعيفة)"
       ]
     }
   ],
   "stats": {
-    "total_candidates": 45,
-    "passed": 9,
-    "rejected": 36,
-    "picks_selected": 4,
-    "avg_composite_score": 0.462,
-    "avg_picks_ev": 2.52,
+    "total_candidates": 38,
+    "passed": 4,
+    "rejected": 34,
+    "picks_selected": 3,
+    "avg_composite_score": 0.494,
+    "avg_picks_ev": 3.2,
     "rejection_reasons": {
       "مطاردة": 1,
-      "متمدّد": 4,
-      "vol_ratio": 15,
-      "score": 29,
-      "RS": 2,
-      "إشارات": 4,
-      "weekly": 4,
-      "MTF": 6
+      "متمدّد": 6,
+      "vol_ratio": 19,
+      "score": 28,
+      "RR": 1,
+      "MTF": 5,
+      "ADX": 1,
+      "weekly": 1
     }
   },
   "weight_suggestions": {},
-  "learning_notes": "V9.2.4 الفلتر المُشدّد: نجح 9 وفشل 36. متوسط composite=0.462, متوسط EV picks=2.52%. أكثر أسباب الرفض: [('score', 29), ('vol_ratio', 15), ('MTF', 6)]",
+  "learning_notes": "V9.2.4 الفلتر المُشدّد: نجح 4 وفشل 34. متوسط composite=0.494, متوسط EV picks=3.2%. أكثر أسباب الرفض: [('score', 28), ('vol_ratio', 19), ('متمدّد', 6)]",
   "missed_analysis": "تحليل الفرص الضائعة يتم في missed_opportunities.py",
-  "risks_to_watch": "2180: ⚠️ RSI=66 يقترب من overbought | 6019: ⚠️ RSI=70 يقترب من overbought | 3080: ⚠️ RSI=76 مرتفع (overbought)",
+  "risks_to_watch": "8280: ⚠️ قفز +4.5% اليوم - دخول متأخر محتمل | 8180: MTF=1.0/3.0 مقبول لكن غير مثالي | 8030: ⚠️ RSI=66 يقترب من overbought",
   "fallback_reason": "known bad API key (cached 401)"
 }

@@ -715,3 +715,29 @@
 2026-06-26 02:03:31,737 [INFO] Universe snapshot: 190 صف → snapshot_2026-06-26.jsonl
 2026-06-26 02:03:32,427 [INFO] loaded 17 sector flows for filtering
 2026-06-26 02:03:32,427 [INFO] relative score floor (p65) = 6.75
+2026-06-29 02:01:22,548 [INFO] evaluate_universe: {'evaluated': 190, 'still_pending': 576, 'files_updated': 1}
+2026-06-29 02:01:22,914 [INFO] rebuild_ml_from_universe: {'rows': 5409, 'written': True, 'base_hit_rate_pct': 28.5, 'date_range': '2026-05-10 → 2026-06-23', 'rebuilt_at': '2026-06-29 02:01'}
+2026-06-29 02:01:31,629 [INFO] ML trustability: unreliable | use_probability=False
+2026-06-29 02:01:31,691 [INFO] ML model trained V9.2.3: WF_AUC_out=0.534, InSample_AUC=0.557, trust=unreliable
+2026-06-29 02:01:31,691 [INFO] weight suggestions skipped: trust=unreliable
+2026-06-29 02:01:43,975 [INFO] Fetching fresh news...
+2026-06-29 02:01:43,975 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-06-29 02:01:50,264 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/ar/rss/saudi → HTTP Error 404: Not Found
+2026-06-29 02:01:50,264 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-06-29 02:01:56,355 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/ar/rss/tasi → HTTP Error 404: Not Found
+2026-06-29 02:01:56,355 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-06-29 02:02:02,444 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/en/rss/saudi → HTTP Error 404: Not Found
+2026-06-29 02:02:02,444 [WARNING] Argaam رجع 0 خبر — التحويل للمصادر الاحتياطية
+2026-06-29 02:02:02,444 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%AA%D8%AF%D8%A7%D9%88%D9%84%20...
+2026-06-29 02:02:03,066 [INFO]   → 100 خبر
+2026-06-29 02:02:03,567 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD%20...
+2026-06-29 02:02:04,057 [INFO]   → 92 خبر
+2026-06-29 02:02:04,558 [INFO] Fetching (fallback): https://www.maaal.com/feed...
+2026-06-29 02:02:06,362 [WARNING] parse RSS: XML غير صالح (not well-formed (invalid token): line 1, column 17007) — أول 120 حرف: '<!DOCTYPE html><html lang="ar"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s'
+2026-06-29 02:02:06,363 [INFO]   → 0 خبر
+2026-06-29 02:02:06,864 [INFO] أخبار ذات صلة: 0
+2026-06-29 02:02:06,864 [WARNING] No news fetched — returning empty sentiment
+2026-06-29 02:02:06,865 [INFO] Using cached earnings (196 tickers)
+2026-06-29 02:02:51,647 [INFO] Universe snapshot: 190 صف → snapshot_2026-06-29.jsonl
+2026-06-29 02:02:52,278 [INFO] loaded 17 sector flows for filtering
+2026-06-29 02:02:52,278 [INFO] relative score floor (p75) = 9.12

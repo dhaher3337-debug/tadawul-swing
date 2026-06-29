@@ -1,15 +1,5 @@
 {
-  "fetched_at": "2026-06-26T02:02:18.088013",
-  "sentiments": {
-    "2030": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "شركة المصافي العربية السعودية (2030) - معلومات مباشر"
-      ],
-      "news_count": 1
-    }
-  },
-  "news_count": 1
+  "fetched_at": "2026-06-29T02:02:06.864989",
+  "sentiments": {},
+  "news_count": 0
 }
