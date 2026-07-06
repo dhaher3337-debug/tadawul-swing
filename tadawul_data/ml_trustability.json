@@ -1,12 +1,13 @@
 {
   "trust_level": "unreliable",
   "use_ml_probability": false,
-  "auc_out_of_sample": 0.552,
-  "sample_count": 6169,
-  "overfit_gap": 0.245,
+  "auc_out_of_sample": 0.549,
+  "sample_count": 6359,
+  "overfit_gap": 0.24,
   "is_overfit": true,
   "reasons": [
-    "فجوة overfit كبيرة: 0.245"
+    "AUC out-of-sample=0.549 < 0.55",
+    "فجوة overfit كبيرة: 0.24"
   ],
-  "date": "2026-07-03"
+  "date": "2026-07-06"
 }
