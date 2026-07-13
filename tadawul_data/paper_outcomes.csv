@@ -91,3 +91,8 @@ open_date,close_date,ticker,sector,signal_type,score,mtf_aligned,rsi,adx,mfi,vol
 2026-07-09,2026-07-10,6050,زراعة وأغذية,breakout,16.65,3,77.1,51.3,81.4,2.2,4.89,0,,,7.44,0.92,-5.33,2.12,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
 2026-07-09,2026-07-10,1833,فنادق,mean_reversion,14.74,2,60.9,44.7,58.7,0.8,2.5,0,,,2.12,0.8,-0.78,6.44,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
 2026-07-09,2026-07-10,4146,صناعية,default,11.07,2,60.3,32.0,87.5,0.9,0.63,0,,,3.83,0.8,-0.92,2.3,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-07-03,2026-07-13,8120,تأمين,default,14.11,3,82.2,52.6,72.5,1.3,0.39,0,,,2.45,0.8,-2.91,0.42,10,Max Holding Days Reached,-1.18,TIME_LOSS,0
+2026-07-09,2026-07-13,2300,بتروكيماويات,breakout,17.81,3,66.7,25.0,76.6,5.8,1.87,0,,,2.89,0.8,-1.87,5.58,4,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-07-10,2026-07-13,4300,عقار,default,10.66,3,58.5,32.7,66.4,0.9,0.43,0,,,2.03,0.81,-0.87,1.52,3,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-07-10,2026-07-13,8280,تأمين,default,10.23,2,61.4,51.1,60.6,0.2,0.53,0,,,4.38,0.81,-3.1,5.82,3,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-07-10,2026-07-13,2223,بتروكيماويات,default,8.5,3,59.5,18.3,60.2,1.0,3.22,0,,,2.21,0.8,-0.2,5.31,3,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0

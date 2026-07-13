@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-07-10T02:02:42.553946",
-  "count": 1,
+  "fetched_at": "2026-07-13T02:03:28.247861",
+  "count": 2,
   "items": [
     {
       "title": "شركة أكوا السعودية تعتمد سياسة توزيع أرباح جديدة حتى عام 2030 - المتداول العربي",
@@ -9,6 +9,15 @@
       "date": "Wed, 08 Jul 2026 07:48:37 GMT",
       "tickers": [
         "2030"
+      ]
+    },
+    {
+      "title": "أول 8 شركات في «تداول» تعلن نتائج 2020 .. تحقق 13.3 مليار ارباح خلال العام الماضي .. والربع الـ4 يرتفع 16.8% - صحيفة مال",
+      "description": "أول 8 شركات في «تداول» تعلن نتائج 2020 .. تحقق 13.3 مليار ارباح خلال العام الماضي .. والربع الـ4 يرتفع 16.8%&nbsp;&nbsp;صحيفة مال",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5CQUpsNVFGRVA0SWF3VXM1cURUTFF1aXRMUzM2XzMxSGZjVkh6aHgwbGs3aHl2ZjQxaE9wYTdjbW1nLWcxcmJBRFpya3BIR2M?oc=5",
+      "date": "Fri, 22 Jan 2021 08:00:00 GMT",
+      "tickers": [
+        "2020"
       ]
     }
   ]
