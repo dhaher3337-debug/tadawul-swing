@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-07-15T02:03:23.590575",
+  "computed_at": "2026-07-16T02:03:25.290040",
   "version": "V9.2.3",
-  "total_trades": 173,
+  "total_trades": 177,
   "active_trades": 10,
-  "wins": 39,
-  "losses": 134,
+  "wins": 40,
+  "losses": 137,
   "breakeven": 0,
-  "win_rate_pct": 22.5,
-  "avg_win_pct": 4.53,
-  "avg_loss_pct": -1.92,
-  "profit_factor": 0.69,
-  "expectancy_pct": -0.468,
-  "total_pnl_pct": -80.93,
+  "win_rate_pct": 22.6,
+  "avg_win_pct": 4.43,
+  "avg_loss_pct": -1.89,
+  "profit_factor": 0.68,
+  "expectancy_pct": -0.462,
+  "total_pnl_pct": -81.79,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -24,21 +24,21 @@
   },
   "by_signal_type": {
     "default": {
-      "total": 40,
+      "total": 41,
       "wins": 7,
-      "win_rate": 17.5,
-      "avg_pnl": -0.57
+      "win_rate": 17.1,
+      "avg_pnl": -0.56
     },
     "support_bounce": {
-      "total": 20,
-      "wins": 6,
-      "win_rate": 30.0,
-      "avg_pnl": 0.48
+      "total": 21,
+      "wins": 7,
+      "win_rate": 33.3,
+      "avg_pnl": 0.49
     },
     "breakout": {
-      "total": 108,
+      "total": 110,
       "wins": 26,
-      "win_rate": 24.1,
+      "win_rate": 23.6,
       "avg_pnl": -0.51
     },
     "mean_reversion": {
@@ -56,9 +56,9 @@
       "avg_pnl": -2.48
     },
     "بتروكيماويات": {
-      "total": 41,
+      "total": 42,
       "wins": 10,
-      "win_rate": 24.4,
+      "win_rate": 23.8,
       "avg_pnl": -0.5
     },
     "صناعية": {
@@ -68,10 +68,10 @@
       "avg_pnl": 0.57
     },
     "تأمين": {
-      "total": 28,
+      "total": 30,
       "wins": 7,
-      "win_rate": 25.0,
-      "avg_pnl": -0.96
+      "win_rate": 23.3,
+      "avg_pnl": -0.93
     },
     "زراعة وأغذية": {
       "total": 26,
@@ -98,10 +98,10 @@
       "avg_pnl": -0.54
     },
     "أسمنت": {
-      "total": 2,
-      "wins": 1,
-      "win_rate": 50.0,
-      "avg_pnl": 0.11
+      "total": 3,
+      "wins": 2,
+      "win_rate": 66.7,
+      "avg_pnl": 0.29
     },
     "فنادق": {
       "total": 5,
@@ -159,9 +159,9 @@
       "avg_pnl": -4.55
     },
     "Max Holding Days Reached": {
-      "total": 38,
-      "win_rate": 36.8,
-      "avg_pnl": 0.0
+      "total": 39,
+      "win_rate": 38.5,
+      "avg_pnl": 0.02
     },
     "Target2 Hit": {
       "total": 9,
@@ -174,26 +174,26 @@
       "avg_pnl": 4.06
     },
     "Breakeven Stop (profit protection)": {
-      "total": 70,
+      "total": 73,
       "win_rate": 0.0,
       "avg_pnl": -0.5
     }
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 53,
-      "win_rate": 30.2,
-      "avg_pnl": -0.05
+      "total": 54,
+      "win_rate": 31.5,
+      "avg_pnl": -0.04
     },
     "10-15": {
-      "total": 88,
-      "win_rate": 17.0,
+      "total": 89,
+      "win_rate": 16.9,
       "avg_pnl": -0.73
     },
     "15-20": {
-      "total": 26,
-      "win_rate": 11.5,
-      "avg_pnl": -1.18
+      "total": 28,
+      "win_rate": 10.7,
+      "avg_pnl": -1.13
     },
     "20-30": {
       "total": 4,
@@ -209,10 +209,10 @@
   "tired_stocks": [
     {
       "ticker": "8280",
-      "total": 6,
+      "total": 7,
       "wins": 2,
-      "win_rate": 33.3,
-      "avg_pnl": -0.89
+      "win_rate": 28.6,
+      "avg_pnl": -0.83
     },
     {
       "ticker": "2370",
@@ -286,10 +286,10 @@
     },
     {
       "ticker": "8120",
-      "total": 3,
+      "total": 4,
       "wins": 1,
-      "win_rate": 33.3,
-      "avg_pnl": 0.98
+      "win_rate": 25.0,
+      "avg_pnl": 0.61
     },
     {
       "ticker": "6013",
