@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-07-17T02:04:07.072375",
+  "computed_at": "2026-07-20T03:06:44.186586",
   "version": "V9.2.3",
-  "total_trades": 185,
+  "total_trades": 188,
   "active_trades": 10,
   "wins": 40,
-  "losses": 145,
+  "losses": 148,
   "breakeven": 0,
-  "win_rate_pct": 21.6,
+  "win_rate_pct": 21.3,
   "avg_win_pct": 4.43,
-  "avg_loss_pct": -1.82,
+  "avg_loss_pct": -1.79,
   "profit_factor": 0.67,
-  "expectancy_pct": -0.465,
-  "total_pnl_pct": -86.1,
+  "expectancy_pct": -0.466,
+  "total_pnl_pct": -87.6,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -24,16 +24,16 @@
   },
   "by_signal_type": {
     "default": {
-      "total": 44,
+      "total": 46,
       "wins": 7,
-      "win_rate": 15.9,
+      "win_rate": 15.2,
       "avg_pnl": -0.56
     },
     "support_bounce": {
-      "total": 21,
+      "total": 22,
       "wins": 7,
-      "win_rate": 33.3,
-      "avg_pnl": 0.49
+      "win_rate": 31.8,
+      "avg_pnl": 0.45
     },
     "breakout": {
       "total": 114,
@@ -56,16 +56,16 @@
       "avg_pnl": -2.48
     },
     "بتروكيماويات": {
-      "total": 44,
+      "total": 45,
       "wins": 10,
-      "win_rate": 22.7,
+      "win_rate": 22.2,
       "avg_pnl": -0.51
     },
     "صناعية": {
-      "total": 16,
+      "total": 18,
       "wins": 4,
-      "win_rate": 25.0,
-      "avg_pnl": 0.57
+      "win_rate": 22.2,
+      "avg_pnl": 0.45
     },
     "تأمين": {
       "total": 31,
@@ -174,16 +174,16 @@
       "avg_pnl": 4.06
     },
     "Breakeven Stop (profit protection)": {
-      "total": 80,
+      "total": 83,
       "win_rate": 0.0,
       "avg_pnl": -0.5
     }
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 55,
-      "win_rate": 30.9,
-      "avg_pnl": -0.05
+      "total": 58,
+      "win_rate": 29.3,
+      "avg_pnl": -0.07
     },
     "10-15": {
       "total": 94,
@@ -207,6 +207,13 @@
     }
   },
   "tired_stocks": [
+    {
+      "ticker": "4145",
+      "total": 3,
+      "wins": 0,
+      "win_rate": 0.0,
+      "avg_pnl": -1.11
+    },
     {
       "ticker": "8280",
       "total": 8,
@@ -272,10 +279,10 @@
     },
     {
       "ticker": "2340",
-      "total": 6,
+      "total": 7,
       "wins": 2,
-      "win_rate": 33.3,
-      "avg_pnl": 0.74
+      "win_rate": 28.6,
+      "avg_pnl": 0.56
     },
     {
       "ticker": "4061",
