@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-07-20T03:06:44.186586",
+  "computed_at": "2026-07-21T02:02:41.535938",
   "version": "V9.2.3",
-  "total_trades": 188,
+  "total_trades": 191,
   "active_trades": 10,
   "wins": 40,
-  "losses": 148,
+  "losses": 151,
   "breakeven": 0,
-  "win_rate_pct": 21.3,
+  "win_rate_pct": 20.9,
   "avg_win_pct": 4.43,
-  "avg_loss_pct": -1.79,
+  "avg_loss_pct": -1.76,
   "profit_factor": 0.67,
   "expectancy_pct": -0.466,
-  "total_pnl_pct": -87.6,
+  "total_pnl_pct": -89.1,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -24,9 +24,9 @@
   },
   "by_signal_type": {
     "default": {
-      "total": 46,
+      "total": 47,
       "wins": 7,
-      "win_rate": 15.2,
+      "win_rate": 14.9,
       "avg_pnl": -0.56
     },
     "support_bounce": {
@@ -36,9 +36,9 @@
       "avg_pnl": 0.45
     },
     "breakout": {
-      "total": 114,
+      "total": 116,
       "wins": 26,
-      "win_rate": 22.8,
+      "win_rate": 22.4,
       "avg_pnl": -0.51
     },
     "mean_reversion": {
@@ -62,10 +62,10 @@
       "avg_pnl": -0.51
     },
     "صناعية": {
-      "total": 18,
+      "total": 20,
       "wins": 4,
-      "win_rate": 22.2,
-      "avg_pnl": 0.45
+      "win_rate": 20.0,
+      "avg_pnl": 0.36
     },
     "تأمين": {
       "total": 31,
@@ -122,10 +122,10 @@
       "avg_pnl": -3.29
     },
     "عقار": {
-      "total": 15,
+      "total": 16,
       "wins": 1,
-      "win_rate": 6.7,
-      "avg_pnl": -0.84
+      "win_rate": 6.2,
+      "avg_pnl": -0.82
     },
     "بنوك": {
       "total": 1,
@@ -174,21 +174,21 @@
       "avg_pnl": 4.06
     },
     "Breakeven Stop (profit protection)": {
-      "total": 83,
+      "total": 86,
       "win_rate": 0.0,
       "avg_pnl": -0.5
     }
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 58,
-      "win_rate": 29.3,
-      "avg_pnl": -0.07
+      "total": 59,
+      "win_rate": 28.8,
+      "avg_pnl": -0.08
     },
     "10-15": {
-      "total": 94,
-      "win_rate": 16.0,
-      "avg_pnl": -0.72
+      "total": 96,
+      "win_rate": 15.6,
+      "avg_pnl": -0.71
     },
     "15-20": {
       "total": 30,
@@ -209,10 +209,10 @@
   "tired_stocks": [
     {
       "ticker": "4145",
-      "total": 3,
+      "total": 4,
       "wins": 0,
       "win_rate": 0.0,
-      "avg_pnl": -1.11
+      "avg_pnl": -0.95
     },
     {
       "ticker": "8280",
