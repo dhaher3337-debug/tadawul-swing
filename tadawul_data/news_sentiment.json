@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-07-23T02:02:08.132132",
+  "fetched_at": "2026-07-24T02:01:57.523645",
   "sentiments": {
     "1111": {
-      "sentiment": "negative",
-      "score": -0.55,
+      "sentiment": "neutral",
+      "score": 0.0,
       "reason": "lexicon (no API)",
       "headlines": [
-        "سعر سهم مجموعة تداول (1111) يعمق من خسائره – توقعات اليوم – 19-07-2026 - FxNewsToday.ae"
+        "سعر سهم مجموعة تداول (سهم 1111) مباشر - Investing.com"
       ],
       "news_count": 1
     },
