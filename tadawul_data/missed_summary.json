@@ -1,26 +1,5 @@
 {
   "by_date": {
-    "2026-06-15": {
-      "date": "2026-06-15",
-      "top_gainers_count": 10,
-      "caught_count": 3,
-      "missed_count": 7,
-      "catch_rate_pct": 30.0,
-      "missed_tickers": [
-        "8240",
-        "2330",
-        "1211",
-        "4004",
-        "4264",
-        "2070",
-        "8300"
-      ],
-      "caught_tickers": [
-        "2130",
-        "4191",
-        "6019"
-      ]
-    },
     "2026-06-16": {
       "date": "2026-06-16",
       "top_gainers_count": 10,
@@ -629,36 +608,57 @@
         "2170",
         "4300"
       ]
+    },
+    "2026-07-27": {
+      "date": "2026-07-27",
+      "top_gainers_count": 10,
+      "caught_count": 1,
+      "missed_count": 9,
+      "catch_rate_pct": 10.0,
+      "missed_tickers": [
+        "1303",
+        "4005",
+        "4292",
+        "2360",
+        "4142",
+        "2380",
+        "2320",
+        "1214",
+        "2082"
+      ],
+      "caught_tickers": [
+        "7203"
+      ]
     }
   },
   "lifetime": {
     "days_analyzed": 30,
     "total_top_gainers_seen": 300,
-    "total_caught": 121,
-    "total_missed": 179,
-    "lifetime_catch_rate_pct": 40.3,
-    "last_updated": "2026-07-24T02:02:43.520645"
+    "total_caught": 119,
+    "total_missed": 181,
+    "lifetime_catch_rate_pct": 39.7,
+    "last_updated": "2026-07-27T02:02:50.926560"
   },
   "recurring_misses": [
     {
-      "ticker": "6012",
+      "ticker": "2380",
       "count": 10
     },
     {
-      "ticker": "2380",
-      "count": 9
+      "ticker": "6012",
+      "count": 10
     },
     {
       "ticker": "4280",
       "count": 9
     },
     {
-      "ticker": "4193",
+      "ticker": "4005",
       "count": 8
     },
     {
-      "ticker": "4005",
-      "count": 7
+      "ticker": "4193",
+      "count": 8
     },
     {
       "ticker": "1202",
@@ -682,8 +682,8 @@
     }
   ],
   "miss_cases": {
-    "unforeseeable": 179,
-    "out_of_universe": 186,
+    "unforeseeable": 181,
+    "out_of_universe": 193,
     "predictable_miss": 9
   }
 }
