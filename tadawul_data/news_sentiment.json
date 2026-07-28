@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-07-27T02:02:09.408721",
+  "fetched_at": "2026-07-28T02:02:05.564452",
   "sentiments": {
-    "1111": {
+    "1323": {
       "sentiment": "neutral",
       "score": 0.0,
       "reason": "lexicon (no API)",
       "headlines": [
-        "سعر سهم مجموعة تداول (سهم 1111) مباشر - Investing.com"
+        "سعر سهم يو سي آي سي (1323) يشهد زيادة في أحجام التداول – توقعات اليوم – 27-07-2026 - FxNewsToday.ae"
       ],
       "news_count": 1
     },
