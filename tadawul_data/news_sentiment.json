@@ -1,15 +1,6 @@
 {
-  "fetched_at": "2026-07-28T02:02:05.564452",
+  "fetched_at": "2026-07-29T02:02:02.161337",
   "sentiments": {
-    "1323": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "سعر سهم يو سي آي سي (1323) يشهد زيادة في أحجام التداول – توقعات اليوم – 27-07-2026 - FxNewsToday.ae"
-      ],
-      "news_count": 1
-    },
     "2020": {
       "sentiment": "neutral",
       "score": 0.0,
@@ -20,5 +11,5 @@
       "news_count": 1
     }
   },
-  "news_count": 2
+  "news_count": 1
 }
