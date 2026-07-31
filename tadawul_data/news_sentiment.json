@@ -1,15 +1,5 @@
 {
-  "fetched_at": "2026-07-30T02:02:14.961312",
-  "sentiments": {
-    "2020": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "أول 8 شركات في «تداول» تعلن نتائج 2020 .. تحقق 13.3 مليار ارباح خلال العام الماضي .. والربع الـ4 يرتفع 16.8% - صحيفة مال"
-      ],
-      "news_count": 1
-    }
-  },
-  "news_count": 1
+  "fetched_at": "2026-07-31T02:02:17.069519",
+  "sentiments": {},
+  "news_count": 0
 }

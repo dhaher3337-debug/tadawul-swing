@@ -1403,3 +1403,28 @@
 2026-07-30 02:03:03,498 [INFO] Universe snapshot: 184 صف → snapshot_2026-07-30.jsonl
 2026-07-30 02:03:04,282 [INFO] loaded 17 sector flows for filtering
 2026-07-30 02:03:04,282 [INFO] relative score floor (p65) = 7.36
+2026-07-31 02:01:28,270 [INFO] evaluate_universe: {'evaluated': 184, 'still_pending': 564, 'files_updated': 1}
+2026-07-31 02:01:28,969 [INFO] rebuild_ml_from_universe: {'rows': 9902, 'written': True, 'base_hit_rate_pct': 26.1, 'date_range': '2026-05-10 → 2026-07-27', 'rebuilt_at': '2026-07-31 02:01'}
+2026-07-31 02:01:34,321 [INFO] ML trustability: trusted | use_probability=True
+2026-07-31 02:01:34,403 [INFO] ML model trained V9.2.3: WF_AUC_out=0.554, InSample_AUC=0.571, trust=trusted
+2026-07-31 02:01:55,913 [INFO] Fetching fresh news...
+2026-07-31 02:01:55,913 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-07-31 02:02:01,789 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/ar/rss/saudi → HTTP Error 404: Not Found
+2026-07-31 02:02:01,789 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-07-31 02:02:07,588 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/ar/rss/tasi → HTTP Error 404: Not Found
+2026-07-31 02:02:07,588 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-07-31 02:02:13,419 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/en/rss/saudi → HTTP Error 404: Not Found
+2026-07-31 02:02:13,419 [WARNING] Argaam رجع 0 خبر — التحويل للمصادر الاحتياطية
+2026-07-31 02:02:13,419 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%AA%D8%AF%D8%A7%D9%88%D9%84%20...
+2026-07-31 02:02:13,950 [INFO]   → 100 خبر
+2026-07-31 02:02:14,450 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD%20...
+2026-07-31 02:02:14,927 [INFO]   → 90 خبر
+2026-07-31 02:02:15,427 [INFO] Fetching (fallback): https://www.maaal.com/feed...
+2026-07-31 02:02:16,567 [WARNING] parse RSS: XML غير صالح (not well-formed (invalid token): line 1, column 4028) — أول 120 حرف: '<!DOCTYPE html><html lang="ar"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s'
+2026-07-31 02:02:16,567 [INFO]   → 0 خبر
+2026-07-31 02:02:17,069 [INFO] أخبار ذات صلة: 0
+2026-07-31 02:02:17,069 [WARNING] No news fetched — returning empty sentiment
+2026-07-31 02:02:17,070 [INFO] Using cached earnings (196 tickers)
+2026-07-31 02:03:19,998 [INFO] Universe snapshot: 184 صف → snapshot_2026-07-31.jsonl
+2026-07-31 02:03:20,776 [INFO] loaded 17 sector flows for filtering
+2026-07-31 02:03:20,777 [INFO] relative score floor (p75) = 6.54
