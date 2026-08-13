@@ -1657,3 +1657,29 @@
 2026-08-12 02:02:44,726 [INFO] Universe snapshot: 184 صف → snapshot_2026-08-12.jsonl
 2026-08-12 02:02:45,538 [INFO] loaded 17 sector flows for filtering
 2026-08-12 02:02:45,538 [INFO] relative score floor (p75) = 6.83
+2026-08-13 02:01:29,505 [INFO] evaluate_universe: {'evaluated': 184, 'still_pending': 566, 'files_updated': 1}
+2026-08-13 02:01:30,293 [INFO] rebuild_ml_from_universe: {'rows': 11561, 'written': True, 'base_hit_rate_pct': 27.7, 'date_range': '2026-05-10 → 2026-08-07', 'rebuilt_at': '2026-08-13 02:01'}
+2026-08-13 02:01:41,072 [INFO] ML trustability: unreliable | use_probability=False
+2026-08-13 02:01:41,158 [INFO] ML model trained V9.2.3: WF_AUC_out=0.548, InSample_AUC=0.535, trust=unreliable
+2026-08-13 02:01:41,158 [INFO] weight suggestions skipped: trust=unreliable
+2026-08-13 02:02:02,094 [INFO] Fetching fresh news...
+2026-08-13 02:02:02,094 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-08-13 02:02:08,480 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/ar/rss/saudi → HTTP Error 404: Not Found
+2026-08-13 02:02:08,481 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-08-13 02:02:14,826 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/ar/rss/tasi → HTTP Error 404: Not Found
+2026-08-13 02:02:14,826 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-08-13 02:02:21,202 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/en/rss/saudi → HTTP Error 404: Not Found
+2026-08-13 02:02:21,202 [WARNING] Argaam رجع 0 خبر — التحويل للمصادر الاحتياطية
+2026-08-13 02:02:21,202 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%AA%D8%AF%D8%A7%D9%88%D9%84%20...
+2026-08-13 02:02:46,594 [WARNING] fetch فشل بعد 3 محاولات: https://news.google.com/rss/search?q=%D8%AA%D8%AF%D8%A7%D9%88%D9%84%20%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9%20%D8%A3%D8%B3%D9%87%D9%85&hl=ar&gl=SA&ceid=SA:ar → HTTP Error 503: Service Unavailable
+2026-08-13 02:02:46,594 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD%20...
+2026-08-13 02:03:16,175 [WARNING] fetch فشل بعد 3 محاولات: https://news.google.com/rss/search?q=%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD%20%D8%B4%D8%B1%D9%83%D8%A9%20%D8%AA%D8%AF%D8%A7%D9%88%D9%84&hl=ar&gl=SA&ceid=SA:ar → HTTP Error 503: Service Unavailable
+2026-08-13 02:03:16,175 [INFO] Fetching (fallback): https://www.maaal.com/feed...
+2026-08-13 02:03:17,988 [WARNING] parse RSS: XML غير صالح (not well-formed (invalid token): line 1, column 4028) — أول 120 حرف: '<!DOCTYPE html><html lang="ar"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s'
+2026-08-13 02:03:17,988 [INFO]   → 0 خبر
+2026-08-13 02:03:18,489 [INFO] أخبار ذات صلة: 0
+2026-08-13 02:03:18,489 [WARNING] No news fetched — returning empty sentiment
+2026-08-13 02:03:18,490 [INFO] Using cached earnings (196 tickers)
+2026-08-13 02:04:12,996 [INFO] Universe snapshot: 184 صف → snapshot_2026-08-13.jsonl
+2026-08-13 02:04:13,872 [INFO] loaded 17 sector flows for filtering
+2026-08-13 02:04:13,872 [INFO] relative score floor (p75) = 6.35
