@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-17T02:02:04.887696",
+  "fetched_at": "2026-08-18T02:02:11.588130",
   "sentiments": {
     "2030": {
       "sentiment": "neutral",
@@ -9,7 +9,16 @@
         "شركة المصافي العربية السعودية (2030) - معلومات مباشر"
       ],
       "news_count": 1
+    },
+    "1111": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "سعر سهم مجموعة تداول (سهم 1111) مباشر - Investing.com"
+      ],
+      "news_count": 1
     }
   },
-  "news_count": 1
+  "news_count": 2
 }

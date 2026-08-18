@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-08-17T02:02:56.536709",
+  "computed_at": "2026-08-18T02:03:01.696655",
   "version": "V9.2.3",
-  "total_trades": 268,
+  "total_trades": 269,
   "active_trades": 10,
   "wins": 47,
-  "losses": 221,
+  "losses": 222,
   "breakeven": 0,
   "win_rate_pct": 17.5,
   "avg_win_pct": 4.2,
-  "avg_loss_pct": -1.7,
+  "avg_loss_pct": -1.69,
   "profit_factor": 0.52,
-  "expectancy_pct": -0.666,
-  "total_pnl_pct": -178.46,
+  "expectancy_pct": -0.665,
+  "total_pnl_pct": -178.91,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -30,10 +30,10 @@
       "avg_pnl": -0.77
     },
     "support_bounce": {
-      "total": 33,
+      "total": 34,
       "wins": 10,
-      "win_rate": 30.3,
-      "avg_pnl": 0.19
+      "win_rate": 29.4,
+      "avg_pnl": 0.17
     },
     "breakout": {
       "total": 145,
@@ -56,10 +56,10 @@
       "avg_pnl": -1.76
     },
     "بتروكيماويات": {
-      "total": 66,
+      "total": 67,
       "wins": 11,
-      "win_rate": 16.7,
-      "avg_pnl": -0.66
+      "win_rate": 16.4,
+      "avg_pnl": -0.65
     },
     "صناعية": {
       "total": 24,
@@ -159,9 +159,9 @@
       "avg_pnl": -4.62
     },
     "Max Holding Days Reached": {
-      "total": 44,
-      "win_rate": 38.6,
-      "avg_pnl": 0.04
+      "total": 45,
+      "win_rate": 37.8,
+      "avg_pnl": 0.02
     },
     "Target2 Hit": {
       "total": 10,
@@ -181,8 +181,8 @@
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 86,
-      "win_rate": 22.1,
+      "total": 87,
+      "win_rate": 21.8,
       "avg_pnl": -0.42
     },
     "10-15": {

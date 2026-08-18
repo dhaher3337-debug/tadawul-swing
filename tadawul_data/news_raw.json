@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-08-17T02:02:04.723571",
-  "count": 1,
+  "fetched_at": "2026-08-18T02:02:11.449112",
+  "count": 2,
   "items": [
     {
       "title": "شركة المصافي العربية السعودية (2030) - معلومات مباشر",
@@ -9,6 +9,15 @@
       "date": "Mon, 06 Apr 2026 02:53:26 GMT",
       "tickers": [
         "2030"
+      ]
+    },
+    {
+      "title": "سعر سهم مجموعة تداول (سهم 1111) مباشر - Investing.com",
+      "description": "سعر سهم مجموعة تداول (سهم 1111) مباشر&nbsp;&nbsp;Investing.com",
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE15dHdSTTlTRU5HTmZZNFhtcF9FNnhPMHVQajNiTUJjQW5XV3Z4LUVLdDVHSkNrSTNpVl9fWUJFeHpmMkZFakpuRW9FYl9HaDBBeGdqNUpPN3ZHR0k1azRNZUtkcU55Zw?oc=5",
+      "date": "Tue, 14 Dec 2021 12:37:49 GMT",
+      "tickers": [
+        "1111"
       ]
     }
   ]
