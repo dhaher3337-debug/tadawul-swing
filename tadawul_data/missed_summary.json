@@ -1,26 +1,5 @@
 {
   "by_date": {
-    "2026-07-08": {
-      "date": "2026-07-08",
-      "top_gainers_count": 10,
-      "caught_count": 5,
-      "missed_count": 5,
-      "catch_rate_pct": 50.0,
-      "missed_tickers": [
-        "4005",
-        "4040",
-        "6012",
-        "4018",
-        "1321"
-      ],
-      "caught_tickers": [
-        "2300",
-        "6050",
-        "6060",
-        "4264",
-        "1323"
-      ]
-    },
     "2026-07-09": {
       "date": "2026-07-09",
       "top_gainers_count": 10,
@@ -629,23 +608,44 @@
         "4070",
         "4300"
       ]
+    },
+    "2026-08-19": {
+      "date": "2026-08-19",
+      "top_gainers_count": 10,
+      "caught_count": 3,
+      "missed_count": 7,
+      "catch_rate_pct": 30.0,
+      "missed_tickers": [
+        "4280",
+        "4290",
+        "2290",
+        "4260",
+        "4240",
+        "2060",
+        "2190"
+      ],
+      "caught_tickers": [
+        "2030",
+        "4070",
+        "4300"
+      ]
     }
   },
   "lifetime": {
     "days_analyzed": 30,
     "total_top_gainers_seen": 300,
-    "total_caught": 103,
-    "total_missed": 197,
-    "lifetime_catch_rate_pct": 34.3,
-    "last_updated": "2026-08-18T02:03:00.956057"
+    "total_caught": 101,
+    "total_missed": 199,
+    "lifetime_catch_rate_pct": 33.7,
+    "last_updated": "2026-08-19T02:02:56.103895"
   },
   "recurring_misses": [
     {
-      "ticker": "6012",
-      "count": 12
+      "ticker": "4280",
+      "count": 13
     },
     {
-      "ticker": "4280",
+      "ticker": "6012",
       "count": 12
     },
     {
@@ -669,21 +669,21 @@
       "count": 9
     },
     {
+      "ticker": "4260",
+      "count": 9
+    },
+    {
       "ticker": "4193",
       "count": 8
     },
     {
       "ticker": "4210",
       "count": 8
-    },
-    {
-      "ticker": "2050",
-      "count": 8
     }
   ],
   "miss_cases": {
-    "unforeseeable": 231,
-    "out_of_universe": 247,
+    "unforeseeable": 234,
+    "out_of_universe": 251,
     "predictable_miss": 10
   }
 }
