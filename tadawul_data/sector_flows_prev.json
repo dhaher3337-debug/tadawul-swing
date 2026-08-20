@@ -1,28 +1,28 @@
 {
   "بنوك": {
-    "net_flow_5d": -388.89,
-    "avg_change_5d": 1.69,
-    "momentum_trend": "تباطؤ",
+    "net_flow_5d": -876.44,
+    "avg_change_5d": 1.8,
+    "momentum_trend": "تباطؤ قوي",
     "leader": "1030",
     "leader_change": 3.41,
-    "laggard": "1010",
-    "laggard_change": -1.55,
+    "laggard": "1020",
+    "laggard_change": -0.08,
     "stock_count": 10
   },
   "خدمات مالية": {
-    "net_flow_5d": -262.81,
-    "avg_change_5d": 1.52,
+    "net_flow_5d": 46.11,
+    "avg_change_5d": 1.64,
     "momentum_trend": "تباطؤ قوي",
     "leader": "1213",
     "leader_change": 13.3,
     "laggard": "1214",
-    "laggard_change": -5.83,
+    "laggard_change": -3.48,
     "stock_count": 12
   },
   "بتروكيماويات": {
-    "net_flow_5d": 641.47,
-    "avg_change_5d": 0.54,
-    "momentum_trend": "تباطؤ قوي",
+    "net_flow_5d": 349.3,
+    "avg_change_5d": 0.55,
+    "momentum_trend": "مستقر",
     "leader": "2223",
     "leader_change": 8.52,
     "laggard": "2240",
@@ -40,8 +40,8 @@
     "stock_count": 3
   },
   "صناعية": {
-    "net_flow_5d": -75.95,
-    "avg_change_5d": -1.16,
+    "net_flow_5d": -88.31,
+    "avg_change_5d": -1.17,
     "momentum_trend": "تباطؤ قوي",
     "leader": "4144",
     "leader_change": 3.38,
@@ -50,18 +50,18 @@
     "stock_count": 11
   },
   "طاقة": {
-    "net_flow_5d": -362.94,
-    "avg_change_5d": 1.43,
+    "net_flow_5d": -367.07,
+    "avg_change_5d": 1.78,
     "momentum_trend": "تباطؤ قوي",
     "leader": "2030",
-    "leader_change": 4.3,
+    "leader_change": 5.73,
     "laggard": "2381",
     "laggard_change": -2.07,
     "stock_count": 4
   },
   "مرافق": {
-    "net_flow_5d": 83.1,
-    "avg_change_5d": 1.76,
+    "net_flow_5d": 84.2,
+    "avg_change_5d": 1.27,
     "momentum_trend": "تسارع قوي",
     "leader": "2083",
     "leader_change": 9.81,
@@ -70,8 +70,8 @@
     "stock_count": 5
   },
   "زراعة وأغذية": {
-    "net_flow_5d": 95.48,
-    "avg_change_5d": 0.47,
+    "net_flow_5d": 101.82,
+    "avg_change_5d": 0.59,
     "momentum_trend": "تباطؤ قوي",
     "leader": "6012",
     "leader_change": 18.23,
@@ -80,18 +80,18 @@
     "stock_count": 22
   },
   "نقل": {
-    "net_flow_5d": 308.31,
-    "avg_change_5d": 0.35,
+    "net_flow_5d": 185.91,
+    "avg_change_5d": 1.03,
     "momentum_trend": "تسارع قوي",
-    "leader": "4260",
-    "leader_change": 3.21,
+    "leader": "2190",
+    "leader_change": 6.71,
     "laggard": "4040",
-    "laggard_change": -3.0,
+    "laggard_change": -4.17,
     "stock_count": 9
   },
   "أسمنت": {
-    "net_flow_5d": -33.57,
-    "avg_change_5d": -0.57,
+    "net_flow_5d": -28.89,
+    "avg_change_5d": -0.56,
     "momentum_trend": "تباطؤ قوي",
     "leader": "3092",
     "leader_change": 0.99,
@@ -100,8 +100,8 @@
     "stock_count": 9
   },
   "رعاية صحية": {
-    "net_flow_5d": -96.07,
-    "avg_change_5d": -0.51,
+    "net_flow_5d": -75.07,
+    "avg_change_5d": -0.52,
     "momentum_trend": "تباطؤ قوي",
     "leader": "4009",
     "leader_change": 2.13,
@@ -110,43 +110,43 @@
     "stock_count": 12
   },
   "تجزئة": {
-    "net_flow_5d": 118.98,
-    "avg_change_5d": 1.44,
-    "momentum_trend": "تباطؤ قوي",
+    "net_flow_5d": 257.04,
+    "avg_change_5d": 1.41,
+    "momentum_trend": "تسارع قوي",
     "leader": "4240",
-    "leader_change": 18.28,
-    "laggard": "4164",
-    "laggard_change": -3.43,
+    "leader_change": 23.37,
+    "laggard": "4061",
+    "laggard_change": -4.15,
     "stock_count": 16
   },
   "إعلام": {
-    "net_flow_5d": -46.02,
-    "avg_change_5d": 1.28,
-    "momentum_trend": "تباطؤ قوي",
+    "net_flow_5d": -22.98,
+    "avg_change_5d": 2.13,
+    "momentum_trend": "تباطؤ",
     "leader": "4070",
-    "leader_change": 8.28,
+    "leader_change": 9.94,
     "laggard": "4071",
     "laggard_change": -2.41,
     "stock_count": 4
   },
   "عقار": {
-    "net_flow_5d": 317.07,
-    "avg_change_5d": 1.59,
+    "net_flow_5d": 306.96,
+    "avg_change_5d": 0.92,
     "momentum_trend": "تباطؤ قوي",
-    "leader": "4310",
-    "leader_change": 12.17,
+    "leader": "4280",
+    "leader_change": 8.54,
     "laggard": "4292",
     "laggard_change": -6.14,
     "stock_count": 18
   },
   "اتصالات": {
-    "net_flow_5d": 51.07,
-    "avg_change_5d": 0.27,
+    "net_flow_5d": 228.95,
+    "avg_change_5d": 0.1,
     "momentum_trend": "تسارع قوي",
     "leader": "7040",
     "leader_change": 0.64,
-    "laggard": "7020",
-    "laggard_change": -0.16,
+    "laggard": "7030",
+    "laggard_change": -0.29,
     "stock_count": 4
   },
   "تقنية": {
@@ -160,13 +160,13 @@
     "stock_count": 4
   },
   "تأمين": {
-    "net_flow_5d": -15.99,
-    "avg_change_5d": 0.67,
+    "net_flow_5d": 6.02,
+    "avg_change_5d": -0.18,
     "momentum_trend": "تباطؤ قوي",
     "leader": "8230",
-    "leader_change": 3.98,
-    "laggard": "8120",
-    "laggard_change": -1.93,
+    "leader_change": 2.17,
+    "laggard": "8210",
+    "laggard_change": -4.43,
     "stock_count": 12
   }
 }
