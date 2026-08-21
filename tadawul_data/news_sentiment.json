@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-08-20T02:02:02.891572",
+  "fetched_at": "2026-08-21T02:02:02.737661",
   "sentiments": {
-    "2222": {
-      "sentiment": "positive",
-      "score": 0.55,
+    "7010": {
+      "sentiment": "neutral",
+      "score": 0.0,
       "reason": "lexicon (no API)",
       "headlines": [
-        "18 أغسطس 2026: سهم أرامكو السعودية 2222 عند 26.52 ريال بعد نتائج الربع الثاني والتوزيعات - Markets.com"
+        "سعر سهم stc اليوم 18 أغسطس 2026: تحليل سهم الاتصالات السعودية 7010 وتوقعاته - Markets.com"
       ],
       "news_count": 1
     },
@@ -18,16 +18,7 @@
         "شركة المصافي العربية السعودية (2030) - معلومات مباشر"
       ],
       "news_count": 1
-    },
-    "1111": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "سعر سهم مجموعة تداول (سهم 1111) مباشر - Investing.com"
-      ],
-      "news_count": 1
     }
   },
-  "news_count": 3
+  "news_count": 2
 }
