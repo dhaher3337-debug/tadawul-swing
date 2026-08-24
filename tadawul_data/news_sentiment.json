@@ -1,12 +1,21 @@
 {
-  "fetched_at": "2026-08-21T02:02:02.737661",
+  "fetched_at": "2026-08-24T02:02:23.277247",
   "sentiments": {
     "7010": {
+      "sentiment": "positive",
+      "score": 0.55,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "سعر سهم اس تي سي (7010) يمهد الطريق للمزيد من المكاسب – توقعات اليوم – 23-08-2026 - FxNewsToday.ae"
+      ],
+      "news_count": 1
+    },
+    "4250": {
       "sentiment": "neutral",
       "score": 0.0,
       "reason": "lexicon (no API)",
       "headlines": [
-        "سعر سهم stc اليوم 18 أغسطس 2026: تحليل سهم الاتصالات السعودية 7010 وتوقعاته - Markets.com"
+        "شركة جبل عمر للتطوير (4250) - معلومات مباشر"
       ],
       "news_count": 1
     },
@@ -20,5 +29,5 @@
       "news_count": 1
     }
   },
-  "news_count": 2
+  "news_count": 3
 }

@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-08-21T02:02:41.480175",
+  "computed_at": "2026-08-24T02:03:20.435935",
   "version": "V9.2.3",
-  "total_trades": 281,
+  "total_trades": 285,
   "active_trades": 10,
   "wins": 49,
-  "losses": 232,
+  "losses": 236,
   "breakeven": 0,
-  "win_rate_pct": 17.4,
+  "win_rate_pct": 17.2,
   "avg_win_pct": 4.14,
-  "avg_loss_pct": -1.71,
+  "avg_loss_pct": -1.7,
   "profit_factor": 0.51,
-  "expectancy_pct": -0.691,
-  "total_pnl_pct": -194.25,
+  "expectancy_pct": -0.697,
+  "total_pnl_pct": -198.74,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -24,22 +24,22 @@
   },
   "by_signal_type": {
     "default": {
-      "total": 86,
+      "total": 87,
       "wins": 12,
-      "win_rate": 14.0,
-      "avg_pnl": -0.71
+      "win_rate": 13.8,
+      "avg_pnl": -0.7
     },
     "support_bounce": {
-      "total": 35,
+      "total": 36,
       "wins": 10,
-      "win_rate": 28.6,
-      "avg_pnl": 0.15
+      "win_rate": 27.8,
+      "avg_pnl": 0.14
     },
     "breakout": {
-      "total": 151,
+      "total": 153,
       "wins": 27,
-      "win_rate": 17.9,
-      "avg_pnl": -0.79
+      "win_rate": 17.6,
+      "avg_pnl": -0.8
     },
     "mean_reversion": {
       "total": 9,
@@ -50,10 +50,10 @@
   },
   "by_sector": {
     "نقل": {
-      "total": 11,
+      "total": 12,
       "wins": 1,
-      "win_rate": 9.1,
-      "avg_pnl": -1.76
+      "win_rate": 8.3,
+      "avg_pnl": -1.65
     },
     "بتروكيماويات": {
       "total": 68,
@@ -74,10 +74,10 @@
       "avg_pnl": -0.97
     },
     "زراعة وأغذية": {
-      "total": 35,
+      "total": 37,
       "wins": 7,
-      "win_rate": 20.0,
-      "avg_pnl": -0.54
+      "win_rate": 18.9,
+      "avg_pnl": -0.6
     },
     "مرافق": {
       "total": 3,
@@ -122,9 +122,9 @@
       "avg_pnl": -3.29
     },
     "عقار": {
-      "total": 32,
+      "total": 33,
       "wins": 4,
-      "win_rate": 12.5,
+      "win_rate": 12.1,
       "avg_pnl": -0.56
     },
     "بنوك": {
@@ -159,9 +159,9 @@
       "avg_pnl": -4.61
     },
     "Max Holding Days Reached": {
-      "total": 49,
-      "win_rate": 38.8,
-      "avg_pnl": 0.11
+      "total": 51,
+      "win_rate": 37.3,
+      "avg_pnl": 0.04
     },
     "Target2 Hit": {
       "total": 10,
@@ -174,21 +174,21 @@
       "avg_pnl": 3.66
     },
     "Breakeven Stop (profit protection)": {
-      "total": 141,
+      "total": 143,
       "win_rate": 0.0,
       "avg_pnl": -0.5
     }
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 91,
-      "win_rate": 23.1,
-      "avg_pnl": -0.35
+      "total": 93,
+      "win_rate": 22.6,
+      "avg_pnl": -0.36
     },
     "10-15": {
-      "total": 141,
-      "win_rate": 13.5,
-      "avg_pnl": -0.93
+      "total": 143,
+      "win_rate": 13.3,
+      "avg_pnl": -0.94
     },
     "15-20": {
       "total": 43,
@@ -334,6 +334,13 @@
       "avg_pnl": -2.49
     },
     {
+      "ticker": "2190",
+      "total": 3,
+      "wins": 0,
+      "win_rate": 0.0,
+      "avg_pnl": -1.74
+    },
+    {
       "ticker": "4146",
       "total": 4,
       "wins": 1,
@@ -433,10 +440,10 @@
     },
     {
       "ticker": "4310",
-      "total": 7,
+      "total": 8,
       "wins": 1,
-      "win_rate": 14.3,
-      "avg_pnl": -0.0
+      "win_rate": 12.5,
+      "avg_pnl": -0.06
     },
     {
       "ticker": "4250",
