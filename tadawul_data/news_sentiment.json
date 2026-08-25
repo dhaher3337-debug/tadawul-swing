@@ -1,33 +1,5 @@
 {
-  "fetched_at": "2026-08-24T02:02:23.277247",
-  "sentiments": {
-    "7010": {
-      "sentiment": "positive",
-      "score": 0.55,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "سعر سهم اس تي سي (7010) يمهد الطريق للمزيد من المكاسب – توقعات اليوم – 23-08-2026 - FxNewsToday.ae"
-      ],
-      "news_count": 1
-    },
-    "4250": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "شركة جبل عمر للتطوير (4250) - معلومات مباشر"
-      ],
-      "news_count": 1
-    },
-    "2030": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "شركة المصافي العربية السعودية (2030) - معلومات مباشر"
-      ],
-      "news_count": 1
-    }
-  },
-  "news_count": 3
+  "fetched_at": "2026-08-25T02:02:11.161279",
+  "sentiments": {},
+  "news_count": 0
 }
