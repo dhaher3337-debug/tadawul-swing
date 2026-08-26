@@ -1,5 +1,24 @@
 {
-  "fetched_at": "2026-08-25T02:02:11.161279",
-  "sentiments": {},
-  "news_count": 0
+  "fetched_at": "2026-08-26T02:02:16.886460",
+  "sentiments": {
+    "4250": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة جبل عمر للتطوير (4250) - معلومات مباشر"
+      ],
+      "news_count": 1
+    },
+    "2030": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة المصافي العربية السعودية (2030) - معلومات مباشر"
+      ],
+      "news_count": 1
+    }
+  },
+  "news_count": 2
 }
