@@ -1,6 +1,24 @@
 {
-  "fetched_at": "2026-08-27T02:02:01.875047",
+  "fetched_at": "2026-08-28T02:02:03.185634",
   "sentiments": {
+    "1111": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "سعر سهم مجموعة تداول (1111) يخترق خط اتجاه هابط – توقعات اليوم – 27-08-2026 - FxNewsToday.ae"
+      ],
+      "news_count": 1
+    },
+    "4250": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة جبل عمر للتطوير (4250) - معلومات مباشر"
+      ],
+      "news_count": 1
+    },
     "2030": {
       "sentiment": "neutral",
       "score": 0.0,
@@ -11,5 +29,5 @@
       "news_count": 1
     }
   },
-  "news_count": 1
+  "news_count": 3
 }

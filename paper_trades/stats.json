@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-08-27T02:02:42.161643",
+  "computed_at": "2026-08-28T02:02:52.811635",
   "version": "V9.2.3",
-  "total_trades": 295,
+  "total_trades": 297,
   "active_trades": 10,
-  "wins": 52,
-  "losses": 243,
+  "wins": 53,
+  "losses": 244,
   "breakeven": 0,
-  "win_rate_pct": 17.6,
-  "avg_win_pct": 4.29,
-  "avg_loss_pct": -1.67,
-  "profit_factor": 0.55,
-  "expectancy_pct": -0.618,
-  "total_pnl_pct": -182.39,
+  "win_rate_pct": 17.8,
+  "avg_win_pct": 4.25,
+  "avg_loss_pct": -1.66,
+  "profit_factor": 0.56,
+  "expectancy_pct": -0.608,
+  "total_pnl_pct": -180.57,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -24,9 +24,9 @@
   },
   "by_signal_type": {
     "default": {
-      "total": 89,
+      "total": 90,
       "wins": 12,
-      "win_rate": 13.5,
+      "win_rate": 13.3,
       "avg_pnl": -0.7
     },
     "support_bounce": {
@@ -36,10 +36,10 @@
       "avg_pnl": 0.27
     },
     "breakout": {
-      "total": 159,
-      "wins": 29,
-      "win_rate": 18.2,
-      "avg_pnl": -0.69
+      "total": 160,
+      "wins": 30,
+      "win_rate": 18.8,
+      "avg_pnl": -0.67
     },
     "mean_reversion": {
       "total": 10,
@@ -56,9 +56,9 @@
       "avg_pnl": -1.65
     },
     "بتروكيماويات": {
-      "total": 71,
+      "total": 72,
       "wins": 13,
-      "win_rate": 18.3,
+      "win_rate": 18.1,
       "avg_pnl": -0.44
     },
     "صناعية": {
@@ -68,10 +68,10 @@
       "avg_pnl": -0.24
     },
     "تأمين": {
-      "total": 37,
-      "wins": 7,
-      "win_rate": 18.9,
-      "avg_pnl": -0.97
+      "total": 38,
+      "wins": 8,
+      "win_rate": 21.1,
+      "avg_pnl": -0.89
     },
     "زراعة وأغذية": {
       "total": 38,
@@ -169,26 +169,26 @@
       "avg_pnl": 7.88
     },
     "Trailing Stop Hit (after T1)": {
-      "total": 22,
+      "total": 23,
       "win_rate": 100.0,
-      "avg_pnl": 4.01
+      "avg_pnl": 3.94
     },
     "Breakeven Stop (profit protection)": {
-      "total": 149,
+      "total": 150,
       "win_rate": 0.0,
       "avg_pnl": -0.5
     }
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 94,
-      "win_rate": 22.3,
+      "total": 95,
+      "win_rate": 22.1,
       "avg_pnl": -0.36
     },
     "10-15": {
-      "total": 150,
-      "win_rate": 14.7,
-      "avg_pnl": -0.78
+      "total": 151,
+      "win_rate": 15.2,
+      "avg_pnl": -0.76
     },
     "15-20": {
       "total": 45,

@@ -228,3 +228,5 @@ open_date,close_date,ticker,sector,signal_type,score,mtf_aligned,rsi,adx,mfi,vol
 2026-08-25,2026-08-26,4240,تجزئة,breakout,12.68,2,90.2,35.8,97.5,3.6,0.74,0,,,4.36,0.8,-2.73,1.77,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
 2026-08-20,2026-08-27,1301,بتروكيماويات,support_bounce,10.56,2,63.1,25.9,79.4,2.5,0.5,0,,,2.63,0.8,-0.33,7.85,7,Max Holding Days Reached,5.09,WIN_PARTIAL,1
 2026-08-25,2026-08-27,2360,بتروكيماويات,breakout,13.35,3,66.3,21.0,64.7,6.4,0.75,0,,,4.17,0.8,0.0,19.34,2,Trailing Stop Hit (after T1),8.8,WIN_PARTIAL_TRAIL,1
+2026-08-26,2026-08-28,8200,تأمين,breakout,11.74,3,66.0,19.9,52.0,3.5,0.7,0,,,2.4,0.8,0.0,5.94,2,Trailing Stop Hit (after T1),2.32,WIN_PARTIAL_TRAIL,1
+2026-08-26,2026-08-28,2180,بتروكيماويات,default,7.71,3,70.7,52.3,69.3,0.4,0.59,0,,,1.53,0.8,-0.38,7.49,2,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0

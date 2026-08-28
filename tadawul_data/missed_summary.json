@@ -1,26 +1,5 @@
 {
   "by_date": {
-    "2026-07-17": {
-      "date": "2026-07-17",
-      "top_gainers_count": 10,
-      "caught_count": 1,
-      "missed_count": 9,
-      "catch_rate_pct": 10.0,
-      "missed_tickers": [
-        "4015",
-        "4325",
-        "1010",
-        "7211",
-        "4004",
-        "1050",
-        "6050",
-        "4030",
-        "4263"
-      ],
-      "caught_tickers": [
-        "4020"
-      ]
-    },
     "2026-07-20": {
       "date": "2026-07-20",
       "top_gainers_count": 10,
@@ -629,15 +608,36 @@
         "2190",
         "8200"
       ]
+    },
+    "2026-08-28": {
+      "date": "2026-08-28",
+      "top_gainers_count": 10,
+      "caught_count": 4,
+      "missed_count": 6,
+      "catch_rate_pct": 40.0,
+      "missed_tickers": [
+        "1320",
+        "4291",
+        "4017",
+        "4084",
+        "1111",
+        "7040"
+      ],
+      "caught_tickers": [
+        "2180",
+        "8180",
+        "4310",
+        "4300"
+      ]
     }
   },
   "lifetime": {
     "days_analyzed": 30,
     "total_top_gainers_seen": 300,
-    "total_caught": 103,
-    "total_missed": 197,
-    "lifetime_catch_rate_pct": 34.3,
-    "last_updated": "2026-08-27T02:02:41.282371"
+    "total_caught": 106,
+    "total_missed": 194,
+    "lifetime_catch_rate_pct": 35.3,
+    "last_updated": "2026-08-28T02:02:51.920760"
   },
   "recurring_misses": [
     {
@@ -682,8 +682,8 @@
     }
   ],
   "miss_cases": {
-    "unforeseeable": 256,
-    "out_of_universe": 264,
-    "predictable_miss": 11
+    "unforeseeable": 260,
+    "out_of_universe": 265,
+    "predictable_miss": 12
   }
 }
