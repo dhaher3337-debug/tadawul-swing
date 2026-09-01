@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-31T02:02:33.351395",
+  "fetched_at": "2026-09-01T02:02:21.031774",
   "sentiments": {
     "2030": {
       "sentiment": "neutral",
@@ -34,7 +34,7 @@
       "score": 0.7,
       "reason": "lexicon (no API)",
       "headlines": [
-        "توزيعات أرباح سهم (1111) شركة مجموعة تداول السعودية القابضة - Investing.com"
+        "توزيعات أرباح سهم (1111) شركة مجموعة تداول السعودية القابضة - sa.investing.com"
       ],
       "news_count": 1
     }
