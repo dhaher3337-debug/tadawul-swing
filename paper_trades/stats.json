@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-09-01T02:03:19.549613",
+  "computed_at": "2026-09-02T02:02:54.765758",
   "version": "V9.2.3",
-  "total_trades": 305,
+  "total_trades": 308,
   "active_trades": 10,
   "wins": 54,
-  "losses": 251,
+  "losses": 254,
   "breakeven": 0,
-  "win_rate_pct": 17.7,
+  "win_rate_pct": 17.5,
   "avg_win_pct": 4.18,
-  "avg_loss_pct": -1.68,
+  "avg_loss_pct": -1.67,
   "profit_factor": 0.53,
-  "expectancy_pct": -0.644,
-  "total_pnl_pct": -196.39,
+  "expectancy_pct": -0.643,
+  "total_pnl_pct": -197.89,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -36,9 +36,9 @@
       "avg_pnl": 0.27
     },
     "breakout": {
-      "total": 166,
+      "total": 169,
       "wins": 31,
-      "win_rate": 18.7,
+      "win_rate": 18.3,
       "avg_pnl": -0.72
     },
     "mean_reversion": {
@@ -74,10 +74,10 @@
       "avg_pnl": -0.88
     },
     "زراعة وأغذية": {
-      "total": 40,
+      "total": 42,
       "wins": 7,
-      "win_rate": 17.5,
-      "avg_pnl": -0.78
+      "win_rate": 16.7,
+      "avg_pnl": -0.76
     },
     "مرافق": {
       "total": 3,
@@ -92,10 +92,10 @@
       "avg_pnl": -0.8
     },
     "تجزئة": {
-      "total": 20,
+      "total": 21,
       "wins": 4,
-      "win_rate": 20.0,
-      "avg_pnl": -0.59
+      "win_rate": 19.0,
+      "avg_pnl": -0.58
     },
     "أسمنت": {
       "total": 3,
@@ -174,21 +174,21 @@
       "avg_pnl": 3.94
     },
     "Breakeven Stop (profit protection)": {
-      "total": 152,
+      "total": 155,
       "win_rate": 0.0,
       "avg_pnl": -0.5
     }
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 96,
-      "win_rate": 21.9,
-      "avg_pnl": -0.4
+      "total": 98,
+      "win_rate": 21.4,
+      "avg_pnl": -0.41
     },
     "10-15": {
-      "total": 156,
-      "win_rate": 14.7,
-      "avg_pnl": -0.81
+      "total": 157,
+      "win_rate": 14.6,
+      "avg_pnl": -0.8
     },
     "15-20": {
       "total": 47,
@@ -391,7 +391,7 @@
     },
     {
       "ticker": "4160",
-      "total": 4,
+      "total": 5,
       "wins": 0,
       "win_rate": 0.0,
       "avg_pnl": -0.5
