@@ -1,7 +1,16 @@
 {
-  "fetched_at": "2026-09-03T02:02:01.385114",
-  "count": 3,
+  "fetched_at": "2026-09-04T02:02:04.101050",
+  "count": 5,
   "items": [
+    {
+      "title": "\"أرماح\" تبدأ تداول أسهمها في السوق الرئيسية وتستهدف الوصول إلى 50 ناديًا بحلول 2030 - صحيفة مال",
+      "description": "\"أرماح\" تبدأ تداول أسهمها في السوق الرئيسية وتستهدف الوصول إلى 50 ناديًا بحلول 2030&nbsp;&nbsp;صحيفة مال",
+      "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOS0xhS3dGMWdWSEUtdDF5Z29aY1lCQXI4cUlpTWRXSy1yaG9FSDdNYXlFdmF5VzU3dURtd3hxQzl6TFd5TXROc1BjS0ZXRnJ3aXAwZE1qbVFXUU1Uekt2a092RmlfRUx6SlI3ejc0aF9xUjNMNEJBNG9NNHVIaGh5czUtVTVjcTB3TWtadWd1ODJpbW9rSGQ4ajBlcGZrUkxRcTJ2VllWNlBtOG1YQi1zY0QwSkdtLWxubXhDSUZaWVlmZnZYSVBlN3RJTUwtVFBJamZLZk9yVEJydlpsLV9Pd2cyaHhVbTFxTUY4?oc=5",
+      "date": "Tue, 01 Sep 2026 12:14:00 GMT",
+      "tickers": [
+        "2030"
+      ]
+    },
     {
       "title": "«أرماح» تبدأ تداول أسهمها في السوق الرئيسية وتستهدف الوصول إلى 50 ناديًا بحلول 2030 - صحيفة سبق الإلكترونية",
       "description": "«أرماح» تبدأ تداول أسهمها في السوق الرئيسية وتستهدف الوصول إلى 50 ناديًا بحلول 2030&nbsp;&nbsp;صحيفة سبق الإلكترونية",
@@ -12,12 +21,21 @@
       ]
     },
     {
-      "title": "شركة جبل عمر للتطوير (4250) - معلومات مباشر",
-      "description": "شركة جبل عمر للتطوير (4250)&nbsp;&nbsp;معلومات مباشر",
+      "title": "شركة جبل عمر للتطوير (4250) - mubasher.info",
+      "description": "شركة جبل عمر للتطوير (4250)&nbsp;&nbsp;mubasher.info",
       "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9Dc0lqWGJGVXBOaEZZd3N5Tm0yN3RlNy1TMmxQaVVGR09rOEN5QkFXOVpJNy14OTBSVU1WRlNlaFptV3lQQjY0WVVQcnI1azB4N3ZMMERRUkNQZzd2MkJHNS1UZl9BSGd3cGc?oc=5",
       "date": "Tue, 21 Apr 2026 06:58:19 GMT",
       "tickers": [
         "4250"
+      ]
+    },
+    {
+      "title": "شركة المصافي العربية السعودية (2030) - mubasher.info",
+      "description": "شركة المصافي العربية السعودية (2030)&nbsp;&nbsp;mubasher.info",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE83cTJmNjFPZHZPZVBQNExlTHdONlJLMVlkMjFfU185aUVzSlhoVUwwNTZmZURoT241d2IteGVwZ3JVMDBSUGlKSFBOYWFWZ1d0dnJQb1ZDY1V6MHdKZHNnU3NlYUstcjZlVXc?oc=5",
+      "date": "Mon, 06 Apr 2026 02:53:26 GMT",
+      "tickers": [
+        "2030"
       ]
     },
     {
