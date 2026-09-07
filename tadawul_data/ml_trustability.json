@@ -1,12 +1,12 @@
 {
   "trust_level": "unreliable",
   "use_ml_probability": false,
-  "auc_out_of_sample": 0.534,
-  "sample_count": 14545,
-  "overfit_gap": 0.188,
+  "auc_out_of_sample": 0.541,
+  "sample_count": 14731,
+  "overfit_gap": 0.178,
   "is_overfit": false,
   "reasons": [
-    "AUC out-of-sample=0.534 < 0.55"
+    "AUC out-of-sample=0.541 < 0.55"
   ],
-  "date": "2026-09-04"
+  "date": "2026-09-07"
 }
