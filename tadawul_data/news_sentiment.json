@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-08T02:01:56.217643",
+  "fetched_at": "2026-09-09T02:01:53.196834",
   "sentiments": {
     "2030": {
       "sentiment": "neutral",
@@ -10,7 +10,34 @@
         "شركة المصافي العربية السعودية (2030) - معلومات مباشر"
       ],
       "news_count": 2
+    },
+    "2222": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "توقعات سهم أرامكو السعودية 2222 للأسبوع المقبل: هل يحافظ على 26 ريالًا؟ - Markets.com"
+      ],
+      "news_count": 1
+    },
+    "2170": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة اللجين (2170) - معلومات مباشر"
+      ],
+      "news_count": 1
+    },
+    "4250": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة جبل عمر للتطوير (4250) - معلومات مباشر"
+      ],
+      "news_count": 1
     }
   },
-  "news_count": 2
+  "news_count": 5
 }

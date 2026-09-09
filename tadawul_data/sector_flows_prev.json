@@ -10,7 +10,7 @@
     "stock_count": 9
   },
   "خدمات مالية": {
-    "net_flow_5d": -984.64,
+    "net_flow_5d": -990.93,
     "avg_change_5d": -0.69,
     "momentum_trend": "تباطؤ قوي",
     "leader": "1183",
@@ -20,9 +20,9 @@
     "stock_count": 12
   },
   "بتروكيماويات": {
-    "net_flow_5d": 928.73,
-    "avg_change_5d": -0.27,
-    "momentum_trend": "تباطؤ قوي",
+    "net_flow_5d": 931.97,
+    "avg_change_5d": -0.21,
+    "momentum_trend": "تباطؤ",
     "leader": "2380",
     "leader_change": 8.77,
     "laggard": "1304",
@@ -40,9 +40,9 @@
     "stock_count": 3
   },
   "صناعية": {
-    "net_flow_5d": -1.01,
-    "avg_change_5d": 0.78,
-    "momentum_trend": "مستقر",
+    "net_flow_5d": -8.59,
+    "avg_change_5d": 0.46,
+    "momentum_trend": "تباطؤ",
     "leader": "4144",
     "leader_change": 5.94,
     "laggard": "2130",
@@ -50,28 +50,28 @@
     "stock_count": 10
   },
   "طاقة": {
-    "net_flow_5d": -597.61,
-    "avg_change_5d": 1.09,
+    "net_flow_5d": -660.92,
+    "avg_change_5d": 1.23,
     "momentum_trend": "تباطؤ قوي",
     "leader": "2030",
     "leader_change": 6.4,
     "laggard": "2382",
-    "laggard_change": -2.89,
+    "laggard_change": -2.32,
     "stock_count": 4
   },
   "مرافق": {
-    "net_flow_5d": -209.15,
-    "avg_change_5d": -0.57,
+    "net_flow_5d": -173.13,
+    "avg_change_5d": -0.37,
     "momentum_trend": "تباطؤ قوي",
     "leader": "2083",
     "leader_change": 0.67,
-    "laggard": "2084",
-    "laggard_change": -1.58,
+    "laggard": "2081",
+    "laggard_change": -0.92,
     "stock_count": 5
   },
   "زراعة وأغذية": {
-    "net_flow_5d": -566.88,
-    "avg_change_5d": 9.27,
+    "net_flow_5d": -580.37,
+    "avg_change_5d": 9.35,
     "momentum_trend": "تباطؤ قوي",
     "leader": "6050",
     "leader_change": 213.16,
@@ -80,11 +80,11 @@
     "stock_count": 21
   },
   "نقل": {
-    "net_flow_5d": 102.88,
-    "avg_change_5d": -1.01,
+    "net_flow_5d": 94.86,
+    "avg_change_5d": -0.9,
     "momentum_trend": "تباطؤ قوي",
-    "leader": "4260",
-    "leader_change": 0.19,
+    "leader": "4265",
+    "leader_change": 0.54,
     "laggard": "4031",
     "laggard_change": -3.68,
     "stock_count": 9
@@ -100,39 +100,39 @@
     "stock_count": 9
   },
   "رعاية صحية": {
-    "net_flow_5d": -153.45,
-    "avg_change_5d": -0.61,
+    "net_flow_5d": -192.53,
+    "avg_change_5d": -1.06,
     "momentum_trend": "تباطؤ قوي",
-    "leader": "4017",
-    "leader_change": 1.32,
+    "leader": "4009",
+    "leader_change": 1.27,
     "laggard": "4005",
     "laggard_change": -3.63,
     "stock_count": 12
   },
   "تجزئة": {
-    "net_flow_5d": 38.3,
-    "avg_change_5d": -0.3,
+    "net_flow_5d": 44.94,
+    "avg_change_5d": -0.82,
     "momentum_trend": "تباطؤ قوي",
-    "leader": "4165",
-    "leader_change": 2.84,
+    "leader": "4200",
+    "leader_change": 2.37,
     "laggard": "4190",
     "laggard_change": -5.12,
     "stock_count": 17
   },
   "إعلام": {
-    "net_flow_5d": -76.76,
-    "avg_change_5d": -0.67,
+    "net_flow_5d": -73.05,
+    "avg_change_5d": -0.62,
     "momentum_trend": "تباطؤ قوي",
     "leader": "4072",
-    "leader_change": 0.3,
+    "leader_change": 0.5,
     "laggard": "4210",
     "laggard_change": -3.29,
     "stock_count": 4
   },
   "عقار": {
-    "net_flow_5d": -157.7,
-    "avg_change_5d": -0.43,
-    "momentum_trend": "تباطؤ قوي",
+    "net_flow_5d": -8.77,
+    "avg_change_5d": -0.55,
+    "momentum_trend": "تباطؤ",
     "leader": "4310",
     "leader_change": 5.8,
     "laggard": "4300",
@@ -160,11 +160,11 @@
     "stock_count": 4
   },
   "تأمين": {
-    "net_flow_5d": -281.2,
-    "avg_change_5d": 3.6,
+    "net_flow_5d": -220.68,
+    "avg_change_5d": -0.04,
     "momentum_trend": "تباطؤ قوي",
-    "leader": "8010",
-    "leader_change": 49.45,
+    "leader": "8313",
+    "leader_change": 3.05,
     "laggard": "8200",
     "laggard_change": -2.67,
     "stock_count": 13
