@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-09-10T02:02:51.651905",
+  "computed_at": "2026-09-11T02:02:53.362850",
   "version": "V9.2.3",
-  "total_trades": 324,
+  "total_trades": 325,
   "active_trades": 10,
-  "wins": 60,
+  "wins": 61,
   "losses": 264,
   "breakeven": 0,
-  "win_rate_pct": 18.5,
-  "avg_win_pct": 4.07,
+  "win_rate_pct": 18.8,
+  "avg_win_pct": 4.02,
   "avg_loss_pct": -1.69,
   "profit_factor": 0.55,
-  "expectancy_pct": -0.626,
-  "total_pnl_pct": -202.92,
+  "expectancy_pct": -0.621,
+  "total_pnl_pct": -201.7,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -30,10 +30,10 @@
       "avg_pnl": -0.69
     },
     "support_bounce": {
-      "total": 38,
-      "wins": 11,
-      "win_rate": 28.9,
-      "avg_pnl": 0.16
+      "total": 39,
+      "wins": 12,
+      "win_rate": 30.8,
+      "avg_pnl": 0.19
     },
     "breakout": {
       "total": 175,
@@ -92,10 +92,10 @@
       "avg_pnl": -0.8
     },
     "تجزئة": {
-      "total": 21,
-      "wins": 4,
-      "win_rate": 19.0,
-      "avg_pnl": -0.58
+      "total": 22,
+      "wins": 5,
+      "win_rate": 22.7,
+      "avg_pnl": -0.5
     },
     "أسمنت": {
       "total": 3,
@@ -169,9 +169,9 @@
       "avg_pnl": 7.82
     },
     "Trailing Stop Hit (after T1)": {
-      "total": 25,
+      "total": 26,
       "win_rate": 100.0,
-      "avg_pnl": 3.82
+      "avg_pnl": 3.72
     },
     "Breakeven Stop (profit protection)": {
       "total": 158,
@@ -181,9 +181,9 @@
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 105,
-      "win_rate": 23.8,
-      "avg_pnl": -0.32
+      "total": 106,
+      "win_rate": 24.5,
+      "avg_pnl": -0.31
     },
     "10-15": {
       "total": 162,
@@ -314,10 +314,10 @@
     },
     {
       "ticker": "4061",
-      "total": 5,
-      "wins": 1,
-      "win_rate": 20.0,
-      "avg_pnl": -1.49
+      "total": 6,
+      "wins": 2,
+      "win_rate": 33.3,
+      "avg_pnl": -1.04
     },
     {
       "ticker": "4263",
