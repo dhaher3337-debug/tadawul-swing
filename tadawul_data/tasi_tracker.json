@@ -7,70 +7,70 @@
       "rate": 0.357
     },
     "stoch_rsi": {
-      "triggered": 37,
-      "hit": 11,
-      "miss": 26,
-      "rate": 0.297
+      "triggered": 41,
+      "hit": 12,
+      "miss": 29,
+      "rate": 0.293
     },
     "macd": {
-      "triggered": 83,
+      "triggered": 85,
       "hit": 29,
-      "miss": 54,
-      "rate": 0.349
-    },
-    "bollinger": {
-      "triggered": 25,
-      "hit": 9,
-      "miss": 16,
-      "rate": 0.36
-    },
-    "obv": {
-      "triggered": 799,
-      "hit": 285,
-      "miss": 514,
-      "rate": 0.357
-    },
-    "vwap": {
-      "triggered": 128,
-      "hit": 51,
-      "miss": 77,
-      "rate": 0.398
-    },
-    "volume_surge": {
-      "triggered": 269,
-      "hit": 94,
-      "miss": 175,
-      "rate": 0.349
-    },
-    "sma_cross": {
-      "triggered": 28,
-      "hit": 17,
-      "miss": 11,
-      "rate": 0.607
-    },
-    "breakout": {
-      "triggered": 277,
-      "hit": 95,
-      "miss": 182,
-      "rate": 0.343
-    },
-    "candle_pattern": {
-      "triggered": 41,
-      "hit": 14,
-      "miss": 27,
+      "miss": 56,
       "rate": 0.341
     },
+    "bollinger": {
+      "triggered": 26,
+      "hit": 10,
+      "miss": 16,
+      "rate": 0.385
+    },
+    "obv": {
+      "triggered": 833,
+      "hit": 288,
+      "miss": 545,
+      "rate": 0.346
+    },
+    "vwap": {
+      "triggered": 140,
+      "hit": 54,
+      "miss": 86,
+      "rate": 0.386
+    },
+    "volume_surge": {
+      "triggered": 274,
+      "hit": 94,
+      "miss": 180,
+      "rate": 0.343
+    },
+    "sma_cross": {
+      "triggered": 31,
+      "hit": 17,
+      "miss": 14,
+      "rate": 0.548
+    },
+    "breakout": {
+      "triggered": 281,
+      "hit": 95,
+      "miss": 186,
+      "rate": 0.338
+    },
+    "candle_pattern": {
+      "triggered": 46,
+      "hit": 15,
+      "miss": 31,
+      "rate": 0.326
+    },
     "oil_correlation": {
-      "triggered": 99,
-      "hit": 40,
-      "miss": 59,
-      "rate": 0.404
+      "triggered": 116,
+      "hit": 42,
+      "miss": 74,
+      "rate": 0.362
     },
     "adx": {
-      "triggered": 527,
-      "hit": 193,
-      "miss": 334,
-      "rate": 0.366
+      "triggered": 557,
+      "hit": 196,
+      "miss": 361,
+      "rate": 0.352
     },
     "supertrend": {
       "triggered": 0,
@@ -79,10 +79,10 @@
       "rate": 0.0
     },
     "ichimoku": {
-      "triggered": 636,
-      "hit": 225,
-      "miss": 411,
-      "rate": 0.354
+      "triggered": 669,
+      "hit": 227,
+      "miss": 442,
+      "rate": 0.339
     },
     "mfi": {
       "triggered": 13,
@@ -97,26 +97,25 @@
       "rate": 0.316
     },
     "fibonacci": {
-      "triggered": 236,
-      "hit": 77,
-      "miss": 159,
-      "rate": 0.326
+      "triggered": 244,
+      "hit": 78,
+      "miss": 166,
+      "rate": 0.32
     },
     "relative_strength": {
-      "triggered": 692,
-      "hit": 237,
-      "miss": 455,
-      "rate": 0.342
+      "triggered": 724,
+      "hit": 241,
+      "miss": 483,
+      "rate": 0.333
     },
     "weekly_trend": {
-      "triggered": 785,
-      "hit": 277,
-      "miss": 508,
-      "rate": 0.353
+      "triggered": 825,
+      "hit": 281,
+      "miss": 544,
+      "rate": 0.341
     }
   },
   "blacklist": [
-    "1321",
     "3040",
     "5110",
     "8250",
@@ -124,10 +123,11 @@
     "4263",
     "6002",
     "1020",
-    "4146"
+    "4146",
+    "1030",
+    "2370"
   ],
   "blacklist_date": {
-    "1321": "2026-07-13",
     "3040": "2026-07-20",
     "5110": "2026-07-20",
     "8250": "2026-07-20",
@@ -135,7 +135,9 @@
     "4263": "2026-08-10",
     "6002": "2026-08-31",
     "1020": "2026-08-31",
-    "4146": "2026-09-07"
+    "4146": "2026-09-07",
+    "1030": "2026-09-14",
+    "2370": "2026-09-14"
   },
   "stock_record": {
     "2081": {
@@ -155,18 +157,18 @@
     },
     "2380": {
       "hits": 8,
-      "total": 14,
-      "last_update": "2026-09-07"
+      "total": 15,
+      "last_update": "2026-09-14"
     },
     "4030": {
       "hits": 2,
-      "total": 6,
-      "last_update": "2026-09-07"
+      "total": 7,
+      "last_update": "2026-09-14"
     },
     "2281": {
       "hits": 1,
-      "total": 5,
-      "last_update": "2026-08-24"
+      "total": 6,
+      "last_update": "2026-09-14"
     },
     "1303": {
       "hits": 2,
@@ -185,8 +187,8 @@
     },
     "1320": {
       "hits": 3,
-      "total": 6,
-      "last_update": "2026-09-07"
+      "total": 7,
+      "last_update": "2026-09-14"
     },
     "2382": {
       "hits": 1,
@@ -194,9 +196,9 @@
       "last_update": "2026-06-01"
     },
     "2300": {
-      "hits": 6,
-      "total": 11,
-      "last_update": "2026-09-07"
+      "hits": 7,
+      "total": 12,
+      "last_update": "2026-09-14"
     },
     "2083": {
       "hits": 2,
@@ -205,8 +207,8 @@
     },
     "2370": {
       "hits": 1,
-      "total": 6,
-      "last_update": "2026-09-07"
+      "total": 7,
+      "last_update": "2026-09-14"
     },
     "4280": {
       "hits": 2,
@@ -215,8 +217,8 @@
     },
     "2070": {
       "hits": 0,
-      "total": 4,
-      "last_update": "2026-08-24"
+      "total": 5,
+      "last_update": "2026-09-14"
     },
     "8210": {
       "hits": 0,
@@ -274,24 +276,24 @@
       "last_update": "2026-08-31"
     },
     "7200": {
-      "hits": 10,
-      "total": 18,
-      "last_update": "2026-08-31"
+      "hits": 11,
+      "total": 19,
+      "last_update": "2026-09-14"
     },
     "2130": {
       "hits": 6,
-      "total": 13,
-      "last_update": "2026-08-10"
+      "total": 14,
+      "last_update": "2026-09-14"
     },
     "1080": {
       "hits": 2,
-      "total": 4,
-      "last_update": "2026-09-07"
+      "total": 5,
+      "last_update": "2026-09-14"
     },
     "2223": {
       "hits": 7,
-      "total": 15,
-      "last_update": "2026-09-07"
+      "total": 16,
+      "last_update": "2026-09-14"
     },
     "2222": {
       "hits": 0,
@@ -315,8 +317,8 @@
     },
     "4144": {
       "hits": 2,
-      "total": 5,
-      "last_update": "2026-09-07"
+      "total": 6,
+      "last_update": "2026-09-14"
     },
     "3092": {
       "hits": 0,
@@ -350,8 +352,8 @@
     },
     "8120": {
       "hits": 5,
-      "total": 14,
-      "last_update": "2026-08-10"
+      "total": 15,
+      "last_update": "2026-09-14"
     },
     "2283": {
       "hits": 0,
@@ -365,8 +367,8 @@
     },
     "2100": {
       "hits": 3,
-      "total": 6,
-      "last_update": "2026-09-07"
+      "total": 7,
+      "last_update": "2026-09-14"
     },
     "8300": {
       "hits": 4,
@@ -374,9 +376,9 @@
       "last_update": "2026-09-07"
     },
     "8070": {
-      "hits": 4,
-      "total": 9,
-      "last_update": "2026-08-31"
+      "hits": 5,
+      "total": 10,
+      "last_update": "2026-09-14"
     },
     "4146": {
       "hits": 3,
@@ -450,13 +452,13 @@
     },
     "2170": {
       "hits": 2,
-      "total": 7,
-      "last_update": "2026-08-31"
+      "total": 8,
+      "last_update": "2026-09-14"
     },
     "2381": {
       "hits": 4,
-      "total": 6,
-      "last_update": "2026-09-07"
+      "total": 7,
+      "last_update": "2026-09-14"
     },
     "2010": {
       "hits": 0,
@@ -465,8 +467,8 @@
     },
     "2320": {
       "hits": 8,
-      "total": 10,
-      "last_update": "2026-08-10"
+      "total": 11,
+      "last_update": "2026-09-14"
     },
     "4292": {
       "hits": 0,
@@ -515,8 +517,8 @@
     },
     "2282": {
       "hits": 3,
-      "total": 9,
-      "last_update": "2026-08-03"
+      "total": 10,
+      "last_update": "2026-09-14"
     },
     "4031": {
       "hits": 0,
@@ -615,13 +617,13 @@
     },
     "4070": {
       "hits": 8,
-      "total": 15,
-      "last_update": "2026-09-07"
+      "total": 16,
+      "last_update": "2026-09-14"
     },
     "1030": {
       "hits": 1,
-      "total": 6,
-      "last_update": "2026-09-07"
+      "total": 7,
+      "last_update": "2026-09-14"
     },
     "3060": {
       "hits": 0,
@@ -630,13 +632,13 @@
     },
     "4310": {
       "hits": 9,
-      "total": 13,
-      "last_update": "2026-09-07"
+      "total": 14,
+      "last_update": "2026-09-14"
     },
     "1150": {
       "hits": 0,
-      "total": 4,
-      "last_update": "2026-08-31"
+      "total": 5,
+      "last_update": "2026-09-14"
     },
     "1180": {
       "hits": 1,
@@ -670,8 +672,8 @@
     },
     "2180": {
       "hits": 7,
-      "total": 12,
-      "last_update": "2026-09-07"
+      "total": 13,
+      "last_update": "2026-09-14"
     },
     "2284": {
       "hits": 0,
@@ -695,8 +697,8 @@
     },
     "2290": {
       "hits": 3,
-      "total": 5,
-      "last_update": "2026-09-07"
+      "total": 6,
+      "last_update": "2026-09-14"
     },
     "6020": {
       "hits": 1,
@@ -715,13 +717,13 @@
     },
     "2110": {
       "hits": 5,
-      "total": 7,
-      "last_update": "2026-09-07"
+      "total": 8,
+      "last_update": "2026-09-14"
     },
     "1301": {
       "hits": 1,
-      "total": 4,
-      "last_update": "2026-08-31"
+      "total": 5,
+      "last_update": "2026-09-14"
     },
     "4291": {
       "hits": 3,
@@ -729,9 +731,9 @@
       "last_update": "2026-08-31"
     },
     "8280": {
-      "hits": 6,
-      "total": 10,
-      "last_update": "2026-09-07"
+      "hits": 7,
+      "total": 11,
+      "last_update": "2026-09-14"
     },
     "8012": {
       "hits": 4,
@@ -740,8 +742,8 @@
     },
     "1830": {
       "hits": 1,
-      "total": 4,
-      "last_update": "2026-08-31"
+      "total": 5,
+      "last_update": "2026-09-14"
     },
     "4327": {
       "hits": 0,
@@ -765,13 +767,13 @@
     },
     "1835": {
       "hits": 4,
-      "total": 6,
-      "last_update": "2026-09-07"
+      "total": 7,
+      "last_update": "2026-09-14"
     },
     "6012": {
       "hits": 3,
-      "total": 6,
-      "last_update": "2026-09-07"
+      "total": 7,
+      "last_update": "2026-09-14"
     },
     "4194": {
       "hits": 2,
@@ -805,18 +807,18 @@
     },
     "4160": {
       "hits": 2,
-      "total": 4,
-      "last_update": "2026-09-07"
+      "total": 5,
+      "last_update": "2026-09-14"
     },
     "6050": {
       "hits": 2,
-      "total": 6,
-      "last_update": "2026-08-31"
+      "total": 7,
+      "last_update": "2026-09-14"
     },
     "6060": {
       "hits": 2,
-      "total": 6,
-      "last_update": "2026-09-07"
+      "total": 7,
+      "last_update": "2026-09-14"
     },
     "6013": {
       "hits": 2,
@@ -830,13 +832,13 @@
     },
     "4300": {
       "hits": 3,
-      "total": 8,
-      "last_update": "2026-08-31"
+      "total": 9,
+      "last_update": "2026-09-14"
     },
     "2030": {
       "hits": 4,
-      "total": 7,
-      "last_update": "2026-09-07"
+      "total": 8,
+      "last_update": "2026-09-14"
     },
     "4141": {
       "hits": 3,
@@ -850,13 +852,13 @@
     },
     "4145": {
       "hits": 2,
-      "total": 3,
-      "last_update": "2026-07-20"
+      "total": 4,
+      "last_update": "2026-09-14"
     },
     "2360": {
       "hits": 0,
-      "total": 5,
-      "last_update": "2026-09-07"
+      "total": 6,
+      "last_update": "2026-09-14"
     },
     "4321": {
       "hits": 1,
@@ -865,8 +867,8 @@
     },
     "4250": {
       "hits": 4,
-      "total": 9,
-      "last_update": "2026-09-07"
+      "total": 10,
+      "last_update": "2026-09-14"
     },
     "2090": {
       "hits": 0,
@@ -910,8 +912,8 @@
     },
     "1322": {
       "hits": 2,
-      "total": 2,
-      "last_update": "2026-08-24"
+      "total": 3,
+      "last_update": "2026-09-14"
     },
     "4240": {
       "hits": 2,
@@ -920,8 +922,8 @@
     },
     "1810": {
       "hits": 1,
-      "total": 2,
-      "last_update": "2026-09-07"
+      "total": 3,
+      "last_update": "2026-09-14"
     },
     "4200": {
       "hits": 0,
@@ -957,34 +959,39 @@
       "hits": 0,
       "total": 1,
       "last_update": "2026-09-07"
+    },
+    "1324": {
+      "hits": 1,
+      "total": 1,
+      "last_update": "2026-09-14"
     }
   },
   "daily_log": [],
   "ml_predictions_record": [],
   "signal_accuracy_universe": {
     "stoch_rsi": {
-      "triggered": 900,
-      "hit": 273,
-      "miss": 627,
-      "rate": 0.3033
+      "triggered": 906,
+      "hit": 275,
+      "miss": 631,
+      "rate": 0.3035
     },
     "fibonacci": {
-      "triggered": 3155,
-      "hit": 847,
-      "miss": 2308,
-      "rate": 0.2685
+      "triggered": 3198,
+      "hit": 856,
+      "miss": 2342,
+      "rate": 0.2677
     },
     "obv": {
-      "triggered": 7827,
-      "hit": 2233,
-      "miss": 5594,
-      "rate": 0.2853
+      "triggered": 7932,
+      "hit": 2249,
+      "miss": 5683,
+      "rate": 0.2835
     },
     "weekly_trend": {
-      "triggered": 5655,
-      "hit": 1743,
-      "miss": 3912,
-      "rate": 0.3082
+      "triggered": 5742,
+      "hit": 1759,
+      "miss": 3983,
+      "rate": 0.3063
     },
     "mfi": {
       "triggered": 1318,
@@ -993,40 +1000,40 @@
       "rate": 0.2693
     },
     "adx": {
-      "triggered": 3894,
-      "hit": 1138,
-      "miss": 2756,
-      "rate": 0.2922
+      "triggered": 3966,
+      "hit": 1152,
+      "miss": 2814,
+      "rate": 0.2905
     },
     "relative_strength": {
-      "triggered": 4991,
-      "hit": 1504,
-      "miss": 3487,
-      "rate": 0.3013
+      "triggered": 5056,
+      "hit": 1518,
+      "miss": 3538,
+      "rate": 0.3002
     },
     "vwap": {
-      "triggered": 6001,
-      "hit": 1663,
-      "miss": 4338,
-      "rate": 0.2771
+      "triggered": 6088,
+      "hit": 1673,
+      "miss": 4415,
+      "rate": 0.2748
     },
     "ichimoku": {
-      "triggered": 3986,
-      "hit": 1220,
-      "miss": 2766,
-      "rate": 0.3061
+      "triggered": 4061,
+      "hit": 1232,
+      "miss": 2829,
+      "rate": 0.3034
     },
     "breakout": {
-      "triggered": 1397,
+      "triggered": 1398,
       "hit": 526,
-      "miss": 871,
-      "rate": 0.3765
+      "miss": 872,
+      "rate": 0.3763
     },
     "bollinger": {
-      "triggered": 2995,
-      "hit": 884,
-      "miss": 2111,
-      "rate": 0.2952
+      "triggered": 3013,
+      "hit": 886,
+      "miss": 2127,
+      "rate": 0.2941
     },
     "cmf": {
       "triggered": 1277,
@@ -1035,28 +1042,28 @@
       "rate": 0.3007
     },
     "rsi": {
-      "triggered": 2498,
-      "hit": 741,
-      "miss": 1757,
-      "rate": 0.2966
+      "triggered": 2507,
+      "hit": 742,
+      "miss": 1765,
+      "rate": 0.296
     },
     "volume_surge": {
-      "triggered": 1684,
-      "hit": 560,
-      "miss": 1124,
-      "rate": 0.3325
+      "triggered": 1690,
+      "hit": 561,
+      "miss": 1129,
+      "rate": 0.332
     },
     "macd": {
-      "triggered": 593,
-      "hit": 170,
-      "miss": 423,
-      "rate": 0.2867
+      "triggered": 595,
+      "hit": 171,
+      "miss": 424,
+      "rate": 0.2874
     },
     "sma_cross": {
-      "triggered": 181,
-      "hit": 53,
-      "miss": 128,
-      "rate": 0.2928
+      "triggered": 183,
+      "hit": 54,
+      "miss": 129,
+      "rate": 0.2951
     },
     "candle_pattern": {
       "triggered": 513,
@@ -1065,10 +1072,10 @@
       "rate": 0.2768
     },
     "oil_correlation": {
-      "triggered": 1291,
-      "hit": 361,
-      "miss": 930,
-      "rate": 0.2796
+      "triggered": 1328,
+      "hit": 371,
+      "miss": 957,
+      "rate": 0.2794
     }
   }
 }
