@@ -286,3 +286,7 @@ open_date,close_date,ticker,sector,signal_type,score,mtf_aligned,rsi,adx,mfi,vol
 2026-09-17,2026-09-22,2282,زراعة وأغذية,support_bounce,3.79,1,53.9,19.3,65.6,0.7,1.16,0,,,1.0,0.8,-0.81,1.6,5,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
 2026-09-17,2026-09-22,1050,بنوك,mean_reversion,3.2,0,55.2,46.2,58.1,0.9,0.46,0,,,1.87,0.8,-4.07,0.65,5,Stop Hit,-3.67,LOSS,0
 2026-09-18,2026-09-22,4144,صناعية,support_bounce,11.69,3,58.1,40.3,75.9,1.0,2.52,0,,,3.26,0.8,-3.27,2.1,4,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-09-17,2026-09-23,2083,مرافق,support_bounce,3.52,0,53.4,36.8,47.4,0.5,1.23,0,,,2.66,0.8,-3.86,0.16,6,Max Holding Days Reached,-3.86,TIME_LOSS,0
+2026-09-17,2026-09-23,7211,تقنية,default,3.22,1,68.8,62.0,81.0,0.4,0.87,0,,,3.11,0.8,-5.32,0.72,6,Stop Hit,-5.15,LOSS,0
+2026-09-18,2026-09-23,4145,صناعية,mean_reversion,6.12,1,53.5,19.5,67.2,0.9,0.69,0,,,2.3,0.8,-3.58,1.07,5,Max Holding Days Reached,-1.79,TIME_LOSS,0
+2026-09-22,2026-09-23,4310,عقار,mean_reversion,13.64,3,60.7,43.9,51.6,0.7,0.78,0,,,4.27,0.8,-1.11,4.41,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
