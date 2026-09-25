@@ -292,3 +292,5 @@ open_date,close_date,ticker,sector,signal_type,score,mtf_aligned,rsi,adx,mfi,vol
 2026-09-22,2026-09-23,4310,عقار,mean_reversion,13.64,3,60.7,43.9,51.6,0.7,0.78,0,,,4.27,0.8,-1.11,4.41,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
 2026-09-17,2026-09-24,2223,بتروكيماويات,breakout,4.01,0,48.8,26.2,53.0,2.2,3.73,0,,,2.62,0.8,-1.62,1.29,7,Max Holding Days Reached,1.22,TIME_WIN,1
 2026-09-22,2026-09-24,2282,زراعة وأغذية,support_bounce,5.87,2,60.0,19.0,81.5,1.4,1.12,0,,,1.27,0.8,-0.88,1.83,2,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-09-17,2026-09-25,4200,تجزئة,default,4.0,2,55.2,15.1,81.2,1.2,2.06,0,,,0.75,0.8,-0.86,2.45,8,Max Holding Days Reached,1.21,WIN_PARTIAL,1
+2026-09-24,2026-09-25,2180,بتروكيماويات,default,6.51,2,61.0,32.6,61.1,1.5,1.0,0,,0.652,2.58,0.8,-5.58,0.0,1,Stop Hit,-4.64,LOSS,0
