@@ -1,15 +1,25 @@
 {
-  "fetched_at": "2026-09-28T02:02:06.432372",
+  "fetched_at": "2026-09-29T02:02:50.232363",
   "sentiments": {
     "1111": {
       "sentiment": "neutral",
       "score": 0.0,
       "reason": "lexicon (no API)",
       "headlines": [
+        "سعر سهم مجموعة تداول (1111) يحاول تصريف تشبعه البيعي – توقعات اليوم – 28-09-2026 - FxNewsToday.ae",
         "شركة مجموعة تداول السعودية القابضة (1111) - معلومات مباشر"
+      ],
+      "news_count": 2
+    },
+    "6060": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "سعر سهم الشرقية للتنمية (6060) يرتفع على اثر استناده لخط اتجاه صاعد – توقعات اليوم – 28-09-2026 - FxNewsToday.ae"
       ],
       "news_count": 1
     }
   },
-  "news_count": 1
+  "news_count": 3
 }
