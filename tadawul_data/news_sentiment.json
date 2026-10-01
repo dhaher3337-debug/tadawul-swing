@@ -1,15 +1,6 @@
 {
-  "fetched_at": "2026-09-30T02:02:10.840625",
+  "fetched_at": "2026-10-01T02:02:12.050238",
   "sentiments": {
-    "6060": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "سعر سهم الشرقية للتنمية (6060) يرتفع على اثر استناده لخط اتجاه صاعد – توقعات اليوم – 28-09-2026 - FxNewsToday.ae"
-      ],
-      "news_count": 1
-    },
     "1111": {
       "sentiment": "neutral",
       "score": 0.0,
@@ -20,5 +11,5 @@
       "news_count": 1
     }
   },
-  "news_count": 2
+  "news_count": 1
 }
