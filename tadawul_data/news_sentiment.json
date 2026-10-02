@@ -1,6 +1,15 @@
 {
-  "fetched_at": "2026-10-01T02:02:12.050238",
+  "fetched_at": "2026-10-02T02:02:09.318788",
   "sentiments": {
+    "2340": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة ارتيكس للاستثمار الصناعي (2340) - معلومات مباشر"
+      ],
+      "news_count": 1
+    },
     "1111": {
       "sentiment": "neutral",
       "score": 0.0,
@@ -11,5 +20,5 @@
       "news_count": 1
     }
   },
-  "news_count": 1
+  "news_count": 2
 }
