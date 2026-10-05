@@ -1,21 +1,21 @@
 {
-  "fetched_at": "2026-10-02T02:02:09.318788",
+  "fetched_at": "2026-10-05T02:02:11.095935",
   "sentiments": {
-    "2340": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "شركة ارتيكس للاستثمار الصناعي (2340) - معلومات مباشر"
-      ],
-      "news_count": 1
-    },
     "1111": {
       "sentiment": "neutral",
       "score": 0.0,
       "reason": "lexicon (no API)",
       "headlines": [
         "شركة مجموعة تداول السعودية القابضة (1111) - معلومات مباشر"
+      ],
+      "news_count": 1
+    },
+    "2340": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة ارتيكس للاستثمار الصناعي (2340) - معلومات مباشر"
       ],
       "news_count": 1
     }

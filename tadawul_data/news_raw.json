@@ -1,16 +1,7 @@
 {
-  "fetched_at": "2026-10-02T02:02:09.165183",
+  "fetched_at": "2026-10-05T02:02:10.888968",
   "count": 2,
   "items": [
-    {
-      "title": "شركة ارتيكس للاستثمار الصناعي (2340) - معلومات مباشر",
-      "description": "شركة ارتيكس للاستثمار الصناعي (2340)&nbsp;&nbsp;معلومات مباشر",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9KdktrNGNSSnhJYVdKNXlUeXNhMVZOY1E5WEMzemEzZmd6eHZTSUtPZHNwYmpVLUU5bTFGVWEtd3EyaXNmUFlZZnBLTjk3czlrQkJYb0V2aHp3c2huQ1VpVENjNUZicFQ3SXc?oc=5",
-      "date": "Mon, 06 Apr 2026 02:26:37 GMT",
-      "tickers": [
-        "2340"
-      ]
-    },
     {
       "title": "شركة مجموعة تداول السعودية القابضة (1111) - معلومات مباشر",
       "description": "شركة مجموعة تداول السعودية القابضة (1111)&nbsp;&nbsp;معلومات مباشر",
@@ -18,6 +9,15 @@
       "date": "Tue, 24 Mar 2026 05:44:39 GMT",
       "tickers": [
         "1111"
+      ]
+    },
+    {
+      "title": "شركة ارتيكس للاستثمار الصناعي (2340) - معلومات مباشر",
+      "description": "شركة ارتيكس للاستثمار الصناعي (2340)&nbsp;&nbsp;معلومات مباشر",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9KdktrNGNSSnhJYVdKNXlUeXNhMVZOY1E5WEMzemEzZmd6eHZTSUtPZHNwYmpVLUU5bTFGVWEtd3EyaXNmUFlZZnBLTjk3czlrQkJYb0V2aHp3c2huQ1VpVENjNUZicFQ3SXc?oc=5",
+      "date": "Mon, 06 Apr 2026 02:26:37 GMT",
+      "tickers": [
+        "2340"
       ]
     }
   ]
