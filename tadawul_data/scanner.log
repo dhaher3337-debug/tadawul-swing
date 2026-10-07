@@ -2784,3 +2784,31 @@
 2026-10-06 02:02:58,430 [INFO] Universe snapshot: 189 صف → snapshot_2026-10-06.jsonl
 2026-10-06 02:02:59,460 [INFO] loaded 17 sector flows for filtering
 2026-10-06 02:02:59,460 [INFO] relative score floor (p75) = 6.72
+2026-10-07 02:02:06,076 [INFO] evaluate_universe: {'evaluated': 188, 'still_pending': 586, 'files_updated': 1}
+2026-10-07 02:02:07,323 [INFO] rebuild_ml_from_universe: {'rows': 18847, 'written': True, 'base_hit_rate_pct': 25.8, 'date_range': '2026-05-10 → 2026-10-01', 'rebuilt_at': '2026-10-07 02:02'}
+2026-10-07 02:02:12,291 [INFO] ML trustability: trusted | use_probability=True
+2026-10-07 02:02:12,398 [INFO] ML model trained V9.2.3: WF_AUC_out=0.557, InSample_AUC=0.602, trust=trusted
+2026-10-07 02:02:27,618 [INFO] Fetching fresh news...
+2026-10-07 02:02:27,619 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-10-07 02:02:33,524 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/ar/rss/saudi → HTTP Error 404: Not Found
+2026-10-07 02:02:33,524 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-10-07 02:02:39,340 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/ar/rss/tasi → HTTP Error 404: Not Found
+2026-10-07 02:02:39,340 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-10-07 02:02:45,220 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/en/rss/saudi → HTTP Error 404: Not Found
+2026-10-07 02:02:45,221 [WARNING] Argaam رجع 0 خبر — التحويل للمصادر الاحتياطية
+2026-10-07 02:02:45,221 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%AA%D8%AF%D8%A7%D9%88%D9%84%20...
+2026-10-07 02:02:45,699 [INFO]   → 100 خبر
+2026-10-07 02:02:46,200 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD%20...
+2026-10-07 02:02:46,762 [INFO]   → 92 خبر
+2026-10-07 02:02:47,263 [INFO] Fetching (fallback): https://www.maaal.com/feed...
+2026-10-07 02:02:48,918 [WARNING] parse RSS: XML غير صالح (not well-formed (invalid token): line 1, column 4028) — أول 120 حرف: '<!DOCTYPE html><html lang="ar"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s'
+2026-10-07 02:02:48,918 [INFO]   → 0 خبر
+2026-10-07 02:02:49,419 [INFO] أخبار ذات صلة: 2
+2026-10-07 02:02:49,549 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-10-07 02:02:49,549 [ERROR] Opus sentiment: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'API key is invalid.'}, 'request_id': None}
+2026-10-07 02:02:49,549 [INFO] Lexicon sentiment: 2 tickers (بدون API)
+2026-10-07 02:02:49,550 [INFO] Attempting yfinance earnings fetch...
+2026-10-07 02:02:50,883 [INFO] Falling back to pattern-based estimation
+2026-10-07 02:03:30,273 [INFO] Universe snapshot: 189 صف → snapshot_2026-10-07.jsonl
+2026-10-07 02:03:31,316 [INFO] loaded 17 sector flows for filtering
+2026-10-07 02:03:31,316 [INFO] relative score floor (p65) = 6.68
