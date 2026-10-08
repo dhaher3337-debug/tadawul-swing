@@ -1,26 +1,5 @@
 {
   "by_date": {
-    "2026-08-27": {
-      "date": "2026-08-27",
-      "top_gainers_count": 10,
-      "caught_count": 3,
-      "missed_count": 7,
-      "catch_rate_pct": 30.0,
-      "missed_tickers": [
-        "4260",
-        "7203",
-        "2083",
-        "1320",
-        "2082",
-        "1120",
-        "6070"
-      ],
-      "caught_tickers": [
-        "7200",
-        "2190",
-        "8200"
-      ]
-    },
     "2026-08-28": {
       "date": "2026-08-28",
       "top_gainers_count": 10,
@@ -618,15 +597,36 @@
         "2180",
         "4142"
       ]
+    },
+    "2026-10-08": {
+      "date": "2026-10-08",
+      "top_gainers_count": 10,
+      "caught_count": 2,
+      "missed_count": 8,
+      "catch_rate_pct": 20.0,
+      "missed_tickers": [
+        "6050",
+        "1830",
+        "2130",
+        "8313",
+        "2280",
+        "4071",
+        "4144",
+        "7200"
+      ],
+      "caught_tickers": [
+        "7211",
+        "1324"
+      ]
     }
   },
   "lifetime": {
     "days_analyzed": 30,
     "total_top_gainers_seen": 291,
-    "total_caught": 90,
-    "total_missed": 201,
-    "lifetime_catch_rate_pct": 30.9,
-    "last_updated": "2026-10-07T02:03:31.331521"
+    "total_caught": 89,
+    "total_missed": 202,
+    "lifetime_catch_rate_pct": 30.6,
+    "last_updated": "2026-10-08T02:03:00.421709"
   },
   "recurring_misses": [
     {
@@ -638,11 +638,11 @@
       "count": 13
     },
     {
-      "ticker": "4004",
-      "count": 12
+      "ticker": "6050",
+      "count": 13
     },
     {
-      "ticker": "6050",
+      "ticker": "4004",
       "count": 12
     },
     {
@@ -651,6 +651,10 @@
     },
     {
       "ticker": "4210",
+      "count": 11
+    },
+    {
+      "ticker": "8313",
       "count": 11
     },
     {
@@ -664,15 +668,11 @@
     {
       "ticker": "2083",
       "count": 10
-    },
-    {
-      "ticker": "8313",
-      "count": 10
     }
   ],
   "miss_cases": {
-    "unforeseeable": 296,
-    "out_of_universe": 416,
+    "unforeseeable": 302,
+    "out_of_universe": 418,
     "predictable_miss": 13
   }
 }

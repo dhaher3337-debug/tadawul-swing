@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-07T02:02:49.549917",
+  "fetched_at": "2026-10-08T02:02:21.339197",
   "sentiments": {
     "1111": {
       "sentiment": "neutral",
@@ -18,7 +18,16 @@
         "شركة ارتيكس للاستثمار الصناعي (2340) - معلومات مباشر"
       ],
       "news_count": 1
+    },
+    "2030": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة المصافي العربية السعودية (2030) - معلومات مباشر"
+      ],
+      "news_count": 1
     }
   },
-  "news_count": 2
+  "news_count": 3
 }
