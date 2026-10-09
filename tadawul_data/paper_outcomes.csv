@@ -325,3 +325,7 @@ open_date,close_date,ticker,sector,signal_type,score,mtf_aligned,rsi,adx,mfi,vol
 2026-10-05,2026-10-08,2083,مرافق,mean_reversion,5.82,1,38.0,28.0,11.4,0.7,1.05,0,,0.596,2.33,0.8,0.0,5.07,3,Max Holding Days Reached,3.42,WIN_PARTIAL,1
 2026-10-06,2026-10-08,8200,تأمين,mean_reversion,6.08,1,52.0,24.7,43.0,0.3,0.8,0,,0.602,2.86,0.8,-0.99,2.25,2,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
 2026-10-07,2026-10-08,2180,بتروكيماويات,breakout,10.97,3,66.3,28.5,80.2,2.3,1.05,0,,0.608,2.69,0.8,-1.38,2.4,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-10-05,2026-10-09,4310,عقار,support_bounce,8.79,2,61.0,38.8,59.8,1.6,0.94,0,,0.636,5.05,0.8,0.0,9.74,4,Max Holding Days Reached,6.8,WIN_PARTIAL,1
+2026-10-07,2026-10-09,7211,تقنية,support_bounce,11.9,3,62.9,46.6,65.7,0.9,0.93,0,,0.578,3.27,0.8,0.0,13.37,2,Trailing Stop Hit (after T1),5.92,WIN_PARTIAL_TRAIL,1
+2026-10-08,2026-10-09,1324,بتروكيماويات,support_bounce,5.62,2,57.4,23.9,51.2,0.9,1.21,0,,0.641,2.31,0.8,-0.19,2.27,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-10-08,2026-10-09,2090,بتروكيماويات,mean_reversion,4.98,1,12.9,52.2,0.0,3.4,0.22,0,,0.635,1.75,0.79,-0.18,9.11,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
