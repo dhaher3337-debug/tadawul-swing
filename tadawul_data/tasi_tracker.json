@@ -969,40 +969,40 @@
   "ml_predictions_record": [],
   "signal_accuracy_universe": {
     "stoch_rsi": {
-      "triggered": 1370,
-      "hit": 382,
-      "miss": 988,
-      "rate": 0.2788
+      "triggered": 1384,
+      "hit": 387,
+      "miss": 997,
+      "rate": 0.2796
     },
     "fibonacci": {
-      "triggered": 3657,
-      "hit": 935,
-      "miss": 2722,
-      "rate": 0.2557
+      "triggered": 3693,
+      "hit": 946,
+      "miss": 2747,
+      "rate": 0.2562
     },
     "obv": {
-      "triggered": 8930,
-      "hit": 2408,
-      "miss": 6522,
+      "triggered": 8966,
+      "hit": 2418,
+      "miss": 6548,
       "rate": 0.2697
     },
     "weekly_trend": {
-      "triggered": 6693,
-      "hit": 1953,
-      "miss": 4740,
-      "rate": 0.2918
+      "triggered": 6717,
+      "hit": 1961,
+      "miss": 4756,
+      "rate": 0.2919
     },
     "mfi": {
-      "triggered": 2094,
-      "hit": 568,
-      "miss": 1526,
-      "rate": 0.2713
+      "triggered": 2146,
+      "hit": 583,
+      "miss": 1563,
+      "rate": 0.2717
     },
     "adx": {
-      "triggered": 4609,
-      "hit": 1264,
-      "miss": 3345,
-      "rate": 0.2742
+      "triggered": 4622,
+      "hit": 1270,
+      "miss": 3352,
+      "rate": 0.2748
     },
     "relative_strength": {
       "triggered": 5377,
@@ -1011,70 +1011,70 @@
       "rate": 0.2918
     },
     "vwap": {
-      "triggered": 8114,
-      "hit": 2075,
-      "miss": 6039,
-      "rate": 0.2557
+      "triggered": 8155,
+      "hit": 2084,
+      "miss": 6071,
+      "rate": 0.2555
     },
     "ichimoku": {
-      "triggered": 4688,
-      "hit": 1347,
-      "miss": 3341,
-      "rate": 0.2873
+      "triggered": 4696,
+      "hit": 1351,
+      "miss": 3345,
+      "rate": 0.2877
     },
     "breakout": {
-      "triggered": 1600,
-      "hit": 576,
-      "miss": 1024,
-      "rate": 0.36
+      "triggered": 1632,
+      "hit": 590,
+      "miss": 1042,
+      "rate": 0.3615
     },
     "bollinger": {
-      "triggered": 4563,
-      "hit": 1244,
-      "miss": 3319,
-      "rate": 0.2726
+      "triggered": 4587,
+      "hit": 1254,
+      "miss": 3333,
+      "rate": 0.2734
     },
     "cmf": {
-      "triggered": 1569,
-      "hit": 443,
-      "miss": 1126,
-      "rate": 0.2823
+      "triggered": 1581,
+      "hit": 448,
+      "miss": 1133,
+      "rate": 0.2834
     },
     "rsi": {
-      "triggered": 3706,
-      "hit": 1052,
-      "miss": 2654,
-      "rate": 0.2839
+      "triggered": 3757,
+      "hit": 1062,
+      "miss": 2695,
+      "rate": 0.2827
     },
     "volume_surge": {
-      "triggered": 1864,
-      "hit": 596,
-      "miss": 1268,
-      "rate": 0.3197
+      "triggered": 1876,
+      "hit": 599,
+      "miss": 1277,
+      "rate": 0.3193
     },
     "macd": {
-      "triggered": 654,
-      "hit": 180,
-      "miss": 474,
-      "rate": 0.2752
+      "triggered": 671,
+      "hit": 184,
+      "miss": 487,
+      "rate": 0.2742
     },
     "sma_cross": {
-      "triggered": 209,
-      "hit": 57,
+      "triggered": 210,
+      "hit": 58,
       "miss": 152,
-      "rate": 0.2727
+      "rate": 0.2762
     },
     "candle_pattern": {
-      "triggered": 644,
-      "hit": 164,
-      "miss": 480,
-      "rate": 0.2547
+      "triggered": 653,
+      "hit": 166,
+      "miss": 487,
+      "rate": 0.2542
     },
     "oil_correlation": {
-      "triggered": 1697,
-      "hit": 427,
-      "miss": 1270,
-      "rate": 0.2516
+      "triggered": 1735,
+      "hit": 437,
+      "miss": 1298,
+      "rate": 0.2519
     }
   }
 }
