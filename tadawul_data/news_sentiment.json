@@ -1,22 +1,21 @@
 {
-  "fetched_at": "2026-10-13T02:02:10.310977",
+  "fetched_at": "2026-10-14T02:02:30.022776",
   "sentiments": {
-    "2030": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "أرماح تبدأ تداول أسهمها في السوق الرئيسية وتستهدف الوصول إلى 50 ناديًا بحلول 2030 - ارقام",
-        "شركة المصافي العربية السعودية (2030) - معلومات مباشر"
-      ],
-      "news_count": 2
-    },
     "1111": {
       "sentiment": "neutral",
       "score": 0.0,
       "reason": "lexicon (no API)",
       "headlines": [
         "شركة مجموعة تداول السعودية القابضة (1111) - معلومات مباشر"
+      ],
+      "news_count": 1
+    },
+    "2030": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة المصافي العربية السعودية (2030) - معلومات مباشر"
       ],
       "news_count": 1
     },
@@ -30,5 +29,5 @@
       "news_count": 1
     }
   },
-  "news_count": 4
+  "news_count": 3
 }
