@@ -341,3 +341,7 @@ open_date,close_date,ticker,sector,signal_type,score,mtf_aligned,rsi,adx,mfi,vol
 2026-10-12,2026-10-14,4263,نقل,support_bounce,4.54,1,56.7,17.7,75.9,0.8,3.6,0,,0.536,1.17,0.8,-5.94,0.0,2,Stop Hit,-3.58,LOSS,0
 2026-10-13,2026-10-14,4310,عقار,support_bounce,9.43,3,57.5,32.4,78.2,0.3,0.91,0,,0.584,4.71,0.8,-1.96,4.19,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
 2026-10-13,2026-10-14,2130,صناعية,breakout,8.68,3,58.2,25.9,44.3,2.3,0.82,0,,0.634,5.87,0.8,-1.34,8.8,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-10-09,2026-10-15,2381,طاقة,default,5.88,2,62.1,31.3,72.8,0.8,2.47,0,,0.612,2.18,0.8,-2.95,1.95,6,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-10-13,2026-10-15,1182,خدمات مالية,breakout,6.23,3,60.5,17.0,54.7,5.0,0.18,0,,0.621,1.27,0.81,-1.48,2.85,2,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-10-14,2026-10-15,4310,عقار,default,10.43,3,62.2,31.0,78.1,0.8,0.94,0,,0.657,4.69,0.8,-1.17,3.1,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-10-14,2026-10-15,2130,صناعية,default,5.6,3,58.3,25.7,66.3,6.2,0.88,0,,0.641,6.06,0.81,-0.12,5.07,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
