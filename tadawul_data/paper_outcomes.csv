@@ -345,3 +345,4 @@ open_date,close_date,ticker,sector,signal_type,score,mtf_aligned,rsi,adx,mfi,vol
 2026-10-13,2026-10-15,1182,خدمات مالية,breakout,6.23,3,60.5,17.0,54.7,5.0,0.18,0,,0.621,1.27,0.81,-1.48,2.85,2,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
 2026-10-14,2026-10-15,4310,عقار,default,10.43,3,62.2,31.0,78.1,0.8,0.94,0,,0.657,4.69,0.8,-1.17,3.1,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
 2026-10-14,2026-10-15,2130,صناعية,default,5.6,3,58.3,25.7,66.3,6.2,0.88,0,,0.641,6.06,0.81,-0.12,5.07,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-10-13,2026-10-16,2282,زراعة وأغذية,support_bounce,4.16,1,55.9,22.7,76.8,0.7,1.31,0,,0.587,1.38,0.8,-3.33,1.12,3,Stop Hit,-3.73,LOSS,0
