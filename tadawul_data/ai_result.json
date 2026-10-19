@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-16",
+  "date": "2026-10-19",
   "model": "rules_filter_v2_4",
   "version": "V9.2.4",
   "no_ai": true,
@@ -12,30 +12,32 @@
   "picks": [],
   "rejected_candidates": [
     {
-      "ticker": "2180",
+      "ticker": "2282",
       "reasons": [
-        "إشارات=4 (< 5)"
+        "ADX=19.6 (< 20.0)",
+        "vol_ratio=0.70× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
-      "ticker": "6012",
+      "ticker": "2180",
       "reasons": [
-        "score=3.6 ضمن أدنى مرشحي اليوم (< عتبة 4.5)",
-        "vol_ratio=0.40× < 0.8 (سيولة ضعيفة)"
+        "score=4.9 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
+        "إشارات=4 (< 5)"
       ]
     },
     {
       "ticker": "4310",
       "reasons": [
-        "score=3.5 ضمن أدنى مرشحي اليوم (< عتبة 4.5)",
-        "vol_ratio=0.50× < 0.8 (سيولة ضعيفة)"
+        "score=3.7 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
+        "vol_ratio=0.60× < 0.8 (سيولة ضعيفة)"
       ]
     },
     {
-      "ticker": "7211",
+      "ticker": "3020",
       "reasons": [
-        "score=3.4 ضمن أدنى مرشحي اليوم (< عتبة 4.5)",
-        "MTF aligned=0.0/3.0 ضعيف"
+        "score=3.4 ضمن أدنى مرشحي اليوم (< عتبة 6.8)",
+        "weekly=هابط بدون إجماع كافٍ (4 < 6)",
+        "إشارات=4 (< 5)"
       ]
     }
   ],
@@ -47,14 +49,15 @@
     "avg_composite_score": 0,
     "avg_picks_ev": 0,
     "rejection_reasons": {
-      "إشارات": 1,
-      "score": 3,
+      "ADX": 1,
       "vol_ratio": 2,
-      "MTF": 1
+      "score": 3,
+      "إشارات": 2,
+      "weekly": 1
     }
   },
   "weight_suggestions": {},
-  "learning_notes": "V9.2.4 الفلتر المُشدّد: نجح 0 وفشل 4. متوسط composite=0, متوسط EV picks=0%. أكثر أسباب الرفض: [('score', 3), ('vol_ratio', 2), ('إشارات', 1)]",
+  "learning_notes": "V9.2.4 الفلتر المُشدّد: نجح 0 وفشل 4. متوسط composite=0, متوسط EV picks=0%. أكثر أسباب الرفض: [('score', 3), ('vol_ratio', 2), ('إشارات', 2)]",
   "missed_analysis": "تحليل الفرص الضائعة يتم في missed_opportunities.py",
   "risks_to_watch": "لا توجد تحذيرات حرجة في picks",
   "fallback_reason": "known bad API key (cached 401)"

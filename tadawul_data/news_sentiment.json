@@ -1,6 +1,15 @@
 {
-  "fetched_at": "2026-10-16T02:02:12.593791",
+  "fetched_at": "2026-10-19T02:02:01.831227",
   "sentiments": {
+    "2020": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "بورصة قطر تهبط 2% إلى أدنى مستوى منذ 2020 والسوق السعودية ترتفع بدعم أرامكو - nedaelwatan.com"
+      ],
+      "news_count": 1
+    },
     "1111": {
       "sentiment": "neutral",
       "score": 0.0,
@@ -20,5 +29,5 @@
       "news_count": 1
     }
   },
-  "news_count": 2
+  "news_count": 3
 }
