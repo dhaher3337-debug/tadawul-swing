@@ -1,15 +1,6 @@
 {
-  "fetched_at": "2026-10-19T02:02:01.831227",
+  "fetched_at": "2026-10-20T02:02:16.977856",
   "sentiments": {
-    "2020": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "بورصة قطر تهبط 2% إلى أدنى مستوى منذ 2020 والسوق السعودية ترتفع بدعم أرامكو - nedaelwatan.com"
-      ],
-      "news_count": 1
-    },
     "1111": {
       "sentiment": "neutral",
       "score": 0.0,
@@ -18,16 +9,7 @@
         "شركة مجموعة تداول السعودية القابضة (1111) - معلومات مباشر"
       ],
       "news_count": 1
-    },
-    "2030": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "شركة المصافي العربية السعودية (2030) - معلومات مباشر"
-      ],
-      "news_count": 1
     }
   },
-  "news_count": 3
+  "news_count": 1
 }
