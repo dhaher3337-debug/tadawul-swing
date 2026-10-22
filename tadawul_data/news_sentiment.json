@@ -1,6 +1,24 @@
 {
-  "fetched_at": "2026-10-21T02:02:27.321041",
+  "fetched_at": "2026-10-22T02:02:19.079780",
   "sentiments": {
+    "2030": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "سعر سهم المصافي (2030) يكسر خط اتجاه صاعد – توقعات اليوم – 22-09-2026 - FxNewsToday.ae"
+      ],
+      "news_count": 1
+    },
+    "4014": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "سعر سهم دار المعدات (4014) يحاول التخلص من الضغوط السلبية – توقعات اليوم – 22-10-2026 - FxNewsToday.ae"
+      ],
+      "news_count": 1
+    },
     "2340": {
       "sentiment": "neutral",
       "score": 0.0,
@@ -11,5 +29,5 @@
       "news_count": 1
     }
   },
-  "news_count": 1
+  "news_count": 3
 }
