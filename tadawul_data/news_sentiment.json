@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-23T02:02:12.854658",
+  "fetched_at": "2026-10-26T02:02:15.967594",
   "sentiments": {
     "1111": {
       "sentiment": "neutral",
@@ -9,16 +9,7 @@
         "شركة مجموعة تداول السعودية القابضة (1111) - معلومات مباشر"
       ],
       "news_count": 1
-    },
-    "2340": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "شركة ارتيكس للاستثمار الصناعي (2340) - معلومات مباشر"
-      ],
-      "news_count": 1
     }
   },
-  "news_count": 2
+  "news_count": 1
 }
