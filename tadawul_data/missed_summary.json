@@ -1,26 +1,5 @@
 {
   "by_date": {
-    "2026-09-16": {
-      "date": "2026-09-16",
-      "top_gainers_count": 10,
-      "caught_count": 5,
-      "missed_count": 5,
-      "catch_rate_pct": 50.0,
-      "missed_tickers": [
-        "8313",
-        "4061",
-        "4300",
-        "4291",
-        "1120"
-      ],
-      "caught_tickers": [
-        "2030",
-        "2100",
-        "2380",
-        "2381",
-        "4016"
-      ]
-    },
     "2026-09-17": {
       "date": "2026-09-17",
       "top_gainers_count": 10,
@@ -626,15 +605,35 @@
         "4264",
         "2280"
       ]
+    },
+    "2026-10-28": {
+      "date": "2026-10-28",
+      "top_gainers_count": 10,
+      "caught_count": 0,
+      "missed_count": 10,
+      "catch_rate_pct": 0.0,
+      "missed_tickers": [
+        "4264",
+        "4230",
+        "6050",
+        "1810",
+        "2083",
+        "4070",
+        "8120",
+        "4290",
+        "2130",
+        "2320"
+      ],
+      "caught_tickers": []
     }
   },
   "lifetime": {
     "days_analyzed": 30,
     "total_top_gainers_seen": 300,
-    "total_caught": 73,
-    "total_missed": 227,
-    "lifetime_catch_rate_pct": 24.3,
-    "last_updated": "2026-10-27T02:04:07.723123"
+    "total_caught": 68,
+    "total_missed": 232,
+    "lifetime_catch_rate_pct": 22.7,
+    "last_updated": "2026-10-28T02:03:51.333262"
   },
   "recurring_misses": [
     {
@@ -642,15 +641,19 @@
       "count": 17
     },
     {
+      "ticker": "6050",
+      "count": 15
+    },
+    {
       "ticker": "6012",
       "count": 14
     },
     {
-      "ticker": "6050",
-      "count": 14
+      "ticker": "4005",
+      "count": 12
     },
     {
-      "ticker": "4005",
+      "ticker": "2083",
       "count": 12
     },
     {
@@ -666,10 +669,6 @@
       "count": 12
     },
     {
-      "ticker": "2083",
-      "count": 11
-    },
-    {
       "ticker": "2380",
       "count": 11
     },
@@ -679,8 +678,8 @@
     }
   ],
   "miss_cases": {
-    "unforeseeable": 310,
-    "out_of_universe": 513,
+    "unforeseeable": 314,
+    "out_of_universe": 519,
     "predictable_miss": 13
   }
 }
