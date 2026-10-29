@@ -1,15 +1,24 @@
 {
-  "fetched_at": "2026-10-28T02:02:32.393137",
+  "fetched_at": "2026-10-29T02:02:33.547768",
   "sentiments": {
-    "2020": {
-      "sentiment": "positive",
-      "score": 0.55,
+    "1111": {
+      "sentiment": "neutral",
+      "score": 0.0,
       "reason": "lexicon (no API)",
       "headlines": [
-        "سوق الأسهم السعودية تقفز بأعلى وتيرة منذ 2020 - الشرق بلومبرغ"
+        "شركة مجموعة تداول السعودية القابضة (1111) - معلومات مباشر"
+      ],
+      "news_count": 1
+    },
+    "2340": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة ارتيكس للاستثمار الصناعي (2340) - معلومات مباشر"
       ],
       "news_count": 1
     }
   },
-  "news_count": 1
+  "news_count": 2
 }

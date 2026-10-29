@@ -1,14 +1,23 @@
 {
-  "fetched_at": "2026-10-28T02:02:32.217300",
-  "count": 1,
+  "fetched_at": "2026-10-29T02:02:33.419696",
+  "count": 2,
   "items": [
     {
-      "title": "سوق الأسهم السعودية تقفز بأعلى وتيرة منذ 2020 - الشرق بلومبرغ",
-      "description": "سوق الأسهم السعودية تقفز بأعلى وتيرة منذ 2020&nbsp;&nbsp;الشرق بلومبرغ",
-      "link": "https://news.google.com/rss/articles/CBMiygJBVV95cUxPVGtWRURlNnVCVUZIeFRfUUNSN19HRW9Ta0VNbnJqRE1hVGNpam81bzl2ZEJtTllsTERDSnVrSlJXNkVFQy1MZVpBN1NxekU5emtza2liQi0zQjZJQ2NfdkE3NC1LOF9qaHJNRnJMc19iWkFxTkowTXF1S0dzbm8wSHNsLXEyalRjRmhUaHpqWVJfZjdUVTdpbWVpbWE2d1h6RzhuOGh0a184Qmd5Wm8yWEZHRmFSLXdDNU1wVjZYT0ZiMlA2OHA5dm93NFc2RHpHX3J6NGxtZHFPMzd2b2JUN1JDX04xS25zOXJxb1pnRklJRm10ak5Ndmo3aUFzTzR6UURQU2tiWWxBaWhUd1pxT0t3cTlNeTh6Q25NN3M5YlZRQXR2X0FyLVd3NmQ0M2NJeDluWkF2VzEzUUN6TWhfQnZwMGZZcFFKeXc?oc=5",
-      "date": "Wed, 24 Sep 2025 07:00:00 GMT",
+      "title": "شركة مجموعة تداول السعودية القابضة (1111) - معلومات مباشر",
+      "description": "شركة مجموعة تداول السعودية القابضة (1111)&nbsp;&nbsp;معلومات مباشر",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9pYl9LaXFvcUdsYjBoVHhRODNJYjRUdTdYVTZvUk0zZGUxMlJYZ0g0WjBfVk9hM0tVRjFZVjJCSkIxRG5kZ1VBVy1GU01IQ0RmZWJjTlZzYVJGV0dtNXY2aFQ1SEdJR0c0SHc?oc=5",
+      "date": "Tue, 24 Mar 2026 05:44:39 GMT",
       "tickers": [
-        "2020"
+        "1111"
+      ]
+    },
+    {
+      "title": "شركة ارتيكس للاستثمار الصناعي (2340) - معلومات مباشر",
+      "description": "شركة ارتيكس للاستثمار الصناعي (2340)&nbsp;&nbsp;معلومات مباشر",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9KdktrNGNSSnhJYVdKNXlUeXNhMVZOY1E5WEMzemEzZmd6eHZTSUtPZHNwYmpVLUU5bTFGVWEtd3EyaXNmUFlZZnBLTjk3czlrQkJYb0V2aHp3c2huQ1VpVENjNUZicFQ3SXc?oc=5",
+      "date": "Mon, 06 Apr 2026 02:26:37 GMT",
+      "tickers": [
+        "2340"
       ]
     }
   ]
