@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-30",
+  "samples_total": 22056,
+  "samples_train": 17644,
+  "samples_test": 4412,
+  "positive_ratio": 0.248,
+  "accuracy": 0.439,
+  "roc_auc": 0.533,
+  "precision": 0.194,
+  "recall": 0.684,
+  "f1": 0.302,
+  "walk_forward": {
+    "n_folds_run": 3,
+    "avg_accuracy_out": 0.425,
+    "avg_accuracy_in": 0.635,
+    "avg_roc_auc_out": 0.548,
+    "avg_roc_auc_in": 0.69,
+    "avg_precision_out": 0.254,
+    "avg_recall_out": 0.72,
+    "avg_f1_out": 0.365,
+    "fold_details": [
+      {
+        "fold": 0,
+        "train_size": 5514,
+        "test_size": 5514,
+        "accuracy_out": 0.468,
+        "accuracy_in": 0.652,
+        "roc_auc_out": 0.538,
+        "roc_auc_in": 0.723,
+        "precision_out": 0.289,
+        "recall_out": 0.664,
+        "f1_out": 0.403,
+        "positive_ratio_train": 0.285
+      },
+      {
+        "fold": 1,
+        "train_size": 11028,
+        "test_size": 5514,
+        "accuracy_out": 0.506,
+        "accuracy_in": 0.633,
+        "roc_auc_out": 0.544,
+        "roc_auc_in": 0.688,
+        "precision_out": 0.284,
+        "recall_out": 0.58,
+        "f1_out": 0.381,
+        "positive_ratio_train": 0.278
+      },
+      {
+        "fold": 2,
+        "train_size": 16542,
+        "test_size": 5514,
+        "accuracy_out": 0.302,
+        "accuracy_in": 0.619,
+        "roc_auc_out": 0.561,
+        "roc_auc_in": 0.66,
+        "precision_out": 0.188,
+        "recall_out": 0.917,
+        "f1_out": 0.312,
+        "positive_ratio_train": 0.273
+      }
+    ],
+    "overfit_gap": 0.143,
+    "is_overfit": false
+  },
+  "trustability": {
+    "trust_level": "unreliable",
+    "use_ml_probability": false,
+    "auc_out_of_sample": 0.548,
+    "sample_count": 22056,
+    "overfit_gap": 0.143,
+    "is_overfit": false,
+    "reasons": [
+      "AUC out-of-sample=0.548 < 0.55"
+    ],
+    "date": "2026-10-30"
+  },
+  "version": "V9.2.3"
+}
