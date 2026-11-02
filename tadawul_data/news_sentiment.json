@@ -1,24 +1,15 @@
 {
-  "fetched_at": "2026-10-30T02:02:34.717211",
+  "fetched_at": "2026-11-02T02:02:14.767662",
   "sentiments": {
-    "1111": {
+    "2250": {
       "sentiment": "neutral",
       "score": 0.0,
       "reason": "lexicon (no API)",
       "headlines": [
-        "شركة مجموعة تداول السعودية القابضة (1111) - معلومات مباشر"
-      ],
-      "news_count": 1
-    },
-    "2340": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "شركة ارتيكس للاستثمار الصناعي (2340) - معلومات مباشر"
+        "سعر سهم المجموعة السعودية (2250) يصل إلى هدفنا السعري – توقعات اليوم – 01-11-2026 - FxNewsToday.ae"
       ],
       "news_count": 1
     }
   },
-  "news_count": 2
+  "news_count": 1
 }
