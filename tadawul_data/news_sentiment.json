@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-11-02T02:02:14.767662",
+  "fetched_at": "2026-11-03T02:02:25.242767",
   "sentiments": {
-    "2250": {
-      "sentiment": "neutral",
-      "score": 0.0,
+    "2020": {
+      "sentiment": "positive",
+      "score": 0.55,
       "reason": "lexicon (no API)",
       "headlines": [
-        "سعر سهم المجموعة السعودية (2250) يصل إلى هدفنا السعري – توقعات اليوم – 01-11-2026 - FxNewsToday.ae"
+        "سوق الأسهم السعودية تقفز بأعلى وتيرة منذ 2020 - الشرق بلومبرغ"
       ],
       "news_count": 1
     }
