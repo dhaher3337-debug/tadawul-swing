@@ -2,11 +2,11 @@
   "trust_level": "trusted",
   "use_ml_probability": true,
   "auc_out_of_sample": 0.57,
-  "sample_count": 22432,
-  "overfit_gap": 0.121,
+  "sample_count": 22620,
+  "overfit_gap": 0.12,
   "is_overfit": false,
   "reasons": [
-    "AUC=0.57, samples=22432, no overfit detected"
+    "AUC=0.57, samples=22620, no overfit detected"
   ],
-  "date": "2026-11-03"
+  "date": "2026-11-04"
 }

@@ -3319,3 +3319,27 @@
 2026-11-03 02:02:53,434 [INFO] Universe snapshot: 185 صف → snapshot_2026-11-03.jsonl
 2026-11-03 02:02:54,469 [INFO] loaded 17 sector flows for filtering
 2026-11-03 02:02:54,469 [INFO] relative score floor (p60) = 6.02
+2026-11-04 02:01:21,336 [INFO] evaluate_universe: {'evaluated': 188, 'still_pending': 580, 'files_updated': 1}
+2026-11-04 02:01:22,454 [INFO] rebuild_ml_from_universe: {'rows': 22620, 'written': True, 'base_hit_rate_pct': 26.0, 'date_range': '2026-05-10 → 2026-10-29', 'rebuilt_at': '2026-11-04 02:01'}
+2026-11-04 02:01:25,170 [INFO] ML trustability: trusted | use_probability=True
+2026-11-04 02:01:25,263 [INFO] ML model trained V9.2.3: WF_AUC_out=0.57, InSample_AUC=0.611, trust=trusted
+2026-11-04 02:01:36,102 [INFO] Fetching fresh news...
+2026-11-04 02:01:36,102 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-11-04 02:01:42,227 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/ar/rss/saudi → HTTP Error 404: Not Found
+2026-11-04 02:01:42,227 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-11-04 02:01:48,302 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/ar/rss/tasi → HTTP Error 404: Not Found
+2026-11-04 02:01:48,302 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-11-04 02:01:54,368 [WARNING] fetch فشل بعد 3 محاولات: https://www.argaam.com/en/rss/saudi → HTTP Error 404: Not Found
+2026-11-04 02:01:54,368 [WARNING] Argaam رجع 0 خبر — التحويل للمصادر الاحتياطية
+2026-11-04 02:01:54,369 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%AA%D8%AF%D8%A7%D9%88%D9%84%20...
+2026-11-04 02:01:54,939 [INFO]   → 100 خبر
+2026-11-04 02:01:55,439 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD%20...
+2026-11-04 02:01:55,795 [INFO]   → 61 خبر
+2026-11-04 02:01:56,295 [INFO] Fetching (fallback): https://www.maaal.com/feed...
+2026-11-04 02:02:04,950 [WARNING] fetch فشل بعد 3 محاولات: https://www.maaal.com/feed → HTTP Error 404: Not Found
+2026-11-04 02:02:04,951 [INFO] أخبار ذات صلة: 0
+2026-11-04 02:02:04,951 [WARNING] No news fetched — returning empty sentiment
+2026-11-04 02:02:04,952 [INFO] Using cached earnings (196 tickers)
+2026-11-04 02:02:22,656 [INFO] Universe snapshot: 185 صف → snapshot_2026-11-04.jsonl
+2026-11-04 02:02:23,406 [INFO] loaded 17 sector flows for filtering
+2026-11-04 02:02:23,406 [INFO] relative score floor (p75) = 5.26
