@@ -1,5 +1,15 @@
 {
-  "fetched_at": "2026-11-04T02:02:04.952020",
-  "sentiments": {},
-  "news_count": 0
+  "fetched_at": "2026-11-05T02:02:21.515730",
+  "sentiments": {
+    "2020": {
+      "sentiment": "positive",
+      "score": 0.55,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "سوق الأسهم السعودية تقفز بأعلى وتيرة منذ 2020 - الشرق بلومبرغ"
+      ],
+      "news_count": 1
+    }
+  },
+  "news_count": 1
 }
