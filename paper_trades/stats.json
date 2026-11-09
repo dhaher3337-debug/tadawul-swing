@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-11-06T02:02:56.947884",
+  "computed_at": "2026-11-09T02:02:45.306988",
   "version": "V9.2.3",
-  "total_trades": 460,
+  "total_trades": 461,
   "active_trades": 10,
   "wins": 77,
-  "losses": 383,
+  "losses": 384,
   "breakeven": 0,
   "win_rate_pct": 16.7,
   "avg_win_pct": 4.0,
-  "avg_loss_pct": -1.78,
+  "avg_loss_pct": -1.79,
   "profit_factor": 0.45,
-  "expectancy_pct": -0.814,
-  "total_pnl_pct": -374.38,
+  "expectancy_pct": -0.821,
+  "total_pnl_pct": -378.51,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -24,10 +24,10 @@
   },
   "by_signal_type": {
     "default": {
-      "total": 139,
+      "total": 140,
       "wins": 19,
-      "win_rate": 13.7,
-      "avg_pnl": -1.02
+      "win_rate": 13.6,
+      "avg_pnl": -1.04
     },
     "support_bounce": {
       "total": 70,
@@ -62,10 +62,10 @@
       "avg_pnl": -0.87
     },
     "صناعية": {
-      "total": 37,
+      "total": 38,
       "wins": 7,
-      "win_rate": 18.9,
-      "avg_pnl": -0.33
+      "win_rate": 18.4,
+      "avg_pnl": -0.43
     },
     "تأمين": {
       "total": 49,
@@ -154,7 +154,7 @@
   },
   "by_exit_reason": {
     "Stop Hit": {
-      "total": 109,
+      "total": 110,
       "win_rate": 0.0,
       "avg_pnl": -4.52
     },
@@ -181,9 +181,9 @@
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 213,
-      "win_rate": 18.3,
-      "avg_pnl": -0.8
+      "total": 214,
+      "win_rate": 18.2,
+      "avg_pnl": -0.82
     },
     "10-15": {
       "total": 183,
@@ -370,10 +370,10 @@
     },
     {
       "ticker": "4146",
-      "total": 4,
+      "total": 5,
       "wins": 1,
-      "win_rate": 25.0,
-      "avg_pnl": 0.51
+      "win_rate": 20.0,
+      "avg_pnl": -0.42
     },
     {
       "ticker": "4291",
