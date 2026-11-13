@@ -1,6 +1,15 @@
 {
-  "fetched_at": "2026-11-12T02:02:17.299762",
+  "fetched_at": "2026-11-13T02:02:13.710860",
   "sentiments": {
+    "1111": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "شركة مجموعة تداول السعودية القابضة (1111) - معلومات مباشر"
+      ],
+      "news_count": 1
+    },
     "2020": {
       "sentiment": "positive",
       "score": 0.55,
@@ -11,5 +20,5 @@
       "news_count": 1
     }
   },
-  "news_count": 1
+  "news_count": 2
 }
