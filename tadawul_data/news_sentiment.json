@@ -1,21 +1,21 @@
 {
-  "fetched_at": "2026-11-13T02:02:13.710860",
+  "fetched_at": "2026-11-16T02:02:08.434735",
   "sentiments": {
-    "1111": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "شركة مجموعة تداول السعودية القابضة (1111) - معلومات مباشر"
-      ],
-      "news_count": 1
-    },
     "2020": {
       "sentiment": "positive",
       "score": 0.55,
       "reason": "lexicon (no API)",
       "headlines": [
         "سوق الأسهم السعودية تقفز بأعلى وتيرة منذ 2020 - الشرق بلومبرغ"
+      ],
+      "news_count": 1
+    },
+    "1111": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "سعر سهم مجموعة تداول (سهم 1111) مباشر - Investing.com"
       ],
       "news_count": 1
     }

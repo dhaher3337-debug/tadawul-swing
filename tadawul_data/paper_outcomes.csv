@@ -404,3 +404,6 @@ open_date,close_date,ticker,sector,signal_type,score,mtf_aligned,rsi,adx,mfi,vol
 2026-11-10,2026-11-12,6014,زراعة وأغذية,breakout,10.8,2,73.4,29.1,86.0,4.0,1.97,0,,0.548,4.74,0.8,-9.27,0.45,2,Stop Hit,-6.84,LOSS,0
 2026-11-12,2026-11-13,6014,زراعة وأغذية,default,9.84,3,64.9,30.8,61.6,4.5,2.17,0,,0.528,5.64,0.8,-1.86,3.12,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
 2026-11-12,2026-11-13,2340,بتروكيماويات,breakout,7.79,3,60.1,52.6,78.4,5.6,0.42,0,,0.605,4.87,0.79,-0.72,3.1,1,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-11-11,2026-11-16,4061,تجزئة,breakout,14.79,3,64.2,36.9,75.5,5.5,0.46,0,,0.586,4.2,0.8,-4.77,4.6,5,Trailing Stop Hit (after T1),1.47,WIN_PARTIAL_TRAIL,1
+2026-11-13,2026-11-16,2110,بتروكيماويات,breakout,10.27,3,61.0,40.3,70.5,5.5,6.39,0,,0.6,3.72,0.8,-1.26,2.8,3,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0
+2026-11-13,2026-11-16,4310,عقار,breakout,7.29,3,57.5,18.7,66.4,2.6,1.07,0,,0.612,5.91,0.8,-1.33,2.66,3,Breakeven Stop (profit protection),-0.5,BREAKEVEN,0

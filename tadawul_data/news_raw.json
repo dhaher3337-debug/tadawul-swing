@@ -1,16 +1,7 @@
 {
-  "fetched_at": "2026-11-13T02:02:13.562673",
+  "fetched_at": "2026-11-16T02:02:08.239333",
   "count": 2,
   "items": [
-    {
-      "title": "شركة مجموعة تداول السعودية القابضة (1111) - معلومات مباشر",
-      "description": "شركة مجموعة تداول السعودية القابضة (1111)&nbsp;&nbsp;معلومات مباشر",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9pYl9LaXFvcUdsYjBoVHhRODNJYjRUdTdYVTZvUk0zZGUxMlJYZ0g0WjBfVk9hM0tVRjFZVjJCSkIxRG5kZ1VBVy1GU01IQ0RmZWJjTlZzYVJGV0dtNXY2aFQ1SEdJR0c0SHc?oc=5",
-      "date": "Tue, 24 Mar 2026 05:44:39 GMT",
-      "tickers": [
-        "1111"
-      ]
-    },
     {
       "title": "سوق الأسهم السعودية تقفز بأعلى وتيرة منذ 2020 - الشرق بلومبرغ",
       "description": "سوق الأسهم السعودية تقفز بأعلى وتيرة منذ 2020&nbsp;&nbsp;الشرق بلومبرغ",
@@ -18,6 +9,15 @@
       "date": "Wed, 24 Sep 2025 07:00:00 GMT",
       "tickers": [
         "2020"
+      ]
+    },
+    {
+      "title": "سعر سهم مجموعة تداول (سهم 1111) مباشر - Investing.com",
+      "description": "سعر سهم مجموعة تداول (سهم 1111) مباشر&nbsp;&nbsp;Investing.com",
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE15dHdSTTlTRU5HTmZZNFhtcF9FNnhPMHVQajNiTUJjQW5XV3Z4LUVLdDVHSkNrSTNpVl9fWUJFeHpmMkZFakpuRW9FYl9HaDBBeGdqNUpPN3ZHR0k1azRNZUtkcU55Zw?oc=5",
+      "date": "Tue, 14 Dec 2021 12:37:49 GMT",
+      "tickers": [
+        "1111"
       ]
     }
   ]
