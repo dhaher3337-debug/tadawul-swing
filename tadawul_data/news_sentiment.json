@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-16T02:02:08.434735",
+  "fetched_at": "2026-11-17T02:02:05.530895",
   "sentiments": {
     "2020": {
       "sentiment": "positive",
@@ -9,16 +9,7 @@
         "سوق الأسهم السعودية تقفز بأعلى وتيرة منذ 2020 - الشرق بلومبرغ"
       ],
       "news_count": 1
-    },
-    "1111": {
-      "sentiment": "neutral",
-      "score": 0.0,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "سعر سهم مجموعة تداول (سهم 1111) مباشر - Investing.com"
-      ],
-      "news_count": 1
     }
   },
-  "news_count": 2
+  "news_count": 1
 }

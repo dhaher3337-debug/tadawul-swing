@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-11-16T02:02:30.270927",
+  "computed_at": "2026-11-17T02:02:35.181217",
   "version": "V9.2.3",
-  "total_trades": 474,
+  "total_trades": 475,
   "active_trades": 10,
   "wins": 79,
-  "losses": 395,
+  "losses": 396,
   "breakeven": 0,
-  "win_rate_pct": 16.7,
+  "win_rate_pct": 16.6,
   "avg_win_pct": 3.96,
-  "avg_loss_pct": -1.77,
-  "profit_factor": 0.45,
-  "expectancy_pct": -0.816,
-  "total_pnl_pct": -387.02,
+  "avg_loss_pct": -1.78,
+  "profit_factor": 0.44,
+  "expectancy_pct": -0.828,
+  "total_pnl_pct": -393.32,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -24,10 +24,10 @@
   },
   "by_signal_type": {
     "default": {
-      "total": 143,
+      "total": 144,
       "wins": 19,
-      "win_rate": 13.3,
-      "avg_pnl": -1.04
+      "win_rate": 13.2,
+      "avg_pnl": -1.08
     },
     "support_bounce": {
       "total": 70,
@@ -110,10 +110,10 @@
       "avg_pnl": -0.72
     },
     "تقنية": {
-      "total": 28,
+      "total": 29,
       "wins": 2,
-      "win_rate": 7.1,
-      "avg_pnl": -1.28
+      "win_rate": 6.9,
+      "avg_pnl": -1.45
     },
     "اتصالات": {
       "total": 1,
@@ -154,9 +154,9 @@
   },
   "by_exit_reason": {
     "Stop Hit": {
-      "total": 111,
+      "total": 112,
       "win_rate": 0.0,
-      "avg_pnl": -4.54
+      "avg_pnl": -4.56
     },
     "Max Holding Days Reached": {
       "total": 73,
@@ -181,9 +181,9 @@
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 221,
-      "win_rate": 18.1,
-      "avg_pnl": -0.79
+      "total": 222,
+      "win_rate": 18.0,
+      "avg_pnl": -0.82
     },
     "10-15": {
       "total": 189,
@@ -573,10 +573,10 @@
     },
     {
       "ticker": "7211",
-      "total": 10,
+      "total": 11,
       "wins": 2,
-      "win_rate": 20.0,
-      "avg_pnl": -1.15
+      "win_rate": 18.2,
+      "avg_pnl": -1.62
     },
     {
       "ticker": "1830",
