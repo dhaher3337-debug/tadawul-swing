@@ -1,6 +1,33 @@
 {
-  "fetched_at": "2026-11-19T02:02:47.408765",
+  "fetched_at": "2026-11-20T02:02:01.843187",
   "sentiments": {
+    "7010": {
+      "sentiment": "neutral",
+      "score": 0.0,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "سهم stc اليوم 19 نوفمبر 2026: يتراجع إلى 41.24 ريالًا مع صرف توزيعات الربع الثالث.. هل يتعافى سهم 7010؟ - Markets.com"
+      ],
+      "news_count": 1
+    },
+    "1150": {
+      "sentiment": "positive",
+      "score": 0.55,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "سهم الإنماء اليوم 19 نوفمبر 2026: يتراجع إلى 21.96 ريالًا رغم نمو الأرباح والتمويل.. هل حان شراء سهم 1150؟ - Markets.com"
+      ],
+      "news_count": 1
+    },
+    "1120": {
+      "sentiment": "positive",
+      "score": 0.7,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "سهم الراجحي اليوم 18 نوفمبر 2026: السعر عند 63.05 ريال رغم نمو الأرباح 13%.. هل سهم 1120 مناسب للشراء؟ - Markets.com"
+      ],
+      "news_count": 1
+    },
     "2020": {
       "sentiment": "positive",
       "score": 0.55,
@@ -9,7 +36,16 @@
         "سوق الأسهم السعودية تقفز بأعلى وتيرة منذ 2020 - الشرق بلومبرغ"
       ],
       "news_count": 1
+    },
+    "2030": {
+      "sentiment": "positive",
+      "score": 0.55,
+      "reason": "lexicon (no API)",
+      "headlines": [
+        "حرب إيران تؤجل تخمة الغاز الطبيعي المسال إلى 2030 وتُبقي أرباح التداول مرتفعة - شبكة مصدر الاخبارية"
+      ],
+      "news_count": 1
     }
   },
-  "news_count": 1
+  "news_count": 5
 }
