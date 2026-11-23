@@ -3642,3 +3642,26 @@
 2026-11-20 02:02:20,271 [INFO] Universe snapshot: 184 صف → snapshot_2026-11-20.jsonl
 2026-11-20 02:02:20,975 [INFO] loaded 17 sector flows for filtering
 2026-11-20 02:02:20,975 [INFO] relative score floor (p75) = 5.67
+2026-11-23 02:01:18,652 [INFO] evaluate_universe: {'evaluated': 184, 'still_pending': 583, 'files_updated': 1}
+2026-11-23 02:01:19,567 [INFO] rebuild_ml_from_universe: {'rows': 25012, 'written': True, 'base_hit_rate_pct': 27.6, 'date_range': '2026-05-10 → 2026-11-17', 'rebuilt_at': '2026-11-23 02:01'}
+2026-11-23 02:01:24,233 [INFO] ML trustability: trusted | use_probability=True
+2026-11-23 02:01:24,303 [INFO] ML model trained V9.2.3: WF_AUC_out=0.567, InSample_AUC=0.587, trust=trusted
+2026-11-23 02:01:40,795 [INFO] Fetching fresh news...
+2026-11-23 02:01:40,795 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-11-23 02:01:41,329 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-11-23 02:01:41,792 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-11-23 02:01:42,224 [WARNING] Argaam رجع 0 خبر — التحويل للمصادر الاحتياطية
+2026-11-23 02:01:42,224 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%AA%D8%AF%D8%A7%D9%88%D9%84%20...
+2026-11-23 02:01:42,733 [INFO]   → 78 خبر
+2026-11-23 02:01:43,233 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD%20...
+2026-11-23 02:01:43,588 [INFO]   → 26 خبر
+2026-11-23 02:01:44,088 [INFO] Fetching (fallback): https://www.maaal.com/feed...
+2026-11-23 02:01:52,115 [WARNING] fetch فشل بعد 3 محاولات: https://www.maaal.com/feed → HTTP Error 404: Not Found
+2026-11-23 02:01:52,115 [INFO] أخبار ذات صلة: 2
+2026-11-23 02:01:52,239 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2026-11-23 02:01:52,248 [ERROR] Opus sentiment: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011ChK33fjaSas8R3iL1u18T'}
+2026-11-23 02:01:52,248 [INFO] Lexicon sentiment: 2 tickers (بدون API)
+2026-11-23 02:01:52,249 [INFO] Using cached earnings (196 tickers)
+2026-11-23 02:02:15,216 [INFO] Universe snapshot: 184 صف → snapshot_2026-11-23.jsonl
+2026-11-23 02:02:15,732 [INFO] loaded 17 sector flows for filtering
+2026-11-23 02:02:15,733 [INFO] relative score floor (p75) = 4.42
