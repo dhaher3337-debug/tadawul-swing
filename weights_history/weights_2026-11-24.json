@@ -1,0 +1,21 @@
+{
+  "rsi": 1.04096195,
+  "stoch_rsi": 0.97533425,
+  "macd": 0.90908155,
+  "bollinger": 2.08794035,
+  "obv": 0.83944405,
+  "vwap": 1.2040115,
+  "volume_surge": 1.210139,
+  "sma_cross": 1.7322522,
+  "breakout": 1.7702045,
+  "candle_pattern": 0.970125,
+  "oil_correlation": 0.7041615,
+  "adx": 1.9775812499999998,
+  "supertrend": 0.29653403828416525,
+  "ichimoku": 0.9648515,
+  "mfi": 0.8521293999999999,
+  "cmf": 0.91028965,
+  "fibonacci": 0.8496674499999999,
+  "relative_strength": 1.0208443999999999,
+  "weekly_trend": 0.91661545
+}

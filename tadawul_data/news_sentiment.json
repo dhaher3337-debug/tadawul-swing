@@ -1,15 +1,6 @@
 {
-  "fetched_at": "2026-11-23T02:01:52.248587",
+  "fetched_at": "2026-11-24T02:01:56.739157",
   "sentiments": {
-    "4190": {
-      "sentiment": "positive",
-      "score": 0.7,
-      "reason": "lexicon (no API)",
-      "headlines": [
-        "سهم جرير اليوم 20 نوفمبر 2026: سهم 4190 يقفز 2.76% إلى 17.90 ريالًا بعد نمو الأرباح.. هل يتجاوز 18 ريالًا؟ - Markets.com"
-      ],
-      "news_count": 1
-    },
     "2020": {
       "sentiment": "positive",
       "score": 0.55,
@@ -20,5 +11,5 @@
       "news_count": 1
     }
   },
-  "news_count": 2
+  "news_count": 1
 }
