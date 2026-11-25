@@ -3689,3 +3689,24 @@
 2026-11-24 02:02:29,654 [INFO] Universe snapshot: 184 صف → snapshot_2026-11-24.jsonl
 2026-11-24 02:02:30,612 [INFO] loaded 17 sector flows for filtering
 2026-11-24 02:02:30,612 [INFO] relative score floor (p75) = 5.82
+2026-11-25 02:01:30,298 [INFO] evaluate_universe: {'evaluated': 184, 'still_pending': 583, 'files_updated': 1}
+2026-11-25 02:01:31,800 [INFO] rebuild_ml_from_universe: {'rows': 25380, 'written': True, 'base_hit_rate_pct': 27.4, 'date_range': '2026-05-10 → 2026-11-19', 'rebuilt_at': '2026-11-25 02:01'}
+2026-11-25 02:01:36,666 [INFO] ML trustability: trusted | use_probability=True
+2026-11-25 02:01:37,180 [INFO] ML model trained V9.2.3: WF_AUC_out=0.57, InSample_AUC=0.553, trust=trusted
+2026-11-25 02:01:48,714 [INFO] Fetching fresh news...
+2026-11-25 02:01:48,714 [INFO] Fetching: https://www.argaam.com/ar/rss/saudi
+2026-11-25 02:01:49,083 [INFO] Fetching: https://www.argaam.com/ar/rss/tasi
+2026-11-25 02:01:49,384 [INFO] Fetching: https://www.argaam.com/en/rss/saudi
+2026-11-25 02:01:49,673 [WARNING] Argaam رجع 0 خبر — التحويل للمصادر الاحتياطية
+2026-11-25 02:01:49,673 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%AA%D8%AF%D8%A7%D9%88%D9%84%20...
+2026-11-25 02:01:52,075 [INFO]   → 100 خبر
+2026-11-25 02:01:52,575 [INFO] Fetching (fallback): https://news.google.com/rss/search?q=%D8%A3%D8%B1%D8%A8%D8%A7%D8%AD%20...
+2026-11-25 02:01:52,830 [INFO]   → 30 خبر
+2026-11-25 02:01:53,330 [INFO] Fetching (fallback): https://www.maaal.com/feed...
+2026-11-25 02:02:02,224 [WARNING] fetch فشل بعد 3 محاولات: https://www.maaal.com/feed → HTTP Error 404: Not Found
+2026-11-25 02:02:02,225 [INFO] أخبار ذات صلة: 0
+2026-11-25 02:02:02,225 [WARNING] No news fetched — returning empty sentiment
+2026-11-25 02:02:02,225 [INFO] Using cached earnings (196 tickers)
+2026-11-25 02:02:42,594 [INFO] Universe snapshot: 184 صف → snapshot_2026-11-25.jsonl
+2026-11-25 02:02:43,525 [INFO] loaded 17 sector flows for filtering
+2026-11-25 02:02:43,526 [INFO] relative score floor (p75) = 6.33

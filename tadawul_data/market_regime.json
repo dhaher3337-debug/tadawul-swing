@@ -1,10 +1,10 @@
 {
   "regime": "down",
   "trailing_days": 3,
-  "avg_change_pct": -0.665,
-  "advancers_pct": 28.1,
-  "as_of": "2026-11-23",
-  "computed_at": "2026-11-24 02:01",
+  "avg_change_pct": -1.157,
+  "advancers_pct": 18.3,
+  "as_of": "2026-11-24",
+  "computed_at": "2026-11-25 02:01",
   "score_percentile": 0.75,
   "top_n": 3
 }
