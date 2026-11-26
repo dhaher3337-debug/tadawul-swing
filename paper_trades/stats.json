@@ -1,17 +1,17 @@
 {
-  "computed_at": "2026-11-25T02:02:44.964329",
+  "computed_at": "2026-11-26T02:02:32.852518",
   "version": "V9.2.3",
-  "total_trades": 491,
+  "total_trades": 492,
   "active_trades": 10,
   "wins": 81,
-  "losses": 410,
+  "losses": 411,
   "breakeven": 0,
   "win_rate_pct": 16.5,
   "avg_win_pct": 3.9,
-  "avg_loss_pct": -1.78,
+  "avg_loss_pct": -1.79,
   "profit_factor": 0.43,
-  "expectancy_pct": -0.842,
-  "total_pnl_pct": -413.65,
+  "expectancy_pct": -0.852,
+  "total_pnl_pct": -419.04,
   "best_trade": {
     "ticker": "4280",
     "pnl": 11.53,
@@ -30,10 +30,10 @@
       "avg_pnl": -1.14
     },
     "support_bounce": {
-      "total": 71,
+      "total": 72,
       "wins": 17,
-      "win_rate": 23.9,
-      "avg_pnl": -0.36
+      "win_rate": 23.6,
+      "avg_pnl": -0.43
     },
     "breakout": {
       "total": 232,
@@ -146,15 +146,15 @@
       "avg_pnl": -1.04
     },
     "طاقة": {
-      "total": 17,
+      "total": 18,
       "wins": 4,
-      "win_rate": 23.5,
-      "avg_pnl": -0.29
+      "win_rate": 22.2,
+      "avg_pnl": -0.58
     }
   },
   "by_exit_reason": {
     "Stop Hit": {
-      "total": 115,
+      "total": 116,
       "win_rate": 0.0,
       "avg_pnl": -4.6
     },
@@ -181,9 +181,9 @@
   },
   "by_score_bucket": {
     "0-10": {
-      "total": 234,
+      "total": 235,
       "win_rate": 17.9,
-      "avg_pnl": -0.86
+      "avg_pnl": -0.88
     },
     "10-15": {
       "total": 192,
@@ -531,10 +531,10 @@
     },
     {
       "ticker": "2381",
-      "total": 10,
+      "total": 11,
       "wins": 2,
-      "win_rate": 20.0,
-      "avg_pnl": -0.78
+      "win_rate": 18.2,
+      "avg_pnl": -1.2
     },
     {
       "ticker": "6012",
